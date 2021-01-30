@@ -1,8 +1,9 @@
 extends Action
 class_name JumpAttackAction
 
-const ATTACK_LENGTH = 800
+const ATTACK_LENGTH = 500
 const ATTACK_PAUSE = 400
+const ACTION_LENGTH = ATTACK_LENGTH + ATTACK_PAUSE
 
 var target: Vector2
 
@@ -42,7 +43,7 @@ func deal_damage():
 		body.take_damage()
 
 func animate_jump():
-	$AnimationPlayer.play("JumpAttack")
+	$AnimationPlayer.play("SkeletonJumpAttack")
 	$AttackParticles2.restart()
 	$AttackParticles2.emitting = true
 	$AttackParticles2.process_material.scale *= 0.5

@@ -1,7 +1,7 @@
 extends Action
 class_name FollowTargetAction
 
-const SPEED = 80  # speed in pixels/sec
+const SPEED = 70  # speed in pixels/sec
 
 var target: Node2D
 

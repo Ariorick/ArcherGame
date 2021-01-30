@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Rat
 
 var target: Node2D
 var attack_target # Vector2
@@ -6,8 +7,7 @@ var in_range: bool = false
 
 var velocity = Vector2.ZERO
 
-const ATTACK_LENGTH = 800
-const ATTACK_PAUSE = 400
+var other_enemies: Array = []
 var last_attack_time = -100000
 
 var conditions_changed = true
@@ -34,11 +34,11 @@ func _physics_process(delta):
 	action.perform()
 
 func resolve_action():
-	if in_range and OS.get_ticks_msec() - last_attack_time > ATTACK_LENGTH + ATTACK_PAUSE:
+	if in_range and OS.get_ticks_msec() - last_attack_time > BiteAttackAction.ACTION_LENGTH:
 		last_attack_time = OS.get_ticks_msec()
-		action = JumpAttackAction.new(get_args(), attack_target)
+		action = BiteAttackAction.new(get_args(), target)
 	elif target != null:
-		action = FollowTargetAction.new(get_args(), target)
+		action = SpreadAndFollowAction.new(get_args(), target, other_enemies)
 	else :
 		action = Action.new(get_args())
 
@@ -50,11 +50,15 @@ func _on_Vision_body_entered(body: PhysicsBody2D):
 	if body is Player:
 		target = body
 		conditions_changed = true
+	if body.is_in_group("enemies") and body != self:
+		other_enemies.append(body)
 
 func _on_Vision_body_exited(body: PhysicsBody2D):
 	if body == target:
 		target = null
 		conditions_changed = true
+	if body.is_in_group("enemies"):
+		other_enemies.erase(body)
 
 func _on_AttackArea_body_entered(body):
 	if body is Player:

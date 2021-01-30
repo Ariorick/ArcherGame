@@ -15,6 +15,10 @@ var dash_direction: Vector2
 
 var last_attack_time = -10000
 
+func _on_DamageDetector_body_entered(body: PhysicsBody2D):
+	if body.is_in_group("enemies"):
+		take_damage()
+
 func take_damage():
 	$ColorAnimationPlayer.play("EnemyTakeDamage")
 
@@ -83,3 +87,4 @@ func get_attack_direction() -> Vector2:
 		Input.get_action_strength("attack_right") - Input.get_action_strength("attack_left"),
 		Input.get_action_strength("attack_down") - Input.get_action_strength("attack_up")
 	).normalized()
+
