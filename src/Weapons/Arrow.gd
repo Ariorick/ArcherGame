@@ -27,7 +27,7 @@ func get_stuck(new_parent: Node2D):
 
 func _ready():
 	visible = false
-	set_bounce(0.0)
+	set_bounce(0.7)
 	pass # Replace with function body.
 
 func _integrate_forces(state):

@@ -13,6 +13,8 @@ var last_attack_time = -100000
 var conditions_changed = true
 var action: Action
 
+var hitpoints = 3
+
 func _physics_process(delta):
 	if in_range:
 		attack_target = target.global_position
@@ -73,8 +75,9 @@ func get_args() -> Dictionary:
 
 
 func _on_DamageDetector_body_entered(body): 
-	if body.linear_velocity.length() > 20:
-		$ColorAnimationPlayer.play("EnemyTakeDamage")
+	if body.linear_velocity.length() > 100:
+		print(body.linear_velocity.length())
 		if body is Arrow:
+			$ColorAnimationPlayer.play("EnemyTakeDamage")
 			body.get_stuck($Sprite)
 		

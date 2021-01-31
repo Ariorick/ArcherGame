@@ -8,12 +8,17 @@ const DASH_TIME = 100
 const DASH_TIMEOUT = 600
 const SPEED = 80  # speed in pixels/sec
 const DASH_SPEED = 300
-const ATTACK_TIMEOUT = 1000
+const ARROW_MAX_VELOCITY = 400
+const HOLD_MAX_TIME = 1000.0
 
 var last_dash_time = -10000
 var dash_direction: Vector2
 
-var last_attack_time = -10000
+var last_aim_direction := Vector2()
+var is_aiming := false
+var aim_start_time := -10000
+var movement_speed_decreasing := 0.0
+var current_velocity := Vector2()
 
 func _on_DamageDetector_body_entered(body: PhysicsBody2D):
 	if body.is_in_group("enemies"):
@@ -27,6 +32,7 @@ func _physics_process(delta):
 	attack()
 
 func move(): 
+	current_velocity = Vector2()
 	$StepParticles/Left.emitting = false
 	$StepParticles/Right.emitting = false
 	$DashParticles.emitting = false
@@ -46,18 +52,35 @@ func move():
 	else:
 		walk(direction)
 
+func cancel_aim():
+	pass
+
 func attack():
-	var direction = get_attack_direction()
-	if direction.length() == 0: 
+	var screen_size := Vector2(ProjectSettings.get_setting("display/window/size/width"), ProjectSettings.get_setting("display/window/size/height")) 
+	var direction := (get_viewport().get_mouse_position() - screen_size / 2).normalized()
+	
+	if is_aiming and Input.is_action_just_released("attack"):
+		is_aiming = false
+		var strength = min((OS.get_ticks_msec() - aim_start_time) / HOLD_MAX_TIME, 1)
+		var linear_velocity = strength * ARROW_MAX_VELOCITY
+		shoot_arrow(direction, linear_velocity, current_velocity)
+		print(current_velocity)
+		is_aiming = false
+		movement_speed_decreasing = 0.0
 		return
 	
-	var attack_available = OS.get_ticks_msec() - last_attack_time > ATTACK_TIMEOUT
-	if not attack_available:
-		return
-	last_attack_time = OS.get_ticks_msec()
+	if Input.is_action_just_pressed("attack"):
+		is_aiming = true
+		aim_start_time = OS.get_ticks_msec()
 	
+	if Input.is_action_pressed("attack"):
+		movement_speed_decreasing = min((OS.get_ticks_msec() - aim_start_time) / HOLD_MAX_TIME, 1)
+	
+	
+
+func shoot_arrow(direction: Vector2, linear_velocity: float, player_velocity: Vector2):
 	var arrow = Arrow.instance()
-	var impulse = direction * 250
+	var impulse = direction * linear_velocity + player_velocity
 	arrow.initial_angle = impulse.angle()
 	arrow.initial_position = global_position + PLAYER_CENTER
 	arrow.apply_impulse(Vector2(0, 0), impulse)
@@ -66,14 +89,14 @@ func attack():
 func dash(direction: Vector2):
 	var velocity = direction * DASH_SPEED
 	$DashParticles.emitting = true
-	move_and_slide(velocity)
+	current_velocity = move_and_slide(velocity)
 
 func walk(direction: Vector2):
-	var velocity = direction * SPEED
+	var velocity = direction * SPEED * max(1 - movement_speed_decreasing, 0.2)
 	$AnimationPlayer.play("Walk")
 	$StepParticles/Left.emitting = true
 	$StepParticles/Right.emitting = true
-	move_and_slide(velocity)
+	current_velocity = move_and_slide(velocity)
 
 
 func get_direction() -> Vector2:
