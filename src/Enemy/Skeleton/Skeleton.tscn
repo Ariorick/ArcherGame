@@ -75,7 +75,7 @@ extents = Vector2( 3, 2 )
 points = PoolVector2Array( -1, -4, 1, -4, 4, -1, 4, 2, 2, 4, -2, 4, -4, 2, -4, -1 )
 
 [sub_resource type="CircleShape2D" id=14]
-radius = 36.4492
+radius = 40.0
 
 [sub_resource type="CircleShape2D" id=15]
 radius = 12.7959

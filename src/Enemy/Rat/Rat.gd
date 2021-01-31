@@ -13,7 +13,7 @@ var last_attack_time = -100000
 var conditions_changed = true
 var action: Action
 
-var hitpoints = 2
+var hitpoints = 700
 
 func _physics_process(delta):
 	if in_range:
@@ -81,11 +81,13 @@ func get_args() -> Dictionary:
 
 
 func _on_DamageDetector_body_entered(body): 
-	if body.linear_velocity.length() > 20:
+	if body.linear_velocity.length() > 100:
 		$ColorAnimationPlayer.play("EnemyTakeDamage")
 		if body is Arrow:
+			print("rat got ",  body.linear_velocity.length(), " damage")
+			hitpoints -= body.linear_velocity.length()
+			if hitpoints < 0:
+				set_modulate(Color(1,1,1,0.5))
+				set_physics_process(false)
 			body.get_stuck($Sprite)
-			hitpoints -= 1
-			if hitpoints == 0:
-				queue_free()
 		

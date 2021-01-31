@@ -63,8 +63,8 @@ func attack():
 		is_aiming = false
 		var strength = min((OS.get_ticks_msec() - aim_start_time) / HOLD_MAX_TIME, 1)
 		var linear_velocity = strength * ARROW_MAX_VELOCITY
-		shoot_arrow(direction, linear_velocity, current_velocity)
-		print(current_velocity)
+		shoot_arrow(direction, linear_velocity, Vector2())
+#		shoot_arrow(direction, linear_velocity, current_velocity)
 		is_aiming = false
 		movement_speed_decreasing = 0.0
 		return
