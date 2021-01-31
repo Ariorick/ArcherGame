@@ -1,0 +1,66 @@
+extends KinematicBody2D
+class_name Enemy
+
+var target: Node2D
+var other_enemies: Array = []
+var in_range: bool = false
+
+var conditions_changed = true
+
+var hitpoints
+
+# override this
+func _on_take_damage():
+	pass
+
+func connect_signals(vision: Area2D, attack_radius: Area2D, damage_detector: Area2D):
+	vision.connect("body_entered", self, "_on_Vision_body_entered")
+	vision.connect("body_exited", self, "_on_Vision_body_exited")
+	attack_radius.connect("body_entered", self, "_on_AttackRadius_body_entered")
+	attack_radius.connect("body_exited", self, "_on_AttackRadius_body_exited")
+	damage_detector.connect("body_entered", self, "_on_DamageDetector_body_entered")
+
+func _on_Vision_body_entered(body: PhysicsBody2D):
+	if body is Player:
+		target = body
+		conditions_changed = true
+	if body.is_in_group("enemies") and body != self:
+		other_enemies.append(body)
+
+func _on_Vision_body_exited(body: PhysicsBody2D):
+	if body == target:
+		target = null
+		conditions_changed = true
+	if body.is_in_group("enemies"):
+		other_enemies.erase(body)
+
+func _on_AttackRadius_body_entered(body):
+	if body is Player:
+		in_range = true
+		conditions_changed = true
+
+func _on_AttackRadius_body_exited(body):
+	if body is Player:
+		in_range = false
+		conditions_changed = true
+
+func get_args() -> Dictionary:
+	var args = {
+		Action.Args.body: self
+	}
+	return args
+
+func _on_DamageDetector_body_entered(body): 
+	if body is Arrow:
+		var arrow_velocity = body.linear_velocity.length()
+		if arrow_velocity > 100:
+			print("rat got ",  arrow_velocity, " damage")
+			hitpoints -= arrow_velocity
+			_on_take_damage()
+			if hitpoints < 0:
+				set_modulate(Color(1,1,1,0.5))
+				set_physics_process(false)
+			body.get_stuck($Sprite)
+	
+		
+		

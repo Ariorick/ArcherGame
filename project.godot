@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Rat/BiteAttackAction.gd"
 }, {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://src/Enemy/Enemy.gd"
+}, {
 "base": "Action",
 "class": "FollowTargetAction",
 "language": "GDScript",
@@ -39,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Player.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Enemy",
 "class": "Rat",
 "language": "GDScript",
 "path": "res://src/Enemy/Rat/Rat.gd"
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "Action": "",
 "Arrow": "",
 "BiteAttackAction": "",
+"Enemy": "",
 "FollowTargetAction": "",
 "JumpAttackAction": "",
 "Player": "",

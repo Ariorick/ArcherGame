@@ -15,8 +15,8 @@ var started_at = 0
 var velocity: Vector2
 
 
-func _init(args: Dictionary, target: Vector2).(args):
-	self.target = target
+func _init(args: Dictionary, target: Node2D).(args):
+	self.target = target.global_position
 
 func perform():
 	if not started:
