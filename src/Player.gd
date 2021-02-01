@@ -10,6 +10,7 @@ const SPEED = 80  # speed in pixels/sec
 const DASH_SPEED = 300
 const ARROW_MAX_VELOCITY = 400
 const HOLD_MAX_TIME = 1000.0
+const AIMING_MOVEMENT_SPEED_MODIFIER = 0.2
 
 var last_dash_time = -10000
 var dash_direction: Vector2
@@ -20,6 +21,14 @@ var aim_start_time := -10000
 var movement_speed_decreasing := 0.0
 var current_velocity := Vector2()
 
+var action: int
+enum {
+	NONE,
+	DASH,
+	AIM,
+	PULL
+}
+
 func _on_DamageDetector_body_entered(body: PhysicsBody2D):
 	if body.is_in_group("enemies"):
 		take_damage()
@@ -28,8 +37,8 @@ func take_damage():
 	$ColorAnimationPlayer.play("EnemyTakeDamage")
 
 func _physics_process(delta):
-	move()
 	attack()
+	move()
 
 func move(): 
 	current_velocity = Vector2()
@@ -92,7 +101,9 @@ func dash(direction: Vector2):
 	current_velocity = move_and_slide(velocity)
 
 func walk(direction: Vector2):
-	var velocity = direction * SPEED * max(1 - movement_speed_decreasing, 0.2)
+	var velocity = direction * SPEED
+	if is_aiming:
+		velocity *= AIMING_MOVEMENT_SPEED_MODIFIER
 	$AnimationPlayer.play("Walk")
 	$StepParticles/Left.emitting = true
 	$StepParticles/Right.emitting = true
@@ -103,11 +114,5 @@ func get_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength('right') - Input.get_action_strength('left'),
 		Input.get_action_strength('down') - Input.get_action_strength('up')
-	).normalized()
-
-func get_attack_direction() -> Vector2:
-	return Vector2(
-		Input.get_action_strength("attack_right") - Input.get_action_strength("attack_left"),
-		Input.get_action_strength("attack_down") - Input.get_action_strength("attack_up")
 	).normalized()
 

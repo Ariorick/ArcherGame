@@ -1,7 +1,7 @@
 extends Action
 class_name SpreadAndFollowAction
 
-const SPEED = 90  # speed in pixels/sec
+const SPEED = 70  # speed in pixels/sec
 
 var target: Node2D
 var other_enemies: Array

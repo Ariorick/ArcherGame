@@ -5,7 +5,8 @@ var last_attack_time = -100000
 var action: Action
 
 func _ready():
-	hitpoints = 700
+	tag = "Rat"
+	hitpoints = 300
 	connect_signals($Vision, $AttackArea, $DamageDetector)
 
 func _on_take_damage():

@@ -31,11 +31,14 @@ func _ready():
 	pass # Replace with function body.
 
 func _integrate_forces(state):
+	if started:
+		visible = true
+	
 	if not started: 
 		started = true
 		state.transform = Transform2D(initial_angle + PI/4, initial_position)
-		visible = true
 	
 	if need_to_reset_position:
 		state.transform = Transform2D(initial_angle + PI/4, Vector2())
+#		mode = MODE_STATIC
 		need_to_reset_position = false

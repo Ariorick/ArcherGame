@@ -7,7 +7,9 @@ var in_range: bool = false
 
 var conditions_changed = true
 
-var hitpoints
+# init this in _on_ready()
+var tag: String
+var hitpoints: int
 
 # override this
 func _on_take_damage():
@@ -54,10 +56,11 @@ func _on_DamageDetector_body_entered(body):
 	if body is Arrow:
 		var arrow_velocity = body.linear_velocity.length()
 		if arrow_velocity > 100:
-			print("rat got ",  arrow_velocity, " damage")
-			hitpoints -= arrow_velocity
+			var damage = int(arrow_velocity)
+			print(tag, " got ",  damage, " damage")
+			hitpoints -= damage
 			_on_take_damage()
-			if hitpoints < 0:
+			if hitpoints <= 0:
 				set_modulate(Color(1,1,1,0.5))
 				set_physics_process(false)
 			body.get_stuck($Sprite)

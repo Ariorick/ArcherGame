@@ -4,7 +4,8 @@ var last_attack_time = -100000
 var action: Action
 
 func _ready():
-	hitpoints = 2000
+	tag = "Skeleton"
+	hitpoints = 700
 	connect_signals($Vision, $AttackArea, $DamageDetector)
 
 func _on_take_damage():
