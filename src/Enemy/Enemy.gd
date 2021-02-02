@@ -1,6 +1,8 @@
 extends KinematicBody2D
 class_name Enemy
 
+var body_velocity := Vector2()
+
 var target: Node2D
 var other_enemies: Array = []
 var in_range: bool = false
@@ -46,12 +48,6 @@ func _on_AttackRadius_body_exited(body):
 		in_range = false
 		conditions_changed = true
 
-func get_args() -> Dictionary:
-	var args = {
-		Action.Args.body: self
-	}
-	return args
-
 func _on_DamageDetector_body_entered(body): 
 	if body is Arrow:
 		var arrow_velocity = body.linear_velocity.length()
@@ -63,7 +59,13 @@ func _on_DamageDetector_body_entered(body):
 			if hitpoints <= 0:
 				set_modulate(Color(1,1,1,0.5))
 				set_physics_process(false)
-			body.get_stuck($Sprite)
-	
-		
-		
+			body.get_stuck(self, body_velocity)
+
+func move_and_slide(linear_velocity: Vector2, up_direction: Vector2 = Vector2( 0, 0 ), stop_on_slope: bool = false, max_slides: int = 4, floor_max_angle: float = 0.785398, infinite_inertia: bool = true):
+	body_velocity = .move_and_slide(linear_velocity, up_direction, stop_on_slope, max_slides, floor_max_angle, infinite_inertia)
+
+func get_args() -> Dictionary:
+	var args = {
+		Action.Args.body: self
+	}
+	return args

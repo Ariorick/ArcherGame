@@ -42,7 +42,32 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://src/Player.gd"
+"path": "res://src/Player/Player.gd"
+}, {
+"base": "Reference",
+"class": "PlayerAction",
+"language": "GDScript",
+"path": "res://src/Player/Actions/PlayerAction.gd"
+}, {
+"base": "PlayerAction",
+"class": "PlayerAttackAction",
+"language": "GDScript",
+"path": "res://src/Player/Actions/PlayerAttackAction.gd"
+}, {
+"base": "PlayerAction",
+"class": "PlayerDashAction",
+"language": "GDScript",
+"path": "res://src/Player/Actions/PlayerDashAction.gd"
+}, {
+"base": "Reference",
+"class": "PlayerInput",
+"language": "GDScript",
+"path": "res://src/Player/PlayerInput.gd"
+}, {
+"base": "PlayerAction",
+"class": "PlayerPullAction",
+"language": "GDScript",
+"path": "res://src/Player/Actions/PlayerPullAction.gd"
 }, {
 "base": "Enemy",
 "class": "Rat",
@@ -62,6 +87,11 @@ _global_script_class_icons={
 "FollowTargetAction": "",
 "JumpAttackAction": "",
 "Player": "",
+"PlayerAction": "",
+"PlayerAttackAction": "",
+"PlayerDashAction": "",
+"PlayerInput": "",
+"PlayerPullAction": "",
 "Rat": "",
 "SpreadAndFollowAction": ""
 }
@@ -160,7 +190,7 @@ attack={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-return_arrow={
+pull={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
@@ -174,6 +204,7 @@ return_arrow={
 2d_render/layer_4="projectile"
 2d_render/layer_5="enemy_hitbox"
 2d_render/layer_6="enemy_damage_area"
+2d_render/layer_7="player_pick_area"
 
 [rendering]
 
