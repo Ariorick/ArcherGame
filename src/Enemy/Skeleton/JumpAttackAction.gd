@@ -28,7 +28,8 @@ func perform():
 	var elapsed_time = OS.get_ticks_msec() - started_at
 	
 	if elapsed_time < ATTACK_LENGTH:
-		body.move_and_slide(velocity)
+		pass
+#		body.move_and_slide(velocity)
 	elif elapsed_time < ATTACK_LENGTH + ATTACK_PAUSE:
 		if not landed:
 			animate_landing()

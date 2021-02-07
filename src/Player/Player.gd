@@ -1,11 +1,11 @@
-extends KinematicBody2D
+extends RigidBody2D
 class_name Player
 
-const PLAYER_CENTER = Vector2(0, -1.9)
-const SPEED = 80  # speed in pixels/sec
+const PLAYER_CENTER = Vector2(0, -4.3)
+const WALK_FORCE = 800
 const AIMING_MOVEMENT_SPEED_MODIFIER = 0.4
 
-var current_velocity := Vector2()
+var last_walk_force := Vector2.ZERO
 
 var arrows: Array # of Arrow
 var possible_actions: Array # of PlayerAction
@@ -64,20 +64,21 @@ func get_arrows() -> Array:
 
 
 func walk(speed_modifier: float): 
-	current_velocity = Vector2()
-	$StepParticles/Left.emitting = false
-	$StepParticles/Right.emitting = false
+	var is_walking = not current_action is PlayerDashAction and linear_velocity.length() > 1
+	$StepParticles/Left.emitting = is_walking
+	$StepParticles/Right.emitting = is_walking
+	if is_walking:
+		$AnimationPlayer.play("Walk")
 	
+	add_force(Vector2.ZERO, -1 * last_walk_force)
+	last_walk_force = Vector2.ZERO
 	var direction = PlayerInput.get_direction()
 	if direction.length() == 0:
 		return
 	
-	var velocity = direction * SPEED * speed_modifier
-	$AnimationPlayer.play("Walk")
-	$StepParticles/Left.emitting = true
-	$StepParticles/Right.emitting = true
-	current_velocity = move_and_slide(velocity)
-
+	var walk_force = direction * WALK_FORCE * speed_modifier
+	add_force(Vector2.ZERO, walk_force)
+	last_walk_force = walk_force
 
 
 func get_args() -> Dictionary:

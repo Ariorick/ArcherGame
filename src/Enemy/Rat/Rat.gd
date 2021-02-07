@@ -13,6 +13,9 @@ func _on_take_damage():
 	$ColorAnimationPlayer.play("EnemyTakeDamage")
 
 func _physics_process(delta):
+	if is_dead:
+		return
+	
 	if conditions_changed and action != null and action.is_interruptable():
 		action.interrupt()
 		action = null

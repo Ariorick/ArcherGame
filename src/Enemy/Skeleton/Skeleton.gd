@@ -12,6 +12,16 @@ func _on_take_damage():
 	$ColorAnimationPlayer.play("EnemyTakeDamage")
 
 func _physics_process(delta):
+	if should_release_arrows:
+		release_arrows()
+		should_release_arrows = false
+	
+	if is_dead:
+		if action != null:
+			action.interrupt()
+			action == null
+		return
+		
 	if conditions_changed and action != null and action.is_interruptable():
 		action.interrupt()
 		action = null
@@ -29,11 +39,16 @@ func _physics_process(delta):
 	action.perform()
 
 func resolve_action():
-	if in_range and OS.get_ticks_msec() - last_attack_time > JumpAttackAction.ACTION_LENGTH:
-		last_attack_time = OS.get_ticks_msec()
-		action = JumpAttackAction.new(get_args(), target)
-	elif target != null:
+	if target != null:
 		action = FollowTargetAction.new(get_args(), target)
 	else :
 		action = Action.new(get_args())
+	
+#	if in_range and OS.get_ticks_msec() - last_attack_time > JumpAttackAction.ACTION_LENGTH:
+#		last_attack_time = OS.get_ticks_msec()
+#		action = JumpAttackAction.new(get_args(), target)
+#	elif target != null:
+#		action = FollowTargetAction.new(get_args(), target)
+#	else :
+#		action = Action.new(get_args())
 

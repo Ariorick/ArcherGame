@@ -2,8 +2,8 @@ extends PlayerAction
 class_name PlayerDashAction
 
 const DASH_TIMEOUT = 600
-const DASH_TIME = 130
-const DASH_SPEED = 300
+const DASH_TIME = 180
+const DASH_SPEED = 600
 
 var last_dash_time = -10000
 var dash_direction := Vector2()
@@ -23,15 +23,18 @@ func perform():
 	if Input.is_action_just_pressed("dash"):
 		dash_direction = PlayerInput.get_direction()
 		last_dash_time = OS.get_ticks_msec()
+		
+		var velocity = dash_direction * DASH_SPEED
+		$DashParticles2.process_material.angle = rad2deg(-1 * dash_direction.angle() - PI/4)
+		$DashParticles.emitting = true
+		$DashParticles2.emitting = true
+		body.apply_impulse(Vector2(), velocity)
 	
 	if OS.get_ticks_msec() - last_dash_time > DASH_TIME:
 		$DashParticles.emitting = false
+		$DashParticles2.emitting = false
 		finished = true
 		return
-	
-	var velocity = dash_direction * DASH_SPEED
-	$DashParticles.emitting = true
-	body.move_and_slide(velocity)
 
 func cancel():
 	dash_direction = Vector2()

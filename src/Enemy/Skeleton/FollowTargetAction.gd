@@ -1,7 +1,8 @@
 extends Action
 class_name FollowTargetAction
 
-const SPEED = 50  # speed in pixels/sec
+const WALK_FORCE = 500
+var last_walk_force := Vector2.ZERO
 
 var target: Node2D
 
@@ -9,14 +10,23 @@ func _init(args: Dictionary, target: Node2D).(args):
 	self.target = target
 
 func perform():
-	var velocity = (target.global_position - body.global_position).normalized() * SPEED
-	if velocity.length() > 0:
+	body.add_force(Vector2.ZERO, -1 * last_walk_force)
+	last_walk_force = Vector2.ZERO
+	
+	var walk_force = (target.global_position - body.global_position).normalized() * WALK_FORCE
+	if walk_force.length() > 0:
 		$AnimationPlayer.play("Walk")
 		$StepParticles/Left.emitting = true
 		$StepParticles/Right.emitting = true
-	body.move_and_slide(velocity)
+	
+	body.add_force(Vector2.ZERO, walk_force)
+	last_walk_force = walk_force
+	
+#	body.move_and_slide(velocity)
 
 func interrupt():
+	body.add_force(Vector2.ZERO, -1 * last_walk_force)
+	last_walk_force = Vector2.ZERO
 	$StepParticles/Left.emitting = false
 	$StepParticles/Right.emitting = false
 

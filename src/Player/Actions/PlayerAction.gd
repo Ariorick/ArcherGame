@@ -1,6 +1,6 @@
 class_name PlayerAction
 
-var body: KinematicBody2D
+var body: RigidBody2D
 
 enum Args {
 	body

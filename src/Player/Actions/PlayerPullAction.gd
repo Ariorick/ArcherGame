@@ -12,12 +12,15 @@ func want_to_start() -> bool:
 
 func perform():
 	if Input.is_action_just_pressed("pull"):
+		$PullParticles.emitting = true
 		for arrow in get_arrows.call_func():
 			arrow.set_pulled(true)
 	if Input.is_action_just_released("pull"):
+		$PullParticles.emitting = false
 		finished = true
 
 func cancel():
+	$PullParticles.emitting = false
 	for arrow in get_arrows.call_func():
 		arrow.set_pulled(false)
 	finished = false

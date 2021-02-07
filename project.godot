@@ -24,10 +24,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Rat/BiteAttackAction.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "RigidBody2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://src/Enemy/Enemy.gd"
+}, {
+"base": "Label",
+"class": "FCT",
+"language": "GDScript",
+"path": "res://src/UI/FCT.gd"
 }, {
 "base": "Action",
 "class": "FollowTargetAction",
@@ -39,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Skeleton/JumpAttackAction.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "RigidBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://src/Player/Player.gd"
@@ -84,6 +89,7 @@ _global_script_class_icons={
 "Arrow": "",
 "BiteAttackAction": "",
 "Enemy": "",
+"FCT": "",
 "FollowTargetAction": "",
 "JumpAttackAction": "",
 "Player": "",
@@ -205,6 +211,11 @@ pull={
 2d_render/layer_5="enemy_hitbox"
 2d_render/layer_6="enemy_damage_area"
 2d_render/layer_7="player_pick_area"
+
+[physics]
+
+2d/default_gravity=0
+2d/default_linear_damp=10.0
 
 [rendering]
 
