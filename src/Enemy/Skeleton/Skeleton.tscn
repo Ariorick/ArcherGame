@@ -203,7 +203,7 @@ anims/SkeletonJumpAttack = ExtResource( 5 )
 anims/Walk = ExtResource( 6 )
 
 [node name="DeathParticles" type="Particles2D" parent="."]
-position = Vector2( 0, -4 )
+position = Vector2( -0.0284538, -4 )
 emitting = false
 amount = 30
 lifetime = 0.5

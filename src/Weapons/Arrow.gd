@@ -39,6 +39,9 @@ func _ready():
 	# Apply Godot physics at first
 	set_use_custom_integrator(false) 
 
+func _process(delta: float):
+	$PullParticles.emitting = is_pulled
+
 func set_pull_target(pull_target: Node2D):
 	self.pull_target = pull_target
 
@@ -53,6 +56,7 @@ func set_pulled(pulled: bool):
 	
 	if is_sticking:
 		enemy_on_which_sticked.set_pulled(pulled, pull_target)
+
 
 func release():
 	var new_position = enemy_on_which_sticked.global_position
@@ -76,7 +80,6 @@ func release():
 	apply_impulse(Vector2(0, 0), impulse)
 
 func _integrate_forces(body_state: Physics2DDirectBodyState):
-	print(global_position)
 	if started:
 		visible = true
 	
@@ -99,7 +102,7 @@ func _integrate_forces(body_state: Physics2DDirectBodyState):
 func pull():
 	var to_target = global_position - (pull_target.global_position + pull_target.PLAYER_CENTER)
 	var direction = -1 * to_target.normalized()
-	var pull_strength = clamp(PULL_STRENGTH / to_target.length() * 15, 300, 2000)
+	var pull_strength = clamp(PULL_STRENGTH / to_target.length() * 15, 300, 3000)
 	var force = direction * pull_strength
 	if is_sticking:
 		last_force = pull_enemy(last_force, direction)
