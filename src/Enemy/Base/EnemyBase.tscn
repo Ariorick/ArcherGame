@@ -1,0 +1,89 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/Enemy/Base/Brain.gd" type="Script" id=1]
+[ext_resource path="res://src/Enemy/Base/EnemyBase.gd" type="Script" id=2]
+[ext_resource path="res://src/Enemy/Base/Sensors.gd" type="Script" id=3]
+[ext_resource path="res://src/Enemy/Base/HealthManager.gd" type="Script" id=5]
+[ext_resource path="res://assets/Animations/EnemyTakeDamage.tres" type="Animation" id=7]
+[ext_resource path="res://src/UI/FCTMgr.tscn" type="PackedScene" id=8]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.713768, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.710145, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 3, 3, 0 )
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+spread = 61.02
+gravity = Vector3( 0, 20, 0 )
+initial_velocity = 30.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 3 )
+
+[node name="EnemyBase" type="RigidBody2D" groups=[
+"enemies",
+]]
+collision_layer = 2
+collision_mask = 6
+mode = 2
+physics_material_override = SubResource( 1 )
+can_sleep = false
+script = ExtResource( 2 )
+
+[node name="Brain" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Sensors" type="Node2D" parent="Brain"]
+script = ExtResource( 3 )
+
+[node name="Vision" type="Area2D" parent="Brain/Sensors"]
+collision_layer = 0
+
+[node name="AttackRadius" type="Area2D" parent="Brain/Sensors"]
+
+[node name="Actions" type="Node2D" parent="Brain"]
+
+[node name="Character" type="Node2D" parent="."]
+
+[node name="UnderCharacter" type="Node2D" parent="Character"]
+
+[node name="CharacterBody" type="StaticBody2D" parent="Character" groups=[
+"enemy_hitbox",
+]]
+modulate = Color( 0, 1, 0.156863, 0.67451 )
+collision_layer = 16
+collision_mask = 4
+
+[node name="OnCharacter" type="Node2D" parent="Character"]
+
+[node name="HealthManager" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="ColorAnimationPlayer" type="AnimationPlayer" parent="HealthManager"]
+anims/EnemyTakeDamage = ExtResource( 7 )
+
+[node name="DamageParticles" type="Particles2D" parent="HealthManager"]
+position = Vector2( -0.0284538, -4 )
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+process_material = SubResource( 4 )
+
+[node name="DamageLabels" parent="HealthManager" instance=ExtResource( 8 )]
+[connection signal="conditions_changed" from="Brain/Sensors" to="Brain" method="_on_Sensors_conditions_changed"]
+[connection signal="body_entered" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_entered"]
+[connection signal="body_exited" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_exited"]
+[connection signal="body_entered" from="Brain/Sensors/AttackRadius" to="Brain/Sensors" method="_on_AttackRadius_body_entered"]
+[connection signal="body_exited" from="Brain/Sensors/AttackRadius" to="Brain/Sensors" method="_on_AttackRadius_body_exited"]
+[connection signal="on_death" from="HealthManager" to="." method="_on_HealthManager_on_death"]

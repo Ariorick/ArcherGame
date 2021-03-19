@@ -135,7 +135,7 @@ colors = PoolColorArray( 0, 0, 0, 0, 1, 1, 1, 0.156863, 0, 0, 0, 0 )
 gradient = SubResource( 22 )
 
 [sub_resource type="Curve" id=24]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.969136, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.280864, 0.747748 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=25]
 curve = SubResource( 24 )
@@ -245,8 +245,9 @@ anims/EnemyTakeDamage = ExtResource( 2 )
 [node name="PullParticles" type="Particles2D" parent="."]
 position = Vector2( 0, -3 )
 emitting = false
-amount = 50
-lifetime = 2.0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
 process_material = SubResource( 26 )
 texture = ExtResource( 4 )
 

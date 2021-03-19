@@ -74,6 +74,7 @@ func die():
 func release_arrows():
 	for arrow in arrows:
 		if arrow != null:
+			add_force(Vector2(), -1* arrow.last_force)
 			arrow.release()
 	arrows.clear()
 

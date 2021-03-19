@@ -131,11 +131,10 @@ func turn_arrow(to_target, pull_strength):
 	apply_torque_impulse(angle_to_target * strength * pull_strength / 50)
 
 
-
 func stick_to_body(body_state: Physics2DDirectBodyState):
 	body_on_which_sticked = body_state.get_contact_collider_object(0)
 	if body_on_which_sticked.is_in_group("enemy_hitbox"):
-		enemy_on_which_sticked = body_on_which_sticked.get_parent()
+		enemy_on_which_sticked = body_on_which_sticked.get_parent().get_parent()
 		is_sticking = enemy_on_which_sticked.arrow_entered(self)
 	if not is_sticking:
 		return

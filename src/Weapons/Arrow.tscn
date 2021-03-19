@@ -26,12 +26,12 @@ spread = 0.0
 gravity = Vector3( 0, 0, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale = 0.03
+scale = 0.02
 color_ramp = SubResource( 5 )
 
 [node name="Arrow" type="RigidBody2D"]
 collision_layer = 8
-collision_mask = 28
+collision_mask = 20
 mass = 0.2
 physics_material_override = SubResource( 1 )
 continuous_cd = 2
@@ -54,6 +54,7 @@ shape = SubResource( 2 )
 position = Vector2( -2.9391, 2.9573 )
 
 [node name="PullParticles" type="Particles2D" parent="."]
-lifetime = 0.5
+amount = 7
+lifetime = 0.7
 process_material = SubResource( 3 )
 texture = ExtResource( 3 )
