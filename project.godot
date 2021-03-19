@@ -9,30 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Reference",
-"class": "Action",
-"language": "GDScript",
-"path": "res://src/Enemy/Action.gd"
-}, {
 "base": "RigidBody2D",
 "class": "Arrow",
 "language": "GDScript",
 "path": "res://src/Weapons/Arrow.gd"
 }, {
-"base": "Action",
-"class": "BiteAttackAction",
-"language": "GDScript",
-"path": "res://src/Enemy/Rat/BiteAttackAction.gd"
-}, {
 "base": "Node",
 "class": "Brain",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/Brain.gd"
-}, {
-"base": "RigidBody2D",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://src/Enemy/Enemy.gd"
 }, {
 "base": "Node2D",
 "class": "EnemyAction",
@@ -49,20 +34,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/FCT.gd"
 }, {
-"base": "Action",
-"class": "FollowTargetAction",
-"language": "GDScript",
-"path": "res://src/Enemy/Skeleton/FollowTargetAction.gd"
-}, {
 "base": "Node2D",
 "class": "HealthManager",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/HealthManager.gd"
-}, {
-"base": "Action",
-"class": "JumpAttackAction",
-"language": "GDScript",
-"path": "res://src/Enemy/Skeleton/JumpAttackAction.gd"
 }, {
 "base": "Node",
 "class": "ParticlesBundle",
@@ -99,33 +74,18 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Player/Actions/PlayerPullAction.gd"
 }, {
-"base": "Enemy",
-"class": "Rat",
-"language": "GDScript",
-"path": "res://src/Enemy/Rat/Rat.gd"
-}, {
 "base": "Node2D",
 "class": "Sensors",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/Sensors.gd"
-}, {
-"base": "Action",
-"class": "SpreadAndFollowAction",
-"language": "GDScript",
-"path": "res://src/Enemy/Rat/SpreadAndFollowAction.gd"
 } ]
 _global_script_class_icons={
-"Action": "",
 "Arrow": "",
-"BiteAttackAction": "",
 "Brain": "",
-"Enemy": "",
 "EnemyAction": "",
 "EnemyBase": "",
 "FCT": "",
-"FollowTargetAction": "",
 "HealthManager": "",
-"JumpAttackAction": "",
 "ParticlesBundle": "",
 "Player": "",
 "PlayerAction": "",
@@ -133,9 +93,7 @@ _global_script_class_icons={
 "PlayerDashAction": "",
 "PlayerInput": "",
 "PlayerPullAction": "",
-"Rat": "",
-"Sensors": "",
-"SpreadAndFollowAction": ""
+"Sensors": ""
 }
 
 [application]
