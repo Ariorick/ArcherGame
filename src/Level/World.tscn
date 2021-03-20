@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/Tiles/tile_0107.png" type="Texture" id=6]
 [ext_resource path="res://assets/Tiles/tile_0106.png" type="Texture" id=7]
 
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=1]
 0/name = "tile_0060.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -52,7 +52,7 @@
 2/shapes = [  ]
 2/z_index = 0
 
-[sub_resource type="TileSet" id=4]
+[sub_resource type="TileSet" id=2]
 2/name = "tile_0106.png 2"
 2/texture = ExtResource( 7 )
 2/tex_offset = Vector2( 0, 0 )
@@ -87,7 +87,7 @@ script = ExtResource( 3 )
 
 [node name="Grass" type="TileMap" parent="."]
 modulate = Color( 1, 1, 1, 0.392157 )
-tile_set = SubResource( 3 )
+tile_set = SubResource( 1 )
 cell_size = Vector2( 8, 8 )
 cell_custom_transform = Transform2D( 64, 1, 0, 64, 0, 0 )
 collision_layer = 2
@@ -96,8 +96,9 @@ format = 1
 
 [node name="Graves" type="TileMap" parent="."]
 z_index = 1
-tile_set = SubResource( 4 )
+tile_set = SubResource( 2 )
 cell_size = Vector2( 8, 8 )
+cell_y_sort = true
 format = 1
 
 [node name="Player" parent="Graves" instance=ExtResource( 2 )]

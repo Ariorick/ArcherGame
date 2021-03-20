@@ -2,8 +2,8 @@ extends Node2D
 
 var prev_camera_pos = Vector2()
 
-var map_size := Vector2(10, 10)
-var cell_size_px := Vector2(16, 16)
+var map_size := Vector2(1, 1)
+var cell_size_px := Vector2(8, 8)
 var chunk_size_px := map_size * cell_size_px
 var map_cells := Dictionary()
 var lookaround := Vector2()
@@ -12,7 +12,7 @@ func _ready():
 	$World.map_size = map_size
 	
 #	var camera_zoom = $CameraPosition/Camera2D.zoom
-	var camera_zoom = 1
+	var camera_zoom = 0.2
 	var screen_size = get_viewport().size * camera_zoom
 	
 	lookaround = Vector2(
