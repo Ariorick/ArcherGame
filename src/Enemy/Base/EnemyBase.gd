@@ -9,7 +9,8 @@ var pull_target : Node2D
 var is_dead := false
 
 # init this in _on_ready()
-var tag: String = ""
+var tag: String
+var damage_treshold: int
 
 func _physics_process(delta):
 	if should_release_arrows:
@@ -21,18 +22,32 @@ func arrow_entered(arrow: Arrow) -> bool:
 	var arrow_impact = arrow.linear_velocity * arrow.mass
 	apply_impulse(Vector2.ZERO, arrow_impact)
 	var arrow_velocity = arrow.linear_velocity.length()
-	var is_stuck = arrow_velocity > 100
-	if is_stuck:
-		arrows.append(arrow)
+	var damaged = arrow_velocity > damage_treshold
+	
+	# simple 
+	if damaged:
 		var damage = int(arrow_velocity)
-		var is_crit = damage > 300
+		var is_crit = damage > damage_treshold * 3
 		if is_crit:
 			apply_impulse(Vector2.ZERO, arrow_impact * 2)
-			should_release_arrows = true
 		$HealthManager.take_directional_damage(damage, arrow.linear_velocity.normalized(), is_crit)
-		return true
-	else :
+		arrow.apply_impulse(Vector2.ZERO, -arrow_impact * 1)
 		return false
+	
+#	# stuck behaviour
+#	if damaged:
+#		arrows.append(arrow)
+#		var damage = int(arrow_velocity)
+#		var is_crit = damage > 300
+#		if is_crit:
+#			apply_impulse(Vector2.ZERO, arrow_impact * 2)
+#			should_release_arrows = true
+#		$HealthManager.take_directional_damage(damage, arrow.linear_velocity.normalized(), is_crit)
+#		return true
+		
+		
+	return false
+
 
 func set_pulled(pulled: bool, target: Node2D):
 	is_pulled = pulled
@@ -55,3 +70,6 @@ func _on_HealthManager_on_death():
 	$Brain.is_dead = true
 	is_dead = true
 	should_release_arrows = true
+
+func set_hitpoints(value: int):
+	$HealthManager.hitpoints = value

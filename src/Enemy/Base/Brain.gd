@@ -28,7 +28,6 @@ func _physics_process(delta):
 				if current_action != null:
 					current_action.cancel()
 				current_action = action
-				print(current_action)
 				break
 	
 	if current_action != null:

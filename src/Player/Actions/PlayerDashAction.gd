@@ -1,12 +1,13 @@
 extends PlayerAction
 class_name PlayerDashAction
 
-const DASH_TIMEOUT = 600
+const DASH_TIMEOUT = 700
 const DASH_TIME = 180
-const DASH_SPEED = 600
+const DASH_SPEED = 500
 
 var last_dash_time = -10000
 var dash_direction := Vector2()
+var started = false
 var finished = false
 
 func _init(args: Dictionary).(args):
@@ -20,7 +21,8 @@ func want_to_start() -> bool:
 	return Input.is_action_just_pressed("dash") and dash_available
 
 func perform():
-	if Input.is_action_just_pressed("dash"):
+	if not started:
+		started = true
 		dash_direction = PlayerInput.get_direction()
 		last_dash_time = OS.get_ticks_msec()
 		
@@ -39,6 +41,7 @@ func perform():
 func cancel():
 	dash_direction = Vector2()
 	finished = false
+	started = false
 
 func is_finished() -> bool:
 	return finished

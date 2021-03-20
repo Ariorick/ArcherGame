@@ -20,7 +20,8 @@ func _on_DamageDetector_body_entered(body: PhysicsBody2D):
 		take_damage()
 
 func take_damage():
-	$ColorAnimationPlayer.play("EnemyTakeDamage")
+	GameManager.player_take_damage()
+	$ColorAnimationPlayer.play("PlayerTakeDamage")
 
 func _ready():
 	possible_actions = [
@@ -53,11 +54,12 @@ func _physics_process(delta):
 		walk(speed_modifier)
 
 func can_shoot() -> bool:
-	return true
+	return GameManager.can_shoot()
 
 func on_arrow_fired(arrow: Arrow):
 	arrows.append(arrow)
 	arrow.set_pull_target(self)
+	GameManager.player_used_arrow()
 
 func get_arrows() -> Array:
 	return arrows
@@ -83,13 +85,14 @@ func walk(speed_modifier: float):
 
 func get_args() -> Dictionary:
 	var args = {
-		Action.Args.body: self
+		PlayerAction.Args.body: self
 	}
 	return args
 
 
 func _on_PickArea_body_entered(arrow: Arrow):
-	if OS.get_ticks_msec() - arrow.creation_time > 800:
+	if OS.get_ticks_msec() - arrow.creation_time > 600:
 		arrows.erase(arrow)
 		arrow.queue_free()
+		GameManager.player_collected_arrow()
 	

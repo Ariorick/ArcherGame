@@ -5,7 +5,7 @@
 [ext_resource path="res://src/Enemy/Base/Sensors.gd" type="Script" id=3]
 [ext_resource path="res://src/Enemy/Base/HealthManager.gd" type="Script" id=5]
 [ext_resource path="res://assets/Animations/EnemyTakeDamage.tres" type="Animation" id=7]
-[ext_resource path="res://src/UI/FCTMgr.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/UI/Damage/FCTMgr.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
@@ -32,7 +32,7 @@ color_ramp = SubResource( 3 )
 "enemies",
 ]]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 2
 mode = 2
 physics_material_override = SubResource( 1 )
 can_sleep = false
@@ -81,6 +81,7 @@ local_coords = false
 process_material = SubResource( 4 )
 
 [node name="DamageLabels" parent="HealthManager" instance=ExtResource( 8 )]
+position = Vector2( 0.101518, -17.9286 )
 [connection signal="conditions_changed" from="Brain/Sensors" to="Brain" method="_on_Sensors_conditions_changed"]
 [connection signal="body_entered" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_entered"]
 [connection signal="body_exited" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_exited"]
