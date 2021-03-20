@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/Particles/circle_05.png" type="Texture" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 150.0
+radius = 500.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 12.7959

@@ -30,6 +30,9 @@ func _ready():
 		PlayerPullAction.new(get_args(), funcref(self, "get_arrows"))
 	]
 
+func _process(delta):
+	$BowSprite.visible = can_shoot()
+
 func _physics_process(delta):
 	if current_action != null and current_action.is_finished():
 		current_action.cancel()

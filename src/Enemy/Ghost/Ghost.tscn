@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/Particles/smoke_04.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 150.0
+radius = 500.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 12.7959

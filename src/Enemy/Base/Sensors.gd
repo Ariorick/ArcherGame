@@ -19,7 +19,7 @@ func _on_Vision_body_entered(body: PhysicsBody2D):
 
 func _on_Vision_body_exited(body: PhysicsBody2D):
 	if body == target:
-		target = null
+#		target = null
 		emit_signal("conditions_changed")
 	if body.is_in_group("enemies"):
 		other_enemies.erase(body)

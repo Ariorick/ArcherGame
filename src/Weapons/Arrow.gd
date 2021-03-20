@@ -2,6 +2,8 @@ extends RigidBody2D
 class_name Arrow
 
 const PULL_STRENGTH = 800
+const LINEAR_DAMP = 2
+const PULL_LINEAR_DAMP = 1
 
 var initial_position: Vector2
 var initial_angle: float = 0
@@ -47,6 +49,7 @@ func set_pull_target(pull_target: Node2D):
 
 func set_pulled(pulled: bool):
 	is_pulled = pulled
+	update_linear_damp(pulled)
 	if not pulled:
 		if is_sticking:
 			enemy_on_which_sticked.add_force(Vector2(), -1* last_force)
@@ -57,6 +60,11 @@ func set_pulled(pulled: bool):
 	if is_sticking:
 		enemy_on_which_sticked.set_pulled(pulled, pull_target)
 
+func update_linear_damp(pulled: bool):
+	if pulled:
+		linear_damp = PULL_LINEAR_DAMP
+	else:
+		linear_damp = linear_damp
 
 func release():
 	var new_position = enemy_on_which_sticked.global_position

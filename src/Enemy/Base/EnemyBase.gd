@@ -30,6 +30,7 @@ func arrow_entered(arrow: Arrow) -> bool:
 		var is_crit = damage > damage_treshold * 3
 		if is_crit:
 			apply_impulse(Vector2.ZERO, arrow_impact * 2)
+		GameManager.add_damage(damage, is_crit)
 		$HealthManager.take_directional_damage(damage, arrow.linear_velocity.normalized(), is_crit)
 		arrow.apply_impulse(Vector2.ZERO, -arrow_impact * 1)
 		return false
@@ -70,6 +71,7 @@ func _on_HealthManager_on_death():
 	$Brain.is_dead = true
 	is_dead = true
 	should_release_arrows = true
+	GameManager.add_kill()
 
 func set_hitpoints(value: int):
 	$HealthManager.hitpoints = value
