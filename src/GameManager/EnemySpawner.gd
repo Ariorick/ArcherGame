@@ -18,7 +18,7 @@ func _on_Timer_timeout():
 func get_enemy() -> EnemyBase:
 	var value = r.randf_range(0, 1)
 	var enemy: EnemyBase
-	if value < 0.2:
+	if value < 1:
 		enemy = Skelly.instance()
 	else: 
 		enemy = Ghost.instance()
