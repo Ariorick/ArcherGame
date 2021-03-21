@@ -1,7 +1,7 @@
 extends Node2D
 
 const YELLOW_CAP = 0.3
-const GREEN_CAP = 0.62
+const GREEN_CAP = -0.6
 const GRAVE_CAP = -0.3
 
 var rng = RandomNumberGenerator.new()
@@ -34,12 +34,13 @@ func generate(chunk: Vector2):
 	run_with_noise(from, to, funcref(self, "make_graves_map"))
 
 func make_grass_map(x, y, value):
-	if value > GREEN_CAP:
-		$Grass.set_cell(x,y,1)
-	elif value > YELLOW_CAP:
+	if value > YELLOW_CAP:
 		$Grass.set_cell(x,y,2)
 	else:
 		$Grass.set_cell(x,y,0)
+	
+	if value < GREEN_CAP:
+		$Grass.set_cell(x,y,1)
 
 func make_graves_map(x, y, value):
 	if value < GRAVE_CAP:
