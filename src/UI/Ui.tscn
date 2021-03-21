@@ -8,21 +8,22 @@
 script = ExtResource( 3 )
 
 [node name="HealthDisplay" parent="." instance=ExtResource( 1 )]
-margin_left = 14.8517
-margin_top = 7.58384
-margin_right = 14.8517
-margin_bottom = 7.58384
+modulate = Color( 1, 1, 1, 0.807843 )
+margin_left = 8.74518
+margin_top = 7.75832
+margin_right = 8.74518
+margin_bottom = 7.75832
 rect_scale = Vector2( 0.3, 0.2 )
 
 [node name="tile_0065" type="Sprite" parent="."]
-position = Vector2( 19.7121, 20.602 )
+position = Vector2( 13.6056, 20.7765 )
 texture = ExtResource( 2 )
 
 [node name="ArrowCount" type="Label" parent="."]
-margin_left = 26.1727
-margin_top = 16.7437
-margin_right = 66.1727
-margin_bottom = 30.7437
+margin_left = 20.0662
+margin_top = 16.9182
+margin_right = 60.0662
+margin_bottom = 30.9182
 rect_scale = Vector2( 0.6, 0.6 )
 text = "10/10"
 __meta__ = {

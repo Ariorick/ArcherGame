@@ -43,7 +43,9 @@ func make_grass_map(x, y, value):
 
 func make_graves_map(x, y, value):
 	if value < GRAVE_CAP:
-		var can_place = x % 2 + y % 2 == 0
+		var xmod = int(abs(x + int(abs(y)) % 4)) % 4
+		var ymod2 = int(abs(y)) % 2
+		var can_place = xmod + ymod2 == 0
 		if can_place:
 			var random_grave = rng.randi_range(2, 3)
 			$Graves.set_cell(x, y, random_grave)
