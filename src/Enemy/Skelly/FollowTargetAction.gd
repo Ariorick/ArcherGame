@@ -1,4 +1,5 @@
 extends EnemyAction
+class_name FollowTargetAction
 
 const WALK_FORCE = 500
 var last_walk_force := Vector2.ZERO

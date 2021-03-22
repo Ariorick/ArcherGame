@@ -57,8 +57,8 @@ func make_graves_map(x, y, value):
 
 func make_trees_map(x, y, value, value2):
 	if value > TREE_CAP:
-		var xmod = int(abs(x + int(abs(y)) % 8)) % 8
-		var ymod = int(abs(y)) % 4
+		var xmod = int(abs(x + int(abs(y)) % 9)) % 12
+		var ymod = int(abs(y)) % 6
 		var can_place = xmod + ymod == 0
 		if can_place:
 			create_tree_at(x, y)

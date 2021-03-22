@@ -34,10 +34,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/Damage/FCT.gd"
 }, {
+"base": "EnemyAction",
+"class": "FlyAroundAction",
+"language": "GDScript",
+"path": "res://src/Enemy/Ghost/FlyAroundAction.gd"
+}, {
+"base": "EnemyAction",
+"class": "FollowAtDistanceTargetAction",
+"language": "GDScript",
+"path": "res://src/Enemy/Mage/FollowAtDistanceAction.gd"
+}, {
+"base": "EnemyAction",
+"class": "FollowTargetAction",
+"language": "GDScript",
+"path": "res://src/Enemy/Skelly/FollowTargetAction.gd"
+}, {
+"base": "EnemyBase",
+"class": "Ghost",
+"language": "GDScript",
+"path": "res://src/Enemy/Ghost/Ghost.gd"
+}, {
 "base": "Node2D",
 "class": "HealthManager",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/HealthManager.gd"
+}, {
+"base": "EnemyBase",
+"class": "Mage",
+"language": "GDScript",
+"path": "res://src/Enemy/Mage/Mage.gd"
 }, {
 "base": "Node",
 "class": "ParticlesBundle",
@@ -78,6 +103,11 @@ _global_script_classes=[ {
 "class": "Sensors",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/Sensors.gd"
+}, {
+"base": "EnemyBase",
+"class": "Skelly",
+"language": "GDScript",
+"path": "res://src/Enemy/Skelly/Skelly.gd"
 } ]
 _global_script_class_icons={
 "Arrow": "",
@@ -85,7 +115,12 @@ _global_script_class_icons={
 "EnemyAction": "",
 "EnemyBase": "",
 "FCT": "",
+"FlyAroundAction": "",
+"FollowAtDistanceTargetAction": "",
+"FollowTargetAction": "",
+"Ghost": "",
 "HealthManager": "",
+"Mage": "",
 "ParticlesBundle": "",
 "Player": "",
 "PlayerAction": "",
@@ -93,7 +128,8 @@ _global_script_class_icons={
 "PlayerDashAction": "",
 "PlayerInput": "",
 "PlayerPullAction": "",
-"Sensors": ""
+"Sensors": "",
+"Skelly": ""
 }
 
 [application]

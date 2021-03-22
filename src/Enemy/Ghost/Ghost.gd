@@ -1,5 +1,5 @@
 extends EnemyBase
-
+class_name Ghost
 
 func _ready():
 	tag = "Ghost"
