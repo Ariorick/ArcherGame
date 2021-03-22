@@ -35,6 +35,16 @@ _global_script_classes=[ {
 "path": "res://src/UI/Damage/FCT.gd"
 }, {
 "base": "EnemyAction",
+"class": "FireMagicAction",
+"language": "GDScript",
+"path": "res://src/Enemy/Mage/FireMagicAction.gd"
+}, {
+"base": "Area2D",
+"class": "FireProjectile",
+"language": "GDScript",
+"path": "res://src/Enemy/Mage/FireProjectile.gd"
+}, {
+"base": "EnemyAction",
 "class": "FlyAroundAction",
 "language": "GDScript",
 "path": "res://src/Enemy/Ghost/FlyAroundAction.gd"
@@ -115,6 +125,8 @@ _global_script_class_icons={
 "EnemyAction": "",
 "EnemyBase": "",
 "FCT": "",
+"FireMagicAction": "",
+"FireProjectile": "",
 "FlyAroundAction": "",
 "FollowAtDistanceTargetAction": "",
 "FollowTargetAction": "",

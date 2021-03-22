@@ -3,12 +3,12 @@ extends Node2D
 const Skelly = preload("res://src/Enemy/Skelly/Skelly.tscn")
 const Ghost = preload("res://src/Enemy/Ghost/Ghost.tscn")
 const Mage = preload("res://src/Enemy/Mage/Mage.tscn")
-const SKELLY_CHANCE = 0
-const GHOST_CHANCE = 0
-const MAGE_CHANCE = 5
+const SKELLY_CHANCE = 1
+const GHOST_CHANCE = 1
+const MAGE_CHANCE = 1
 
 const SPAWN_DISTANCE = 200
-const SPAWN_INTERVAL = 1
+const SPAWN_INTERVAL = 10
 
 var enemy_dict := {
 	Skelly: SKELLY_CHANCE,

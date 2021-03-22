@@ -1,9 +1,9 @@
 extends EnemyAction
 class_name FollowAtDistanceTargetAction
 
-const PREFERRED_DISTANCE = 60
+const PREFERRED_DISTANCE = 50
 const TRESHOLD = 5
-const START_TRESHOLD = 15
+const START_TRESHOLD = 10
 
 const WALK_FORCE = 100
 var last_walk_force := Vector2.ZERO
