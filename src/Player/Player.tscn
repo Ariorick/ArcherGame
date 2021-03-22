@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://assets/Tiles/tile_0004.png" type="Texture" id=1]
 [ext_resource path="res://assets/Animations/EnemyTakeDamage.tres" type="Animation" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Tiles/tile_0004_blue.png" type="Texture" id=6]
 [ext_resource path="res://assets/Particles/scratch_01.png" type="Texture" id=7]
 [ext_resource path="res://src/GameManager/EnemySpawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/Particles/light_01.png" type="Texture" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -295,11 +296,15 @@ position = Vector2( 0.107983, 7.99067 )
 
 [node name="AirParticles" type="Particles2D" parent="."]
 position = Vector2( -0.574295, -86.7193 )
-amount = 1000
+amount = 5000
 lifetime = 10.0
-preprocess = 194.91
+preprocess = 5.0
 randomness = 0.35
 local_coords = false
 process_material = SubResource( 28 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 124.095, -65.9983 )
+texture = ExtResource( 9 )
 [connection signal="body_entered" from="DamageDetector" to="." method="_on_DamageDetector_body_entered"]
 [connection signal="body_entered" from="PickArea" to="." method="_on_PickArea_body_entered"]
