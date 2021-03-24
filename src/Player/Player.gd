@@ -34,6 +34,7 @@ func _process(delta):
 	$BowSprite.visible = can_shoot()
 
 func _physics_process(delta):
+	GameManager.player_position = global_position - PLAYER_CENTER
 	if current_action != null and current_action.is_finished():
 		current_action.cancel()
 		current_action = null

@@ -22,7 +22,7 @@ func want_to_start() -> bool:
 func perform():
 	if not started:
 		started = true
-		target = sensors.target.global_position
+		target = GameManager.player_position
 		started_at = OS.get_ticks_msec()
 		var distance = target - body.global_position
 		body.linear_damp = 1

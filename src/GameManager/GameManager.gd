@@ -14,6 +14,8 @@ var arrow_count := MAX_ARROW_COUNT
 var kill_count := 0
 var damage_dealt := 0
 
+var player_position: Vector2
+
 func add_damage(damage: float, is_crit: bool):
 	damage_dealt += damage
 	emit_signal("damage_changed")

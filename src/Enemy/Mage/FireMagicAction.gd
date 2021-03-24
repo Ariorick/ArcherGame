@@ -25,6 +25,7 @@ func perform():
 		# start charging
 		started_at = OS.get_ticks_msec()
 		started = true
+		$AnimationPlayer.play("ChargeFire")
 
 	
 	var elapsed_time = OS.get_ticks_msec() - started_at
@@ -56,6 +57,5 @@ func cancel():
 
 func create_projectile():
 	var fire = FireProjectile.instance()
+	fire.global_position = body.global_position + Vector2(0, -6)
 	body.get_parent().add_child(fire)
-	fire.global_position = body.global_position
-	fire.set_target(sensors.target)
