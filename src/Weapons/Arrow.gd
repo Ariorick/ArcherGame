@@ -1,9 +1,9 @@
 extends RigidBody2D
 class_name Arrow
 
-const PULL_STRENGTH = 800
-const LINEAR_DAMP = 2
-const PULL_LINEAR_DAMP = 1
+const PULL_STRENGTH = 1100
+const LINEAR_DAMP = 2.0
+const PULL_LINEAR_DAMP = 1.2
 
 var initial_position: Vector2
 var initial_angle: float = 0

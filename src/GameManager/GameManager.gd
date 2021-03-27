@@ -1,6 +1,7 @@
 extends Node
 
 signal player_health_changed
+signal on_player_death
 signal arrow_count_changed
 signal damage_changed
 signal kill_count_changed
@@ -8,13 +9,21 @@ signal kill_count_changed
 const MAX_HEALTH := 10
 var health := MAX_HEALTH
 
-const MAX_ARROW_COUNT := 10
+const MAX_ARROW_COUNT := 5
 var arrow_count := MAX_ARROW_COUNT
 
 var kill_count := 0
 var damage_dealt := 0
 
 var player_position: Vector2
+
+var enemy_count := 0
+
+func enemy_spawned():
+	enemy_count += 1
+
+func enemy_died():
+	enemy_count -= 1
 
 func add_damage(damage: float, is_crit: bool):
 	damage_dealt += damage

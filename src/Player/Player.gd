@@ -4,6 +4,7 @@ class_name Player
 const PLAYER_CENTER = Vector2(0, 4.3)
 const WALK_FORCE = 800
 const AIMING_MOVEMENT_SPEED_MODIFIER = 0.4
+const PULLING_MOVEMENT_SPEED_MODIFIER = 0.65
 
 var last_walk_force := Vector2.ZERO
 
@@ -53,8 +54,10 @@ func _physics_process(delta):
 	
 	if not current_action is PlayerDashAction:
 		var speed_modifier = 1.0
-		if current_action is PlayerAttackAction or current_action is PlayerPullAction:
+		if current_action is PlayerAttackAction:
 			speed_modifier = AIMING_MOVEMENT_SPEED_MODIFIER
+		if current_action is PlayerPullAction:
+			speed_modifier = PULLING_MOVEMENT_SPEED_MODIFIER
 		walk(speed_modifier)
 
 func can_shoot() -> bool:

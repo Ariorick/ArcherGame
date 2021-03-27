@@ -65,6 +65,7 @@ func release_arrows():
 	arrows.clear()
 
 func _on_HealthManager_on_death():
+	GameManager.enemy_died()
 	$Character/CharacterBody/Hitbox.disabled = true
 	$Character/CharacterBody.collision_layer = 0
 	set_modulate(Color(1,1,1,0.4))
