@@ -6,6 +6,7 @@ const exploded_texture = preload("res://assets/Tiles/tile_0115.png")
 const SPEED = 1
 const CORRECTION_SPEED = 0.05
 const MAX_LIFETIME = 5
+const EXPLOSION_IMPULSE = 200
 
 var target: PhysicsBody2D
 var direction : Vector2
@@ -45,6 +46,6 @@ func get_lifetime_sec():
 func _on_FireProjectile_body_entered(body: PhysicsBody2D):
 	if body.is_in_group("player"):
 		body.take_damage()
-		var impulse = 150 * (GameManager.player_position - global_position).normalized()
+		var impulse = EXPLOSION_IMPULSE * (GameManager.player_position - global_position).normalized()
 		body.apply_impulse(Vector2.ZERO, impulse)
 		explode()

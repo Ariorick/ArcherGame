@@ -17,7 +17,7 @@ const SKELLY_CHANCE = 1
 const GHOST_CHANCE = 1
 const MAGE_CHANCE = 1
 
-const SPAWN_INTERVAL = Vector2(1.5, 3.5) # sec 
+const SPAWN_INTERVAL = Vector2(1.0, 2.5) # sec 
 const SPAWN_DISTANCE = 150
 const KILLS_TO_NAX_SPAWN := {
 	0: 1,

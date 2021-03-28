@@ -46,7 +46,7 @@ func can_shoot():
 
 func player_take_damage():
 	health -= 1
-	print("player got hit", "health is ", health, "/", MAX_HEALTH)
+	print("Player health is ", health, "/", MAX_HEALTH)
 	emit_signal("player_health_changed")
 
 func get_health_percent():
