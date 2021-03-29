@@ -10,16 +10,16 @@ var lookaround := Vector2()
 
 func _ready():
 	$World.map_size = map_size
-	
+
 #	var camera_zoom = $CameraPosition/Camera2D.zoom
-	var camera_zoom = 0.2
+	var camera_zoom = 0.3
 	var screen_size = get_viewport().size * camera_zoom
-	
+
 	lookaround = Vector2(
 		int(screen_size.x / chunk_size_px.x) / 2 + 2,
 		int(screen_size.y / chunk_size_px.y) / 2 + 2
 		)
-		
+
 	$World.get_player().position = chunk_size_px / 2
 
 
