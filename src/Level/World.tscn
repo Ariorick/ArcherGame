@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/Tiles/tile_0061.png" type="Texture" id=5]
 [ext_resource path="res://assets/Tiles/tile_0107.png" type="Texture" id=6]
 [ext_resource path="res://assets/Tiles/tile_0106.png" type="Texture" id=7]
-[ext_resource path="res://src/Level/CircleMap.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/CircleMap/CircleMap.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Level/TreeManager.gd" type="Script" id=9]
 [ext_resource path="res://src/Level/Background.gd" type="Script" id=10]
 

@@ -27,17 +27,17 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Circle",
 "language": "GDScript",
-"path": "res://src/MapCreator/Circle.gd"
+"path": "res://src/CircleMap/Circle.gd"
 }, {
 "base": "Node2D",
 "class": "CircleMap",
 "language": "GDScript",
-"path": "res://src/Level/CircleMap.gd"
+"path": "res://src/CircleMap/CircleMap.gd"
 }, {
 "base": "Reference",
 "class": "CircleRes",
 "language": "GDScript",
-"path": "res://src/MapCreator/CircleRes.gd"
+"path": "res://src/CircleMap/CircleRes.gd"
 }, {
 "base": "Node2D",
 "class": "EnemyAction",
@@ -132,12 +132,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Road",
 "language": "GDScript",
-"path": "res://src/MapCreator/Road.gd"
+"path": "res://src/CircleMap/Road.gd"
 }, {
 "base": "Area2D",
 "class": "RoadTreeDetector",
 "language": "GDScript",
-"path": "res://src/MapCreator/RoadTreeDetector.gd"
+"path": "res://src/CircleMap/RoadTreeDetector.gd"
 }, {
 "base": "Node2D",
 "class": "Sensors",
@@ -152,7 +152,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "TreeDetector",
 "language": "GDScript",
-"path": "res://src/MapCreator/TreeDetector.gd"
+"path": "res://src/CircleMap/TreeDetector.gd"
 } ]
 _global_script_class_icons={
 "Arrow": "",

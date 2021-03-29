@@ -1,12 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/MapCreator/Road.gd" type="Script" id=1]
-[ext_resource path="res://src/MapCreator/RoadTreeDetector.gd" type="Script" id=2]
+[ext_resource path="res://src/CircleMap/Road.gd" type="Script" id=1]
+[ext_resource path="res://src/CircleMap/RoadTreeDetector.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [sub_resource type="Animation" id=2]
-resource_name = "TestRoadTrees"
 length = 4.0
 loop = true
 tracks/0/type = "value"

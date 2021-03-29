@@ -1,7 +1,7 @@
 extends Node2D
 
-const Circle = preload("res://src/MapCreator/Circle.tscn")
-const Road = preload("res://src/MapCreator/Road.tscn")
+const Circle = preload("res://src/CircleMap/Circle.tscn")
+const Road = preload("res://src/CircleMap/Road.tscn")
 
 const map_scale := 10.0
 const DEF_SIZE = 12 * map_scale
