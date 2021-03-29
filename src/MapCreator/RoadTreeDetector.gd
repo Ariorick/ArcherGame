@@ -25,17 +25,14 @@ func get_scale_for_tree(pos: Vector2, width: float, length: float) -> float:
 	var distance = abs(to_pos_rotated.x)
 	
 	var scale = distance / width
-	if scale > 1.0:
-		print("AAAA")
-		print("dist " + str(distance) + " " + str(width))
 	
 	var min_growth_distance := 1.0
 	var max_growth_distance := 1.1
 	var scale_between = 0.5
 	
-	if scale < min_growth_distance:
+	if scale <= min_growth_distance:
 		return 0.0 
-	elif scale > max_growth_distance:
+	elif scale >= max_growth_distance:
 		return 1.0
 	else:
 		return 0.5

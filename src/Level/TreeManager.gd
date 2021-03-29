@@ -1,6 +1,7 @@
 extends Node2D
 
 const BaseTree  = preload("res://src/Level/BaseTree.tscn")
+var rng = RandomNumberGenerator.new()
 
 var content: TileMap
 var circle_map: CircleMap
@@ -26,4 +27,6 @@ func can_place(x, y):
 	return xmod + ymod2 == 0
 
 func get_poisiton_for_cell(x, y):
-	return content.cell_size * Vector2(x, y) + content.cell_size * Vector2(0.5, 1)
+	var rang = (content.cell_size.x / 2) - 1
+	var rand_v = Vector2(rng.randf_range(-rang, rang), rng.randf_range(-rang, rang))
+	return content.cell_size * Vector2(x, y) + content.cell_size * Vector2(0.5, 1) + rand_v

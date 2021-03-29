@@ -12,7 +12,7 @@ var DEF_TO_BIG_CENTER = get_def_to_big_center(DEF_SIZE, BIG_SIZE)
 var DEF_TO_BIG_DIAGONAL = get_diagonal(DEF_SIZE, BIG_SIZE)
 
 var test_map = [
-	CircleRes.new(Vector2(0, 0), DEF_SIZE)
+	CircleRes.new(Vector2(0, 0), DEF_SIZE),
 	
 #	CircleRes.new(Vector2(-DEF_DIAGONAL, -DEF_DIAGONAL), DEF_SIZE),
 #	CircleRes.new(Vector2(DEF_DIAGONAL, -DEF_DIAGONAL), DEF_SIZE),
