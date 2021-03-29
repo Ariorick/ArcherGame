@@ -12,3 +12,5 @@ script = ExtResource( 3 )
 [node name="World" parent="." instance=ExtResource( 2 )]
 
 [node name="PlayerPosition" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]

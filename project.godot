@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://src/CircleMap/Circle.gd"
 }, {
 "base": "Node2D",
+"class": "CircleFire",
+"language": "GDScript",
+"path": "res://src/Level/CircleFire.gd"
+}, {
+"base": "Node2D",
 "class": "CircleMap",
 "language": "GDScript",
 "path": "res://src/CircleMap/CircleMap.gd"
@@ -124,6 +129,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Player/PlayerInput.gd"
 }, {
+"base": "Node2D",
+"class": "PlayerPosition",
+"language": "GDScript",
+"path": "res://src/Level/PlayerPosition.gd"
+}, {
 "base": "PlayerAction",
 "class": "PlayerPullAction",
 "language": "GDScript",
@@ -159,6 +169,7 @@ _global_script_class_icons={
 "BaseTree": "",
 "Brain": "",
 "Circle": "",
+"CircleFire": "",
 "CircleMap": "",
 "CircleRes": "",
 "EnemyAction": "",
@@ -178,6 +189,7 @@ _global_script_class_icons={
 "PlayerAttackAction": "",
 "PlayerDashAction": "",
 "PlayerInput": "",
+"PlayerPosition": "",
 "PlayerPullAction": "",
 "Road": "",
 "RoadTreeDetector": "",
@@ -190,6 +202,7 @@ _global_script_class_icons={
 
 config/name="Experiment"
 run/main_scene="res://src/Main.tscn"
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [autoload]

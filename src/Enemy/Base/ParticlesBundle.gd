@@ -1,7 +1,7 @@
 extends Node
 class_name ParticlesBundle
 
-var emitting: bool setget set_emitting, is_emitting
+export var emitting: bool setget set_emitting, is_emitting
 
 func is_emitting() -> bool:
 	if not get_children().empty():

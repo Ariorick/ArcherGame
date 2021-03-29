@@ -3,6 +3,9 @@ class_name RoadTreeDetector
 
 var trees: Array
 
+func _ready():
+	$CollisionShape2D.set_shape($CollisionShape2D.get_shape().duplicate(true))
+
 func drop_trees(): 
 	print(trees.size())
 	trees = Array()

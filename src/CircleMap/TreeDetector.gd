@@ -3,6 +3,9 @@ class_name TreeDetector
 
 var trees: Array
 
+func _ready():
+	$CollisionShape2D.set_shape($CollisionShape2D.get_shape().duplicate(true))
+
 func get_trees():
 	if trees == null or trees.empty():
 		for node in get_overlapping_areas():
