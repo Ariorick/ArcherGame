@@ -29,3 +29,7 @@ func get_scale_for_tree(pos: Vector2, radius) -> float:
 		return 1.0
 	else:
 		return 1 - scale_between
+
+func _on_TreeDetector_area_entered(area):
+	if area is BaseTree and not trees.has(area):
+		trees.append(area)

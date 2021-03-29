@@ -1,6 +1,7 @@
 extends Node2D
 
 const Circle = preload("res://src/MapCreator/Circle.tscn")
+const Road = preload("res://src/MapCreator/Road.tscn")
 
 const map_scale := 10.0
 const DEF_SIZE = 12 * map_scale
@@ -31,9 +32,18 @@ func create_circles(parent: Node2D):
 		circle.position = circle_res.position
 		circle.set_radius(circle_res.radius)
 
+func create_roads(parent):
+	create_first_road(parent)
+
+func create_first_road(parent):
+	var road = Road.instance()
+	parent.add_child(road)
+	road.position = Vector2(0, 100)
+	road.set_length(100)
+	road.set_width(30)
+
 func get_diagonal(radius1, radius2) -> float:
 	return sqrt(radius1 * radius1 + radius2 * radius2)
 
 func get_def_to_big_center(radius1, radius2) -> float:
 	return sqrt(pow(radius1 + radius2, 2) - pow(DEF_DIAGONAL, 2))
-

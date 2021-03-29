@@ -130,6 +130,16 @@ _global_script_classes=[ {
 "path": "res://src/Player/Actions/PlayerPullAction.gd"
 }, {
 "base": "Node2D",
+"class": "Road",
+"language": "GDScript",
+"path": "res://src/MapCreator/Road.gd"
+}, {
+"base": "Area2D",
+"class": "RoadTreeDetector",
+"language": "GDScript",
+"path": "res://src/MapCreator/RoadTreeDetector.gd"
+}, {
+"base": "Node2D",
 "class": "Sensors",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/Sensors.gd"
@@ -169,6 +179,8 @@ _global_script_class_icons={
 "PlayerDashAction": "",
 "PlayerInput": "",
 "PlayerPullAction": "",
+"Road": "",
+"RoadTreeDetector": "",
 "Sensors": "",
 "Skelly": "",
 "TreeDetector": ""

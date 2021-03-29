@@ -5,6 +5,7 @@ var circle_array: Array = Array() # of Circle
 
 func _ready():
 	$CircleMapCreator.create_circles(self)
+	$CircleMapCreator.create_roads(self)
 	circle_array = get_circles_array()
 	$TestView.draw_map(circle_array)
 

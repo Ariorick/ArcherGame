@@ -29,6 +29,7 @@ tracks/0/keys = {
 
 [node name="Circle" type="Node2D"]
 script = ExtResource( 1 )
+current_radius = 100.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -48,3 +49,4 @@ shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/TestRadius = SubResource( 3 )
+[connection signal="area_entered" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_entered"]

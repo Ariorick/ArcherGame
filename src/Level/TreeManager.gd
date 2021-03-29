@@ -19,7 +19,6 @@ func create_tree_at(x, y):
 	content.add_child(tree)
 	tree.position = get_poisiton_for_cell(x, y)
 	trees[Vector2(x,y)] = tree
-	print(trees.size())
 
 func can_place(x, y):
 	var xmod = int(abs(x + int(abs(y)) % 2)) % 2
