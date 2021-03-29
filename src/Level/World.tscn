@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Tiles/tile_0060.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/Tiles/tile_0061.png" type="Texture" id=5]
 [ext_resource path="res://assets/Tiles/tile_0107.png" type="Texture" id=6]
 [ext_resource path="res://assets/Tiles/tile_0106.png" type="Texture" id=7]
-[ext_resource path="res://src/MapCreator/CircleMapCreator.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Level/CircleMap.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Level/TreeManager.gd" type="Script" id=9]
 [ext_resource path="res://src/Level/Background.gd" type="Script" id=10]
 
@@ -85,23 +85,6 @@
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="Animation" id=3]
-resource_name = "TestTrees"
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:radius")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 200.0, 10.0, 200.0 ]
-}
-
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
 
@@ -127,8 +110,6 @@ format = 1
 [node name="TreeManager" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="TreeManager"]
-playback_speed = 0.1
-anims/TestTrees = SubResource( 3 )
+[node name="CircleMap" parent="." instance=ExtResource( 8 )]
 
-[node name="CircleMapCreator" parent="." instance=ExtResource( 8 )]
+[node name="Sequence" type="Node2D" parent="."]

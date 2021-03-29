@@ -14,15 +14,30 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Weapons/Arrow.gd"
 }, {
+"base": "Area2D",
+"class": "BaseTree",
+"language": "GDScript",
+"path": "res://src/Level/BaseTree.gd"
+}, {
 "base": "Node",
 "class": "Brain",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/Brain.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "Circle",
 "language": "GDScript",
 "path": "res://src/MapCreator/Circle.gd"
+}, {
+"base": "Node2D",
+"class": "CircleMap",
+"language": "GDScript",
+"path": "res://src/Level/CircleMap.gd"
+}, {
+"base": "Reference",
+"class": "CircleRes",
+"language": "GDScript",
+"path": "res://src/MapCreator/CircleRes.gd"
 }, {
 "base": "Node2D",
 "class": "EnemyAction",
@@ -123,11 +138,19 @@ _global_script_classes=[ {
 "class": "Skelly",
 "language": "GDScript",
 "path": "res://src/Enemy/Skelly/Skelly.gd"
+}, {
+"base": "Area2D",
+"class": "TreeDetector",
+"language": "GDScript",
+"path": "res://src/MapCreator/TreeDetector.gd"
 } ]
 _global_script_class_icons={
 "Arrow": "",
+"BaseTree": "",
 "Brain": "",
 "Circle": "",
+"CircleMap": "",
+"CircleRes": "",
 "EnemyAction": "",
 "EnemyBase": "",
 "FCT": "",
@@ -147,7 +170,8 @@ _global_script_class_icons={
 "PlayerInput": "",
 "PlayerPullAction": "",
 "Sensors": "",
-"Skelly": ""
+"Skelly": "",
+"TreeDetector": ""
 }
 
 [application]
@@ -269,6 +293,7 @@ restart={
 2d_render/layer_5="enemy_hitbox"
 2d_render/layer_6="enemy_damage_area"
 2d_render/layer_7="player_pick_area"
+2d_render/layer_10="tree"
 
 [physics]
 

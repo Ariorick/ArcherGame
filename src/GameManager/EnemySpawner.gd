@@ -38,7 +38,7 @@ func _ready():
 		enemy_chance_sum += chance
 
 func _process(delta):
-	update_required_enemy_count()
+#	update_required_enemy_count()
 	
 	if GameManager.enemy_count < required_enemy_count:
 		if can_spawn():

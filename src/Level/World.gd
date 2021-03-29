@@ -11,7 +11,7 @@ func generate(chunk: Vector2):
 	var to = (chunk + Vector2(1, 1)) * chunk_size
 	$Background.generate(from, to)
 	$TreeManager.generate(from, to)
-	$TreeManager.circle_map = $CircleMapCreator.get_map()
+	$TreeManager.circle_map = $CircleMap
 
 func get_player():
 	return $Content/Player
