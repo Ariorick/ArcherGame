@@ -23,14 +23,20 @@ var testMap = [
 ]
 
 func _ready():
+	set_ids_to_circles(testMap)
 	$TestView.draw_map(testMap)
 	pass
 
 func get_map() -> Array:
 	return testMap
 
+func set_ids_to_circles(map: Array):
+	for id in map.size():
+		map[id].id = id
+
 func get_diagonal(radius1, radius2) -> float:
 	return sqrt(radius1 * radius1 + radius2 * radius2)
 
 func get_def_to_big_center(radius1, radius2) -> float:
 	return sqrt(pow(radius1 + radius2, 2) - pow(DEF_DIAGONAL, 2))
+

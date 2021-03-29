@@ -1,8 +1,11 @@
 class_name Circle
 
-var id: int
+# const
 var position: Vector2
 var radius: float
+# var
+var id: int
+var current_radius
 
 func _init(position: Vector2, radius: float):
 	self.position = position
