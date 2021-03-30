@@ -202,7 +202,6 @@ _global_script_class_icons={
 
 config/name="Experiment"
 run/main_scene="res://src/Main.tscn"
-boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -328,5 +327,5 @@ restart={
 [rendering]
 
 quality/2d/use_pixel_snap=true
-environment/default_clear_color=Color( 0.133333, 0.137255, 0.137255, 1 )
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
