@@ -1,7 +1,7 @@
 extends Node2D
 class_name CircleFire
 
-const TEXTURE_SCALE = 0.5
+const TEXTURE_SCALE = 0.6
 
 var circle: Circle setget set_circle
 

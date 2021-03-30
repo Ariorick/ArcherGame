@@ -15,7 +15,8 @@ func _process(delta):
 	update()
 
 func _draw():
-	draw_rect(Rect2(0 - current_width, 0 - current_length, current_width * 2, current_length * 2), Color.white, false)
+#	draw_rect(Rect2(0 - current_width, 0 - current_length, current_width * 2, current_length * 2), Color.white, false)
+	pass
 
 func set_length(length: float):
 	self.length = length

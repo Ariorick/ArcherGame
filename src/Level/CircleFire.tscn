@@ -17,5 +17,3 @@ texture = ExtResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 2 )
-energy = 1.2
-mode = 2

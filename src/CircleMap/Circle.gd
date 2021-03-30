@@ -3,13 +3,13 @@ class_name Circle
 
 signal circle_updated
 
-const INACTIVE_RADIUS = 0.6
+const INACTIVE_RADIUS = 1.0
 
 var radius: float
 export var current_radius: float
 
 func _ready():
-	$AnimationPlayer.play("TestRadius")
+#	$AnimationPlayer.play("TestRadius")
 	pass
 
 func _process(delta):
@@ -18,7 +18,8 @@ func _process(delta):
 	update_listeners()
 
 func _draw():
-	draw_circle_custom(current_radius, Color.white)
+#	draw_circle_custom(current_radius, Color.white)
+	pass
 
 func set_radius(radius: float):
 	self.radius = radius

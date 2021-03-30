@@ -14,15 +14,15 @@ var DEF_TO_BIG_DIAGONAL = get_diagonal(DEF_SIZE, BIG_SIZE)
 var test_map = [
 	CircleRes.new(Vector2(0, 0), DEF_SIZE),
 	
-#	CircleRes.new(Vector2(-DEF_DIAGONAL, -DEF_DIAGONAL), DEF_SIZE),
-#	CircleRes.new(Vector2(DEF_DIAGONAL, -DEF_DIAGONAL), DEF_SIZE),
-#
-#	CircleRes.new(Vector2(0, -DEF_DIAGONAL * 2 ), DEF_SIZE),
-#
-#	CircleRes.new(Vector2(-DEF_DIAGONAL, -DEF_DIAGONAL * 3), DEF_SIZE),
-#	CircleRes.new(Vector2(DEF_DIAGONAL, - DEF_DIAGONAL * 3), DEF_SIZE),
-#
-#	CircleRes.new(Vector2(0, -DEF_DIAGONAL * 3 - DEF_TO_BIG_CENTER), BIG_SIZE)
+	CircleRes.new(Vector2(-DEF_DIAGONAL, -DEF_DIAGONAL), DEF_SIZE),
+	CircleRes.new(Vector2(DEF_DIAGONAL, -DEF_DIAGONAL), DEF_SIZE),
+
+	CircleRes.new(Vector2(0, -DEF_DIAGONAL * 2 ), DEF_SIZE),
+
+	CircleRes.new(Vector2(-DEF_DIAGONAL, -DEF_DIAGONAL * 3), DEF_SIZE),
+	CircleRes.new(Vector2(DEF_DIAGONAL, - DEF_DIAGONAL * 3), DEF_SIZE),
+
+	CircleRes.new(Vector2(0, -DEF_DIAGONAL * 3 - DEF_TO_BIG_CENTER), BIG_SIZE)
 ]
 
 func create_circles(parent: Node2D):
