@@ -1,8 +1,8 @@
 class_name CircleRes
 
-var position: Vector2
+var level
 var radius: float
 
-func _init(position: Vector2, radius: float):
-	self.position = position
+func _init(level: int, radius: float):
+	self.level = level
 	self.radius = radius

@@ -3,7 +3,7 @@ class_name Circle
 
 signal circle_updated
 
-const INACTIVE_RADIUS = 1.0
+const INACTIVE_RADIUS = 0.8
 
 var radius: float
 export var current_radius: float

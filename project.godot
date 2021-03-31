@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Level/BaseTree.gd"
 }, {
+"base": "Area2D",
+"class": "BaseTreeDetector",
+"language": "GDScript",
+"path": "res://src/CircleMap/BaseTreeDetector.gd"
+}, {
 "base": "Node",
 "class": "Brain",
 "language": "GDScript",
@@ -43,6 +48,11 @@ _global_script_classes=[ {
 "class": "CircleRes",
 "language": "GDScript",
 "path": "res://src/CircleMap/CircleRes.gd"
+}, {
+"base": "BaseTreeDetector",
+"class": "CircleTreeDetector",
+"language": "GDScript",
+"path": "res://src/CircleMap/CircleTreeDetector.gd"
 }, {
 "base": "Node2D",
 "class": "EnemyAction",
@@ -144,7 +154,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/CircleMap/Road.gd"
 }, {
-"base": "Area2D",
+"base": "BaseTreeDetector",
 "class": "RoadTreeDetector",
 "language": "GDScript",
 "path": "res://src/CircleMap/RoadTreeDetector.gd"
@@ -158,20 +168,17 @@ _global_script_classes=[ {
 "class": "Skelly",
 "language": "GDScript",
 "path": "res://src/Enemy/Skelly/Skelly.gd"
-}, {
-"base": "Area2D",
-"class": "TreeDetector",
-"language": "GDScript",
-"path": "res://src/CircleMap/TreeDetector.gd"
 } ]
 _global_script_class_icons={
 "Arrow": "",
 "BaseTree": "",
+"BaseTreeDetector": "",
 "Brain": "",
 "Circle": "",
 "CircleFire": "",
 "CircleMap": "",
 "CircleRes": "",
+"CircleTreeDetector": "",
 "EnemyAction": "",
 "EnemyBase": "",
 "FCT": "",
@@ -194,8 +201,7 @@ _global_script_class_icons={
 "Road": "",
 "RoadTreeDetector": "",
 "Sensors": "",
-"Skelly": "",
-"TreeDetector": ""
+"Skelly": ""
 }
 
 [application]
@@ -210,8 +216,9 @@ GameManager="*res://src/GameManager/GameManager.gd"
 
 [display]
 
-window/size/width=240
-window/size/height=135
+window/size/width=320
+window/size/height=180
+window/size/fullscreen=true
 window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"

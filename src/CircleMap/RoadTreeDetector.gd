@@ -1,21 +1,6 @@
-extends Area2D
+extends BaseTreeDetector
 class_name RoadTreeDetector
 
-var trees: Array
-
-func _ready():
-	$CollisionShape2D.set_shape($CollisionShape2D.get_shape().duplicate(true))
-
-func drop_trees(): 
-	print(trees.size())
-	trees = Array()
-
-func get_trees():
-	if trees == null or trees.empty():
-		for node in get_overlapping_areas():
-			if node is BaseTree:
-				trees.append(node)
-	return trees
 
 func update_trees(current_width: float, current_length: float):
 	for tree in get_trees():
@@ -39,8 +24,3 @@ func get_scale_for_tree(pos: Vector2, width: float, length: float) -> float:
 		return 1.0
 	else:
 		return 0.5
-
-
-func _on_TreeDetector_area_entered(area):
-	if area is BaseTree and not trees.has(area):
-		trees.append(area)

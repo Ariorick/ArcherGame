@@ -1,17 +1,5 @@
-extends Area2D
-class_name TreeDetector
-
-var trees: Array
-
-func _ready():
-	$CollisionShape2D.set_shape($CollisionShape2D.get_shape().duplicate(true))
-
-func get_trees():
-	if trees == null or trees.empty():
-		for node in get_overlapping_areas():
-			if node is BaseTree:
-				trees.append(node)
-	return trees
+extends BaseTreeDetector
+class_name CircleTreeDetector
 
 func update_trees(current_radius: float):
 	for tree in get_trees():
@@ -23,7 +11,7 @@ func get_scale_for_tree(pos: Vector2, radius) -> float:
 	var scale = distance / radius
 	
 	var min_growth_distance := 1.0
-	var max_growth_distance := 1.3
+	var max_growth_distance := 1.1
 	var scale_between = (max_growth_distance * radius - distance) / (max_growth_distance - min_growth_distance) / radius
 	
 	if scale < min_growth_distance:
@@ -32,7 +20,3 @@ func get_scale_for_tree(pos: Vector2, radius) -> float:
 		return 1.0
 	else:
 		return 1 - scale_between
-
-func _on_TreeDetector_area_entered(area):
-	if area is BaseTree and not trees.has(area):
-		trees.append(area)
