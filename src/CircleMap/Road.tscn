@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2, 4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 60.0, 10.0, 40.0 ]
+"values": [ 15.0, 0.0, 15.0 ]
 }
 
 [node name="Road" type="Node2D"]
@@ -34,5 +34,6 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.3
 anims/TestRoadTrees = SubResource( 2 )
 [connection signal="area_entered" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_entered"]

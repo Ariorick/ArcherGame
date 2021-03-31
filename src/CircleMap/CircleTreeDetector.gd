@@ -3,7 +3,7 @@ class_name CircleTreeDetector
 
 func update_trees(current_radius: float):
 	for tree in get_trees():
-		tree.set_growth(get_scale_for_tree(tree.global_position, current_radius))
+		set_growth_to_tree(tree, get_scale_for_tree(tree.global_position, current_radius))
 
 
 func get_scale_for_tree(pos: Vector2, radius) -> float:

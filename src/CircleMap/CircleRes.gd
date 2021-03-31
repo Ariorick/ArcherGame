@@ -1,8 +1,6 @@
 class_name CircleRes
 
-var level
 var radius: float
 
-func _init(level: int, radius: float):
-	self.level = level
+func _init(radius: float):
 	self.radius = radius

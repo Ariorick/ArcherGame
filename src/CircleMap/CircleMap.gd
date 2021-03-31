@@ -7,10 +7,10 @@ var content: TileMap setget set_content
 var circle_array: Array = Array() # of Circle
 
 func _ready():
-	$CircleMapCreator.create_circles(self)
-	$CircleMapCreator.create_roads(self)
+	$CircleMapCreator.create_map(self)
+#	$CircleMapCreator.create_roads(self)
 	circle_array = get_circles_array()
-	$TestView.draw_map(circle_array)
+	$TestView.draw_map(self)
 
 
 func set_content(value: TileMap):

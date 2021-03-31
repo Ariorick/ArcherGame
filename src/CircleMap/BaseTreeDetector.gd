@@ -20,3 +20,6 @@ func get_trees():
 func drop_trees(): 
 	print(trees.size())
 	trees = Array()
+
+func set_growth_to_tree(tree, growth):
+	tree.set_growth(growth, self)

@@ -29,7 +29,6 @@ var enemy_on_which_sticked
 var tr_ci_collider_to_ball = Transform2D()
 ########
 
-
 func _ready():
 	visible = false
 	creation_time = OS.get_ticks_msec()
@@ -42,6 +41,8 @@ func _ready():
 	set_use_custom_integrator(false) 
 
 func _process(delta: float):
+	var energy = linear_velocity.length() / 150
+	$Light2D.energy = clamp(energy, 0.3, 1.5)
 	$PullParticles.emitting = is_pulled
 
 func set_pull_target(pull_target: Node2D):
