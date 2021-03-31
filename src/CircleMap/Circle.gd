@@ -4,12 +4,15 @@ class_name Circle
 signal circle_updated
 
 const INACTIVE_RADIUS = 0.2
+const MIN_ACTIVE_RADIUS = 0.6
 
+var program: SpawnerProgram
+var top_roads: Array = Array()
+var bottom_roads: Array = Array()
 var radius: float setget set_radius
 export var current_radius: float
 
 onready var tween: Tween = $Tween
-
 
 func _process(delta):
 	$TreeDetector.update_trees(current_radius)
@@ -22,9 +25,16 @@ func _draw():
 
 func activate():
 	tween.interpolate_property(self, "current_radius", 
-		current_radius, radius, 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
+		radius, MIN_ACTIVE_RADIUS * radius , 60, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	tween.start()
-	pass
+	close_all_roads()
+
+func finish():
+	tween.stop(self, "current_radius")
+	tween.interpolate_property(self, "current_radius", 
+		current_radius, radius , 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
+	tween.start()
+	open_all_roads()
 
 func set_radius(value: float):
 	radius = value
@@ -37,6 +47,18 @@ func set_current_radius(radius: float):
 
 func update_listeners():
 	emit_signal("circle_updated")
+
+func close_all_roads():
+	for road in bottom_roads:
+		road.close()
+	for road in top_roads:
+		road.close()
+
+func open_all_roads():
+	for road in top_roads:
+		road.open()
+	for road in top_roads:
+		road.open()
 
 func draw_circle_custom(radius, color):
 	var maxerror = 0.25

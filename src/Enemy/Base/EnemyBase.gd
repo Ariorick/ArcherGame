@@ -1,6 +1,8 @@
 extends RigidBody2D
 class_name EnemyBase
 
+signal on_enemy_death
+
 var arrows: Array
 var should_release_arrows = false
 var is_pulled := false
@@ -72,7 +74,7 @@ func _on_HealthManager_on_death():
 	$Brain.is_dead = true
 	is_dead = true
 	should_release_arrows = true
-	GameManager.add_kill()
+	emit_signal("on_enemy_death")
 
 func set_hitpoints(value: int):
 	$HealthManager.hitpoints = value

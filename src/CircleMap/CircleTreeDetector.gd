@@ -12,6 +12,7 @@ func get_scale_for_tree(pos: Vector2, radius) -> float:
 	
 	var min_growth_distance := 1.0
 	var max_growth_distance := 1.1
+	radius = max(0.01, radius)
 	var scale_between = (max_growth_distance * radius - distance) / (max_growth_distance - min_growth_distance) / radius
 	
 	if scale < min_growth_distance:

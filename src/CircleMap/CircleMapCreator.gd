@@ -3,17 +3,59 @@ extends Node2D
 const Circle = preload("res://src/CircleMap/Circle.tscn")
 const Road = preload("res://src/CircleMap/Road.tscn")
 
-const map_scale := 8.0
-const HORIZONTAL_INTERVAL = 4 * map_scale
-const VERTICAL_INTERVAL = 3 * map_scale
+const map_scale := 7.0
+const HORIZONTAL_INTERVAL = max(4 * map_scale, 80)
+const VERTICAL_INTERVAL = max(3 * map_scale, 60)
 const DEF_SIZE = 18 * map_scale
 const BIG_SIZE = 30 * map_scale
 const ROAD_WIDTH = 3 * map_scale
 
+
+var only_skelly := {
+	SpawnerProgram.SKELLY: 1,
+}
+var only_ghost := {
+	SpawnerProgram.GHOST: 1,
+}
+var only_mage := {
+	SpawnerProgram.MAGE: 1,
+}
+var skelly_ghost := {
+	SpawnerProgram.SKELLY: 1,
+	SpawnerProgram.GHOST: 1,
+}
+var skelly_mage := {
+	SpawnerProgram.SKELLY: 1,
+	SpawnerProgram.MAGE: 1,
+}
+var ghost_mage := {
+	SpawnerProgram.GHOST: 1,
+	SpawnerProgram.MAGE: 1,
+}
+var balanced_spawn := {
+	SpawnerProgram.SKELLY: 1,
+	SpawnerProgram.GHOST: 1,
+	SpawnerProgram.MAGE: 1
+}
+
+var easy := {
+	2: 1,
+	4: 2,
+}
+var medium := {
+	4: 2,
+	6: 3
+}
+var hard := {
+	10: 3,
+	20: 4
+}
+
 var test_map = [
-	[ CircleRes.new(DEF_SIZE) ],
-	[ CircleRes.new(DEF_SIZE), CircleRes.new(DEF_SIZE) ],
-	[ CircleRes.new(DEF_SIZE) ],
+	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(skelly_ghost, easy)) ],
+	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(skelly_mage, medium)), 
+		CircleRes.new(DEF_SIZE, SpawnerProgram.new(skelly_mage, medium)) ],
+	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(balanced_spawn, medium)) ],
 	[ CircleRes.new(DEF_SIZE), CircleRes.new(DEF_SIZE)],
 	[ CircleRes.new(DEF_SIZE), CircleRes.new(DEF_SIZE), CircleRes.new(DEF_SIZE)],
 	[ CircleRes.new(BIG_SIZE)]
@@ -50,6 +92,7 @@ func create_map(parent: Node2D):
 
 func create_circle(circle_res: CircleRes, position: Vector2, parent: Node2D) -> Circle:
 	var circle = Circle.instance()
+	circle.program = circle_res.program
 	circle.set_radius(circle_res.radius)
 	parent.add_child(circle)
 	circle.position = position
@@ -71,23 +114,26 @@ func create_roads_between_levels(level1: Array, level2: Array, parent: Node2D):
 		for level2_id in level2.size():
 			create_road_between(level1[level1_id], level2[level2_id], parent)
 
-func create_road_between(circle1, circle2, parent: Node2D):
+func create_road_between(bottom_circle: Circle, top_circle: Circle, parent: Node2D):
 	var road = Road.instance()
-	var road_vector = circle2.position - circle1.position
+	var road_vector = top_circle.position - bottom_circle.position
 	road.length = road_vector.length() / 2
 	road.width = ROAD_WIDTH
 	
 	parent.add_child(road)
-	road.position = circle1.position + 0.5 * road_vector
+	bottom_circle.top_roads.append(road)
+	top_circle.bottom_roads.append(road)
+	road.position = bottom_circle.position + 0.5 * road_vector
 	road.rotation = road_vector.angle() + PI/2
 
-func create_first_road(circle, parent):
+func create_first_road(circle: Circle, parent):
 	var road = Road.instance()
 	road.length = circle.radius * 2
 	road.width = ROAD_WIDTH
 	road.current_width = ROAD_WIDTH
 	
 	parent.add_child(road)
+	circle.bottom_roads.append(road)
 	road.position = Vector2(0, circle.radius * 2)
 
 func get_circle_position(

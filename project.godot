@@ -168,6 +168,11 @@ _global_script_classes=[ {
 "class": "Skelly",
 "language": "GDScript",
 "path": "res://src/Enemy/Skelly/Skelly.gd"
+}, {
+"base": "Reference",
+"class": "SpawnerProgram",
+"language": "GDScript",
+"path": "res://src/GameManager/SpawnerProgram.gd"
 } ]
 _global_script_class_icons={
 "Arrow": "",
@@ -201,7 +206,8 @@ _global_script_class_icons={
 "Road": "",
 "RoadTreeDetector": "",
 "Sensors": "",
-"Skelly": ""
+"Skelly": "",
+"SpawnerProgram": ""
 }
 
 [application]

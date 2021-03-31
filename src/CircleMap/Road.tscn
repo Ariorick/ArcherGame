@@ -15,4 +15,6 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeDetector"]
 shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="area_entered" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_entered"]

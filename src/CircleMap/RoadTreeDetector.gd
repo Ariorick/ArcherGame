@@ -12,6 +12,7 @@ func get_scale_for_tree(pos: Vector2, width: float) -> float:
 	
 	var distance = abs(to_pos_rotated.x)
 	
+	width = max(0.01, width)
 	var scale = distance / width
 	
 	var min_growth_distance := 1.0
