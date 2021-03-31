@@ -14,3 +14,4 @@ script = ExtResource( 3 )
 [node name="PlayerPosition" type="Node2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )

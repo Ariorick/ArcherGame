@@ -60,7 +60,7 @@ func create_circle(circle_res: CircleRes, position: Vector2, parent: Node2D) -> 
 func create_roads(structure: Array, parent: Node2D):
 	
 	var first_circle: Circle = structure[0][0]
-#	create_circle(first_circle, Vector2.ZERO, parent)
+	create_first_road(first_circle, parent)
 	
 	for level_id in range(0, structure.size() - 1):
 		create_roads_between_levels(structure[level_id], structure[level_id + 1], parent)
@@ -73,21 +73,22 @@ func create_roads_between_levels(level1: Array, level2: Array, parent: Node2D):
 
 func create_road_between(circle1, circle2, parent: Node2D):
 	var road = Road.instance()
-	parent.add_child(road)
-	
 	var road_vector = circle2.position - circle1.position
+	road.length = road_vector.length() / 2
+	road.width = ROAD_WIDTH
+	
+	parent.add_child(road)
 	road.position = circle1.position + 0.5 * road_vector
 	road.rotation = road_vector.angle() + PI/2
-	
-	road.set_length(road_vector.length() / 2)
-	road.set_width(ROAD_WIDTH)
 
-func create_first_road(parent):
+func create_first_road(circle, parent):
 	var road = Road.instance()
+	road.length = circle.radius * 2
+	road.width = ROAD_WIDTH
+	road.current_width = ROAD_WIDTH
+	
 	parent.add_child(road)
-	road.position = Vector2(0, 100)
-	road.set_length(100)
-	road.set_width(30)
+	road.position = Vector2(0, circle.radius * 2)
 
 func get_circle_position(
 		radius: float, 

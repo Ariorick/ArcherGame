@@ -36,9 +36,10 @@ func _ready():
 	r.randomize()
 	for chance in ENEMY_DICT.values():
 		enemy_chance_sum += chance
+	set_process(false)
 
 func _process(delta):
-#	update_required_enemy_count()
+	update_required_enemy_count()
 	
 	if GameManager.enemy_count < required_enemy_count:
 		if can_spawn():

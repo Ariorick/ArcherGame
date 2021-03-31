@@ -11,6 +11,7 @@ func set_growth(growth: float, author):
 	growth_dict[author] = growth
 	growth = get_lowest_growth()
 	$Sprite.scale = Vector2(growth, growth)
+	$Sprite.position = Vector2(0, 8 * growth)
 
 func get_lowest_growth() -> float:
 	var min_value = 100000.0

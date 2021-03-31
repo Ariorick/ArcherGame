@@ -3,14 +3,13 @@ class_name Circle
 
 signal circle_updated
 
-const INACTIVE_RADIUS = 0.8
+const INACTIVE_RADIUS = 0.2
 
-var radius: float
+var radius: float setget set_radius
 export var current_radius: float
 
-func _ready():
-#	$AnimationPlayer.play("TestRadius")
-	pass
+onready var tween: Tween = $Tween
+
 
 func _process(delta):
 	$TreeDetector.update_trees(current_radius)
@@ -21,8 +20,14 @@ func _draw():
 #	draw_circle_custom(current_radius, Color.white)
 	pass
 
-func set_radius(radius: float):
-	self.radius = radius
+func activate():
+	tween.interpolate_property(self, "current_radius", 
+		current_radius, radius, 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
+	tween.start()
+	pass
+
+func set_radius(value: float):
+	radius = value
 	$TreeDetector/CollisionShape2D.shape.radius = radius
 	set_current_radius(radius * INACTIVE_RADIUS)
 

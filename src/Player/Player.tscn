@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://assets/Tiles/tile_0004.png" type="Texture" id=1]
 [ext_resource path="res://assets/Animations/EnemyTakeDamage.tres" type="Animation" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/Animations/bow-Sheet.png" type="Texture" id=5]
 [ext_resource path="res://assets/Tiles/tile_0004_blue.png" type="Texture" id=6]
 [ext_resource path="res://assets/Particles/scratch_01.png" type="Texture" id=7]
-[ext_resource path="res://src/GameManager/EnemySpawner.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -261,8 +260,5 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickArea"]
 position = Vector2( 0, -2.71312 )
 shape = SubResource( 27 )
-
-[node name="EnemySpawner" parent="." instance=ExtResource( 8 )]
-position = Vector2( 0.107983, 7.99067 )
 [connection signal="body_entered" from="DamageDetector" to="." method="_on_DamageDetector_body_entered"]
 [connection signal="body_entered" from="PickArea" to="." method="_on_PickArea_body_entered"]
