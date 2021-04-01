@@ -82,9 +82,12 @@ process_material = SubResource( 4 )
 
 [node name="DamageLabels" parent="HealthManager" instance=ExtResource( 8 )]
 position = Vector2( 0, -8 )
+
+[node name="QueueFreeTimer" type="Timer" parent="."]
 [connection signal="conditions_changed" from="Brain/Sensors" to="Brain" method="_on_Sensors_conditions_changed"]
 [connection signal="body_entered" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_entered"]
 [connection signal="body_exited" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_exited"]
 [connection signal="body_entered" from="Brain/Sensors/AttackRadius" to="Brain/Sensors" method="_on_AttackRadius_body_entered"]
 [connection signal="body_exited" from="Brain/Sensors/AttackRadius" to="Brain/Sensors" method="_on_AttackRadius_body_exited"]
 [connection signal="on_death" from="HealthManager" to="." method="_on_HealthManager_on_death"]
+[connection signal="timeout" from="QueueFreeTimer" to="." method="_on_QueueFreeTimer_timeout"]

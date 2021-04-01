@@ -75,6 +75,11 @@ func _on_HealthManager_on_death():
 	is_dead = true
 	should_release_arrows = true
 	emit_signal("on_enemy_death")
+	$QueueFreeTimer.start()
 
 func set_hitpoints(value: int):
 	$HealthManager.hitpoints = value
+
+
+func _on_QueueFreeTimer_timeout():
+	queue_free()
