@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Tiles/tile_0065.png" type="Texture" id=1]
 [ext_resource path="res://src/Weapons/Arrow.gd" type="Script" id=2]
 [ext_resource path="res://assets/Particles/magic_05.png" type="Texture" id=3]
 [ext_resource path="res://assets/Particles/star_09.png" type="Texture" id=4]
+[ext_resource path="res://src/Weapons/EnemyDetector.gd" type="Script" id=5]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -29,6 +30,9 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.02
 color_ramp = SubResource( 4 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 100.0
 
 [node name="Arrow" type="RigidBody2D"]
 collision_layer = 8
@@ -63,3 +67,13 @@ texture = ExtResource( 3 )
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 4 )
 texture_scale = 0.02
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+shape = SubResource( 6 )
+[connection signal="body_entered" from="EnemyDetector" to="EnemyDetector" method="_on_EnemyDetector_body_entered"]
+[connection signal="body_exited" from="EnemyDetector" to="EnemyDetector" method="_on_EnemyDetector_body_exited"]

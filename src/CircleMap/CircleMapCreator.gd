@@ -7,7 +7,8 @@ const map_scale := 7.0
 const HORIZONTAL_INTERVAL = max(4 * map_scale, 80)
 const VERTICAL_INTERVAL = max(3 * map_scale, 60)
 const DEF_SIZE = 18 * map_scale
-const BIG_SIZE = 30 * map_scale
+const MED_SIZE = 25 * map_scale
+const BIG_SIZE = 32 * map_scale
 const ROAD_WIDTH = 3 * map_scale
 
 
@@ -61,10 +62,10 @@ var test_map = [
 	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(skelly_mage, medium)), 
 		CircleRes.new(DEF_SIZE, SpawnerProgram.new(skelly_mage, medium)) ],
 		
-	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(balanced_spawn, medium)) ],
+	[ CircleRes.new(MED_SIZE, SpawnerProgram.new(balanced_spawn, medium)) ],
 	
-	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(balanced_spawn, hard)), 
-		CircleRes.new(DEF_SIZE, SpawnerProgram.new(balanced_spawn, hard))],
+	[ CircleRes.new(MED_SIZE, SpawnerProgram.new(balanced_spawn, hard)), 
+		CircleRes.new(MED_SIZE, SpawnerProgram.new(balanced_spawn, hard))],
 		
 	[ CircleRes.new(BIG_SIZE, SpawnerProgram.new(balanced_spawn, very_hard))]
 ]

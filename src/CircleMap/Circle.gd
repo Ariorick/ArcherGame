@@ -3,7 +3,7 @@ class_name Circle
 
 signal circle_updated
 
-const INACTIVE_RADIUS = 0.2
+const INACTIVE_RADIUS = 0.3
 const MIN_ACTIVE_RADIUS = 0.6
 
 var program: SpawnerProgram
