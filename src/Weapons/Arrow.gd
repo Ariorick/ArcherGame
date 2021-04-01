@@ -1,12 +1,13 @@
 extends RigidBody2D
 class_name Arrow
 
-const AUTO_AIM = 100.0
+const AUTO_AIM_STRENGTH = 100.0
 const PULL_AUTO_AIM_MODIFIER = 2.0
 const AUTO_AIM_ANGLE_TRESHOLD = PI/4
+const PULL_AUTO_AIM_ANGLE_TRESHOLD = PI/3
 
-const PULL_STRENGTH = 1400
-const LINEAR_DAMP = 1.5
+const PULL_STRENGTH = 1500
+const LINEAR_DAMP = 1.0
 const PULL_LINEAR_DAMP = 1.0
 
 var initial_position: Vector2
@@ -14,6 +15,8 @@ var initial_angle: float = 0
 var started : = false
 var last_force := Vector2()
 
+var auto_aim_treshold = AUTO_AIM_ANGLE_TRESHOLD
+var auto_aim_strength_modifier = 1.0
 
 var is_pulled = false
 var pull_target: Node2D
@@ -56,16 +59,20 @@ func set_pull_target(pull_target: Node2D):
 
 func set_pulled(pulled: bool):
 	is_pulled = pulled
-	update_linear_damp(pulled)
+	update_variables(pulled)
 	if not pulled:
 		add_force(Vector2(), -1* last_force)
 		last_force = Vector2()
 
-func update_linear_damp(pulled: bool):
+func update_variables(pulled: bool):
 	if pulled:
 		linear_damp = PULL_LINEAR_DAMP
+		auto_aim_treshold = PULL_AUTO_AIM_ANGLE_TRESHOLD
+		auto_aim_strength_modifier = PULL_AUTO_AIM_MODIFIER
 	else:
-		linear_damp = linear_damp
+		linear_damp = LINEAR_DAMP
+		auto_aim_treshold = AUTO_AIM_ANGLE_TRESHOLD
+		auto_aim_strength_modifier = 1.0
 
 func _integrate_forces(body_state: Physics2DDirectBodyState):
 	if started:
@@ -104,13 +111,11 @@ func pull():
 	if target_enemy != null and linear_velocity.length() > 10:
 		var enemy_vector = (target_enemy.global_position - global_position).normalized()
 		var angle_to_enemy = abs(enemy_vector.angle_to(linear_velocity))
-		if angle_to_enemy < AUTO_AIM_ANGLE_TRESHOLD:
+		if angle_to_enemy < auto_aim_treshold:
 			var angle_strength = 1 - angle_to_enemy / AUTO_AIM_ANGLE_TRESHOLD
-			if is_pulled:
-				angle_strength *= PULL_AUTO_AIM_MODIFIER
 			var direction_sign = sign(enemy_vector.angle_to(linear_velocity))
 			
-			var correction_force = AUTO_AIM * linear_velocity.length() / 100 * angle_strength
+			var correction_force = AUTO_AIM_STRENGTH * auto_aim_strength_modifier * linear_velocity.length() / 100 * angle_strength
 			var correction_vector = linear_velocity.tangent().normalized() * direction_sign * correction_force
 			
 			var direction = (force + correction_vector).normalized()
