@@ -44,21 +44,29 @@ var easy := {
 }
 var medium := {
 	4: 2,
-	6: 3
+	8: 3
 }
 var hard := {
-	10: 3,
-	20: 4
+	8: 3,
+	16: 4
+}
+var very_hard := {
+	8: 4,
+	16: 5
 }
 
 var test_map = [
 	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(skelly_ghost, easy)) ],
+	
 	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(skelly_mage, medium)), 
 		CircleRes.new(DEF_SIZE, SpawnerProgram.new(skelly_mage, medium)) ],
+		
 	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(balanced_spawn, medium)) ],
-	[ CircleRes.new(DEF_SIZE), CircleRes.new(DEF_SIZE)],
-	[ CircleRes.new(DEF_SIZE), CircleRes.new(DEF_SIZE), CircleRes.new(DEF_SIZE)],
-	[ CircleRes.new(BIG_SIZE)]
+	
+	[ CircleRes.new(DEF_SIZE, SpawnerProgram.new(balanced_spawn, hard)), 
+		CircleRes.new(DEF_SIZE, SpawnerProgram.new(balanced_spawn, hard))],
+		
+	[ CircleRes.new(BIG_SIZE, SpawnerProgram.new(balanced_spawn, very_hard))]
 ]
 
 # structure is Array of Arrays of CirclesRes
