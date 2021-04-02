@@ -3,7 +3,7 @@ class_name PlayerDashAction
 
 const DASH_TIMEOUT = 700
 const DASH_TIME = 180
-const DASH_SPEED = 500
+const DASH_SPEED = 300
 
 var last_dash_time = -10000
 var dash_direction := Vector2()

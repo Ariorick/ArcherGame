@@ -39,6 +39,10 @@ func _process(delta: float):
 	$Light2D.energy = clamp(energy, 0.3, 1.5)
 	$PullParticles.emitting = is_pulled
 	update()
+	
+	# remove this to go back to usual pull behaviour
+	if started and  linear_velocity.length() < 10:
+		set_pulled(true)
 
 func _draw():
 #	draw_global_vector(linear_velocity, Color.white)
@@ -108,7 +112,7 @@ func pull():
 		force += direction * pull_strength
 	
 	var target_enemy = get_enemy_at_least_angle()
-	if target_enemy != null and linear_velocity.length() > 10:
+	if target_enemy != null and linear_velocity.length() > 20:
 		var enemy_vector = (target_enemy.global_position - global_position).normalized()
 		var angle_to_enemy = abs(enemy_vector.angle_to(linear_velocity))
 		if angle_to_enemy < auto_aim_treshold:
@@ -123,7 +127,6 @@ func pull():
 			turn_strength += correction_force / 10
 			turn_direction += direction
 	
-	print(turn_strength)
 	last_force = pull_arrow(last_force, force)
 	turn_arrow(-1 * turn_direction, turn_strength)
 

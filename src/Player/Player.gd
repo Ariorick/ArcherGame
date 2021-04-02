@@ -2,8 +2,8 @@ extends RigidBody2D
 class_name Player
 
 const PLAYER_CENTER = Vector2(0, 4.3)
-const WALK_FORCE = 800
-const AIMING_MOVEMENT_SPEED_MODIFIER = 0.4
+const WALK_FORCE = 500
+const AIMING_MOVEMENT_SPEED_MODIFIER = 0.5
 const PULLING_MOVEMENT_SPEED_MODIFIER = 0.65
 
 var last_walk_force := Vector2.ZERO

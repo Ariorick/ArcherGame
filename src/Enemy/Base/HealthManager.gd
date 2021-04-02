@@ -15,7 +15,6 @@ func take_directional_damage(damage: int, direction: Vector2, crit = false):
 
 
 func take_damage(damage: int, crit = false):
-	print(get_parent().tag, " got ",  damage, " damage")
 	$ColorAnimationPlayer.play("EnemyTakeDamage")
 	$DamageLabels.show_value(damage, crit)
 	hitpoints -= damage

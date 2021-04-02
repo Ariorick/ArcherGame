@@ -17,7 +17,6 @@ func draw_map(parent: Node2D):
 	if max_value == 0:
 		max_value = 1000
 	map_scale = -50.0 / max_value 
-	print(map_scale)
 
 func _draw():
 	for child in parent.get_children():
