@@ -2,7 +2,7 @@ extends RigidBody2D
 class_name Player
 
 const PLAYER_CENTER = Vector2(0, 4.3)
-const WALK_FORCE = 500
+const WALK_FORCE = 600
 const AIMING_MOVEMENT_SPEED_MODIFIER = 0.5
 const PULLING_MOVEMENT_SPEED_MODIFIER = 0.65
 
@@ -99,6 +99,7 @@ func get_args() -> Dictionary:
 
 func _on_PickArea_body_entered(arrow: Arrow):
 	if OS.get_ticks_msec() - arrow.creation_time > 600:
+		apply_impulse(Vector2.ZERO, arrow.linear_velocity / 10)
 		arrows.erase(arrow)
 		arrow.queue_free()
 		GameManager.player_collected_arrow()

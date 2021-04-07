@@ -8,7 +8,8 @@ func _init(args: Dictionary, get_arrows: FuncRef).(args):
 	self.get_arrows = get_arrows
 
 func want_to_start() -> bool:
-	return Input.is_action_just_pressed("pull") and not get_arrows.call_func().empty()
+	return false
+#	return Input.is_action_just_pressed("pull") and not get_arrows.call_func().empty()
 
 func perform():
 	if Input.is_action_just_pressed("pull"):

@@ -3,10 +3,10 @@
 [ext_resource path="res://src/CircleMap/Circle.gd" type="Script" id=1]
 [ext_resource path="res://src/CircleMap/CircleTreeDetector.gd" type="Script" id=2]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 100.0
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -32,11 +32,14 @@ collision_mask = 512
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeDetector"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="TestPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.1
-anims/TestRadius = SubResource( 3 )
+anims/TestRadius = SubResource( 2 )
 
-[node name="Tween" type="Tween" parent="."]
+[node name="ActivationTween" type="Tween" parent="."]
+
+[node name="ProcessTween" type="Tween" parent="."]
 [connection signal="area_entered" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_entered"]
+[connection signal="tween_all_completed" from="ActivationTween" to="." method="_on_ActivationTween_tween_all_completed"]

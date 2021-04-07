@@ -10,18 +10,23 @@ var player_near: bool = false
 
 func _ready():
 	$EnemySpawner.connect("level_finished", self, "level_finished")
+	$EnemySpawner.connect("enemy_died", self, "enemy_died")
 
 func activate():
 	active = true
 	circle.activate()
 	$EnemySpawner.set_program(circle.program)
 	$EnemySpawner.set_process(true)
+	$MinRadiusParticles.emitting  = true
 
 func level_finished():
 	circle.finish()
-	pass
+
+func enemy_died():
+	circle.twitch()
 
 func _process(delta):
+	$EnemySpawner.spawn_radius = circle.current_radius
 	if not active and player_near:
 		 $FireSprite.scale = Vector2(2, 2)
 	else:
@@ -39,6 +44,12 @@ func circle_updated():
 func set_circle(value):
 	circle = value
 	circle.connect("circle_updated", self, "circle_updated")
+	
+	var particles_scale = circle.radius / 180.0 * Circle.MIN_ACTIVE_RADIUS
+	var particles_position = particles_scale * -250.0
+	$MinRadiusParticles.scale = Vector2(particles_scale, particles_scale)
+	$MinRadiusParticles.position = Vector2(particles_position, particles_position)
+	$MinRadiusParticles.process_material.scale = 1/particles_scale
 
 func _on_PlayerDetector1_body_entered(body):
 	if body is Player:

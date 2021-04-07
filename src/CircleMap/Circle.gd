@@ -5,14 +5,17 @@ signal circle_updated
 
 const INACTIVE_RADIUS = 0.3
 const MIN_ACTIVE_RADIUS = 0.6
+const ACTIVATION_RADIUS = MIN_ACTIVE_RADIUS + 0.1
+const NARROW_TIME = 60
+const TWITCH_RADIUS = 0.1
+
+export var current_radius: float
+export var camera_zoom_proxy := 1.0 setget set_camera_zoom
 
 var program: SpawnerProgram
 var top_roads: Array = Array()
 var bottom_roads: Array = Array()
 var radius: float setget set_radius
-export var current_radius: float
-
-onready var tween: Tween = $Tween
 
 func _process(delta):
 	$TreeDetector.update_trees(current_radius)
@@ -21,20 +24,45 @@ func _process(delta):
 
 func _draw():
 #	draw_circle_custom(current_radius, Color.white)
+#	draw_circle_custom(radius, Color.red)
 	pass
 
 func activate():
-	tween.interpolate_property(self, "current_radius", 
-		radius, MIN_ACTIVE_RADIUS * radius , 60, Tween.TRANS_QUAD, Tween.EASE_OUT)
-	tween.start()
 	close_all_roads()
+	var zoom_out_time = 1.5
+	var zoom_in_time = 0.5
+	var zoom = 1.1
+	$ActivationTween.interpolate_property(self, "current_radius", 
+		current_radius, radius * ACTIVATION_RADIUS, 3, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$ActivationTween.interpolate_method(self, "set_camera_zoom", 
+		1, zoom, zoom_out_time, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$ActivationTween.interpolate_method(self, "set_camera_zoom", 
+		zoom, 1, zoom_in_time, Tween.TRANS_QUAD, Tween.EASE_OUT, zoom_out_time)
+	$ActivationTween.start()
+
+func _on_ActivationTween_tween_all_completed():
+	narrow(current_radius)
+
+func twitch():
+	var twitch_time = 0.3
+	var result_radius = min(current_radius + radius * TWITCH_RADIUS, radius)
+	$ProcessTween.stop(self, "current_radius")
+	$ProcessTween.interpolate_property(self, "current_radius", 
+		current_radius, result_radius , twitch_time, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	narrow(result_radius, twitch_time)
+
+func narrow(from_radius: float, delay: float = 0.0):
+	$ProcessTween.interpolate_property(self, "current_radius", 
+		from_radius, MIN_ACTIVE_RADIUS * radius, 
+		NARROW_TIME * (from_radius / radius - MIN_ACTIVE_RADIUS), Tween.TRANS_LINEAR, Tween.EASE_OUT, delay)
+	$ProcessTween.start()
 
 func finish():
-	tween.stop(self, "current_radius")
-	tween.interpolate_property(self, "current_radius", 
-		current_radius, radius , 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
-	tween.start()
-	open_all_roads()
+	$ProcessTween.remove_all()
+	$ProcessTween.interpolate_property(self, "current_radius", 
+		current_radius, min(current_radius + 1.5, radius), 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
+	$ProcessTween.start()
+	open_all_roads() 
 
 func set_radius(value: float):
 	radius = value
@@ -59,6 +87,9 @@ func open_all_roads():
 		road.open()
 	for road in top_roads:
 		road.open()
+
+func set_camera_zoom(value):
+	CameraManager.zoom = value
 
 func draw_circle_custom(radius, color):
 	var maxerror = 0.25

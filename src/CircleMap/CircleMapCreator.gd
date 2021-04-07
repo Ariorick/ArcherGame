@@ -3,7 +3,7 @@ extends Node2D
 const Circle = preload("res://src/CircleMap/Circle.tscn")
 const Road = preload("res://src/CircleMap/Road.tscn")
 
-const map_scale := 7.0
+const map_scale := 9.0
 const HORIZONTAL_INTERVAL = max(4 * map_scale, 80)
 const VERTICAL_INTERVAL = max(3 * map_scale, 60)
 const DEF_SIZE = 18 * map_scale

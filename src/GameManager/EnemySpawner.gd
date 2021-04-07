@@ -1,6 +1,7 @@
 extends Node2D
 
 signal level_finished
+signal enemy_died
 
 var r = RandomNumberGenerator.new()
 onready var root = get_parent().get_parent()
@@ -15,8 +16,9 @@ var ENEMY_SCENES := {
 }
 
 const SPAWN_INTERVAL = Vector2(0.5, 1) # sec 
-const SPAWN_DISTANCE = 150
+const SPAWN_OFFSET = 50
 
+var spawn_radius: float
 var chance_dict: Dictionary
 var spawn_dict: Dictionary
 
@@ -92,6 +94,7 @@ func get_max_enemies():
 func on_enemy_death():
 	killed_count += 1
 	current_enemy_count -= 1
+	emit_signal("enemy_died")
 
 func on_enemy_spawn():
 	spawned_count += 1
@@ -106,7 +109,7 @@ func set_program(value: SpawnerProgram):
 		enemy_chance_sum += chance
 
 func get_randow_place() -> Vector2:
-	return Vector2(0, SPAWN_DISTANCE).rotated(random_angle())
+	return Vector2(0, spawn_radius + SPAWN_OFFSET).rotated(random_angle())
 
 func random_angle() -> float:
 	return r.randf_range(-PI, PI)

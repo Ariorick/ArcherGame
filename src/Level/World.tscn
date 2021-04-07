@@ -198,8 +198,7 @@ script = ExtResource( 13 )
 
 [node name="RainParticles" type="Particles2D" parent="PlayerPosition/Weather/ParticlesBundle"]
 position = Vector2( -1.94136, 0.773743 )
-emitting = false
-amount = 500
+amount = 200
 lifetime = 0.1
 preprocess = 5.0
 randomness = 0.35
@@ -209,8 +208,7 @@ texture = ExtResource( 12 )
 
 [node name="RainParticles2" type="Particles2D" parent="PlayerPosition/Weather/ParticlesBundle"]
 position = Vector2( -1.94136, 0.773743 )
-emitting = false
-amount = 500
+amount = 200
 lifetime = 2.0
 preprocess = 5.0
 randomness = 0.35

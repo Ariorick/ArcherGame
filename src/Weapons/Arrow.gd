@@ -41,8 +41,10 @@ func _process(delta: float):
 	update()
 	
 	# remove this to go back to usual pull behaviour
-	if started and  linear_velocity.length() < 10:
+	if Input.is_action_just_pressed("pull"):
 		set_pulled(true)
+#	if started and  linear_velocity.length() < 10:
+#		set_pulled(true)
 
 func _draw():
 #	draw_global_vector(linear_velocity, Color.white)
