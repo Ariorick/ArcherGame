@@ -45,8 +45,8 @@ func set_circle(value):
 	circle = value
 	circle.connect("circle_updated", self, "circle_updated")
 	
-	var particles_scale = circle.radius / 180.0 * Circle.MIN_ACTIVE_RADIUS
-	var particles_position = particles_scale * -250.0
+	var particles_scale = circle.radius / 165.0 * Circle.MIN_ACTIVE_RADIUS
+	var particles_position = particles_scale * -256.0
 	$MinRadiusParticles.scale = Vector2(particles_scale, particles_scale)
 	$MinRadiusParticles.position = Vector2(particles_position, particles_position)
 	$MinRadiusParticles.process_material.scale = 1/particles_scale

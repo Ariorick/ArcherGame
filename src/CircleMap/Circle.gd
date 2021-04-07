@@ -61,8 +61,16 @@ func finish():
 	$ProcessTween.remove_all()
 	$ProcessTween.interpolate_property(self, "current_radius", 
 		current_radius, min(current_radius + 1.5, radius), 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
-	$ProcessTween.start()
+	
 	open_all_roads() 
+	var zoom_out_time = 3.5
+	var zoom_in_time = 1.0
+	var zoom = 1.3
+	$ProcessTween.interpolate_method(self, "set_camera_zoom", 
+		1, zoom, zoom_out_time, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$ProcessTween.interpolate_method(self, "set_camera_zoom", 
+		zoom, 1, zoom_in_time, Tween.TRANS_QUAD, Tween.EASE_OUT, zoom_out_time)
+	$ProcessTween.start()
 
 func set_radius(value: float):
 	radius = value
