@@ -11,5 +11,6 @@ script = ExtResource( 3 )
 script = ExtResource( 1 )
 
 [node name="TestView" type="Node2D" parent="."]
+visible = false
 position = Vector2( 82.6999, 49.6202 )
 script = ExtResource( 2 )

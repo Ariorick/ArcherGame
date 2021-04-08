@@ -10,7 +10,6 @@ const NARROW_TIME = 60
 const TWITCH_RADIUS = 0.1
 
 export var current_radius: float
-export var camera_zoom_proxy := 1.0 setget set_camera_zoom
 
 var program: SpawnerProgram
 var top_roads: Array = Array()
@@ -63,13 +62,17 @@ func finish():
 		current_radius, min(current_radius + 1.5, radius), 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
 	
 	open_all_roads() 
-	var zoom_out_time = 3.5
+	var zoom_out_time = 2.5
 	var zoom_in_time = 1.0
 	var zoom = 1.3
 	$ProcessTween.interpolate_method(self, "set_camera_zoom", 
 		1, zoom, zoom_out_time, Tween.TRANS_QUAD, Tween.EASE_OUT)
+	$ProcessTween.interpolate_method(self, "set_camera_offset", 
+		Vector2.ZERO, Vector2(0, -radius / 2), zoom_out_time, Tween.TRANS_QUAD, Tween.EASE_OUT)
 	$ProcessTween.interpolate_method(self, "set_camera_zoom", 
 		zoom, 1, zoom_in_time, Tween.TRANS_QUAD, Tween.EASE_OUT, zoom_out_time)
+	$ProcessTween.interpolate_method(self, "set_camera_offset", 
+		Vector2(0, -radius / 2), Vector2.ZERO, zoom_in_time, Tween.TRANS_QUAD, Tween.EASE_OUT, zoom_out_time)
 	$ProcessTween.start()
 
 func set_radius(value: float):
@@ -98,6 +101,9 @@ func open_all_roads():
 
 func set_camera_zoom(value):
 	CameraManager.zoom = value
+
+func set_camera_offset(value):
+	CameraManager.offset = value
 
 func draw_circle_custom(radius, color):
 	var maxerror = 0.25

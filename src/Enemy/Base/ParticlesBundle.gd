@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name ParticlesBundle
 
 export var emitting: bool setget set_emitting, is_emitting

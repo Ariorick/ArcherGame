@@ -33,6 +33,7 @@ func _ready():
 
 func _process(delta):
 	$BowSprite.visible = can_shoot()
+	$AccelerationParticlesBundle.emitting = linear_velocity.length() > 30
 
 func _physics_process(delta):
 	GameManager.player_position = global_position - PLAYER_CENTER

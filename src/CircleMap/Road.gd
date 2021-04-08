@@ -16,13 +16,11 @@ func close():
 	tween.interpolate_property(self, "current_width", 
 		current_width, 0, 3, Tween.TRANS_QUINT, Tween.EASE_OUT)
 	tween.start()
-	current_width = 0
 
 func open():
 	tween.interpolate_property(self, "current_width", 
 		current_width, width, 3, Tween.TRANS_QUINT, Tween.EASE_OUT, 1.5)
 	tween.start()
-	current_width = width
 
 func _process(delta):
 	update_trees()

@@ -114,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Mage/Mage.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "ParticlesBundle",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/ParticlesBundle.gd"
@@ -226,6 +226,7 @@ config/icon="res://icon.png"
 
 GameManager="*res://src/GameManager/GameManager.gd"
 CameraManager="*res://src/GameManager/CameraManager.gd"
+SoundManager="*res://src/GameManager/SoundManager.gd"
 
 [display]
 
@@ -236,6 +237,10 @@ window/size/test_width=1280
 window/size/test_height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "Todo_Manager" )
 
 [importer_defaults]
 
