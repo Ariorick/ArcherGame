@@ -20,13 +20,12 @@ func _physics_process(delta):
 		should_release_arrows = false
 
 # returns true if is stuck
-func arrow_entered(arrow: Arrow) -> bool:
+func arrow_entered(arrow: Arrow):
 	var arrow_impact = arrow.linear_velocity * arrow.mass
 	apply_impulse(Vector2.ZERO, arrow_impact)
 	var arrow_velocity = arrow.linear_velocity.length()
 	var damaged = arrow_velocity > damage_treshold
 	
-	# simple 
 	if damaged:
 		var damage = int(arrow_velocity)
 		var is_crit = damage > damage_treshold * 3
@@ -34,22 +33,7 @@ func arrow_entered(arrow: Arrow) -> bool:
 			apply_impulse(Vector2.ZERO, arrow_impact * 2)
 		GameManager.add_damage(damage, is_crit)
 		$HealthManager.take_directional_damage(damage, arrow.linear_velocity.normalized(), is_crit)
-		arrow.apply_impulse(Vector2.ZERO, -arrow_impact * 1)
-		return false
-	
-#	# stuck behaviour
-#	if damaged:
-#		arrows.append(arrow)
-#		var damage = int(arrow_velocity)
-#		var is_crit = damage > 300
-#		if is_crit:
-#			apply_impulse(Vector2.ZERO, arrow_impact * 2)
-#			should_release_arrows = true
-#		$HealthManager.take_directional_damage(damage, arrow.linear_velocity.normalized(), is_crit)
-#		return true
-		
-		
-	return false
+#		arrow.apply_impulse(Vector2.ZERO, -arrow_impact * 1)
 
 
 func set_pulled(pulled: bool, target: Node2D):

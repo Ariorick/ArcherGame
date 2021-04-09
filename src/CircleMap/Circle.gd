@@ -4,10 +4,10 @@ class_name Circle
 signal circle_updated
 
 const INACTIVE_RADIUS = 0.3
-const MIN_ACTIVE_RADIUS = 0.6
+const MIN_ACTIVE_RADIUS = 0.5
 const ACTIVATION_RADIUS = MIN_ACTIVE_RADIUS + 0.1
 const NARROW_TIME = 60
-const TWITCH_RADIUS = 0.1
+const TWITCH_RADIUS = 0.15
 
 export var current_radius: float
 

@@ -25,8 +25,8 @@ func perform():
 		target = GameManager.player_position
 		started_at = OS.get_ticks_msec()
 		var distance = target - body.global_position
-		body.linear_damp = 1
-		body.apply_impulse(Vector2.ZERO, distance)
+#		body.linear_damp = 1
+		body.apply_impulse(Vector2.ZERO, distance * 5)
 		animate_jump()
 	
 	var elapsed_time = OS.get_ticks_msec() - started_at
