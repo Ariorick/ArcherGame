@@ -46,20 +46,21 @@ func _set_growth(growth: float):
 	
 
 func get_position_offset(growth: float) -> Vector2:
-	var min_value = 100000.0
-	var min_author
-	for author in growth_dict.keys():
-		if growth_dict[author] < min_value:
-			min_value = growth_dict[author]
-			min_author = author
-	
-	var result_direction: Vector2 = Vector2.ZERO
-	if min_author == null:
-		return Vector2.ZERO
-	else:
-		var to_fire: Vector2 = min_author.global_position - global_position
-		var distance_clamped = min(1, to_fire.length())
-		return to_fire.normalized() * 10 / distance_clamped * growth
+#	var min_value = 100000.0
+#	var min_author
+#	for author in growth_dict.keys():
+#		if growth_dict[author] < min_value:
+#			min_value = growth_dict[author]
+#			min_author = author
+#
+#	var result_direction: Vector2 = Vector2.ZERO
+#	if min_author == null:
+#		return Vector2.ZERO
+#	else:
+#		var to_fire: Vector2 = min_author.global_position - global_position
+#		var distance_clamped = min(1, to_fire.length_squared() * 10)
+#		return to_fire.normalized() * 10 / distance_clamped * growth
+	return Vector2.ZERO
 
 func get_lowest_growth() -> float:
 	var min_value = 100000.0

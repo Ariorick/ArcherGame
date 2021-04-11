@@ -4,7 +4,6 @@ const BaseTree  = preload("res://src/Level/BaseTree.tscn")
 var rng = RandomNumberGenerator.new()
 
 var content: TileMap
-var circle_map: CircleMap
 var trees: Dictionary # Vector2 to Tree
 
 func generate(from: Vector2, to: Vector2):

@@ -12,7 +12,7 @@ func draw_map(parent: Node2D):
 	self.parent = parent
 	var max_value = 1000
 	for child in parent.get_children():
-		if child is Circle:
+		if child is CircleFire:
 			max_value = min(child.position.y, max_value)
 	if max_value == 0:
 		max_value = 1000
@@ -20,7 +20,7 @@ func draw_map(parent: Node2D):
 
 func _draw():
 	for child in parent.get_children():
-		if child is Circle:
+		if child is CircleFire:
 			draw_circle(
 				child.position * map_scale, 
 				child.radius * map_scale, 

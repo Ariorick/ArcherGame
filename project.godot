@@ -30,11 +30,6 @@ _global_script_classes=[ {
 "path": "res://src/Enemy/Base/Brain.gd"
 }, {
 "base": "Node2D",
-"class": "Circle",
-"language": "GDScript",
-"path": "res://src/CircleMap/Circle.gd"
-}, {
-"base": "Node2D",
 "class": "CircleFire",
 "language": "GDScript",
 "path": "res://src/Level/CircleFire.gd"
@@ -189,7 +184,6 @@ _global_script_class_icons={
 "BaseTree": "",
 "BaseTreeDetector": "",
 "Brain": "",
-"Circle": "",
 "CircleFire": "",
 "CircleMap": "",
 "CircleRes": "",

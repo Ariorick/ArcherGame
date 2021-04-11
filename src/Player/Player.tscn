@@ -323,5 +323,6 @@ script = ExtResource( 10 )
 scale = Vector2( 0.5, 0.5 )
 texture = SubResource( 34 )
 energy = 0.3
+mode = 2
 [connection signal="body_entered" from="DamageDetector" to="." method="_on_DamageDetector_body_entered"]
 [connection signal="body_entered" from="PickArea" to="." method="_on_PickArea_body_entered"]

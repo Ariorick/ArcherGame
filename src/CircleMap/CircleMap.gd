@@ -16,21 +16,18 @@ func _ready():
 
 func set_content(value: TileMap):
 	content = value
-	create_fires(circle_array)
+#	create_fires(circle_array)
 
-func create_fires(circle_array: Array):
-	for circle in circle_array:
-		var fire = CircleFire.instance()
-		content.add_child(fire)
-		fire.global_position = circle.position
-		fire.circle = circle
-
-func get_circles_array() -> Array:
-	var array = Array()
-	for child in get_children():
-		if child is Circle:
-			array.append(child)
-	return array
-
-func is_in_radius(position: Vector2, circle: Circle) -> bool:
-	return position.distance_to(circle.position) < circle.radius
+#func create_fires(circle_array: Array):
+#	for circle in circle_array:
+#		var fire = CircleFire.instance()
+#		content.add_child(fire)
+#		fire.global_position = circle.position
+#		fire.circle = circle
+#
+#func get_circles_array() -> Array:
+#	var array = Array()
+#	for child in get_children():
+#		if child is Circle:
+#			array.append(child)
+#	return array
