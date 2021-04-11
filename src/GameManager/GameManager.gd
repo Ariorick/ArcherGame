@@ -12,6 +12,9 @@ var health := MAX_HEALTH
 const MAX_ARROW_COUNT := 5
 var arrow_count := MAX_ARROW_COUNT
 
+const MAX_TORCH_COUNT := 3
+var torch_count := 2
+
 var kill_count := 0
 var damage_dealt := 0
 
@@ -43,6 +46,17 @@ func player_collected_arrow():
 
 func can_shoot():
 	return arrow_count > 0
+
+func player_used_torch():
+	torch_count -= 1
+	emit_signal("torch_count_changed")
+
+func player_collected_torch():
+	torch_count += 1
+	emit_signal("torch_count_changed")
+
+func can_fire_torch():
+	return torch_count > 0
 
 func player_take_damage():
 	health -= 1

@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/Tiles/tile_0004_blue.png" type="Texture" id=6]
 [ext_resource path="res://assets/Particles/scratch_01.png" type="Texture" id=7]
 [ext_resource path="res://src/Enemy/Base/ParticlesBundle.gd" type="Script" id=8]
-[ext_resource path="res://src/CircleMap/Torch.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Player/TorchHolder.gd" type="Script" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
@@ -303,10 +303,6 @@ randomness = 1.0
 process_material = SubResource( 32 )
 texture = ExtResource( 4 )
 
-[node name="Torch" parent="." instance=ExtResource( 9 )]
-position = Vector2( 0, -3 )
-scale = Vector2( 0.5, 0.5 )
-
 [node name="PickArea" type="Area2D" parent="."]
 visible = false
 collision_layer = 64
@@ -315,5 +311,9 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickArea"]
 position = Vector2( 0, -2.71312 )
 shape = SubResource( 33 )
+
+[node name="TorchHolder" type="Node2D" parent="."]
+position = Vector2( 0, -3 )
+script = ExtResource( 10 )
 [connection signal="body_entered" from="DamageDetector" to="." method="_on_DamageDetector_body_entered"]
 [connection signal="body_entered" from="PickArea" to="." method="_on_PickArea_body_entered"]

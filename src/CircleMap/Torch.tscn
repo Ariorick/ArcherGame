@@ -52,6 +52,7 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
 [node name="FireParticles" type="Particles2D" parent="."]
@@ -65,5 +66,6 @@ process_material = SubResource( 6 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = SubResource( 7 )
+color = Color( 1, 0.835294, 0.760784, 1 )
 [connection signal="area_entered" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_entered"]
 [connection signal="area_exited" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_exited"]

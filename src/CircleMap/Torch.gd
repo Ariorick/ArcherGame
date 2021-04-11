@@ -1,13 +1,13 @@
 extends Node2D
-
+class_name Torch
 
 const FULL_LIFETIME = 30.0
-const FLIKER_LIFETIME = 7.0
+const FLIKER_LIFETIME = 15.0
 const TIME_BEFORE_FLICKER = FULL_LIFETIME - FLIKER_LIFETIME
 
-const FULL_RADIUS = 100
-const FLIKER_RADIUS = 60
-const MIN_RADIUS = 30
+const FULL_RADIUS = 60
+const FLIKER_RADIUS = 40
+const MIN_RADIUS = 25
 const LIGHT_TEXTURE_SCALE = 0.003
 
 var noise: OpenSimplexNoise 
@@ -20,9 +20,6 @@ var flickering := false
 func _ready():
 	prepare_noise()
 	$TreeDetector.set_shape_radius(FULL_RADIUS + 10)
-
-
-func activate():
 	active = true
 	start_time = OS.get_ticks_msec()
 
@@ -34,6 +31,7 @@ func _process(delta):
 		$Light2D.texture_scale = 0
 		$TreeDetector.update_trees(0)
 		$Light2D.enabled = false
+		$FireParticles.emitting = false
 		return 
 	
 	var elapced = (OS.get_ticks_msec() - start_time) / 1000
@@ -51,7 +49,7 @@ func _process(delta):
 	else:
 		active = false
 	
-
+	$FireParticles.emitting = true
 	$Light2D.enabled = true
 	$Light2D.texture_scale = LIGHT_TEXTURE_SCALE * radius
 	$TreeDetector.update_trees(radius)
