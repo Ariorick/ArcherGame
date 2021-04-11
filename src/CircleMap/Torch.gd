@@ -19,7 +19,7 @@ var flickering := false
 
 func _ready():
 	prepare_noise()
-	$TreeDetector.set_shape_radius(FULL_RADIUS + 10)
+	$TreeDetector.set_shape_radius(FULL_RADIUS * 3)
 	active = true
 	start_time = OS.get_ticks_msec()
 

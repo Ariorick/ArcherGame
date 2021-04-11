@@ -21,22 +21,45 @@ func set_growth(growth: float, author):
 	growth_dict[author] = growth
 	growth = get_lowest_growth()
 	if growth < current_growth:
-		_set_growth(growth)
+		tween.stop(self, "_set_growth")
+		tween.interpolate_method(self, "_set_growth", current_growth, growth, (current_growth - growth) / 2)
+		tween.start()
 	elif growth > current_growth:
+		tween.stop(self, "_set_growth")
 		tween.interpolate_method(self, "_set_growth", current_growth, growth, growth - current_growth)
 		tween.start()
 
 func _set_growth(growth: float):
 	current_growth = growth
+	var position_offset = get_position_offset(growth)
 	growth = clamp(growth - modulation_growth, 0, 1)
+	
 	$Sprite.scale = Vector2(growth, growth) * orientation
-	$Sprite.position = Vector2(0, -8) + Vector2(0, 16) * (1 - growth)
+	$Sprite.position = Vector2(0, -8) + (Vector2(0, 16)) * (1 - growth) + position_offset
 	
 	var frame_count = $AnimatedSprite.frames.get_frame_count("growing")
 	var frame = int(growth * frame_count)
 	$AnimatedSprite.frame = frame
+	$AnimatedSprite.position = Vector2(0, -8) + position_offset
+	
+	
 	
 
+func get_position_offset(growth: float) -> Vector2:
+	var min_value = 100000.0
+	var min_author
+	for author in growth_dict.keys():
+		if growth_dict[author] < min_value:
+			min_value = growth_dict[author]
+			min_author = author
+	
+	var result_direction: Vector2 = Vector2.ZERO
+	if min_author == null:
+		return Vector2.ZERO
+	else:
+		var to_fire: Vector2 = min_author.global_position - global_position
+		var distance_clamped = min(1, to_fire.length())
+		return to_fire.normalized() * 10 / distance_clamped * growth
 
 func get_lowest_growth() -> float:
 	var min_value = 100000.0
