@@ -26,7 +26,7 @@ func perform():
 		started_at = OS.get_ticks_msec()
 		var distance = target - body.global_position
 #		body.linear_damp = 1
-		body.apply_impulse(Vector2.ZERO, distance * 5)
+		body.apply_impulse(Vector2.ZERO, distance * 8)
 		animate_jump()
 	
 	var elapsed_time = OS.get_ticks_msec() - started_at

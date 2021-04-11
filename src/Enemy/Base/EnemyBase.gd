@@ -28,11 +28,7 @@ func arrow_entered(arrow: Arrow):
 	
 	if damaged:
 		var damage = int(arrow_velocity)
-		var is_crit = damage > damage_treshold * 3
-		if is_crit:
-			apply_impulse(Vector2.ZERO, arrow_impact * 2)
-		GameManager.add_damage(damage, is_crit)
-		$HealthManager.take_directional_damage(damage, arrow.linear_velocity.normalized(), is_crit)
+		$HealthManager.take_directional_damage(damage, arrow.linear_velocity.normalized())
 #		arrow.apply_impulse(Vector2.ZERO, -arrow_impact * 1)
 
 

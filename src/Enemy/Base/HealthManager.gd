@@ -8,23 +8,22 @@ signal on_death
 var hitpoints: int
 var invinsibility_end_time = -1000
 
-func take_directional_damage(damage: int, direction: Vector2, crit = false):
+func take_directional_damage(damage: int, direction: Vector2):
 	if is_invinsible():
 		return
 	$DamageParticles.process_material.direction = Vector3(direction.x, direction.y, 0)
-	$DamageParticles.amount = 10
-	if crit:
-		$DamageParticles.amount = 30
+	$DamageParticles.amount = damage / 12
+	$DamageParticles.process_material.initial_velocity = damage / 7
 	$DamageParticles.emitting = true
-	take_damage(damage, crit)
+	take_damage(damage)
 
 
-func take_damage(damage: int, crit = false):
+func take_damage(damage: int):
 	if is_invinsible():
 		return
 	start_invinsibility(DEFAULT_INVINSIBILITY)
 	$ColorAnimationPlayer.play("EnemyTakeDamage")
-	$DamageLabels.show_value(damage, crit)
+	$DamageLabels.show_value(damage / 10)
 	hitpoints -= damage
 	if hitpoints <= 0:
 		emit_signal("on_death")

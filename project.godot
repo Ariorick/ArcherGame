@@ -54,6 +54,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/CircleMap/CircleTreeDetector.gd"
 }, {
+"base": "Label",
+"class": "DamageLabel",
+"language": "GDScript",
+"path": "res://src/UI/Damage/DamageLabel.gd"
+}, {
 "base": "EnemyBase",
 "class": "Dummy",
 "language": "GDScript",
@@ -68,11 +73,6 @@ _global_script_classes=[ {
 "class": "EnemyBase",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/EnemyBase.gd"
-}, {
-"base": "Label",
-"class": "FCT",
-"language": "GDScript",
-"path": "res://src/UI/Damage/FCT.gd"
 }, {
 "base": "EnemyAction",
 "class": "FireMagicAction",
@@ -189,10 +189,10 @@ _global_script_class_icons={
 "CircleMap": "",
 "CircleRes": "",
 "CircleTreeDetector": "",
+"DamageLabel": "",
 "Dummy": "",
 "EnemyAction": "",
 "EnemyBase": "",
-"FCT": "",
 "FireMagicAction": "",
 "FireProjectile": "",
 "FlyAroundAction": "",
