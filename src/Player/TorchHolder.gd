@@ -4,6 +4,11 @@ const TorchScene = preload("res://src/CircleMap/Torch.tscn")
 
 var torch: Torch
 
+func _process(delta):
+	if torch != null:
+		if get_parent().linear_velocity.length() > 0:
+			torch.position = get_parent().linear_velocity.normalized() * 5
+
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("torch"):
 		if torch != null:

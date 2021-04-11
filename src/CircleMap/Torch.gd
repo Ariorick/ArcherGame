@@ -1,6 +1,7 @@
 extends Node2D
 class_name Torch
 
+const INITIAL_ANIM_TIME = 3
 const FULL_LIFETIME = 30.0
 const FLIKER_LIFETIME = 15.0
 const TIME_BEFORE_FLICKER = FULL_LIFETIME - FLIKER_LIFETIME
@@ -45,7 +46,7 @@ func _process(delta):
 	elif elapced < FULL_LIFETIME:
 		var elapced_percent = (elapced - TIME_BEFORE_FLICKER) / FLIKER_LIFETIME
 		radius = MIN_RADIUS + (FLIKER_RADIUS - MIN_RADIUS) * (1 - elapced_percent)
-		$Light2D.energy = 0.9 - get_flickering() * elapced_percent
+		$Light2D.energy = 1.0 - get_flickering() - elapced_percent / 4
 	else:
 		active = false
 	
@@ -58,7 +59,7 @@ func _process(delta):
 
 func get_flickering() -> float:
 	var time = OS.get_ticks_msec()
-	return (noise.get_noise_2d(time, 0) + 1) / 3
+	return (noise.get_noise_2d(time, 0) + 1) / 5
 
 func prepare_noise():
 	randomize()

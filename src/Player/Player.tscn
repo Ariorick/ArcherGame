@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://assets/Tiles/tile_0004.png" type="Texture" id=1]
 [ext_resource path="res://assets/Animations/EnemyTakeDamage.tres" type="Animation" id=2]
@@ -196,6 +196,9 @@ color_ramp = SubResource( 29 )
 [sub_resource type="CircleShape2D" id=33]
 radius = 7.39269
 
+[sub_resource type="StreamTexture" id=34]
+load_path = "res://.import/light.png-b4bfd8d5e94c7cc29e5a179990b93667.stex"
+
 [node name="Player" type="RigidBody2D" groups=[
 "player",
 ]]
@@ -315,5 +318,10 @@ shape = SubResource( 33 )
 [node name="TorchHolder" type="Node2D" parent="."]
 position = Vector2( 0, -3 )
 script = ExtResource( 10 )
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = SubResource( 34 )
+energy = 0.3
 [connection signal="body_entered" from="DamageDetector" to="." method="_on_DamageDetector_body_entered"]
 [connection signal="body_entered" from="PickArea" to="." method="_on_PickArea_body_entered"]
