@@ -227,6 +227,7 @@ config/icon="res://icon.png"
 GameManager="*res://src/GameManager/GameManager.gd"
 CameraManager="*res://src/GameManager/CameraManager.gd"
 SoundManager="*res://src/GameManager/SoundManager.gd"
+TreeModulationNoise="*res://src/Level/TreeModulationNoise.gd"
 
 [display]
 
@@ -335,6 +336,11 @@ restart={
 use={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+torch={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"unicode":0,"echo":false,"script":null)
  ]
 }
 

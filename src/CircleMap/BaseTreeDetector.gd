@@ -10,6 +10,10 @@ func _on_TreeDetector_area_entered(area):
 	if area is BaseTree and not trees.has(area):
 		trees.append(area)
 
+func _on_TreeDetector_area_exited(area):
+	if area is BaseTree and not trees.has(area):
+		trees.erase(area)
+
 func get_trees():
 	if trees == null or trees.empty():
 		for node in get_overlapping_areas():

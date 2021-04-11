@@ -14,10 +14,13 @@ export var current_radius: float
 var program: SpawnerProgram
 var top_roads: Array = Array()
 var bottom_roads: Array = Array()
-var radius: float setget set_radius
+var radius: float  = 100.0 setget set_radius
+
+var previous_position: Vector2
 
 func _process(delta):
-	$TreeDetector.update_trees(current_radius)
+	if global_position != previous_position:
+		$TreeDetector.update_trees(current_radius)
 	update()
 	update_listeners()
 

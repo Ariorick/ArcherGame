@@ -9,6 +9,9 @@ var active = false
 var player_near: bool = false
 
 func _ready():
+	circle = get_parent().get_node("Circle")
+	circle_updated()
+	
 	$EnemySpawner.connect("level_finished", self, "level_finished")
 	$EnemySpawner.connect("enemy_died", self, "enemy_died")
 
@@ -38,7 +41,7 @@ func _unhandled_input(event):
 			activate()
 
 func circle_updated():
-	$Light2D.texture_scale = TEXTURE_SCALE * circle.radius * circle.current_radius / circle.radius
+	$Light2D.texture_scale = 0.1 + TEXTURE_SCALE * circle.radius * circle.current_radius / circle.radius
 	pass
 
 func set_circle(value):

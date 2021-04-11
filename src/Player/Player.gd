@@ -72,6 +72,9 @@ func on_arrow_fired(arrow: Arrow):
 func get_arrows() -> Array:
 	return arrows
 
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("torch"):
+		$Torch.activate()
 
 func walk(speed_modifier: float): 
 	var is_walking = not current_action is PlayerDashAction and linear_velocity.length() > 1
