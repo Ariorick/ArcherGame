@@ -15,6 +15,8 @@ func _unhandled_input(event):
 			remove_child(torch)
 			get_parent().get_parent().add_child(torch)
 			torch.global_position = global_position
+			torch = null
+			return
 		
 		if GameManager.can_fire_torch():
 			add_new_torch()

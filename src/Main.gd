@@ -20,8 +20,6 @@ func _ready():
 		int(screen_size.y / chunk_size_px.y) / 2 + 2
 		)
 
-	$World.get_player().position = Vector2(0, 20)
-
 func _process(delta):
 	var pos = $World.get_player().position
 #	$CameraPosition.position = pos

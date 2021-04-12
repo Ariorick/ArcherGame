@@ -228,6 +228,7 @@ GameManager="*res://src/GameManager/GameManager.gd"
 CameraManager="*res://src/GameManager/CameraManager.gd"
 SoundManager="*res://src/GameManager/SoundManager.gd"
 TreeModulationNoise="*res://src/Level/TreeModulationNoise.gd"
+SceneChanger="*res://src/GameManager/SceneChanger.tscn"
 
 [display]
 
