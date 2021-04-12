@@ -23,6 +23,7 @@ func throw_torch():
 	get_parent().get_parent().add_child(torch)
 	torch.global_position = global_position
 	torch.disconnect("finished", self, "throw_torch")
+	torch.on_thrown_away()
 	torch = null
 
 func add_new_torch():
