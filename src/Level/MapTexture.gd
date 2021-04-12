@@ -10,6 +10,9 @@ func _ready():
 func is_woods(v: Vector2):
 	return _has_green(v)
 
+func is_rocks(v: Vector2):
+	return _is_black(v)
+
 func has_background(v: Vector2):
 	return _has_green(v)
 
@@ -24,3 +27,6 @@ func _has_blue(v: Vector2) -> bool:
 
 func _has_red(v: Vector2) -> bool:
 	return _get_pixel(v).r > 0
+
+func _is_black(v: Vector2) -> bool:
+	return _get_pixel(v) == Color.black

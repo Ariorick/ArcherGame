@@ -1,6 +1,8 @@
 extends Node2D
 class_name Torch
 
+signal finished
+
 const INITIAL_ANIM_TIME = 3
 const FULL_LIFETIME = 15.0
 const FLIKER_LIFETIME = 5.0
@@ -49,6 +51,7 @@ func _process(delta):
 		$Light2D.energy = 1.0 - get_flickering() - elapced_percent / 4
 	else:
 		active = false
+		emit_signal("finished")
 	
 	$FireParticles.emitting = true
 	$Light2D.enabled = true

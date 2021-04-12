@@ -8,11 +8,12 @@ height = 41.1121
 
 [node name="BigRock" type="StaticBody2D"]
 modulate = Color( 0.160784, 0.172549, 0.196078, 1 )
+scale = Vector2( 0.5, 0.5 )
 collision_layer = 4
 collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -56 )
+position = Vector2( 0, -48 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
