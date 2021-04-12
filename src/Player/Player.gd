@@ -32,7 +32,6 @@ func _ready():
 	]
 
 func _process(delta):
-	print(position)
 	$BowSprite.visible = can_shoot()
 	$AccelerationParticlesBundle.emitting = linear_velocity.length() > 30
 

@@ -5,6 +5,8 @@ var chunk_size = Vector2()
 func _ready():
 	$TreeManager.content = $Content
 	$Background.content = $Content
+	$TreeManager.textureMap = $TextureMap
+	$Background.textureMap = $TextureMap
 
 func generate(chunk: Vector2):
 	var from = chunk * chunk_size

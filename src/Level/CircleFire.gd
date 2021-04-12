@@ -11,8 +11,8 @@ const TWITCH_RADIUS = 0.15
 var program: SpawnerProgram
 var top_roads: Array = Array()
 var bottom_roads: Array = Array()
-var radius: float = 150.0 setget set_radius
-export var current_radius: float = 90.0
+var radius: float = 100.0 setget set_radius
+export var current_radius: float = 70.0
 
 var active = false
 var player_near: bool = false

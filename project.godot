@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Weapons/Arrow.gd"
 }, {
+"base": "TileMap",
+"class": "Background",
+"language": "GDScript",
+"path": "res://src/Level/Background.gd"
+}, {
 "base": "Area2D",
 "class": "BaseTree",
 "language": "GDScript",
@@ -174,6 +179,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/GameManager/SpawnerProgram.gd"
 }, {
+"base": "Sprite",
+"class": "TextureMap",
+"language": "GDScript",
+"path": "res://src/Level/MapTexture.gd"
+}, {
 "base": "Node2D",
 "class": "Torch",
 "language": "GDScript",
@@ -181,6 +191,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Arrow": "",
+"Background": "",
 "BaseTree": "",
 "BaseTreeDetector": "",
 "Brain": "",
@@ -213,6 +224,7 @@ _global_script_class_icons={
 "Sensors": "",
 "Skelly": "",
 "SpawnerProgram": "",
+"TextureMap": "",
 "Torch": ""
 }
 
