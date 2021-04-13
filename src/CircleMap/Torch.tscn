@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/CircleMap/CircleTreeDetector.gd" type="Script" id=1]
 [ext_resource path="res://assets/Tiles/tile_0121.png" type="Texture" id=2]
 [ext_resource path="res://src/CircleMap/Torch.gd" type="Script" id=3]
+[ext_resource path="res://src/UI/Hint/ButtonHint.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
@@ -29,9 +30,12 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "landed_on_the_ground"
+} ]
 }
 
 [sub_resource type="Gradient" id=2]
@@ -65,6 +69,8 @@ color_ramp = SubResource( 3 )
 
 [sub_resource type="StreamTexture" id=7]
 load_path = "res://.import/light.png-b4bfd8d5e94c7cc29e5a179990b93667.stex"
+
+[sub_resource type="CircleShape2D" id=9]
 
 [node name="Torch" type="Node2D"]
 script = ExtResource( 3 )
@@ -101,5 +107,21 @@ mode = 2
 [node name="Sprite" type="Sprite" parent="Visuals"]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
+
+[node name="PickupHint" parent="." instance=ExtResource( 4 )]
+margin_left = 4.31159
+margin_top = -9.71544
+margin_right = 4.31159
+margin_bottom = -9.71544
+goal_text = "pick up"
+need_to_hold = false
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource( 9 )
 [connection signal="area_entered" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_entered"]
 [connection signal="area_exited" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_exited"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_Player_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_Player_exited"]

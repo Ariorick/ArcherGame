@@ -34,7 +34,7 @@ func _process(delta):
 	$EnemySpawner.spawn_radius = current_radius
 	
 	if not active and player_near:
-		 $FireSprite.scale = Vector2(2, 2)
+		 $FireSprite.scale = Vector2(1.5, 1.5)
 	else:
 		$FireSprite.scale = Vector2(1, 1)
 
@@ -54,7 +54,8 @@ func enemy_died():
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("use"):
 		if not active and player_near:
-			activate()
+#			activate()
+			pass
 
 
 func _on_PlayerDetector1_body_entered(body):

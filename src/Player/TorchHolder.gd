@@ -3,6 +3,7 @@ extends Node2D
 const TorchScene = preload("res://src/CircleMap/Torch.tscn")
 
 var torch: Torch
+var can_pickup_torch_ref = funcref(self, "can_pickup_torch")
 
 func _process(delta):
 	if torch != null:
@@ -18,6 +19,12 @@ func _unhandled_input(event):
 		if GameManager.can_fire_torch():
 			add_new_torch()
 
+func get_torch_back(torch: Torch):
+	self.torch = torch
+	torch.get_parent().remove_child(torch)
+	add_child(torch)
+	torch.connect("finished", self, "throw_torch")
+
 func throw_torch():
 	remove_child(torch)
 	get_parent().get_parent().add_child(torch)
@@ -28,6 +35,11 @@ func throw_torch():
 
 func add_new_torch():
 	torch = TorchScene.instance()
+	torch.can_pickup_ref = can_pickup_torch_ref
 	torch.connect("finished", self, "throw_torch")
+	torch.connect("collected", self, "get_torch_back")
 	add_child(torch)
 	GameManager.player_used_torch()
+
+func can_pickup_torch() -> bool:
+	return torch == null

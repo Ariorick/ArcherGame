@@ -13,7 +13,7 @@ const MAX_ARROW_COUNT := 5
 var arrow_count := MAX_ARROW_COUNT
 
 const MAX_TORCH_COUNT := 3
-var torch_count := 2
+var torch_count := 1
 
 var kill_count := 0
 var damage_dealt := 0
