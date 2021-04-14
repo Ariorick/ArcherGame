@@ -24,7 +24,11 @@ func take_damage():
 	GameManager.player_take_damage()
 	$ColorAnimationPlayer.play("PlayerTakeDamage")
 
+func refill_torch():
+	$TorchHolder.get_or_refill_torch()
+
 func _ready():
+	GameManager.player = self
 	possible_actions = [
 		PlayerDashAction.new(get_args()),
 		PlayerAttackAction.new(get_args(), funcref(self, "can_shoot"), funcref(self, "on_arrow_fired")),

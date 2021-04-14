@@ -8,6 +8,8 @@ const ACTIVATION_RADIUS = MIN_ACTIVE_RADIUS + 0.1
 const NARROW_TIME = 60
 const TWITCH_RADIUS = 0.15
 
+onready var get_torch_hint : ButtonHintActivator = $GetTorchHintActivator
+
 var program: SpawnerProgram
 var top_roads: Array = Array()
 var bottom_roads: Array = Array()
@@ -17,7 +19,14 @@ export var current_radius: float = 70.0
 var active = false
 var player_near: bool = false
 
-func _ready():	
+func _ready():
+	get_torch_hint.conditions_met_ref = funcref(self, "can_refill_torch")
+	get_torch_hint.action = "use"
+	get_torch_hint.connect("action_just_pressed", self, "refill_torch")
+#	ignite_hint.conditions_met_ref = funcref(self, "can_refill_torch")
+#	ignite_hint.action = "use"
+#	ignite_hint.connect("action_just_pressed", self, "refill_torch")
+	
 	$EnemySpawner.connect("level_finished", self, "level_finished")
 	$EnemySpawner.connect("enemy_died", self, "enemy_died")
 	
@@ -33,11 +42,21 @@ func _process(delta):
 	$TreeDetector.update_trees(current_radius)
 	$EnemySpawner.spawn_radius = current_radius
 	
+	if GameManager.is_holding_torch:
+		get_torch_hint.goal_text = "refill torch"
+	else:
+		get_torch_hint.goal_text = "take torch"
+	
 	if not active and player_near:
 		 $FireSprite.scale = Vector2(1.5, 1.5)
 	else:
 		$FireSprite.scale = Vector2(1, 1)
 
+func can_refill_torch() -> bool:
+	return not active
+
+func refill_torch():
+	GameManager.player.refill_torch()
 
 func activate():
 	active = true
@@ -51,21 +70,13 @@ func level_finished():
 func enemy_died():
 	animate_twitch()
 
+
+
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("use"):
 		if not active and player_near:
 #			activate()
 			pass
-
-
-func _on_PlayerDetector1_body_entered(body):
-	if body is Player:
-		player_near = true
-
-func _on_PlayerDetector1_body_exited(body):
-	if body is Player:
-		player_near = false
-
 
 func _on_ActivationTween_tween_all_completed():
 	narrow(current_radius)
@@ -131,8 +142,8 @@ func set_camera_offset(value):
 	CameraManager.offset = value
 
 func _draw():
-	draw_circle_custom(current_radius, Color.white)
-	draw_circle_custom(radius, Color.red)
+#	draw_circle_custom(current_radius, Color.white)
+#	draw_circle_custom(radius, Color.red)
 	pass
 
 func draw_circle_custom(radius, color):

@@ -12,12 +12,12 @@ var health := MAX_HEALTH
 const MAX_ARROW_COUNT := 5
 var arrow_count := MAX_ARROW_COUNT
 
-const MAX_TORCH_COUNT := 3
-var torch_count := 1
+var is_holding_torch := false
 
 var kill_count := 0
 var damage_dealt := 0
 
+var player
 var player_position: Vector2
 
 var enemy_count := 0
@@ -47,16 +47,11 @@ func player_collected_arrow():
 func can_shoot():
 	return arrow_count > 0
 
-func player_used_torch():
-	torch_count -= 1
-	emit_signal("torch_count_changed")
+func player_picked_torch():
+	is_holding_torch = true
 
-func player_collected_torch():
-	torch_count += 1
-	emit_signal("torch_count_changed")
-
-func can_fire_torch():
-	return torch_count > 0
+func player_dropped_torch():
+	is_holding_torch = false
 
 func player_take_damage():
 	health -= 1

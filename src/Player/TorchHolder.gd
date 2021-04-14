@@ -10,15 +10,13 @@ func _process(delta):
 		if get_parent().linear_velocity.length() > 0:
 			torch.position = get_parent().linear_velocity.normalized() * 5
 
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("torch"):
-		if torch != null:
-			throw_torch()
-			return
-		
-		if GameManager.can_fire_torch():
-			add_new_torch()
+func get_or_refill_torch():
+	if torch == null:
+		add_new_torch()
+	else:
+		torch.reset()
 
+# Move animation of picking up torch here, so it would count as "picked" when it starts
 func get_torch_back(torch: Torch):
 	self.torch = torch
 	torch.get_parent().remove_child(torch)
@@ -32,6 +30,7 @@ func throw_torch():
 	torch.disconnect("finished", self, "throw_torch")
 	torch.on_thrown_away()
 	torch = null
+	GameManager.player_dropped_torch()
 
 func add_new_torch():
 	torch = TorchScene.instance()
@@ -39,7 +38,7 @@ func add_new_torch():
 	torch.connect("finished", self, "throw_torch")
 	torch.connect("collected", self, "get_torch_back")
 	add_child(torch)
-	GameManager.player_used_torch()
+	GameManager.player_picked_torch()
 
 func can_pickup_torch() -> bool:
 	return torch == null

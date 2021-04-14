@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/Tiles/tile_0120.png" type="Texture" id=1]
 [ext_resource path="res://assets/Particles/light.png" type="Texture" id=2]
 [ext_resource path="res://src/CircleMap/CircleTreeDetector.gd" type="Script" id=3]
 [ext_resource path="res://src/Level/CircleFire.gd" type="Script" id=4]
 [ext_resource path="res://src/GameManager/EnemySpawner.gd" type="Script" id=5]
+[ext_resource path="res://src/UI/Hint/ButtonHintActivator.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.778986, 1 )
@@ -35,7 +36,7 @@ scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 30.0
+radius = 14.0
 
 [sub_resource type="Image" id=13]
 data = {
@@ -90,7 +91,6 @@ color = Color( 1, 0.882353, 0.796078, 1 )
 mode = 2
 
 [node name="PlayerDetector1" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector1"]
 shape = SubResource( 6 )
@@ -119,6 +119,10 @@ shape = SubResource( 12 )
 [node name="ActivationTween" type="Tween" parent="."]
 
 [node name="ProcessTween" type="Tween" parent="."]
+
+[node name="GetTorchHintActivator" parent="." instance=ExtResource( 6 )]
+button_text = "E"
+goal_text = "pick up torch"
 [connection signal="body_entered" from="PlayerDetector1" to="." method="_on_PlayerDetector1_body_entered"]
 [connection signal="body_exited" from="PlayerDetector1" to="." method="_on_PlayerDetector1_body_exited"]
 [connection signal="area_entered" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_entered"]

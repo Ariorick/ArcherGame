@@ -21,33 +21,38 @@ var start_time: float = -1000
 var active := false
 var flickering := false
 var on_the_ground := false
-var player_near := false
 
 onready var tween: Tween = $Tween
-onready var fire_particles : Particles2D = $Visuals/FireParticles
+onready var fire_particles : ParticlesBundle = $Visuals/FireParticles
 onready var light : Light2D = $Visuals/Light2D
 onready var sprite : Sprite = $Visuals/Sprite
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var tree_detector : CircleTreeDetector = $TreeDetector
-onready var pickup_hint : ButtonHint = $PickupHint
+onready var pickup_hint : ButtonHintActivator = $PickupHintActivator
 
 
 func _ready():
+	pickup_hint.conditions_met_ref = funcref(self, "can_be_piicked")
+	pickup_hint.action = "use"
+	pickup_hint.connect("action_just_pressed", self, "pick_up")
 	prepare_noise()
 	tree_detector.set_shape_radius(FULL_RADIUS * 3)
+	reset()
+
+func reset():
+	$Visuals/ResetParticles.emitting = true
 	active = true
 	start_time = OS.get_ticks_msec()
 
+# TODO: monstrous func, better split into multiples
 func _process(delta):
 	if not active:
-		light.texture_scale = 0
+		light.texture_scale = 0.2
 		tree_detector.update_trees(0)
-		light.enabled = false
 		fire_particles.emitting = false
 		return 
 	
 	var elapced = (OS.get_ticks_msec() - start_time) / 1000
-	
 	
 	var radius := 0.0
 	if elapced < TIME_BEFORE_FLICKER:
@@ -61,10 +66,8 @@ func _process(delta):
 	else:
 		active = false
 		emit_signal("finished")
-		update_hint()
 	
 	fire_particles.emitting = true
-	light.enabled = true
 	light.texture_scale = LIGHT_TEXTURE_SCALE * radius
 	tree_detector.update_trees(radius)
 
@@ -74,31 +77,22 @@ func on_thrown_away(direction: Vector2 = Vector2.ZERO):
 		var rng = RandomNumberGenerator.new()
 		direction = Vector2(rng.randf(), rng.randf())
 	tween.interpolate_property(self, "position", 
-		position, position + 10 * direction.normalized(), 
+		position, position + 15 * direction.normalized(), 
 		1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	tween.start()
 
-func update_hint():
-	if can_be_piicked():
-		pickup_hint.show()
-	else:
-		pickup_hint.hide()
-
 func landed_on_the_ground():
 	on_the_ground = true
-	update_hint()
 
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("use"):
-		if can_be_piicked():
-			tween.interpolate_property(self, "global_position", 
-				global_position, GameManager.player_position, 
-				0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-			tween.connect("tween_completed", self, "tween_completed")
-			tween.start()
+func pick_up():
+	tween.interpolate_property(self, "global_position", 
+		global_position, GameManager.player_position, 
+		0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	tween.connect("tween_completed", self, "tween_completed")
+	tween.start()
 
 func can_be_piicked() -> bool:
-	return active and on_the_ground and player_near and can_pickup_ref.call_func()
+	return active and on_the_ground and can_pickup_ref.call_func()
 
 # TODO: this is complete bullshit
 func tween_completed(object, key):
@@ -122,12 +116,3 @@ func prepare_noise():
 	noise.persistence = 0.7
 	noise.octaves = 1.0
 	noise.period = 30
-
-
-func _on_Player_entered(body):
-	player_near = true
-	update_hint()
-
-func _on_Player_exited(body):
-	player_near = false
-	update_hint()
