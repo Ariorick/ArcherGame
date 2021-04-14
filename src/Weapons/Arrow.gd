@@ -88,7 +88,7 @@ func _integrate_forces(body_state: Physics2DDirectBodyState):
 		started = true
 		body_state.transform = Transform2D(initial_angle + PI/4, initial_position)
 	
-	if body_state.get_contact_count() == 1 :
+	if body_state.get_contact_count() > 0:
 		stick_to_body(body_state)
 		
 	pull()

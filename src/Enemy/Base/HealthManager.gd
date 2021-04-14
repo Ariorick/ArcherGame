@@ -8,9 +8,12 @@ signal on_death
 var hitpoints: int
 var invinsibility_end_time = -1000
 
+onready var body: RigidBody2D = get_parent()
+
 func take_directional_damage(damage: int, direction: Vector2):
 	if is_invinsible():
 		return
+	body.apply_impulse(Vector2.ZERO, damage / 1.0 * direction.normalized())
 	$DamageParticles.process_material.direction = Vector3(direction.x, direction.y, 0)
 	$DamageParticles.amount = damage / 12
 	$DamageParticles.process_material.initial_velocity = damage / 7

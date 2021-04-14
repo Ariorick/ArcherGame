@@ -2,7 +2,7 @@ extends Node2D
 
 var prev_camera_pos = Vector2()
 
-var chunk_size := Vector2(3, 3) # cells
+var chunk_size := Vector2(10, 10) # cells
 var cell_size_px := Vector2(8, 8)
 var chunk_size_px := chunk_size * cell_size_px
 var map_cells := Dictionary()

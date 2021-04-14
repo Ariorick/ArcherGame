@@ -52,7 +52,7 @@ func put_out_fire():
 # TODO: monstrous func, better split into multiples
 func _process(delta):
 	if not active:
-		light.texture_scale = 0.2
+		light.texture_scale = 0.05
 		tree_detector.update_trees(0)
 		fire_particles.emitting = false
 		return 

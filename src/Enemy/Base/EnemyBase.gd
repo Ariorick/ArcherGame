@@ -21,8 +21,6 @@ func _physics_process(delta):
 
 # returns true if is stuck
 func arrow_entered(arrow: Arrow):
-	var arrow_impact = arrow.linear_velocity * arrow.mass
-	apply_impulse(Vector2.ZERO, arrow_impact)
 	var arrow_velocity = arrow.linear_velocity.length()
 	var damaged = arrow_velocity > damage_treshold
 	
@@ -36,8 +34,11 @@ func set_pulled(pulled: bool, target: Node2D):
 	is_pulled = pulled
 	pull_target = target
 
-func take_damage(damage: int, crit = false):
-	$HealthManager.take_damage(damage, crit)
+func take_directional_damage(damage: int, impulse: Vector2):
+	$HealthManager.take_directional_damage(damage, impulse)
+
+func take_damage(damage: int):
+	$HealthManager.take_damage(damage)
 
 func release_arrows():
 	for arrow in arrows:

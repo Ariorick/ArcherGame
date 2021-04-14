@@ -20,10 +20,10 @@ func _init(args: Dictionary, can_shoot: FuncRef, on_arrow_fired: FuncRef).(args)
 	self.on_arrow_fired = on_arrow_fired
 
 func want_to_start() -> bool:
-	return Input.is_action_just_pressed("attack") and can_shoot.call_func()
+	return Input.is_action_just_pressed("aim") and can_shoot.call_func()
 
 func perform():
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("aim"):
 		aim_start_time = OS.get_ticks_msec()
 		$BowSprite.frame = 0
 	
@@ -32,7 +32,7 @@ func perform():
 	$BowSprite.rotation = direction.angle() + PI/4
 	$BowSprite.frame = int(aim_time / (HOLD_MAX_TIME / ARROW_FRAMES)) + 1
 	
-	if Input.is_action_just_released("attack"):
+	if Input.is_action_just_released("aim"):
 		if aim_time < MIN_HOLD_TIME:
 			return
 		var strength = min(aim_time / HOLD_MAX_TIME, 1)
