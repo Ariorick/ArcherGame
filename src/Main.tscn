@@ -20,10 +20,10 @@ script = ExtResource( 3 )
 [node name="Ui" parent="." instance=ExtResource( 4 )]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color( 0.117647, 0.117647, 0.117647, 1 )
 
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
-visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

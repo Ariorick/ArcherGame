@@ -86,3 +86,8 @@ position = Vector2( 0, -8 )
 texture = ExtResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+pause_animated_sprites = false
+process_parent = true
+physics_process_parent = true
