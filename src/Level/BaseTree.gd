@@ -13,13 +13,18 @@ func _ready():
 	$AnimatedSprite.frame = frame_count - 1
 
 func _process(delta):
-	modulation_growth = (TreeModulationNoise.get_modulation(global_position) + 1) / 8
-	_set_growth(current_growth)
+#	modulation_growth = (TreeModulationNoise.get_modulation(global_position) + 1) / 8
+#	_set_growth(current_growth)
+	pass
 
 # 0 to 1 float
 func set_growth(growth: float, author):
+	if abs(growth - current_growth) < 0.005:
+		return
+	
 	growth_dict[author] = growth
 	growth = get_lowest_growth()
+	
 	if growth < current_growth:
 		tween.stop(self, "_set_growth")
 		tween.interpolate_method(self, "_set_growth", current_growth, growth, (current_growth - growth) / 2)

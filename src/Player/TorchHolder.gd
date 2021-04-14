@@ -23,12 +23,16 @@ func get_torch_back(torch: Torch):
 	add_child(torch)
 	torch.connect("finished", self, "throw_torch")
 
-func throw_torch():
+func on_player_got_hit(direction: Vector2 = Vector2.ZERO):
+	if torch != null:
+		throw_torch(direction)
+
+func throw_torch(direction: Vector2 = Vector2.ZERO):
 	remove_child(torch)
 	get_parent().get_parent().add_child(torch)
 	torch.global_position = global_position
 	torch.disconnect("finished", self, "throw_torch")
-	torch.on_thrown_away()
+	torch.on_thrown_away(direction)
 	torch = null
 	GameManager.player_dropped_torch()
 

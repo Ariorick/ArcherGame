@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/UI/HealthBar/HealthDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tiles/tile_0065.png" type="Texture" id=2]
 [ext_resource path="res://src/UI/Ui.gd" type="Script" id=3]
+[ext_resource path="res://src/UI/Fps/FpsLabel.tscn" type="PackedScene" id=4]
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -56,3 +57,10 @@ text = "DamageDealt - 20000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="FpsLabel" parent="." instance=ExtResource( 4 )]
+margin_left = 284.934
+margin_top = 8.57441
+margin_right = 284.934
+margin_bottom = 22.5744
+rect_scale = Vector2( 0.5, 0.5 )

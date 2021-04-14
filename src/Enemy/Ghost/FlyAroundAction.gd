@@ -1,7 +1,7 @@
 extends EnemyAction
 class_name FlyAroundAction
 
-const WALK_FORCE = 70
+const WALK_FORCE = 90
 var last_walk_force := Vector2.ZERO
 
 func _ready():

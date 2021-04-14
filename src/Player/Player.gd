@@ -23,6 +23,7 @@ func _on_DamageDetector_body_entered(body: PhysicsBody2D):
 func take_damage():
 	GameManager.player_take_damage()
 	$ColorAnimationPlayer.play("PlayerTakeDamage")
+	$TorchHolder.on_player_got_hit(linear_velocity)
 
 func refill_torch():
 	$TorchHolder.get_or_refill_torch()

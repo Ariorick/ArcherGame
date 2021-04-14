@@ -5,7 +5,7 @@ signal finished
 signal collected
 
 const INITIAL_ANIM_TIME = 3
-const FULL_LIFETIME = 15.0
+const FULL_LIFETIME = 25.0
 const FLIKER_LIFETIME = 5.0
 const TIME_BEFORE_FLICKER = FULL_LIFETIME - FLIKER_LIFETIME
 
@@ -43,6 +43,11 @@ func reset():
 	$Visuals/ResetParticles.emitting = true
 	active = true
 	start_time = OS.get_ticks_msec()
+
+func put_out_fire():
+	active = false
+	emit_signal("finished")
+
 
 # TODO: monstrous func, better split into multiples
 func _process(delta):
@@ -101,8 +106,8 @@ func tween_completed(object, key):
 
 func collected():
 	on_the_ground = false
+	GameManager.player_picked_torch()
 	emit_signal("collected", self)
-	GameManager.player_collected_torch()
 
 func get_flickering() -> float:
 	var time = OS.get_ticks_msec()

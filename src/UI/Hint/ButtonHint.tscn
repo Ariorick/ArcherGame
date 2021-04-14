@@ -6,51 +6,55 @@
 light_mode = 1
 
 [sub_resource type="Animation" id=2]
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Panel:rect_position")
+tracks/0/path = NodePath("LabelContainer/Panel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 2 ), Vector2( 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Panel:modulate")
+tracks/1/path = NodePath("LabelContainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Vector2( 0, 4 ), Vector2( 0, 0 ) ]
 }
 
-[node name="ButtonHint" type="Control"]
+[node name="ButtonHint" type="Node2D"]
 material = SubResource( 1 )
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 button_text = "E"
 goal_text = "activate"
 
-[node name="Panel" type="Panel" parent="."]
+[node name="LabelContainer" type="Node2D" parent="."]
+position = Vector2( 0, 4 )
+
+[node name="Panel" type="Panel" parent="LabelContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_top = 2.0
-margin_right = 150.0
-margin_bottom = 22.0
+margin_left = 4.0
+margin_right = 154.0
+margin_bottom = 20.0
 rect_scale = Vector2( 0.2, 0.2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="LabelContainer/Panel"]
+margin_top = 0.174193
+margin_right = 132.0
+margin_bottom = 14.1742
 text = "press E to light torch"
 __meta__ = {
 "_edit_use_anchors_": false

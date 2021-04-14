@@ -1,4 +1,4 @@
-extends Control
+extends Node2D
 class_name ButtonHint
 
 export var button_text : String = "" setget set_button_text
@@ -19,7 +19,7 @@ func _process(delta):
 		action = "hold"
 	else:
 		action = "press"
-	$Panel/Label.set_text(action + " " + button_text + " to " + goal_text)
+	$LabelContainer/Panel/Label.set_text(action + " " + button_text + " to " + goal_text)
 
 func show():
 	if not active:
