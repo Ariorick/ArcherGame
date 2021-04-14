@@ -1,9 +1,17 @@
 extends BaseTreeDetector
 class_name CircleTreeDetector
 
-func update_trees(current_radius: float):
+var current_radius: float = 0.0
+
+func update_trees(radius: float):
+	if radius == current_radius:
+		return
+	current_radius = radius
 	for tree in get_trees():
-		set_growth_to_tree(tree, get_scale_for_tree(tree.global_position, current_radius))
+		update_tree(tree)
+
+func update_tree(tree):
+	set_growth_to_tree(tree, get_scale_for_tree(tree.global_position, current_radius))
 
 func set_shape_radius(radius: float):
 	$CollisionShape2D.shape.radius = radius

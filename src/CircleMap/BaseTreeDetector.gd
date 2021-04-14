@@ -6,9 +6,13 @@ var trees: Array
 func _ready():
 	$CollisionShape2D.set_shape($CollisionShape2D.get_shape().duplicate(true))
 
+func update_tree(tree):
+	pass
+
 func _on_TreeDetector_area_entered(area):
 	if area is BaseTree and not trees.has(area):
 		trees.append(area)
+		update_tree(area)
 
 func _on_TreeDetector_area_exited(area):
 	if area is BaseTree and not trees.has(area):
