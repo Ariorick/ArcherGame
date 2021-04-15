@@ -39,10 +39,12 @@ func _ready():
 	tree_detector.set_shape_radius(FULL_RADIUS * 3)
 	reset()
 
+
 func reset():
 	$Visuals/ResetParticles.emitting = true
 	active = true
 	start_time = OS.get_ticks_msec()
+
 
 func put_out_fire():
 	active = false
@@ -76,6 +78,7 @@ func _process(delta):
 	light.texture_scale = LIGHT_TEXTURE_SCALE * radius
 	tree_detector.update_trees(radius)
 
+
 func on_thrown_away(direction: Vector2 = Vector2.ZERO):
 	animation_player.play("ThrowTorchAway")
 	if direction == Vector2.ZERO:
@@ -86,28 +89,27 @@ func on_thrown_away(direction: Vector2 = Vector2.ZERO):
 		1, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	tween.start()
 
+
 func landed_on_the_ground():
 	on_the_ground = true
 
+
 func pick_up():
-	tween.interpolate_property(self, "global_position", 
-		global_position, GameManager.player_position, 
-		0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-	tween.connect("tween_completed", self, "tween_completed")
-	tween.start()
+	on_the_ground = false
+	GameManager.player_picked_torch()
+	emit_signal("collected", self)
+	
+#	looks OK without this transition to me
+#	tween.interpolate_property(self, "global_position", 
+#		global_position, GameManager.player_position, 
+#		0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+#	tween.connect("tween_completed", self, "tween_completed")
+#	tween.start()
+
 
 func can_be_piicked() -> bool:
 	return active and on_the_ground and can_pickup_ref.call_func()
 
-# TODO: this is complete bullshit
-func tween_completed(object, key):
-	if key == ":global_position":
-		collected()
-
-func collected():
-	on_the_ground = false
-	GameManager.player_picked_torch()
-	emit_signal("collected", self)
 
 func get_flickering() -> float:
 	var time = OS.get_ticks_msec()

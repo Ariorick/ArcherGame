@@ -13,10 +13,10 @@ onready var body: RigidBody2D = get_parent()
 func take_directional_damage(damage: int, direction: Vector2):
 	if is_invinsible():
 		return
-	body.apply_impulse(Vector2.ZERO, damage / 1.0 * direction.normalized())
+	body.apply_impulse(Vector2.ZERO, damage * 10.0 * direction.normalized())
 	$DamageParticles.process_material.direction = Vector3(direction.x, direction.y, 0)
-	$DamageParticles.amount = damage / 12
-	$DamageParticles.process_material.initial_velocity = damage / 7
+	$DamageParticles.amount = damage
+	$DamageParticles.process_material.initial_velocity = damage * 10.0/7.0
 	$DamageParticles.emitting = true
 	take_damage(damage)
 
@@ -26,7 +26,7 @@ func take_damage(damage: int):
 		return
 	start_invinsibility(DEFAULT_INVINSIBILITY)
 	$ColorAnimationPlayer.play("EnemyTakeDamage")
-	$DamageLabels.show_value(damage / 10)
+	$DamageLabels.show_value(damage)
 	hitpoints -= damage
 	if hitpoints <= 0:
 		emit_signal("on_death")

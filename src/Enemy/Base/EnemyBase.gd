@@ -25,7 +25,7 @@ func arrow_entered(arrow: Arrow):
 	var damaged = arrow_velocity > damage_treshold
 	
 	if damaged:
-		var damage = int(arrow_velocity)
+		var damage = int(arrow_velocity / 10)
 		$HealthManager.take_directional_damage(damage, arrow.linear_velocity.normalized())
 #		arrow.apply_impulse(Vector2.ZERO, -arrow_impact * 1)
 
