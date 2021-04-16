@@ -1,6 +1,6 @@
 extends Node2D
 
-const TorchScene = preload("res://src/CircleMap/Torch.tscn")
+const TorchScene = preload("res://src/Fire/Torch.tscn")
 
 var torch: Torch
 var can_pickup_torch_ref = funcref(self, "can_pickup_torch")

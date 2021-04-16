@@ -2,11 +2,12 @@
 
 [ext_resource path="res://assets/Tiles/tile_0120.png" type="Texture" id=1]
 [ext_resource path="res://assets/Particles/light.png" type="Texture" id=2]
-[ext_resource path="res://src/CircleMap/CircleTreeDetector.gd" type="Script" id=3]
+[ext_resource path="res://src/Fire/CircleTreeDetector.gd" type="Script" id=3]
 [ext_resource path="res://src/Level/CircleFire.gd" type="Script" id=4]
 [ext_resource path="res://src/GameManager/EnemySpawner.gd" type="Script" id=5]
 [ext_resource path="res://src/UI/Hint/ButtonHintActivator.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/Effects/FireEffect.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 14.0

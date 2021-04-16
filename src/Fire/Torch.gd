@@ -31,8 +31,11 @@ onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var tree_detector : CircleTreeDetector = $TreeDetector
 onready var pickup_hint : ButtonHintActivator = $PickupHintActivator
 
+func is_lit(v: Vector2) -> bool:
+	return (v - global_position).length() < current_radius
 
 func _ready():
+	LightZoneManager.add_light_source(self)
 	pickup_hint.conditions_met_ref = funcref(self, "can_be_piicked")
 	pickup_hint.action = "use"
 	pickup_hint.connect("action_just_pressed", self, "pick_up")

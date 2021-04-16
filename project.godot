@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "ArrayUtils",
+"language": "GDScript",
+"path": "res://src/Utils/ArrayUtils.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Arrow",
 "language": "GDScript",
@@ -27,7 +32,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "BaseTreeDetector",
 "language": "GDScript",
-"path": "res://src/CircleMap/BaseTreeDetector.gd"
+"path": "res://src/Fire/BaseTreeDetector.gd"
 }, {
 "base": "Node",
 "class": "Brain",
@@ -52,17 +57,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "CircleMap",
 "language": "GDScript",
-"path": "res://src/CircleMap/CircleMap.gd"
-}, {
-"base": "Reference",
-"class": "CircleRes",
-"language": "GDScript",
-"path": "res://src/CircleMap/CircleRes.gd"
+"path": "res://src/Fire/CircleMap.gd"
 }, {
 "base": "BaseTreeDetector",
 "class": "CircleTreeDetector",
 "language": "GDScript",
-"path": "res://src/CircleMap/CircleTreeDetector.gd"
+"path": "res://src/Fire/CircleTreeDetector.gd"
 }, {
 "base": "Label",
 "class": "DamageLabel",
@@ -180,16 +180,6 @@ _global_script_classes=[ {
 "path": "res://src/Player/Actions/PlayerPullAction.gd"
 }, {
 "base": "Node2D",
-"class": "Road",
-"language": "GDScript",
-"path": "res://src/CircleMap/Road.gd"
-}, {
-"base": "BaseTreeDetector",
-"class": "RoadTreeDetector",
-"language": "GDScript",
-"path": "res://src/CircleMap/RoadTreeDetector.gd"
-}, {
-"base": "Node2D",
 "class": "Sensors",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/Sensors.gd"
@@ -202,7 +192,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "SpawnerProgram",
 "language": "GDScript",
-"path": "res://src/GameManager/SpawnerProgram.gd"
+"path": "res://src/Fire/SpawnerProgram.gd"
 }, {
 "base": "Area2D",
 "class": "SwordArea",
@@ -217,9 +207,10 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Torch",
 "language": "GDScript",
-"path": "res://src/CircleMap/Torch.gd"
+"path": "res://src/Fire/Torch.gd"
 } ]
 _global_script_class_icons={
+"ArrayUtils": "",
 "Arrow": "",
 "Background": "",
 "BaseTree": "",
@@ -229,7 +220,6 @@ _global_script_class_icons={
 "ButtonHintActivator": "",
 "CircleFire": "",
 "CircleMap": "",
-"CircleRes": "",
 "CircleTreeDetector": "",
 "DamageLabel": "",
 "Drawing": "",
@@ -254,8 +244,6 @@ _global_script_class_icons={
 "PlayerInput": "",
 "PlayerPosition": "",
 "PlayerPullAction": "",
-"Road": "",
-"RoadTreeDetector": "",
 "Sensors": "",
 "Skelly": "",
 "SpawnerProgram": "",
@@ -278,6 +266,11 @@ SoundManager="*res://src/GameManager/SoundManager.gd"
 TreeModulationNoise="*res://src/Level/TreeModulationNoise.gd"
 SceneChanger="*res://src/GameManager/SceneChanger.tscn"
 Random="*res://src/Utils/Random.gd"
+LightZoneManager="*res://src/GameManager/LightZoneManager.gd"
+
+[debug]
+
+settings/profiler/max_functions=65535
 
 [display]
 

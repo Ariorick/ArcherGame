@@ -19,22 +19,17 @@ export var current_radius: float = 70.0
 var active = false
 var player_near: bool = false
 
+func is_lit(v: Vector2) -> bool:
+	return (v - global_position).length() < current_radius
+
 func _ready():
+	LightZoneManager.add_light_source(self)
 	get_torch_hint.conditions_met_ref = funcref(self, "can_refill_torch")
 	get_torch_hint.action = "use"
 	get_torch_hint.connect("action_just_pressed", self, "refill_torch")
-#	ignite_hint.conditions_met_ref = funcref(self, "can_refill_torch")
-#	ignite_hint.action = "use"
-#	ignite_hint.connect("action_just_pressed", self, "refill_torch")
 	
 	$EnemySpawner.connect("level_finished", self, "level_finished")
 	$EnemySpawner.connect("enemy_died", self, "enemy_died")
-	
-#	var particles_scale = circle.radius / 165.0 * Circle.MIN_ACTIVE_RADIUS
-#	var particles_position = particles_scale * -256.0
-#	$MinRadiusParticles.scale = Vector2(particles_scale, particles_scale)
-#	$MinRadiusParticles.position = Vector2(particles_position, particles_position)
-#	$MinRadiusParticles.process_material.scale = 1/particles_scale
 
 func _process(delta):
 	update()
