@@ -6,4 +6,4 @@ func _ready():
 	set_hitpoints(20)
 	mass = 1.0
 	linear_damp = 1.5
-	damage_treshold = 50
+	damage_treshold = 5

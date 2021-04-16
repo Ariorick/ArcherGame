@@ -14,7 +14,7 @@ func is_rocks(v: Vector2):
 	return _is_black(v)
 
 func has_background(v: Vector2):
-	return _has_green(v)
+	return is_woods(v) or is_rocks(v)
 
 func _get_pixel(v: Vector2) -> Color:
 	return data.get_pixelv(v + pixel_offset)

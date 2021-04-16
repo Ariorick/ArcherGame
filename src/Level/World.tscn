@@ -163,6 +163,7 @@ format = 1
 script = ExtResource( 10 )
 
 [node name="TextureMap" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.0980392 )
 texture = ExtResource( 14 )
 script = ExtResource( 15 )
