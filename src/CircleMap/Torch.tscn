@@ -1,10 +1,10 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/CircleMap/CircleTreeDetector.gd" type="Script" id=1]
 [ext_resource path="res://assets/Tiles/tile_0121.png" type="Texture" id=2]
 [ext_resource path="res://src/CircleMap/Torch.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/Hint/ButtonHintActivator.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Enemy/Base/ParticlesBundle.gd" type="Script" id=5]
+[ext_resource path="res://src/Effects/FireEffect.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
@@ -39,124 +39,8 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Gradient" id=3]
-colors = PoolColorArray( 0.235294, 0.235294, 0.247059, 0.0823529, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
-
-[sub_resource type="Curve" id=5]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.351852, 0.933615 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
-
-[sub_resource type="ParticlesMaterial" id=7]
-flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
-spread = 64.32
-gravity = Vector3( 0, -10, 0 )
-initial_velocity = 2.0
-initial_velocity_random = 0.22
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 4.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 4 )
-
-[sub_resource type="Gradient" id=8]
-offsets = PoolRealArray( 0, 0.673913, 1 )
-colors = PoolColorArray( 1, 0.0627451, 0, 1, 1, 0.382495, 0.248878, 1, 1, 0.694118, 0, 1 )
-
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
-
-[sub_resource type="Curve" id=10]
-min_value = -200.0
-max_value = 200.0
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.157407, -76.6441 ), 0.0, 0.0, 0, 0, Vector2( 0.259259, -56.8243 ), 186.314, 186.314, 0, 0, Vector2( 0.425926, -6.37384 ), 0.0, 0.0, 0, 0, Vector2( 0.987654, -5.04514 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
-
-[sub_resource type="Curve" id=12]
-_data = [ Vector2( 0.0185185, 0.000449896 ), 0.0, 0.0, 0, 0, Vector2( 0.265432, 0.482432 ), 0.0, 0.0, 0, 0, Vector2( 0.518519, 0.946396 ), 0.0, 0.0, 0, 0, Vector2( 0.67284, 0.775225 ), 0.0, 0.0, 0, 0, Vector2( 0.719136, 0.414864 ), 0.0, 0.0, 0, 0, Vector2( 0.780864, 0.572522 ), 0.0, 0.0, 0, 0, Vector2( 0.876543, 0.167117 ), 0.0, 0.0, 0, 0, Vector2( 0.916667, 0.242343 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=13]
-curve = SubResource( 12 )
-
-[sub_resource type="ParticlesMaterial" id=14]
-lifetime_randomness = 0.2
-flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
-spread = 180.0
-flatness = 1.0
-gravity = Vector3( 0, -20, 0 )
-initial_velocity = 30.0
-initial_velocity_random = 0.93
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel_curve = SubResource( 11 )
-scale_curve = SubResource( 13 )
-color_ramp = SubResource( 9 )
-
 [sub_resource type="StreamTexture" id=15]
 load_path = "res://.import/light.png-b4bfd8d5e94c7cc29e5a179990b93667.stex"
-
-[sub_resource type="Gradient" id=16]
-offsets = PoolRealArray( 0, 0.778986, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0.396846, 0.244587, 1, 1, 0.960784, 0.592157, 1 )
-
-[sub_resource type="GradientTexture" id=17]
-gradient = SubResource( 16 )
-
-[sub_resource type="Curve" id=18]
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.342593, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.481481, 0.601014 ), 0.0, 0.0, 0, 0, Vector2( 0.564815, 0.781194 ), 0.0, 0.0, 0, 0, Vector2( 0.79321, 0.623536 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=19]
-curve = SubResource( 18 )
-
-[sub_resource type="ParticlesMaterial" id=20]
-resource_local_to_scene = true
-emission_shape = 1
-emission_sphere_radius = 2.0
-flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
-spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 15.0
-initial_velocity_random = 0.12
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle_random = 1.0
-scale_curve = SubResource( 19 )
-color_ramp = SubResource( 17 )
-
-[sub_resource type="Gradient" id=21]
-colors = PoolColorArray( 1, 0, 0, 1, 1, 0.776471, 0.376471, 0.627451 )
-
-[sub_resource type="GradientTexture" id=22]
-gradient = SubResource( 21 )
-
-[sub_resource type="Curve" id=23]
-_data = [ Vector2( 0.058642, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.296296, 0.137275 ), 0.0, 0.0, 0, 0, Vector2( 0.438272, 0.466104 ), 0.0, 0.0, 0, 0, Vector2( 0.632716, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.830247, 0.659797 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=24]
-curve = SubResource( 23 )
-
-[sub_resource type="ParticlesMaterial" id=25]
-flag_disable_z = true
-direction = Vector3( 0, -1, 0 )
-spread = 180.0
-gravity = Vector3( 0, -5, 0 )
-initial_velocity = 1.0
-initial_velocity_random = 0.07
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle = 45.0
-scale = 2.0
-scale_curve = SubResource( 24 )
-color_ramp = SubResource( 22 )
 
 [node name="Torch" type="Node2D"]
 script = ExtResource( 3 )
@@ -178,22 +62,6 @@ anims/ThrowTorchAway = SubResource( 2 )
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="SmokeParticles" type="Particles2D" parent="Visuals"]
-amount = 200
-lifetime = 5.0
-local_coords = false
-process_material = SubResource( 7 )
-
-[node name="ResetParticles" type="Particles2D" parent="Visuals"]
-modulate = Color( 1, 1, 1, 0.427451 )
-emitting = false
-amount = 70
-lifetime = 1.5
-one_shot = true
-explosiveness = 1.0
-local_coords = false
-process_material = SubResource( 14 )
-
 [node name="Light2D" type="Light2D" parent="Visuals"]
 texture = SubResource( 15 )
 color = Color( 1, 0.835294, 0.760784, 1 )
@@ -203,18 +71,7 @@ mode = 2
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 
-[node name="FireParticles" type="Node2D" parent="Visuals"]
-script = ExtResource( 5 )
-
-[node name="FireParticles" type="Particles2D" parent="Visuals/FireParticles"]
-modulate = Color( 1, 1, 1, 0.427451 )
-position = Vector2( 0, 2 )
-amount = 30
-local_coords = false
-process_material = SubResource( 20 )
-
-[node name="FirePartcles2" type="Particles2D" parent="Visuals/FireParticles"]
-process_material = SubResource( 25 )
+[node name="FireEffect" parent="Visuals" instance=ExtResource( 5 )]
 
 [node name="PickupHintActivator" parent="." instance=ExtResource( 4 )]
 button_text = "E"

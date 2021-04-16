@@ -88,6 +88,7 @@ texture = ExtResource( 2 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+rect = Rect2( -15, -25, 30, 40 )
 pause_animated_sprites = false
 process_parent = true
 physics_process_parent = true

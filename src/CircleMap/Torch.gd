@@ -17,13 +17,14 @@ const LIGHT_TEXTURE_SCALE = 0.003
 var noise: OpenSimplexNoise 
 var can_pickup_ref: FuncRef
 
+var current_radius := 0.0
 var start_time: float = -1000
 var active := false
 var flickering := false
 var on_the_ground := false
 
 onready var tween: Tween = $Tween
-onready var fire_particles : ParticlesBundle = $Visuals/FireParticles
+onready var fire_effect: FireEffect = $Visuals/FireEffect
 onready var light : Light2D = $Visuals/Light2D
 onready var sprite : Sprite = $Visuals/Sprite
 onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -41,7 +42,7 @@ func _ready():
 
 
 func reset():
-	$Visuals/ResetParticles.emitting = true
+	fire_effect.add_sparks()
 	active = true
 	start_time = OS.get_ticks_msec()
 
@@ -53,30 +54,30 @@ func put_out_fire():
 
 # TODO: monstrous func, better split into multiples
 func _process(delta):
+	update()
 	if not active:
 		light.texture_scale = 0.05
 		tree_detector.update_trees(0)
-		fire_particles.emitting = false
+		fire_effect.fire = false
 		return 
 	
 	var elapced = (OS.get_ticks_msec() - start_time) / 1000
 	
-	var radius := 0.0
 	if elapced < TIME_BEFORE_FLICKER:
 		var elapced_percent = elapced / TIME_BEFORE_FLICKER
-		radius = FLIKER_RADIUS + (FULL_RADIUS - FLIKER_RADIUS) * (1 - elapced_percent)
+		current_radius = FLIKER_RADIUS + (FULL_RADIUS - FLIKER_RADIUS) * (1 - elapced_percent)
 		light.energy = 1.0
 	elif elapced < FULL_LIFETIME:
 		var elapced_percent = (elapced - TIME_BEFORE_FLICKER) / FLIKER_LIFETIME
-		radius = MIN_RADIUS + (FLIKER_RADIUS - MIN_RADIUS) * (1 - elapced_percent)
+		current_radius = MIN_RADIUS + (FLIKER_RADIUS - MIN_RADIUS) * (1 - elapced_percent)
 		light.energy = 1.0 - get_flickering() - elapced_percent / 4
 	else:
 		active = false
 		emit_signal("finished")
 	
-	fire_particles.emitting = true
-	light.texture_scale = LIGHT_TEXTURE_SCALE * radius
-	tree_detector.update_trees(radius)
+	fire_effect.fire = true
+	light.texture_scale = LIGHT_TEXTURE_SCALE * current_radius
+	tree_detector.update_trees(current_radius)
 
 
 func on_thrown_away(direction: Vector2 = Vector2.ZERO):
@@ -115,6 +116,10 @@ func get_flickering() -> float:
 	var time = OS.get_ticks_msec()
 	return (noise.get_noise_2d(time, 0) + 1) / 5
 
+func _draw():
+	Drawing.draw_circle(self, current_radius, Color.white)
+	Drawing.draw_circle(self, FULL_RADIUS, Color.red)
+	pass
 
 func prepare_noise():
 	randomize()

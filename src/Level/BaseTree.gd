@@ -13,13 +13,13 @@ func _ready():
 	$AnimatedSprite.frame = frame_count - 1
 
 func _process(delta):
-#	modulation_growth = (TreeModulationNoise.get_modulation(global_position) + 1) / 8
+#	modulation_growth = (TreeModulationNoise.get_modulation(global_position) + 1) / 6
 #	_set_growth(current_growth)
 	pass
 
 # 0 to 1 float
 func set_growth(growth: float, author):
-	if abs(growth - current_growth) < 0.005:
+	if abs(growth - current_growth) < 0.02:
 		return
 	
 	growth_dict[author] = growth

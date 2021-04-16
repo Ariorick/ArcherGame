@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/UI/Damage/DamageLabel.gd"
 }, {
+"base": "Reference",
+"class": "Drawing",
+"language": "GDScript",
+"path": "res://src/Utils/Drawing.gd"
+}, {
 "base": "EnemyBase",
 "class": "Dummy",
 "language": "GDScript",
@@ -83,6 +88,11 @@ _global_script_classes=[ {
 "class": "EnemyBase",
 "language": "GDScript",
 "path": "res://src/Enemy/Base/EnemyBase.gd"
+}, {
+"base": "Node2D",
+"class": "FireEffect",
+"language": "GDScript",
+"path": "res://src/Effects/FireEffect.gd"
 }, {
 "base": "EnemyAction",
 "class": "FireMagicAction",
@@ -222,9 +232,11 @@ _global_script_class_icons={
 "CircleRes": "",
 "CircleTreeDetector": "",
 "DamageLabel": "",
+"Drawing": "",
 "Dummy": "",
 "EnemyAction": "",
 "EnemyBase": "",
+"FireEffect": "",
 "FireMagicAction": "",
 "FireProjectile": "",
 "FlyAroundAction": "",
@@ -265,6 +277,7 @@ CameraManager="*res://src/GameManager/CameraManager.gd"
 SoundManager="*res://src/GameManager/SoundManager.gd"
 TreeModulationNoise="*res://src/Level/TreeModulationNoise.gd"
 SceneChanger="*res://src/GameManager/SceneChanger.tscn"
+Random="*res://src/Utils/Random.gd"
 
 [display]
 
@@ -392,14 +405,14 @@ attack={
 
 [layer_names]
 
-2d_render/layer_1="player"
-2d_render/layer_2="enemy"
-2d_render/layer_3="walls"
-2d_render/layer_4="projectile"
-2d_render/layer_5="enemy_hitbox"
-2d_render/layer_6="enemy_damage_area"
-2d_render/layer_7="player_pick_area"
-2d_render/layer_10="tree"
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="walls"
+2d_physics/layer_4="player_projectile"
+2d_physics/layer_5="enemy_hitbox"
+2d_physics/layer_6="enemy_damage_area"
+2d_physics/layer_7="player_pick_area"
+2d_physics/layer_10="tree"
 
 [physics]
 
