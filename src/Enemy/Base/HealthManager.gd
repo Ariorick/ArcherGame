@@ -1,7 +1,7 @@
 extends Node2D
 class_name HealthManager
 
-const DEFAULT_INVINSIBILITY = 0.5
+const DEFAULT_INVINSIBILITY = 0.2
 
 signal on_death
 
@@ -14,6 +14,7 @@ func take_directional_damage(damage: int, direction: Vector2):
 	if is_invinsible():
 		return
 	body.apply_impulse(Vector2.ZERO, damage * 10.0 * direction.normalized())
+	CameraManager.enemy_hit_shake(direction)
 	$DamageParticles.process_material.direction = Vector3(direction.x, direction.y, 0)
 	$DamageParticles.amount = damage
 	$DamageParticles.process_material.initial_velocity = damage * 10.0/7.0

@@ -15,7 +15,12 @@ func _process(delta):
 			$Tween.interpolate_method(self, "update_darkness", current_darkness, 0, 
 				SURVIVAL_IN_DARKNESS_TIME * current_darkness, 
 				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, EFFECT_DELAY)
+			$Tween.interpolate_method(CameraManager, "set_darkness_shiver_amplitude", 
+				current_darkness / 2, 0, SURVIVAL_IN_DARKNESS_TIME * current_darkness, 
+				Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, EFFECT_DELAY)
 		else:
+			$Tween.interpolate_method(CameraManager, "set_darkness_shiver_amplitude", current_darkness, 1,
+				SURVIVAL_IN_DARKNESS_TIME * (1 - current_darkness), Tween.TRANS_LINEAR)
 			$Tween.interpolate_method(self, "update_darkness", current_darkness, 1, 
 				SURVIVAL_IN_DARKNESS_TIME * (1 - current_darkness), Tween.TRANS_LINEAR)
 		

@@ -15,7 +15,7 @@ func want_to_start() -> bool:
 func perform():
 	if not started:
 		started = true
-		offset_from_target = Random.point(10)
+		offset_from_target = Random.point_on_radius(10)
 	
 	body.add_force(Vector2.ZERO, -1 * last_walk_force)
 	last_walk_force = Vector2.ZERO

@@ -15,9 +15,13 @@ func i_range(start: int, end: int) -> int:
 func angle() -> float:
 	return _rng.randf_range(-PI, PI)
 
+# returns random point with set radius
+func point_within_radius(radius: float) -> Vector2:
+	return point_on_radius(radius) * f_range(0, 1)
+
 # returs random point with set radius
-func point(radius: float) -> Vector2:
-	return direction(0, PI / 2) * radius
+func point_on_radius(radius: float) -> Vector2:
+	return direction(0, PI) * radius
 
 # Returns float with random change less then percent_radius
 func around_pradius(value: float, percent_radius: float) -> float:
@@ -32,8 +36,8 @@ func direction(angle: float, angle_difference: float) -> Vector2:
 	var new_angle = around_fradius(angle, angle_difference)
 	return Vector2(cos(new_angle), sin(new_angle))
 
-func around_point(point: Vector2, radius: float) -> Vector2:
-	return point + point(radius)
+func around_point_on_radius(point: Vector2, radius: float) -> Vector2:
+	return point + point_on_radius(radius)
 
 func boolean(true_chance: float):
 	return _rng.randf_range(0, 1) <= true_chance

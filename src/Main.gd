@@ -24,7 +24,6 @@ func _process(delta):
 	var pos = $World.get_player().position
 #	$CameraPosition.position = pos
 	generate_around(pos)
-	print(get_viewport().size)
 
 
 func generate_around(pos: Vector2):

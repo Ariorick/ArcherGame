@@ -108,6 +108,7 @@ func _unhandled_input(event):
 
 func _on_PickArea_body_entered(arrow: Arrow):
 	if OS.get_ticks_msec() - arrow.creation_time > 600:
+		CameraManager.pick_arrow_shake(arrow.linear_velocity)
 		apply_impulse(Vector2.ZERO, arrow.linear_velocity / 10)
 		arrows.erase(arrow)
 		arrow.queue_free()
