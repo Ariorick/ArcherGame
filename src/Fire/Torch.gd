@@ -59,6 +59,7 @@ func put_out_fire():
 func _process(delta):
 	update()
 	if not active:
+		current_radius = 0.0
 		light.texture_scale = 0.05
 		tree_detector.update_trees(0)
 		fire_effect.fire = false

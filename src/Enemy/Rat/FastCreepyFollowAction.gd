@@ -1,7 +1,7 @@
 extends EnemyAction
-class_name FollowTargetAction
+class_name FastCreepyFollowAction
 
-const WALK_FORCE = 500
+const WALK_FORCE = 600
 var last_walk_force := Vector2.ZERO
 
 # override this

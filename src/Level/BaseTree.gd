@@ -13,8 +13,8 @@ func _ready():
 	$AnimatedSprite.frame = frame_count - 1
 
 func _process(delta):
-#	modulation_growth = (TreeModulationNoise.get_modulation(global_position) + 1) / 6
-#	_set_growth(current_growth)
+	modulation_growth = (TreeModulationNoise.get_modulation(global_position) + 1) / 6
+	_set_growth(current_growth)
 	pass
 
 # 0 to 1 float

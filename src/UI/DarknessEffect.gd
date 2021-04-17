@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 const SURVIVAL_IN_DARKNESS_TIME = 2
-const EFFECT_DELAY = 0.7
+const EFFECT_DELAY = 0.4
 
 var current_darkness := 0.0
 var is_lit := true

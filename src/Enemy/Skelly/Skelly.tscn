@@ -6,9 +6,10 @@
 [ext_resource path="res://src/Enemy/Skelly/Skelly.gd" type="Script" id=4]
 [ext_resource path="res://assets/Animations/Walk.tres" type="Animation" id=6]
 [ext_resource path="res://src/Enemy/Skelly/FollowTargetAction.gd" type="Script" id=7]
-[ext_resource path="res://src/Enemy/Base/ParticlesBundle.gd" type="Script" id=8]
+[ext_resource path="res://src/Effects/ParticlesBundle.gd" type="Script" id=8]
 [ext_resource path="res://src/Enemy/Skelly/JumpAttackAction.gd" type="Script" id=9]
 [ext_resource path="res://assets/Particles/circle_05.png" type="Texture" id=10]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 500.0

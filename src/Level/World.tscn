@@ -12,10 +12,11 @@
 [ext_resource path="res://src/Level/Background.gd" type="Script" id=10]
 [ext_resource path="res://src/Level/PlayerPosition.gd" type="Script" id=11]
 [ext_resource path="res://assets/Particles/drop.png" type="Texture" id=12]
-[ext_resource path="res://src/Enemy/Base/ParticlesBundle.gd" type="Script" id=13]
+[ext_resource path="res://src/Effects/ParticlesBundle.gd" type="Script" id=13]
 [ext_resource path="res://assets/MapTexture/main.png" type="Texture" id=14]
 [ext_resource path="res://src/Level/MapTexture.gd" type="Script" id=15]
 [ext_resource path="res://src/Level/CircleFire.tscn" type="PackedScene" id=16]
+
 
 [sub_resource type="TileSet" id=1]
 0/name = "tile_0060.png 0"
