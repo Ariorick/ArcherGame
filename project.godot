@@ -124,10 +124,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Skelly/FollowTargetAction.gd"
 }, {
-"base": "CanvasLayer",
+"base": "Reference",
 "class": "FpsLabel",
 "language": "GDScript",
-"path": "res://FPSLabel.gd"
+"path": "res://src/UI/FPSLabel.gd"
 }, {
 "base": "EnemyBase",
 "class": "Ghost",
