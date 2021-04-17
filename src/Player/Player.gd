@@ -20,6 +20,10 @@ func _on_DamageDetector_body_entered(body: PhysicsBody2D):
 	if body.is_in_group("enemies"):
 		take_damage()
 
+func take_directional_damage(direction: Vector2):
+	CameraManager.player_hit_shake(direction)
+	take_damage()
+
 func take_damage():
 	GameManager.player_take_damage()
 	$ColorAnimationPlayer.play("PlayerTakeDamage")

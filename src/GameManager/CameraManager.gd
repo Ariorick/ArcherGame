@@ -31,6 +31,9 @@ func set_darkness_shiver_amplitude(amplitude: float):
 func enemy_hit_shake(direction: Vector2):
 	hit_shake(direction, 1.2)
 
+func player_hit_shake(direction: Vector2):
+	hit_shake(direction, 3.0)
+
 func pick_arrow_shake(arrow_velocity: Vector2):
 	var amplitude = arrow_velocity.length() / 500
 	hit_shake(-arrow_velocity, amplitude)

@@ -1,7 +1,7 @@
 extends Area2D
 class_name FireProjectile
 
-const exploded_texture = preload("res://assets/Tiles/tile_0115.png")
+const exploded_texture = preload("res://assets/Tiles/explosion.png")
 
 const SPEED = 1
 const CORRECTION_SPEED = 0.05
@@ -18,7 +18,10 @@ func  _ready():
 
 func _physics_process(delta):
 	if not exploded:
-		direction = direction.linear_interpolate((GameManager.player_position - global_position).normalized(), get_correction_speed())
+		direction = direction.linear_interpolate(
+			(GameManager.player_position - global_position).normalized(), 
+			get_correction_speed()
+			)
 		direction = direction.normalized()
 		global_position += direction * SPEED
 	if get_lifetime_sec() > MAX_LIFETIME:
@@ -45,7 +48,7 @@ func get_lifetime_sec():
 
 func _on_FireProjectile_body_entered(body: PhysicsBody2D):
 	if body.is_in_group("player"):
-		body.take_damage()
 		var impulse = EXPLOSION_IMPULSE * (GameManager.player_position - global_position).normalized()
+		body.take_directional_damage(impulse)
 		body.apply_impulse(Vector2.ZERO, impulse)
 		explode()
