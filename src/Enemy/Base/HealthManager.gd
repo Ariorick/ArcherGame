@@ -25,6 +25,7 @@ func take_damage(damage: int):
 	if is_invinsible():
 		return
 	start_invinsibility(DEFAULT_INVINSIBILITY)
+	$ColorAnimationPlayer.stop(true)
 	$ColorAnimationPlayer.play("EnemyTakeDamage")
 	$DamageLabels.show_value(damage)
 	hitpoints -= damage

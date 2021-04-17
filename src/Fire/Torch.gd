@@ -121,8 +121,8 @@ func get_flickering() -> float:
 	return (noise.get_noise_2d(time, 0) + 1) / 5
 
 func _draw():
-	Drawing.draw_circle(self, current_radius, Color.white)
-	Drawing.draw_circle(self, FULL_RADIUS, Color.red)
+#	Drawing.draw_circle(self, current_radius, Color.white)
+#	Drawing.draw_circle(self, FULL_RADIUS, Color.red)
 	pass
 
 func prepare_noise():

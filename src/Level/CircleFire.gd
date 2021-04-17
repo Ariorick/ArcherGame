@@ -137,8 +137,8 @@ func set_camera_offset(value):
 	CameraManager.offset = value
 
 func _draw():
-	Drawing.draw_circle(self, current_radius, Color.white)
-	Drawing.draw_circle(self, radius, Color.red)
+#	Drawing.draw_circle(self, current_radius, Color.white)
+#	Drawing.draw_circle(self, radius, Color.red)
 	pass
 
 

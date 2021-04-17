@@ -101,6 +101,10 @@ func get_args() -> Dictionary:
 	}
 	return args
 
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("pull"):
+		if not arrows.empty():
+			$PullParticles.emitting = true
 
 func _on_PickArea_body_entered(arrow: Arrow):
 	if OS.get_ticks_msec() - arrow.creation_time > 600:
@@ -108,4 +112,6 @@ func _on_PickArea_body_entered(arrow: Arrow):
 		arrows.erase(arrow)
 		arrow.queue_free()
 		GameManager.player_collected_arrow()
+		if arrows.empty():
+			$PullParticles.emitting = false
 	
