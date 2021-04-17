@@ -15,14 +15,14 @@ func want_to_start() -> bool:
 func perform():
 	if not started:
 		started = true
-		offset_from_target = Random.point_on_radius(10)
+		offset_from_target = Random.point_on_radius(25)
 	
 	body.add_force(Vector2.ZERO, -1 * last_walk_force)
 	last_walk_force = Vector2.ZERO
 	
 	var desired_position = sensors.target.global_position + offset_from_target
 	
-	var walk_force = ( - body.global_position).normalized() * WALK_FORCE
+	var walk_force = (desired_position - body.global_position).normalized() * WALK_FORCE
 	if walk_force.length() > 0:
 		$AnimationPlayer.play("Walk")
 #		$StepParticles.emitting = true

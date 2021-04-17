@@ -19,7 +19,8 @@ func _ready():
 
 func _process(delta):
 	darkness_offset = Random.point_within_radius(darkness_amplitude)
-	current_camera.offset = _get_offset_sum()
+	if current_camera != null:
+		current_camera.offset = _get_offset_sum()
 
 func _get_offset_sum() -> Vector2:
 	return hit_offset + darkness_offset

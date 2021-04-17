@@ -1,17 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/Enemy/Base/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tiles/tile_0020.png" type="Texture" id=2]
 [ext_resource path="res://src/Enemy/Rat/FastCreepyFollowAction.gd" type="Script" id=3]
 [ext_resource path="res://src/Enemy/Skelly/Skelly.gd" type="Script" id=4]
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 500.0
-
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 radius = 12.7959
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 uniform bool active = false;
@@ -27,31 +24,27 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
-shader = SubResource( 2 )
+shader = SubResource( 3 )
 shader_param/active = false
 shader_param/color = Plane( 1, 1, 1, 1 )
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 4.0
 height = 1.5
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 4.0277, 2 )
 
 [node name="Rat" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/Sensors/Vision" index="0"]
-visible = false
-shape = SubResource( 3 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/Sensors/AttackRadius" index="0"]
 visible = false
 position = Vector2( 0, 24 )
 scale = Vector2( 3, 3 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="FastCreepyFollowAction" type="Node2D" parent="Brain/Actions" index="0"]
 script = ExtResource( 3 )
@@ -60,7 +53,7 @@ script = ExtResource( 3 )
 
 [node name="CharacterBody" parent="Character" index="1"]
 modulate = Color( 1, 1, 1, 1 )
-material = SubResource( 5 )
+material = SubResource( 4 )
 collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="Character/CharacterBody" index="0"]
@@ -71,9 +64,9 @@ texture = ExtResource( 2 )
 [node name="Hitbox" type="CollisionShape2D" parent="Character/CharacterBody" index="1"]
 position = Vector2( 0, 4 )
 rotation = 1.5708
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="MoveShape" type="CollisionShape2D" parent="." index="3"]
 modulate = Color( 1, 1, 1, 0.541176 )
 position = Vector2( 0, 8 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )

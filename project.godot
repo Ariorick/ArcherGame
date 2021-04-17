@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "AlarmedEmote",
+"language": "GDScript",
+"path": "res://src/Effects/AlarmedEmote.gd"
+}, {
 "base": "Node",
 "class": "ArrayUtils",
 "language": "GDScript",
@@ -52,7 +57,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "CircleFire",
 "language": "GDScript",
-"path": "res://src/Level/CircleFire.gd"
+"path": "res://src/Fire/CircleFire.gd"
 }, {
 "base": "BaseTreeDetector",
 "class": "CircleTreeDetector",
@@ -210,6 +215,7 @@ _global_script_classes=[ {
 "path": "res://src/Fire/Torch.gd"
 } ]
 _global_script_class_icons={
+"AlarmedEmote": "",
 "ArrayUtils": "",
 "Arrow": "",
 "Background": "",

@@ -2,6 +2,8 @@ extends RigidBody2D
 class_name EnemyBase
 
 signal on_enemy_death
+signal on_enemy_alarmed
+
 var is_dead := false
 
 # init this in _on_ready()
@@ -30,7 +32,7 @@ func _on_HealthManager_on_death():
 	$Character/CharacterBody/Hitbox.disabled = true
 	$Character/CharacterBody.collision_layer = 0
 	set_modulate(Color(1,1,1,0.4))
-	$Brain.is_dead = true
+	$Brain.is_active = false
 	is_dead = true
 	emit_signal("on_enemy_death")
 	$QueueFreeTimer.start()
@@ -40,3 +42,12 @@ func set_hitpoints(value: int):
 
 func _on_QueueFreeTimer_timeout():
 	queue_free()
+
+func _on_surprise_animation_finished(anim_name):
+	$Brain.is_active = true
+
+func _on_Sensors_alarmed_by(target):
+	$Character/UnderCharacter/AlarmedEmote.show()
+	$SurpriseAnimationPlayer.play("Surprise")
+	yield(get_tree().create_timer(.5), "timeout")
+	emit_signal("on_enemy_alarmed", target)

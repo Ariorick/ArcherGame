@@ -45,7 +45,7 @@ func perform():
 		finished = true
 
 func is_finished() -> bool:
-	return finished
+	return finished or sensors.target == null
 
 func is_interruptable() -> bool:
 	return false

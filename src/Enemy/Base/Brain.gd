@@ -2,7 +2,7 @@ extends Node
 class_name Brain
 
 var conditions_changed: bool = true
-var is_dead: bool = false
+var is_active: bool = false
 var current_action: EnemyAction
 var possible_actions: Array = Array() # of EnemyAction
 
@@ -12,7 +12,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if is_dead:
+	if not is_active:
 		if current_action != null:
 			current_action.cancel()
 			current_action == null
