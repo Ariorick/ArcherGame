@@ -17,7 +17,6 @@
 [ext_resource path="res://src/Level/MapTexture.gd" type="Script" id=15]
 [ext_resource path="res://src/Level/CircleFire.tscn" type="PackedScene" id=16]
 
-
 [sub_resource type="TileSet" id=1]
 0/name = "tile_0060.png 0"
 0/texture = ExtResource( 1 )
@@ -107,7 +106,7 @@ curve = SubResource( 5 )
 
 [sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
-emission_box_extents = Vector3( 500, 500, 1 )
+emission_box_extents = Vector3( 200, 200, 1 )
 flag_disable_z = true
 direction = Vector3( 0, 1, 0 )
 spread = 180.0
@@ -199,7 +198,7 @@ script = ExtResource( 11 )
 
 [node name="AirParticles" type="Particles2D" parent="PlayerPosition/Weather"]
 position = Vector2( -0.574295, -86.7193 )
-amount = 5000
+amount = 1000
 lifetime = 10.0
 preprocess = 5.0
 randomness = 0.35

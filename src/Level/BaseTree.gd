@@ -19,9 +19,6 @@ func _process(delta):
 
 # 0 to 1 float
 func set_growth(growth: float, author):
-	if abs(growth - current_growth) < 0.02:
-		return
-	
 	growth_dict[author] = growth
 	growth = get_lowest_growth()
 	
