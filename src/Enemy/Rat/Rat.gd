@@ -1,7 +1,7 @@
 extends EnemyBase
-class_name Skelly
+class_name Rat
 
 func _ready():
-	tag = "Skelly"
-	set_hitpoints(50)
-	damage_treshold = 90
+	tag = "Rat"
+	set_hitpoints(20)
+	damage_treshold = 3

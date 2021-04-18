@@ -10,6 +10,11 @@ var is_dead := false
 var tag: String
 var damage_treshold: int
 
+func _ready():
+	$Brain/Sensors.set_raycast_exceptions(
+		[self, $Character/CharacterBody]
+	)
+
 # returns true if is stuck
 func arrow_entered(arrow: Arrow):
 	var arrow_velocity = arrow.linear_velocity.length()

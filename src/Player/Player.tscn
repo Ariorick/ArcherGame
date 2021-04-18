@@ -351,8 +351,7 @@ animation = "aim"
 offset = Vector2( 1, -1 )
 
 [node name="MoveShape" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, -1 )
+position = Vector2( 0, 7 )
 shape = SubResource( 25 )
 
 [node name="DamageDetector" type="Area2D" parent="."]

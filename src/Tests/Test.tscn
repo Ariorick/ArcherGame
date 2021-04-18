@@ -1,46 +1,82 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Enemy/Dummy/Dummy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/Level/BaseTree.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Enemy/Skelly/Skelly.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Enemy/Mage/Mage.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Enemy/Ghost/Ghost.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Objects/BigRock.tscn" type="PackedScene" id=6]
+
+[sub_resource type="PhysicsMaterial" id=1]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -46.0079, -58.4961 )
 
 [node name="Dummy" parent="." instance=ExtResource( 2 )]
-position = Vector2( -20.232, -17.6349 )
-
-[node name="BaseTree" parent="." instance=ExtResource( 3 )]
-position = Vector2( 81.0567, -36.7804 )
-
-[node name="BaseTree2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 122.181, -41.1988 )
+position = Vector2( -108.795, -65.7009 )
+physics_material_override = SubResource( 1 )
 
 [node name="Mage" parent="." instance=ExtResource( 4 )]
-position = Vector2( 203.47, 1.33205 )
+position = Vector2( 275.38, 0.575108 )
+physics_material_override = SubResource( 1 )
 
-[node name="Mage2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 228.28, 17.9827 )
+[node name="Ghost" parent="." instance=ExtResource( 5 )]
+position = Vector2( 206.247, -23.5253 )
+physics_material_override = SubResource( 1 )
 
-[node name="Mage3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 227.281, -22.6448 )
+[node name="Skelly" parent="." instance=ExtResource( 3 )]
+position = Vector2( 230.091, 37.7872 )
+physics_material_override = SubResource( 1 )
 
-[node name="Mage4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 247.761, -48.9528 )
+[node name="BigRock" parent="." instance=ExtResource( 6 )]
+position = Vector2( 65.4757, 85.5347 )
 
-[node name="Mage5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 259.583, -23.4774 )
+[node name="BigRock2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 76.7011, 47.5413 )
 
-[node name="Mage6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 260.582, 4.32915 )
+[node name="BigRock17" parent="." instance=ExtResource( 6 )]
+position = Vector2( -149.66, -103.071 )
 
-[node name="Mage7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 261.914, 40.2945 )
+[node name="BigRock3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 97.4248, 7.24516 )
 
-[node name="Mage8" parent="." instance=ExtResource( 4 )]
-position = Vector2( 252.257, 71.5976 )
+[node name="BigRock4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 115.558, -27.0065 )
 
-[node name="Mage9" parent="." instance=ExtResource( 4 )]
-position = Vector2( 228.613, -76.2598 )
+[node name="BigRock5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 146.356, -56.0773 )
+
+[node name="BigRock6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 186.652, -60.6826 )
+
+[node name="BigRock7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 228.963, -57.5164 )
+
+[node name="BigRock8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 267.532, -54.6382 )
+
+[node name="BigRock9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 307.54, -43.7006 )
+
+[node name="BigRock10" parent="." instance=ExtResource( 6 )]
+position = Vector2( 339.201, -17.2203 )
+
+[node name="BigRock11" parent="." instance=ExtResource( 6 )]
+position = Vector2( 363.667, 19.334 )
+
+[node name="BigRock12" parent="." instance=ExtResource( 6 )]
+position = Vector2( 378.058, 55.0248 )
+
+[node name="BigRock13" parent="." instance=ExtResource( 6 )]
+position = Vector2( 390.723, 100.79 )
+
+[node name="BigRock14" parent="." instance=ExtResource( 6 )]
+position = Vector2( 386.981, 142.525 )
+
+[node name="BigRock15" parent="." instance=ExtResource( 6 )]
+position = Vector2( 386.981, 142.525 )
+
+[node name="BigRock16" parent="." instance=ExtResource( 6 )]
+position = Vector2( 57.7043, 121.513 )

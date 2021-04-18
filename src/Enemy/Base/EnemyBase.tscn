@@ -1,19 +1,20 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/Enemy/Base/Brain.gd" type="Script" id=1]
 [ext_resource path="res://src/Enemy/Base/EnemyBase.gd" type="Script" id=2]
-[ext_resource path="res://src/Enemy/Base/Sensors.gd" type="Script" id=3]
+[ext_resource path="res://src/Enemy/Base/Sensors/Sensors.gd" type="Script" id=3]
 [ext_resource path="res://src/Effects/AlarmedEmote.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Enemy/Base/HealthManager.gd" type="Script" id=5]
+[ext_resource path="res://src/Enemy/Base/Sensors/CircularRaycastArray.gd" type="Script" id=6]
 [ext_resource path="res://assets/Animations/EnemyTakeDamage.tres" type="Animation" id=7]
 [ext_resource path="res://src/UI/Damage/FCTMgr.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=2]
 radius = 70.0
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 uniform bool active = false;
@@ -29,20 +30,20 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
-shader = SubResource( 2 )
+shader = SubResource( 3 )
 shader_param/active = false
 shader_param/color = Plane( 1, 1, 1, 1 )
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.713768, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.710145, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
 emission_box_extents = Vector3( 3, 3, 0 )
 flag_disable_z = true
@@ -52,10 +53,9 @@ gravity = Vector3( 0, 20, 0 )
 initial_velocity = 30.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color_ramp = SubResource( 5 )
+color_ramp = SubResource( 6 )
 
-[sub_resource type="Animation" id=7]
-resource_name = "Surprise"
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Character/CharacterBody:position")
 tracks/0/interp = 1
@@ -95,6 +95,7 @@ script = ExtResource( 2 )
 script = ExtResource( 1 )
 
 [node name="Sensors" type="Node2D" parent="Brain"]
+position = Vector2( 0, 8 )
 script = ExtResource( 3 )
 
 [node name="Vision" type="Area2D" parent="Brain/Sensors"]
@@ -103,9 +104,12 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/Sensors/Vision"]
 visible = false
-shape = SubResource( 8 )
+shape = SubResource( 2 )
 
 [node name="AttackRadius" type="Area2D" parent="Brain/Sensors"]
+
+[node name="CircularRaycasts" type="Node2D" parent="Brain/Sensors"]
+script = ExtResource( 6 )
 
 [node name="Actions" type="Node2D" parent="Brain"]
 
@@ -119,7 +123,7 @@ shape = SubResource( 8 )
 "enemy_hitbox",
 ]]
 modulate = Color( 1, 0, 0, 1 )
-material = SubResource( 3 )
+material = SubResource( 4 )
 collision_layer = 16
 collision_mask = 4
 
@@ -139,7 +143,7 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 local_coords = false
-process_material = SubResource( 6 )
+process_material = SubResource( 7 )
 
 [node name="DamageLabels" parent="HealthManager" instance=ExtResource( 8 )]
 position = Vector2( 0, -8 )
@@ -147,9 +151,7 @@ position = Vector2( 0, -8 )
 [node name="QueueFreeTimer" type="Timer" parent="."]
 
 [node name="SurpriseAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Surprise = SubResource( 7 )
-[connection signal="alarmed_by" from="Brain/Sensors" to="." method="_on_Sensors_alarmed_by"]
-[connection signal="conditions_changed" from="Brain/Sensors" to="Brain" method="_on_Sensors_conditions_changed"]
+anims/Surprise = SubResource( 8 )
 [connection signal="body_entered" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_entered"]
 [connection signal="body_exited" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_exited"]
 [connection signal="body_entered" from="Brain/Sensors/AttackRadius" to="Brain/Sensors" method="_on_AttackRadius_body_entered"]

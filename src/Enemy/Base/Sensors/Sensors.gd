@@ -11,6 +11,12 @@ var in_range: bool = false
 # set this!
 var parent_enemy: PhysicsBody2D
 
+func get_directions() -> Array:
+	return $CircularRaycasts.get_directions()
+
+func set_raycast_exceptions(exceptions: Array):
+	 $CircularRaycasts.set_exceptions(exceptions)
+
 func _on_Vision_body_entered(body: PhysicsBody2D):
 	if body.is_in_group("player"):
 		target_found(body)
