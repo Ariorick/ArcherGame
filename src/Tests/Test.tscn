@@ -1,34 +1,26 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/Enemy/Dummy/Dummy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/Enemy/Skelly/Skelly.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Enemy/Rat/Rat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Enemy/Mage/Mage.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Enemy/Ghost/Ghost.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/BigRock.tscn" type="PackedScene" id=6]
-
-[sub_resource type="PhysicsMaterial" id=1]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -46.0079, -58.4961 )
+position = Vector2( -191.587, -51.0574 )
 
-[node name="Dummy" parent="." instance=ExtResource( 2 )]
-position = Vector2( -108.795, -65.7009 )
-physics_material_override = SubResource( 1 )
+[node name="Rat" parent="." instance=ExtResource( 2 )]
+position = Vector2( -91.3768, -43.4414 )
+
+[node name="Rat2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -91.3768, -43.4414 )
+
+[node name="Rat3" parent="." instance=ExtResource( 2 )]
+position = Vector2( -91.3768, -43.4414 )
 
 [node name="Mage" parent="." instance=ExtResource( 4 )]
-position = Vector2( 275.38, 0.575108 )
-physics_material_override = SubResource( 1 )
-
-[node name="Ghost" parent="." instance=ExtResource( 5 )]
-position = Vector2( 206.247, -23.5253 )
-physics_material_override = SubResource( 1 )
-
-[node name="Skelly" parent="." instance=ExtResource( 3 )]
-position = Vector2( 230.091, 37.7872 )
-physics_material_override = SubResource( 1 )
+position = Vector2( -236.182, 0.499329 )
 
 [node name="BigRock" parent="." instance=ExtResource( 6 )]
 position = Vector2( 65.4757, 85.5347 )

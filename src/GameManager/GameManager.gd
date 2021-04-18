@@ -45,7 +45,10 @@ func player_collected_arrow():
 	emit_signal("arrow_count_changed")
 
 func can_shoot():
-	return arrow_count > 0
+	return arrow_count > 0 and not is_holding_torch
+
+func can_dash():
+	return not is_holding_torch 
 
 func player_picked_torch():
 	is_holding_torch = true

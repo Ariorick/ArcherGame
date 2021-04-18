@@ -17,6 +17,7 @@ func want_to_start() -> bool:
 	var dash_available = (
 		OS.get_ticks_msec() - last_dash_time > DASH_TIMEOUT 
 		and PlayerInput.get_direction().length() != 0
+		and GameManager.can_dash()
 	)
 	return Input.is_action_just_pressed("dash") and dash_available
 

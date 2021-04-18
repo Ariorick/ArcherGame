@@ -33,8 +33,9 @@ shader_param/color = Plane( 1, 1, 1, 1 )
 radius = 4.0
 height = 1.5
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 4.0277, 2 )
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 3.0
+height = 4.0
 
 [node name="Rat" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
@@ -44,6 +45,11 @@ visible = false
 position = Vector2( 0, 24 )
 scale = Vector2( 3, 3 )
 shape = SubResource( 1 )
+
+[node name="SteeringAction" parent="Brain/Actions" index="0"]
+preferred_distance = 20.0
+distance_variation = 15.0
+walk_force = 601.0
 
 [node name="CharacterBody" parent="Character" index="1"]
 modulate = Color( 1, 1, 1, 1 )
@@ -63,4 +69,5 @@ shape = SubResource( 4 )
 [node name="MoveShape" type="CollisionShape2D" parent="." index="3"]
 modulate = Color( 1, 1, 1, 0.541176 )
 position = Vector2( 0, 8 )
+rotation = 1.5708
 shape = SubResource( 5 )

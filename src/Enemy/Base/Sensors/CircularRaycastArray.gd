@@ -18,13 +18,14 @@ func _ready():
 func _process(delta):
 	update()
 
-func get_directions(rays: Array) -> Array:
+func get_directions() -> Array:
 	var directions: Array
 	for ray in rays:
 		directions.append(get_direction(ray))
 	return directions
 
 func get_direction(raycast: RayCast2D) -> Direction:
+	raycast.force_raycast_update()
 	return Direction.new(
 		raycast.rotation,
 		get_distance(raycast),
@@ -46,12 +47,5 @@ func add_exceptions(raycast: RayCast2D, exceptions):
 		raycast.add_exception(exception)
 
 func _draw():
-	var scale = 0.3
-	Drawing.draw_circle(self, RAY_DISTANCE * scale, Color.wheat)
-	var directions = get_directions(rays)
-	for dir in directions:
-		draw_line(
-			Vector2.ZERO, 
-			dir.get_vector() * scale, 
-			Color.white
-			)
+#	Drawing.draw_directions(self, get_directions(), Color.white)
+	pass

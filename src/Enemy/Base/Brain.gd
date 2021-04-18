@@ -38,6 +38,6 @@ func _on_Sensors_conditions_changed():
 
 func add_actions():
 	for kid in $Actions.get_children():
-		if kid is EnemyAction:
+		if kid is EnemyAction and kid.visible:
 			possible_actions.append(kid)
 

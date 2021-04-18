@@ -47,7 +47,7 @@ func get_lifetime_sec():
 	return (OS.get_ticks_msec() - creation_time) / 1000
 
 func _on_FireProjectile_body_entered(body: PhysicsBody2D):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not exploded:
 		var impulse = EXPLOSION_IMPULSE * (GameManager.player_position - global_position).normalized()
 		body.take_directional_damage(impulse)
 		body.apply_impulse(Vector2.ZERO, impulse)

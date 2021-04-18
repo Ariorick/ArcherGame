@@ -10,6 +10,11 @@ func _process(delta):
 		if get_parent().linear_velocity.length() > 0:
 			torch.position = get_parent().linear_velocity.normalized() * 5
 
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("throw_torch"):
+		if torch != null:
+			throw_torch()
+
 func get_or_refill_torch():
 	if torch == null:
 		add_new_torch()

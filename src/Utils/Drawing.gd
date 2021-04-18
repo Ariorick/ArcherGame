@@ -16,3 +16,31 @@ static func draw_circle(node: Node2D, radius: float, color: Color):
 		var v = Vector2(sin(phi), cos(phi))
 		points.push_back(v * radius)
 	node.draw_polyline(points, color)
+
+static func draw_vectors_in_circle(
+		node: Node2D, 
+		scale: float,
+		vectors: Array, 
+		color: Color
+	):
+	var max_length := 1
+	for v in vectors:
+		max_length = max(v.length(), max_length)
+	for v in vectors:
+		node.draw_line(
+			Vector2.ZERO, 
+			v* scale, 
+			color
+			)
+		draw_circle(node, max_length * scale, color)
+
+static func draw_directions(
+		node: Node2D, 
+		directions: Array, 
+		color: Color
+	):
+	var vectors := Array()
+	for dir in directions:
+		vectors.append(dir.get_vector())
+	draw_vectors_in_circle(node, 0.3, vectors, color)
+
