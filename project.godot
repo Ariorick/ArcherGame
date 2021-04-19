@@ -99,11 +99,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Base/EnemyBase.gd"
 }, {
-"base": "EnemyAction",
-"class": "FastCreepyFollowAction",
-"language": "GDScript",
-"path": "res://src/Enemy/Rat/FastCreepyFollowAction.gd"
-}, {
 "base": "Node2D",
 "class": "FireEffect",
 "language": "GDScript",
@@ -258,7 +253,6 @@ _global_script_class_icons={
 "Dummy": "",
 "EnemyAction": "",
 "EnemyBase": "",
-"FastCreepyFollowAction": "",
 "FireEffect": "",
 "FireMagicAction": "",
 "FireProjectile": "",

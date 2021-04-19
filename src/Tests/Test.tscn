@@ -8,19 +8,22 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( -191.587, -51.0574 )
+position = Vector2( 202.836, 66.8408 )
 
 [node name="Rat" parent="." instance=ExtResource( 2 )]
-position = Vector2( -91.3768, -43.4414 )
+position = Vector2( 303.046, 74.4568 )
 
 [node name="Rat2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -91.3768, -43.4414 )
+position = Vector2( 241.625, 16.5449 )
 
 [node name="Rat3" parent="." instance=ExtResource( 2 )]
-position = Vector2( -91.3768, -43.4414 )
+position = Vector2( 269.045, 130.614 )
 
 [node name="Mage" parent="." instance=ExtResource( 4 )]
-position = Vector2( -236.182, 0.499329 )
+position = Vector2( 158.241, 118.398 )
+
+[node name="Mage2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 283.285, 25.508 )
 
 [node name="BigRock" parent="." instance=ExtResource( 6 )]
 position = Vector2( 65.4757, 85.5347 )
@@ -72,3 +75,39 @@ position = Vector2( 386.981, 142.525 )
 
 [node name="BigRock16" parent="." instance=ExtResource( 6 )]
 position = Vector2( 57.7043, 121.513 )
+
+[node name="BigRock18" parent="." instance=ExtResource( 6 )]
+position = Vector2( 57.7043, 121.513 )
+
+[node name="BigRock19" parent="." instance=ExtResource( 6 )]
+position = Vector2( 64.8496, 157.954 )
+
+[node name="BigRock20" parent="." instance=ExtResource( 6 )]
+position = Vector2( 94.1455, 199.397 )
+
+[node name="BigRock21" parent="." instance=ExtResource( 6 )]
+position = Vector2( 126.3, 222.262 )
+
+[node name="BigRock22" parent="." instance=ExtResource( 6 )]
+position = Vector2( 126.3, 222.262 )
+
+[node name="BigRock23" parent="." instance=ExtResource( 6 )]
+position = Vector2( 162.741, 245.128 )
+
+[node name="BigRock24" parent="." instance=ExtResource( 6 )]
+position = Vector2( 196.324, 260.847 )
+
+[node name="BigRock25" parent="." instance=ExtResource( 6 )]
+position = Vector2( 238.482, 268.707 )
+
+[node name="BigRock26" parent="." instance=ExtResource( 6 )]
+position = Vector2( 282.068, 261.562 )
+
+[node name="BigRock27" parent="." instance=ExtResource( 6 )]
+position = Vector2( 324.226, 245.842 )
+
+[node name="BigRock28" parent="." instance=ExtResource( 6 )]
+position = Vector2( 357.094, 225.835 )
+
+[node name="BigRock29" parent="." instance=ExtResource( 6 )]
+position = Vector2( 382.103, 185.821 )
