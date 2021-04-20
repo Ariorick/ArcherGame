@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/Objects/BasePlant.gd" type="Script" id=2]
+[ext_resource path="res://assets/Shaders/GrassWave.shader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/speed = 0.8
+shader_param/minStrength = 0.0
+shader_param/maxStrength = 0.282
+shader_param/strengthScale = 10.0
+shader_param/interval = 1.0
+shader_param/detail = 1.0
+shader_param/distortion = 0.435
+shader_param/heightOffset = 0.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 1.0
+
+[node name="BasePlant" type="Area2D"]
+material = SubResource( 1 )
+collision_layer = 512
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]

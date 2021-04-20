@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "BaseTree",
 "language": "GDScript",
-"path": "res://src/Level/BaseTree.gd"
+"path": "res://src/Objects/BasePlant.gd"
 }, {
 "base": "Area2D",
 "class": "BaseTreeDetector",
