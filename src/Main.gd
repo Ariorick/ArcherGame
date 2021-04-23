@@ -12,7 +12,7 @@ func _ready():
 	$World.chunk_size = chunk_size
 
 #	var camera_zoom = $CameraPosition/Camera2D.zoom
-	var camera_zoom = 0.4
+	var camera_zoom = 1.0
 	var screen_size = get_viewport().size * camera_zoom
 
 	lookaround = Vector2(

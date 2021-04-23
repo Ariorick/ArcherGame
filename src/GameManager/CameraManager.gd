@@ -9,6 +9,7 @@ var current_camera: Camera2D
 
 var noise: OpenSimplexNoise
 var tween = Tween.new()
+var offset := Vector2(0, -48)
 var hit_offset := Vector2.ZERO
 var darkness_amplitude := 0.0
 var darkness_offset := Vector2.ZERO
@@ -18,12 +19,12 @@ func _ready():
 	add_child(tween)
 
 func _process(delta):
-	darkness_offset = Random.point_within_radius(darkness_amplitude)
+#	darkness_offset = Random.point_within_radius(darkness_amplitude)
 	if current_camera != null:
 		current_camera.offset = _get_offset_sum()
 
 func _get_offset_sum() -> Vector2:
-	return hit_offset + darkness_offset
+	return offset + hit_offset + darkness_offset
 
 func set_darkness_shiver_amplitude(amplitude: float):
 	darkness_amplitude = amplitude

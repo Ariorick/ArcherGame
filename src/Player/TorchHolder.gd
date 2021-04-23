@@ -1,6 +1,7 @@
 extends Node2D
 
 const TorchScene = preload("res://src/Fire/Torch.tscn")
+const TORCH_MOVEMENT_CIRCLE_RADIUS = 8
 
 var torch: Torch
 var can_pickup_torch_ref = funcref(self, "can_pickup_torch")
@@ -8,7 +9,7 @@ var can_pickup_torch_ref = funcref(self, "can_pickup_torch")
 func _process(delta):
 	if torch != null:
 		if get_parent().linear_velocity.length() > 0:
-			torch.position = get_parent().linear_velocity.normalized() * 5
+			torch.position = get_parent().linear_velocity.normalized() * TORCH_MOVEMENT_CIRCLE_RADIUS
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("throw_torch"):

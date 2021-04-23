@@ -1,12 +1,13 @@
 extends RigidBody2D
 class_name Player
 
-const PLAYER_CENTER = Vector2(0, 4.3)
-const WALK_FORCE = 450
+const PLAYER_CENTER = Vector2(0, -8)
+const WALK_FORCE = 650
 const AIMING_MOVEMENT_SPEED_MODIFIER = 0.5
 const PULLING_MOVEMENT_SPEED_MODIFIER = 0.65
 
 var last_walk_force := Vector2.ZERO
+var last_move_direction := Vector2.ZERO
 
 var arrows: Array # of Arrow
 var possible_actions: Array # of PlayerAction
@@ -41,7 +42,9 @@ func _ready():
 	]
 
 func _process(delta):
-	$BowSprite.visible = can_shoot()
+#	$BowSprite.visible = can_shoot()
+	$BowSprite.visible = false
+
 	$AccelerationParticlesBundle.emitting = linear_velocity.length() > 30
 
 func _physics_process(delta):
@@ -85,18 +88,41 @@ func walk(speed_modifier: float):
 	var is_walking = not current_action is PlayerDashAction and linear_velocity.length() > 1
 	$StepParticles/Left.emitting = is_walking
 	$StepParticles/Right.emitting = is_walking
-	if is_walking:
-		$AnimationPlayer.play("Walk")
+#	if is_walking:
+#		$AnimationPlayer.play("Walk")
 	
 	add_force(Vector2.ZERO, -1 * last_walk_force)
 	last_walk_force = Vector2.ZERO
 	var direction = PlayerInput.get_direction()
+	
+	select_animation(is_walking and direction.length() > 0, direction, linear_velocity)
 	if direction.length() == 0:
 		return
 	
 	var walk_force = direction * WALK_FORCE * speed_modifier
 	add_force(Vector2.ZERO, walk_force)
 	last_walk_force = walk_force
+	last_move_direction = direction
+
+func select_animation(is_walking: bool, move_direction: Vector2, speed: Vector2):
+	move_direction = move_direction.normalized()
+	speed = speed.normalized()
+	if move_direction != Vector2.ZERO:
+		$AnimatedSprite.play("run_" + get_direction_name(move_direction))
+	else:
+		$AnimatedSprite.play(get_direction_name(last_move_direction))
+
+
+func get_direction_name(direction: Vector2) -> String:
+	if direction.y >= 0.707:
+		return "down"
+	elif direction.y <= -0.707:
+		return "up"
+	elif direction.x <= -0.707:
+		return "left"
+	elif direction.x >= 0.707:
+		return "right"
+	return "down"
 
 
 func get_args() -> Dictionary:

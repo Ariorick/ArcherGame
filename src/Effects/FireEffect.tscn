@@ -3,7 +3,6 @@
 [ext_resource path="res://src/Effects/FireEffect.gd" type="Script" id=1]
 [ext_resource path="res://src/Effects/ParticlesBundle.gd" type="Script" id=2]
 
-
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.235294, 0.235294, 0.247059, 0.0823529, 1, 1, 1, 0 )
 
@@ -123,10 +122,10 @@ scale_curve = SubResource( 21 )
 color_ramp = SubResource( 19 )
 
 [node name="FireEffect" type="Node2D"]
-visible = false
 script = ExtResource( 1 )
 
 [node name="SmokeParticles" type="Particles2D" parent="."]
+scale = Vector2( 2, 2 )
 amount = 100
 lifetime = 3.0
 local_coords = false
@@ -134,6 +133,7 @@ process_material = SubResource( 5 )
 
 [node name="ResetParticles" type="Particles2D" parent="."]
 modulate = Color( 1, 1, 1, 0.427451 )
+scale = Vector2( 2, 2 )
 emitting = false
 amount = 70
 lifetime = 1.5
@@ -146,11 +146,13 @@ process_material = SubResource( 12 )
 script = ExtResource( 2 )
 emitting = true
 
-[node name="FireParticles" type="Particles2D" parent="FireParticles"]
+[node name="FireSparkles" type="Particles2D" parent="FireParticles"]
 modulate = Color( 1, 1, 1, 0.427451 )
+scale = Vector2( 2, 2 )
 amount = 30
 local_coords = false
 process_material = SubResource( 17 )
 
 [node name="FirePartcles2" type="Particles2D" parent="FireParticles"]
+scale = Vector2( 2, 2 )
 process_material = SubResource( 22 )

@@ -24,6 +24,7 @@ script = ExtResource( 1 )
 anims/Darkness = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_right = 339.0
 margin_bottom = 198.0
 color = Color( 0, 0, 0, 0 )

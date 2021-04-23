@@ -35,8 +35,8 @@ func can_place_tree(x, y):
 	if not textureMap.is_woods(get_poisiton_for_cell(x, y)):
 		return false
 	
-	var xmod = int(abs(x + int(abs(y)) % 2)) % 2
-	var ymod2 = int(abs(y)) % 2
+	var xmod = int(abs(x + int(abs(y)) % 4)) % 4
+	var ymod2 = int(abs(y)) % 4
 	return xmod + ymod2 == 0
 
 func can_place_rock(x, y):
