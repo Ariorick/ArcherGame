@@ -184,7 +184,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Player/PlayerInput.gd"
 }, {
-"base": "Node2D",
+"base": "Spatial",
 "class": "PlayerPosition",
 "language": "GDScript",
 "path": "res://src/Level/PlayerPosition.gd"
@@ -224,7 +224,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Player/SwordArea.gd"
 }, {
-"base": "Sprite",
+"base": "Sprite3D",
 "class": "TextureMap",
 "language": "GDScript",
 "path": "res://src/Level/MapTexture.gd"
@@ -443,6 +443,7 @@ attack={
 
 [rendering]
 
-quality/2d/use_pixel_snap=true
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
+quality/2d/use_pixel_snap=true
