@@ -12,7 +12,7 @@ func generate(from: Vector2, to: Vector2):
 	for x in range(from.x, to.x):
 		for y in range(from.y, to.y):
 			try_create_tree_at(x, y)
-			try_create_rock_at(x, y)
+#			try_create_rock_at(x, y)
 
 func try_create_tree_at(x, y):
 	if not can_place_tree(x, y):
@@ -32,8 +32,9 @@ func try_create_rock_at(x, y):
 	rock.position = get_poisiton_for_cell_with_random(x, y)
 
 func can_place_tree(x, y):
-	if not textureMap.is_woods(get_poisiton_for_cell(x, y)):
-		return false
+#	commented this to fill everything with trees
+#	if not textureMap.is_woods(get_poisiton_for_cell(x, y)):
+#		return false
 	
 	var xmod = int(abs(x + int(abs(y)) % 4)) % 4
 	var ymod2 = int(abs(y)) % 4

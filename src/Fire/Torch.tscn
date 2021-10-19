@@ -63,7 +63,6 @@ anims/ThrowTorchAway = SubResource( 2 )
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Light2D" type="Light2D" parent="Visuals"]
-visible = false
 texture = SubResource( 3 )
 color = Color( 1, 0.835294, 0.760784, 1 )
 mode = 2
@@ -77,5 +76,6 @@ texture = ExtResource( 3 )
 [node name="PickupHintActivator" parent="." instance=ExtResource( 1 )]
 button_text = "E"
 goal_text = "pick up"
+
 [connection signal="area_entered" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_entered"]
 [connection signal="area_exited" from="TreeDetector" to="TreeDetector" method="_on_TreeDetector_area_exited"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Level/BaseTree.gd" type="Script" id=1]
-[ext_resource path="res://assets/flat/tree.png" type="Texture" id=2]
+[ext_resource path="res://assets/flat/blue_leaves_with_shade.png" type="Texture" id=2]
 [ext_resource path="res://assets/Shaders/GrassWave.shader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -29,7 +29,7 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-offset = Vector2( 0, -40 )
+offset = Vector2( 0, -15 )
 
 [node name="Tween" type="Tween" parent="."]
 

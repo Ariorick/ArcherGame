@@ -27,6 +27,7 @@ anims/Darkness = SubResource( 1 )
 visible = false
 margin_right = 339.0
 margin_bottom = 198.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false

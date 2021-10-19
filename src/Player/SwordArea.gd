@@ -6,9 +6,9 @@ func _physics_process(delta):
 	var direction = PlayerInput.get_mouse_direction(self)
 	rotation = direction.angle()
 	
-	if Input.is_action_just_pressed("attack"):
-		$SlashAnimationPlayer.play("Slash")
-		get_parent().apply_impulse(Vector2.ZERO, direction * 70)
+#	if Input.is_action_just_pressed("attack"):
+#		$SlashAnimationPlayer.play("Slash")
+#		get_parent().apply_impulse(Vector2.ZERO, direction * 70)
 
 
 

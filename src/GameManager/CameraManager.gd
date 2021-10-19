@@ -9,7 +9,7 @@ var current_camera: Camera2D
 
 var noise: OpenSimplexNoise
 var tween = Tween.new()
-var offset := Vector2(0, -48)
+var offset := Player.PLAYER_CENTER
 var hit_offset := Vector2.ZERO
 var darkness_amplitude := 0.0
 var darkness_offset := Vector2.ZERO

@@ -4,7 +4,7 @@ class_name BaseTree
 onready var tween: Tween = $Tween
 
 var growth_dict := Dictionary()
-var orientation = Vector2(sign(rand_range(-1, 1)), 1) * 1.7
+var orientation = Vector2(sign(rand_range(-1, 1)), 1) * 1.4 # last number can be used as size modifyer
 var current_growth: float = 1.0
 var modulation_growth: float = 0.0
 
