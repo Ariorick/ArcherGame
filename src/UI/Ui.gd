@@ -7,6 +7,7 @@ func _ready():
 	GameManager.connect("arrow_count_changed", self, "arrow_count_changed")
 	GameManager.connect("damage_changed", self, "damage_changed")
 	GameManager.connect("kill_count_changed", self, "kill_count_changed")
+	Inventory.connect("inventory_changed", self, "inventory_changed")
 	update()
 
 func update():
@@ -14,6 +15,12 @@ func update():
 	damage_changed()
 	player_health_changed()
 	arrow_count_changed()
+
+func inventory_changed():
+	var inventory_string := "Inventory: \n"
+	for item in Inventory.parsedItems:
+			inventory_string += item.name + " " + str(item.count) + "\n"
+	$Inventory.set_text(inventory_string)
 
 func kill_count_changed():
 	$KillCount.set_text("kills - " + str(GameManager.kill_count) + " " + get_exclamations())

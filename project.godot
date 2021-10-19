@@ -154,6 +154,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Base/HealthManager.gd"
 }, {
+"base": "Reference",
+"class": "Item",
+"language": "GDScript",
+"path": "res://src/crafting/Item.gd"
+}, {
 "base": "EnemyBase",
 "class": "Mage",
 "language": "GDScript",
@@ -274,6 +279,7 @@ _global_script_class_icons={
 "FpsLabel": "",
 "Ghost": "",
 "HealthManager": "",
+"Item": "",
 "Mage": "",
 "Noise": "",
 "ParticlesBundle": "",
