@@ -4,14 +4,12 @@ class_name Collectable
 var close_to_player: bool = false
 var mouse_hovered: bool = false
 
-# This should be overriden
-var item: int
-export var itemm: int
-
+export(String, FILE, "*.json") var item_json: String
 
 func _on_Collectable_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("attack") and mouse_hovered and close_to_player:
-		Inventory.add(item)
+		Inventory.add(item_json)
+		pass
 
 func update_state():
 	if mouse_hovered:

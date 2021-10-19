@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/crafting/Collectable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Shaders/outline.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/enabled = false
+shader_param/color = Color( 0.290196, 0.164706, 0.690196, 1 )
+shader_param/width = 3.0
+shader_param/pattern = 2
+shader_param/inside = false
+shader_param/add_margins = false
+
+[node name="Collectable" instance=ExtResource( 1 )]
+item_json = "res://src/crafting/items/Stone.json"
+
+[node name="Visuals" parent="." index="1"]
+material = SubResource( 1 )

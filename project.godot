@@ -72,12 +72,12 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Collectable",
 "language": "GDScript",
-"path": "res://src/Objects/collectables/Collectable.gd"
+"path": "res://src/crafting/Collectable.gd"
 }, {
 "base": "Node",
 "class": "CraftingStation",
 "language": "GDScript",
-"path": "res://crafting/CraftingStation.gd"
+"path": "res://src/crafting/CraftingStation.gd"
 }, {
 "base": "Label",
 "class": "DamageLabel",
@@ -229,11 +229,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Base/SteeringAction.gd"
 }, {
-"base": "Collectable",
-"class": "Stone",
-"language": "GDScript",
-"path": "res://src/Objects/collectables/stone/Stone.gd"
-}, {
 "base": "Area2D",
 "class": "SwordArea",
 "language": "GDScript",
@@ -248,11 +243,6 @@ _global_script_classes=[ {
 "class": "Torch",
 "language": "GDScript",
 "path": "res://src/Fire/Torch.gd"
-}, {
-"base": "Collectable",
-"class": "Wood",
-"language": "GDScript",
-"path": "res://src/Objects/collectables/wood/Wood.gd"
 } ]
 _global_script_class_icons={
 "AlarmedEmote": "",
@@ -299,11 +289,9 @@ _global_script_class_icons={
 "Skelly": "",
 "SpawnerProgram": "",
 "SteeringAction": "",
-"Stone": "",
 "SwordArea": "",
 "TextureMap": "",
-"Torch": "",
-"Wood": ""
+"Torch": ""
 }
 
 [application]

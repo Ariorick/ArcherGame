@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/Tiles/tile_0060.png" type="Texture" id=1]
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=2]
@@ -17,7 +17,6 @@
 [ext_resource path="res://src/Level/MapTexture.gd" type="Script" id=15]
 [ext_resource path="res://src/Fire/CircleFire.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/flat/ground_color.png" type="Texture" id=17]
-[ext_resource path="res://src/Objects/collectables/stone/Stone.tscn" type="PackedScene" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tile_0060.png 0"
@@ -184,11 +183,6 @@ tile_set = SubResource( 2 )
 cell_size = Vector2( 8, 8 )
 cell_y_sort = true
 format = 1
-
-[node name="Stone" parent="Content" instance=ExtResource( 18 )]
-position = Vector2( 58.6151, 11.8102 )
-collision_layer = 1
-collision_mask = 1
 
 [node name="Player" parent="Content" instance=ExtResource( 2 )]
 position = Vector2( 89.104, 57.7733 )

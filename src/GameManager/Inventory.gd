@@ -1,15 +1,11 @@
 extends Node
 
-enum Item {
-	STONE,
-	WOOD
-}
+var items: Dictionary # string with json path to count in inventory
 
-var items: Dictionary # item type to count
-
-
-func add(item: int, count = 1):
+func add(item: String, count = 1):
 	if items.has(item):
 		items[item] = items[item] + count
 	else:
 		items[item] = count
+
+
