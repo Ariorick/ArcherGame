@@ -1,10 +1,7 @@
 extends Node
 
 func add_by_name(name: String, count = 1):
-	for item in Inventory.item_types: 
-		if item.name.to_lower() == name.to_lower():
-			Inventory.add(item.path, count)
-			return
+	Inventory.add_by_name(name, count)
 	Console.write_line('No such item: ' + name + '!')
 
 func print_recipies():

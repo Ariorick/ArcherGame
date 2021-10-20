@@ -53,3 +53,8 @@ func init_console():
 	Console.add_command('recipies', InventoryExtensions, 'print_recipies')\
 		.set_description('Returns recepies.')\
 		.register()
+		
+	Console.add_command('craft', InventoryExtensions, 'print_recipies')\
+		.set_description('Tries to crafts item from inventory.')\
+		.register()
+

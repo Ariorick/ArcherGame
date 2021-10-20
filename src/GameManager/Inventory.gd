@@ -14,11 +14,7 @@ func add(item: String, count = 1):
 	_reparseItems()
 
 func add_by_name(name: String, count = 1):
-	for item in item_types: 
-		if item.name.to_lower() == name.to_lower():
-			add(item.path, count)
-			return
-	print('No such item: ' + name + '!')
+	add(_item_path_by_name(name), count)
 
 
 func _ready():
@@ -54,3 +50,10 @@ func _get_paths_for_items() -> Array:
 	
 	dir.list_dir_end()
 	return files
+
+func _item_path_by_name(name: String) -> String:
+	for item in Inventory.item_types: 
+		if item.name.to_lower() == name.to_lower():
+			return item.path
+	print('No such item: ' + name + '!')
+	return "NO PATH"

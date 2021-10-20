@@ -309,9 +309,10 @@ TreeModulationNoise="*res://src/Level/TreeModulationNoise.gd"
 SceneChanger="*res://src/GameManager/SceneChanger.tscn"
 Random="*res://src/Utils/Random.gd"
 LightZoneManager="*res://src/GameManager/LightZoneManager.gd"
-InventoryExtensions="*res://src/crafting/InventoryExtensions.gd"
-Inventory="*res://src/GameManager/Inventory.gd"
 Console="*res://addons/quentincaffeino/console/src/Console.tscn"
+Inventory="*res://src/GameManager/Inventory.gd"
+InventoryExtensions="*res://src/crafting/InventoryExtensions.gd"
+CraftingStation="*res://src/crafting/CraftingStation.gd"
 
 [debug]
 
