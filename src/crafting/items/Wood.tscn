@@ -18,7 +18,7 @@ shader_param/inside = false
 shader_param/add_margins = false
 
 [node name="Wood" instance=ExtResource( 1 )]
-item_json = "res://src/crafting/items/Wood.json"
+item_json = "res://src/crafting/items/wood.json"
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )

@@ -1,7 +1,0 @@
-{
-    "name": "Iron Ingot",
-    "scene": "res://src/crafting/items/IronIngot.tscn",
-    "recipe": { 
-            "res://src/crafting/items/IronOre.json": 5
-        }
-}

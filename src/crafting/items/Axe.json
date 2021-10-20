@@ -2,7 +2,7 @@
     "name": "Axe",
     "scene": "res://crafting/items/Axe.tscn",
     "recipe": {
-            "res://src/crafting/items/Stone.json": 5,
-            "res://src/crafting/items/Wood.json": 10
+            "stone": 5,
+            "wood": 10
         }
 }

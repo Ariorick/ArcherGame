@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/crafting/Collectable.gd"
 }, {
+"base": "Node",
+"class": "CraftingStation",
+"language": "GDScript",
+"path": "res://src/crafting/CraftingStation.gd"
+}, {
 "base": "Label",
 "class": "DamageLabel",
 "language": "GDScript",
@@ -149,10 +154,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Base/HealthManager.gd"
 }, {
+"base": "Node",
+"class": "InventoryUtils",
+"language": "GDScript",
+"path": "res://src/crafting/InventoryUtils.gd"
+}, {
 "base": "Reference",
 "class": "Item",
 "language": "GDScript",
 "path": "res://src/crafting/Item.gd"
+}, {
+"base": "Node",
+"class": "ItemFilesUtils",
+"language": "GDScript",
+"path": "res://src/crafting/ItemFilesUtils.gd"
 }, {
 "base": "EnemyBase",
 "class": "Mage",
@@ -258,6 +273,7 @@ _global_script_class_icons={
 "CircleTreeDetector": "",
 "CircularRaycastArray": "",
 "Collectable": "",
+"CraftingStation": "",
 "DamageLabel": "",
 "Direction": "",
 "Drawing": "",
@@ -273,7 +289,9 @@ _global_script_class_icons={
 "FpsLabel": "",
 "Ghost": "",
 "HealthManager": "",
+"InventoryUtils": "",
 "Item": "",
+"ItemFilesUtils": "",
 "Mage": "",
 "Noise": "",
 "ParticlesBundle": "",
@@ -311,8 +329,7 @@ Random="*res://src/Utils/Random.gd"
 LightZoneManager="*res://src/GameManager/LightZoneManager.gd"
 Console="*res://addons/quentincaffeino/console/src/Console.tscn"
 Inventory="*res://src/GameManager/Inventory.gd"
-InventoryExtensions="*res://src/crafting/InventoryExtensions.gd"
-CraftingStation="*res://src/crafting/CraftingStation.gd"
+ConsoleExtensions="*res://src/Utils/ConsoleExtensions.gd"
 
 [debug]
 

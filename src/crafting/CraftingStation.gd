@@ -1,10 +1,10 @@
 extends Node
-# class_name CraftingStation
+class_name CraftingStation
 # Creates crafted items based on recipes and using the materials contained in inventories
 # Inventories are dictionaries: the keys represent items, and the amount available for each of them
 
 
-func can_craft(item: Item, inventory: Dictionary, amount: int = 1) -> bool:
+static func can_craft(item: Item, inventory: Dictionary, amount: int = 1) -> bool:
 	# Returns true if a certain item can be crafted based on the inventory's content
 	var can_craft : = true
 	if amount < 1 or item.recipe.empty() or not inventory.has_all(item.recipe.keys()):
@@ -18,16 +18,16 @@ func can_craft(item: Item, inventory: Dictionary, amount: int = 1) -> bool:
 	return can_craft
 
 
-func adjust_item_recipe(item: Item, amount: int) -> Item:
+static func adjust_item_recipe(item: Item, amount: int) -> Item:
 	# Returns a new item with an adjusted recipe based on the amount of items to craft
-	var adjusted_item : = _duplicate_item(item)
+	var adjusted_item : = InventoryUtils.duplicate_item(item)
 	if amount > 1:
 		for ingredient in adjusted_item.recipe:
 			adjusted_item.recipe[ingredient] *= amount
 	return adjusted_item
 
 
-func craft(item: Item, inventory: Dictionary, amount: int = 1) -> Dictionary:
+static func craft(item: Item, inventory: Dictionary, amount: int = 1) -> Dictionary:
 	# Crafts the amount of items and consumes the required material from the inventory
 	# Returns the newly created items and an updated inventory
 	if amount < 0 or not can_craft(item, inventory, amount):
@@ -42,7 +42,7 @@ func craft(item: Item, inventory: Dictionary, amount: int = 1) -> Dictionary:
 	return items_and_inventory
 
 
-func use(item: Item, inventory: Dictionary, amount: int = 1) -> Dictionary:
+static func use(item: Item, inventory: Dictionary, amount: int = 1) -> Dictionary:
 	# Creates and returns a new inventory with used up resources required to craft item
 	var used_inventory = inventory.duplicate()
 	var ajusted_recipe = adjust_item_recipe(item, amount).recipe
@@ -54,6 +54,3 @@ func use(item: Item, inventory: Dictionary, amount: int = 1) -> Dictionary:
 			used_inventory.erase(ingredient)
 	return used_inventory
 
-
-func _duplicate_item(item: Item) -> Item:
-	return Item.new(item.path, item.count)

@@ -1,8 +1,0 @@
-{
-    "name": "Scimitar",
-    "scene": "res://crafting/items/Scimitar.tscn",
-    "recipe": {
-            "res://src/crafting/items/IronIngot.json": 3,
-            "res://src/crafting/items/SimpleSword.json": 1
-        }
-}

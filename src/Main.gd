@@ -44,17 +44,21 @@ func generate_chunk(chunk: Vector2):
 	map_cells[chunk] = true
 
 func init_console():
-	Console.add_command('add', InventoryExtensions, 'add_by_name')\
+	Console.add_command('add', ConsoleExtensions, 'add_by_id')\
 		.set_description('Adds %amount% of %resource_name% to inventory.')\
 		.add_argument('resource_name', TYPE_STRING)\
 		.add_argument('amount', TYPE_INT)\
 		.register()
-		
-	Console.add_command('recipies', InventoryExtensions, 'print_recipies')\
+	
+	Console.add_command('recipies', ConsoleExtensions, 'print_recipies')\
 		.set_description('Returns recepies.')\
 		.register()
-		
-	Console.add_command('craft', InventoryExtensions, 'print_recipies')\
+	
+	Console.add_command('types', ConsoleExtensions, 'print_item_types')\
+		.set_description('Returns recepies.')\
+		.register()
+	
+	Console.add_command('craft', ConsoleExtensions, 'print_recipies')\
 		.set_description('Tries to crafts item from inventory.')\
 		.register()
 

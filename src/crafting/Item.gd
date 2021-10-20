@@ -1,12 +1,12 @@
 class_name Item
 
-var path: String # to a json
+var id: String # to a json
 var name: String
-var recipe: Dictionary # of paths to count
+var recipe: Dictionary # of ids to count
 var count: int
 
-func _init(path_to_json: String, count := 0):
-	path = path_to_json
+func _init(path: String, count := 0):
+	id = ItemFilesUtils.id_from_path(path)
 	
 	var file = File.new()
 	file.open(path, file.READ)
