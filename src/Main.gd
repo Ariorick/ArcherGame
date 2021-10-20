@@ -9,6 +9,7 @@ var map_cells := Dictionary()
 var lookaround := Vector2()
 
 func _ready():
+	init_console()
 	$World.chunk_size = chunk_size
 
 #	var camera_zoom = $CameraPosition/Camera2D.zoom
@@ -41,4 +42,14 @@ func generate_chunk(chunk: Vector2):
 		return
 	$World.generate(chunk)
 	map_cells[chunk] = true
-	
+
+func init_console():
+	Console.add_command('add', InventoryExtensions, 'add_by_name')\
+		.set_description('Adds %amount% of %resource_name% to inventory.')\
+		.add_argument('resource_name', TYPE_STRING)\
+		.add_argument('amount', TYPE_INT)\
+		.register()
+		
+	Console.add_command('recipies', InventoryExtensions, 'print_recipies')\
+		.set_description('Returns recepies.')\
+		.register()

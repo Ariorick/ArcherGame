@@ -18,7 +18,7 @@ func update():
 
 func inventory_changed():
 	var inventory_string := "Inventory: \n"
-	for item in Inventory.parsedItems:
+	for item in Inventory.parsed_items:
 			inventory_string += item.name + " " + str(item.count) + "\n"
 	$Inventory.set_text(inventory_string)
 

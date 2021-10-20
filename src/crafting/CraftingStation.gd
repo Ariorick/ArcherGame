@@ -1,5 +1,5 @@
 extends Node
-class_name CraftingStation
+# class_name CraftingStation
 # Creates crafted items based on recipes and using the materials contained in inventories
 # Inventories are dictionaries: the keys represent items, and the amount available for each of them
 
