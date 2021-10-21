@@ -400,7 +400,7 @@ tracks/2/keys = {
 [node name="Player" type="RigidBody2D" groups=[
 "player",
 ]]
-collision_mask = 5
+collision_mask = 132
 mode = 2
 physics_material_override = SubResource( 1 )
 linear_damp = 10.0

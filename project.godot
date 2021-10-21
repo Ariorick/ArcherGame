@@ -463,6 +463,7 @@ quentincaffeino_console_history_down={
 2d_physics/layer_5="enemy_hitbox"
 2d_physics/layer_6="enemy_damage_area"
 2d_physics/layer_7="player_pick_area"
+2d_physics/layer_8="unwalkable"
 2d_physics/layer_9="mouse_hover"
 2d_physics/layer_10="tree"
 

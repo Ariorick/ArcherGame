@@ -18,7 +18,7 @@ var is_invinsible = false
 func _on_DamageDetector_body_entered(body: PhysicsBody2D):
 	if is_invinsible:
 		return
-	if body.is_in_group("enemies"):
+	if body.is_in_group("denemies"):
 		take_damage()
 
 func take_directional_damage(direction: Vector2):
