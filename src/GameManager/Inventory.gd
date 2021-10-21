@@ -4,28 +4,44 @@ signal inventory_changed
 
 var items: Dictionary # string ids to amount in inventory
 var parsed_items: Array # of Item
+var item_types: Dictionary # id to Item
 
-var item_types: Array #item
-
+# or subtract if count is < 0
 func add(item_id: String, count = 1):
+	if count == 0:
+		return 
 	if items.has(item_id):
 		items[item_id] = items[item_id] + count
+		if items[item_id] < 1:
+			items.erase(item_id)
 	else:
 		items[item_id] = count
 	_reparseItems()
 
-func add_by_path(path: String, count = 1):
-	add(ItemFilesUtils.id_from_path(path), count)
+func can_craft(item_id, count) -> bool:
+	return true
+
+func craft(item_id: String, count = 1) -> bool:
+	if CraftingStation.can_craft(Item.new(item_id), items, count):
+		items = CraftingStation.use(Item.new(item_id), items, count)
+		add(item_id, count)
+		_reparseItems()
+		return true
+	else:
+		return false
+
+func is_valid_id(item_id: String, count = 1) -> bool:
+	return item_types.keys().has(item_id)
 
 func _ready():
-	var paths = ItemFilesUtils.get_paths_for_items()
-	item_types = InventoryUtils.parse_item_types(paths)
-	pass
+	var ids = ItemFilesUtils.get_all_items_ids()
+	for id in ids:
+		item_types[id] = Item.new(id, 0)
 
 func _reparseItems():
 	parsed_items.clear()
 	for item_id in items:
-		parsed_items.append(Item.new(ItemFilesUtils.item_path_by_id(item_id), items[item_id]))
+		parsed_items.append(Item.new(item_id, items[item_id]))
 	emit_signal("inventory_changed")
 
 

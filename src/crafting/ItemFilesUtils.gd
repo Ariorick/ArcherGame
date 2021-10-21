@@ -10,7 +10,7 @@ static func id_from_path(path: String) -> String:
 	return path.substr(id_start, path.find_last(".") - id_start)
 
 
-static func get_paths_for_items() -> Array:
+static func get_all_items_ids() -> Array:
 	var files = []
 	var dir := Directory.new()
 	dir.open(DIRECTORY_PATH)
@@ -21,7 +21,7 @@ static func get_paths_for_items() -> Array:
 		if file == "":
 			break
 		elif file.ends_with(FILE_FORMAT):
-			files.append(DIRECTORY_PATH + file)
+			files.append(file.substr(0, file.find_last(".")))
 	
 	dir.list_dir_end()
 	return files

@@ -5,11 +5,11 @@ var name: String
 var recipe: Dictionary # of ids to count
 var count: int
 
-func _init(path: String, count := 0):
-	id = ItemFilesUtils.id_from_path(path)
+func _init(id: String, count := 0):
+	self.id = id
 	
 	var file = File.new()
-	file.open(path, file.READ)
+	file.open(ItemFilesUtils.item_path_by_id(id), file.READ)
 	var json = file.get_as_text()
 	file.close()
 	

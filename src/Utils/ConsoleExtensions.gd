@@ -1,9 +1,18 @@
 extends Node
 
 func add_by_id(id: String, count = 1):
-	# TODO: add check if id is valid
-	Inventory.add(id.to_lower(), count)
-#	Console.write_line('No such item: ' + id + '!')
+	if Inventory.is_valid_id(trim_input(id)):
+		Inventory.add(trim_input(id), count)
+	else:
+		Console.write_line('No such item: ' + id + '!')
+
+func craft(id: String, count = 1):
+	if Inventory.is_valid_id(trim_input(id)):
+		if not Inventory.craft(trim_input(id), count):
+			Console.write_line('Not enough resources!')
+	else:
+		Console.write_line('No such item: ' + id + '!')
+
 
 func print_recipies():
 	var result := Array()
@@ -20,5 +29,5 @@ func print_item_types():
 		result.append(item.id)
 	Console.write_line(str(result))
 
-func craft():
-	pass
+func trim_input(input: String) -> String:
+	return input.to_lower().trim_suffix(' ').trim_prefix(' ')

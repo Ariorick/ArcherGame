@@ -58,7 +58,9 @@ func init_console():
 		.set_description('Returns recepies.')\
 		.register()
 	
-	Console.add_command('craft', ConsoleExtensions, 'print_recipies')\
+	Console.add_command('craft', ConsoleExtensions, 'craft')\
 		.set_description('Tries to crafts item from inventory.')\
+		.add_argument('resource_name', TYPE_STRING)\
+		.add_argument('amount', TYPE_INT)\
 		.register()
 

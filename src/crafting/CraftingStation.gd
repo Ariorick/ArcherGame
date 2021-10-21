@@ -27,21 +27,6 @@ static func adjust_item_recipe(item: Item, amount: int) -> Item:
 	return adjusted_item
 
 
-static func craft(item: Item, inventory: Dictionary, amount: int = 1) -> Dictionary:
-	# Crafts the amount of items and consumes the required material from the inventory
-	# Returns the newly created items and an updated inventory
-	if amount < 0 or not can_craft(item, inventory, amount):
-		return { }
-	var crafted_items : = []
-	for i in amount:
-		crafted_items.append(load(item.scene).instance())
-	var items_and_inventory = { 
-		"items": crafted_items,
-		"inventory": use(item, inventory, amount)
-	}
-	return items_and_inventory
-
-
 static func use(item: Item, inventory: Dictionary, amount: int = 1) -> Dictionary:
 	# Creates and returns a new inventory with used up resources required to craft item
 	var used_inventory = inventory.duplicate()
