@@ -1,13 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/Tiles/tile_0060.png" type="Texture" id=1]
-[ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Level/Content.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Level/World.gd" type="Script" id=3]
 [ext_resource path="res://assets/Tiles/tile_0116.png" type="Texture" id=4]
 [ext_resource path="res://assets/Tiles/tile_0061.png" type="Texture" id=5]
-[ext_resource path="res://assets/Tiles/tile_0107.png" type="Texture" id=6]
-[ext_resource path="res://assets/Tiles/tile_0106.png" type="Texture" id=7]
-[ext_resource path="res://src/Enemy/Rat/Rat.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Level/TreeManager.gd" type="Script" id=9]
 [ext_resource path="res://src/Level/Background.gd" type="Script" id=10]
 [ext_resource path="res://src/Level/PlayerPosition.gd" type="Script" id=11]
@@ -15,10 +12,7 @@
 [ext_resource path="res://src/Effects/ParticlesBundle.gd" type="Script" id=13]
 [ext_resource path="res://assets/MapTexture/main.png" type="Texture" id=14]
 [ext_resource path="res://src/Level/MapTexture.gd" type="Script" id=15]
-[ext_resource path="res://src/Fire/CircleFire.tscn" type="PackedScene" id=16]
 [ext_resource path="res://assets/flat/ground_color.png" type="Texture" id=17]
-[ext_resource path="res://src/crafting/items/Stone.tscn" type="PackedScene" id=18]
-[ext_resource path="res://src/crafting/items/Wood.tscn" type="PackedScene" id=19]
 
 [sub_resource type="TileSet" id=1]
 0/name = "tile_0060.png 0"
@@ -63,36 +57,6 @@
 2/shape_one_way_margin = 0.0
 2/shapes = [  ]
 2/z_index = 0
-
-[sub_resource type="TileSet" id=2]
-2/name = "tile_0106.png 2"
-2/texture = ExtResource( 7 )
-2/tex_offset = Vector2( 0, 0 )
-2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 8, 8 )
-2/tile_mode = 0
-2/occluder_offset = Vector2( 0, 0 )
-2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
-2/z_index = 0
-3/name = "tile_0107.png 3"
-3/texture = ExtResource( 6 )
-3/tex_offset = Vector2( 0, 0 )
-3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 0, 8, 8 )
-3/tile_mode = 0
-3/occluder_offset = Vector2( 0, 0 )
-3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape_one_way = false
-3/shape_one_way_margin = 0.0
-3/shapes = [  ]
-3/z_index = 0
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.463768, 1 )
@@ -173,54 +137,13 @@ collision_mask = 0
 format = 1
 script = ExtResource( 10 )
 
+[node name="Content" parent="." instance=ExtResource( 2 )]
+
 [node name="TextureMap" type="Sprite" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.0980392 )
 texture = ExtResource( 14 )
 script = ExtResource( 15 )
-
-[node name="Content" type="TileMap" parent="."]
-z_index = 10
-tile_set = SubResource( 2 )
-cell_size = Vector2( 8, 8 )
-cell_y_sort = true
-format = 1
-
-[node name="Player" parent="Content" instance=ExtResource( 2 )]
-position = Vector2( 89.104, 57.7733 )
-
-[node name="Stone" parent="Content" instance=ExtResource( 18 )]
-position = Vector2( 139.493, -0.0431309 )
-
-[node name="Wood" parent="Content" instance=ExtResource( 19 )]
-position = Vector2( 73, 3 )
-
-[node name="CircleFire" parent="Content" instance=ExtResource( 16 )]
-position = Vector2( 127.039, 52.3164 )
-
-[node name="CircleFire2" parent="Content" instance=ExtResource( 16 )]
-position = Vector2( 621.689, -433.512 )
-
-[node name="Rat" parent="Content" instance=ExtResource( 8 )]
-position = Vector2( 295.087, -50.1406 )
-
-[node name="Rat2" parent="Content" instance=ExtResource( 8 )]
-position = Vector2( 295.087, -50.1406 )
-
-[node name="Rat3" parent="Content" instance=ExtResource( 8 )]
-position = Vector2( 349.959, -23.768 )
-
-[node name="Rat4" parent="Content" instance=ExtResource( 8 )]
-position = Vector2( 423.972, -312.165 )
-
-[node name="Rat5" parent="Content" instance=ExtResource( 8 )]
-position = Vector2( 437.584, -253.465 )
-
-[node name="Rat6" parent="Content" instance=ExtResource( 8 )]
-position = Vector2( 380.585, -251.763 )
-
-[node name="Rat7" parent="Content" instance=ExtResource( 8 )]
-position = Vector2( 659.624, -115.221 )
 
 [node name="TreeManager" type="Node2D" parent="."]
 z_index = 10

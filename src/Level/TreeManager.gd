@@ -13,6 +13,8 @@ func generate(from: Vector2, to: Vector2):
 		for y in range(from.y, to.y):
 			try_create_tree_at(x, y)
 #			try_create_rock_at(x, y)
+	var children = content.get_children()
+	pass
 
 func try_create_tree_at(x, y):
 	if not can_place_tree(x, y):

@@ -17,7 +17,7 @@ func _ready():
 
 func generate(from: Vector2, to: Vector2):
 	run_with_noise(from, to, funcref(self, "make_grass_map"))
-	run_with_noise(from, to, funcref(self, "make_graves_map"))
+#	run_with_noise(from, to, funcref(self, "make_graves_map"))
 
 func make_grass_map(x, y, value):
 	if not can_place(x, y):

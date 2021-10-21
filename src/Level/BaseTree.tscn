@@ -28,8 +28,12 @@ script = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.812336, -8.95382 )
+scale = Vector2( 0.602855, 0.685894 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, -15 )
+region_enabled = true
+region_rect = Rect2( 20, 20, 65, 65 )
 
 [node name="Tween" type="Tween" parent="."]
 

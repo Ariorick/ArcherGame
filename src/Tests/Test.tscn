@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Enemy/Rat/Rat.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/crafting/items/Stone.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Enemy/Mage/Mage.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Objects/BigRock.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,90 +29,3 @@ position = Vector2( 158.241, 118.398 )
 
 [node name="Mage2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 283.285, 25.508 )
-
-[node name="BigRock" parent="." instance=ExtResource( 6 )]
-position = Vector2( 65.4757, 85.5347 )
-
-[node name="BigRock2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 76.7011, 47.5413 )
-
-[node name="BigRock17" parent="." instance=ExtResource( 6 )]
-position = Vector2( -149.66, -103.071 )
-
-[node name="BigRock3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 97.4248, 7.24516 )
-
-[node name="BigRock4" parent="." instance=ExtResource( 6 )]
-position = Vector2( 115.558, -27.0065 )
-
-[node name="BigRock5" parent="." instance=ExtResource( 6 )]
-position = Vector2( 146.356, -56.0773 )
-
-[node name="BigRock6" parent="." instance=ExtResource( 6 )]
-position = Vector2( 186.652, -60.6826 )
-
-[node name="BigRock7" parent="." instance=ExtResource( 6 )]
-position = Vector2( 228.963, -57.5164 )
-
-[node name="BigRock8" parent="." instance=ExtResource( 6 )]
-position = Vector2( 267.532, -54.6382 )
-
-[node name="BigRock9" parent="." instance=ExtResource( 6 )]
-position = Vector2( 307.54, -43.7006 )
-
-[node name="BigRock10" parent="." instance=ExtResource( 6 )]
-position = Vector2( 339.201, -17.2203 )
-
-[node name="BigRock11" parent="." instance=ExtResource( 6 )]
-position = Vector2( 363.667, 19.334 )
-
-[node name="BigRock12" parent="." instance=ExtResource( 6 )]
-position = Vector2( 378.058, 55.0248 )
-
-[node name="BigRock13" parent="." instance=ExtResource( 6 )]
-position = Vector2( 390.723, 100.79 )
-
-[node name="BigRock14" parent="." instance=ExtResource( 6 )]
-position = Vector2( 386.981, 142.525 )
-
-[node name="BigRock15" parent="." instance=ExtResource( 6 )]
-position = Vector2( 386.981, 142.525 )
-
-[node name="BigRock16" parent="." instance=ExtResource( 6 )]
-position = Vector2( 57.7043, 121.513 )
-
-[node name="BigRock18" parent="." instance=ExtResource( 6 )]
-position = Vector2( 57.7043, 121.513 )
-
-[node name="BigRock19" parent="." instance=ExtResource( 6 )]
-position = Vector2( 64.8496, 157.954 )
-
-[node name="BigRock20" parent="." instance=ExtResource( 6 )]
-position = Vector2( 94.1455, 199.397 )
-
-[node name="BigRock21" parent="." instance=ExtResource( 6 )]
-position = Vector2( 126.3, 222.262 )
-
-[node name="BigRock22" parent="." instance=ExtResource( 6 )]
-position = Vector2( 126.3, 222.262 )
-
-[node name="BigRock23" parent="." instance=ExtResource( 6 )]
-position = Vector2( 162.741, 245.128 )
-
-[node name="BigRock24" parent="." instance=ExtResource( 6 )]
-position = Vector2( 196.324, 260.847 )
-
-[node name="BigRock25" parent="." instance=ExtResource( 6 )]
-position = Vector2( 238.482, 268.707 )
-
-[node name="BigRock26" parent="." instance=ExtResource( 6 )]
-position = Vector2( 282.068, 261.562 )
-
-[node name="BigRock27" parent="." instance=ExtResource( 6 )]
-position = Vector2( 324.226, 245.842 )
-
-[node name="BigRock28" parent="." instance=ExtResource( 6 )]
-position = Vector2( 357.094, 225.835 )
-
-[node name="BigRock29" parent="." instance=ExtResource( 6 )]
-position = Vector2( 382.103, 185.821 )

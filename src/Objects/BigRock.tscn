@@ -4,18 +4,19 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 28.9175
-height = 34.4545
+height = 66.0143
 
 [node name="BigRock" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -48 )
+position = Vector2( 5.26455, -82.7018 )
+scale = Vector2( 1.30835, 1.88135 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.240224, -25.0373 )
+position = Vector2( 1.39222, -19.7882 )
 rotation = 1.5708
 scale = Vector2( 0.8, 0.8 )
 shape = SubResource( 1 )
