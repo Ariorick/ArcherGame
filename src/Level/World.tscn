@@ -58,20 +58,20 @@
 2/shapes = [  ]
 2/z_index = 0
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.463768, 1 )
 colors = PoolColorArray( 1, 1, 1, 0.337255, 1, 1, 1, 0.262745, 1, 1, 1, 0.333333 )
 
-[sub_resource type="GradientTexture" id=4]
-gradient = SubResource( 3 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=5]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0.00925925, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.330247, 0.304955 ), 0.0, 0.0, 0, 0, Vector2( 0.506173, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.712963, 0.291441 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=6]
-curve = SubResource( 5 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=6]
 emission_shape = 2
 emission_box_extents = Vector3( 200, 200, 1 )
 flag_disable_z = true
@@ -84,10 +84,10 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 45.0
 scale = 2.0
-scale_curve = SubResource( 6 )
-color_ramp = SubResource( 4 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
 emission_box_extents = Vector3( 200, 100, 1 )
 flag_disable_z = true
@@ -99,9 +99,9 @@ initial_velocity_random = 0.28
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.2
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=9]
+[sub_resource type="ParticlesMaterial" id=8]
 lifetime_randomness = 0.18
 emission_shape = 2
 emission_box_extents = Vector3( 200, 200, 1 )
@@ -114,7 +114,7 @@ initial_velocity_random = 0.28
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.1
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 3 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 3 )
@@ -140,8 +140,9 @@ script = ExtResource( 10 )
 [node name="Content" parent="." instance=ExtResource( 2 )]
 
 [node name="TextureMap" type="Sprite" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.0980392 )
+position = Vector2( 264.182, 267.799 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
 script = ExtResource( 15 )
 
@@ -162,7 +163,7 @@ lifetime = 10.0
 preprocess = 5.0
 randomness = 0.35
 local_coords = false
-process_material = SubResource( 7 )
+process_material = SubResource( 6 )
 
 [node name="ParticlesBundle" type="Node2D" parent="PlayerPosition/Weather"]
 visible = false
@@ -175,7 +176,7 @@ lifetime = 0.1
 preprocess = 5.0
 randomness = 0.35
 local_coords = false
-process_material = SubResource( 8 )
+process_material = SubResource( 7 )
 texture = ExtResource( 12 )
 
 [node name="RainParticles2" type="Particles2D" parent="PlayerPosition/Weather/ParticlesBundle"]
@@ -185,5 +186,5 @@ lifetime = 2.0
 preprocess = 5.0
 randomness = 0.35
 local_coords = false
-process_material = SubResource( 9 )
+process_material = SubResource( 8 )
 texture = ExtResource( 12 )

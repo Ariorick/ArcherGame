@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/UI/HealthBar/HealthDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tiles/tile_0065.png" type="Texture" id=2]
 [ext_resource path="res://src/UI/Ui.gd" type="Script" id=3]
 [ext_resource path="res://src/UI/Fps/FpsLabel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/UI/styles/theme.tres" type="Theme" id=5]
+[ext_resource path="res://src/UI/styles/Kenney Pixel Square.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 6 )
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -16,7 +22,7 @@ margin_right = 8.74518
 margin_bottom = 7.75832
 
 [node name="tile_0065" type="Sprite" parent="."]
-position = Vector2( 19.6056, 53.7765 )
+position = Vector2( 22.0269, 61.5503 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
@@ -25,6 +31,7 @@ margin_left = 37.0546
 margin_top = 48.5783
 margin_right = 77.0546
 margin_bottom = 62.5783
+theme = ExtResource( 5 )
 text = "10/10"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -58,10 +65,12 @@ __meta__ = {
 }
 
 [node name="FpsLabel" parent="." instance=ExtResource( 4 )]
-margin_left = 240.0
-margin_top = 14.0
-margin_right = 240.0
-margin_bottom = 28.0
+margin_left = 227.53
+margin_top = 9.76494
+margin_right = 287.53
+margin_bottom = 32.7649
+theme = ExtResource( 5 )
+text = "50 fps"
 
 [node name="Inventory" type="Label" parent="."]
 margin_left = 12.9305
@@ -77,6 +86,8 @@ margin_left = 448.706
 margin_top = 28.957
 margin_right = 516.706
 margin_bottom = 56.957
+theme = ExtResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "30 sec "
 align = 1
 __meta__ = {

@@ -1,7 +1,6 @@
 extends Node2D
 
 const BaseTree = preload("res://src/Level/BaseTree.tscn")
-const BigRock = preload("res://src/Objects/BigRock.tscn")
 var rng = RandomNumberGenerator.new()
 
 var content: TileMap
@@ -18,37 +17,29 @@ func generate(from: Vector2, to: Vector2):
 	pass
 
 func try_create_tree_at(x, y):
-	if not can_place_tree(x, y):
+	if not can_place_tree1(x, y) and not can_place_tree2(x, y):
 		return
 	
 	var tree = BaseTree.instance()
+	if can_place_tree2(x, y):
+		tree.level = 2
 	content.add_child(tree)
 	tree.position = get_poisiton_for_cell_with_random(x, y)
 	trees[Vector2(x,y)] = tree
 
-func try_create_rock_at(x, y):
-	if not can_place_rock(x, y):
-		return
-	
-	var rock = BigRock.instance()
-	content.add_child(rock)
-	rock.position = get_poisiton_for_cell_with_random(x, y)
+func can_place_tree1(x, y) -> bool:
+	if not textureMap.is_woods1(get_poisiton_for_cell(x, y)):
+		return false
+	return can_place_tree_frequency(x, y)
 
-func can_place_tree(x, y):
-#	commented this to fill everything with trees
-#	if not textureMap.is_woods(get_poisiton_for_cell(x, y)):
-#		return false
-	
+func can_place_tree2(x, y) -> bool:
+	if not textureMap.is_woods2(get_poisiton_for_cell(x, y)):
+		return false
+	return can_place_tree_frequency(x, y)
+
+func can_place_tree_frequency(x, y) -> bool:
 	var xmod = int(abs(x + int(abs(y)) % 4)) % 2 # or 4
 	var ymod2 = int(abs(y)) % 2 # or 4
-	return xmod + ymod2 == 0
-
-func can_place_rock(x, y):
-	if not textureMap.is_rocks(get_poisiton_for_cell(x, y)):
-		return false
-	
-	var xmod = int(abs(x + int(abs(y)) % 6)) % 6
-	var ymod2 = int(abs(y)) % 3
 	return xmod + ymod2 == 0
 
 func get_poisiton_for_cell_with_random(x, y) -> Vector2:

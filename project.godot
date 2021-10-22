@@ -249,7 +249,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Player/SwordArea.gd"
 }, {
-"base": "Sprite3D",
+"base": "Sprite",
 "class": "TextureMap",
 "language": "GDScript",
 "path": "res://src/Level/MapTexture.gd"
