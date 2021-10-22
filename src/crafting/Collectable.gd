@@ -9,6 +9,7 @@ export(String, FILE, "*.json") var item_json: String
 func _on_Collectable_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("attack") and mouse_hovered and close_to_player:
 		Inventory.add(ItemFilesUtils.id_from_path(item_json))
+		queue_free()
 
 func update_state():
 	if mouse_hovered:
@@ -17,6 +18,9 @@ func update_state():
 		$Visuals.scale = Vector2(1.0, 1.0)
 		
 	$Visuals.material.set_shader_param("enabled", mouse_hovered and close_to_player)
+
+func _ready():
+	$Visuals.material.set_shader_param("color", Color(1, 1, 1, .5))
 
 func _on_Collectable_mouse_entered():
 	mouse_hovered = true

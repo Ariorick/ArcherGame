@@ -13,10 +13,10 @@
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=2]
 radius = 70.0
 
-[sub_resource type="Shader" id=10]
+[sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
 
 uniform bool active = false;
@@ -32,20 +32,20 @@ void fragment() {
 	}
 }"
 
-[sub_resource type="ShaderMaterial" id=11]
+[sub_resource type="ShaderMaterial" id=4]
 resource_local_to_scene = true
-shader = SubResource( 10 )
+shader = SubResource( 3 )
 shader_param/active = false
 shader_param/color = Plane( 1, 1, 1, 1 )
 
-[sub_resource type="Gradient" id=12]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0, 0.713768, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0.710145, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=13]
-gradient = SubResource( 12 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=14]
+[sub_resource type="ParticlesMaterial" id=7]
 emission_shape = 2
 emission_box_extents = Vector3( 3, 3, 0 )
 flag_disable_z = true
@@ -55,7 +55,7 @@ gravity = Vector3( 0, 20, 0 )
 initial_velocity = 30.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-color_ramp = SubResource( 13 )
+color_ramp = SubResource( 6 )
 
 [sub_resource type="Animation" id=8]
 tracks/0/type = "value"
@@ -87,7 +87,7 @@ tracks/1/keys = {
 "enemies",
 ]]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 134
 mode = 2
 physics_material_override = SubResource( 1 )
 can_sleep = false
@@ -106,7 +106,7 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/Sensors/Vision"]
 visible = false
-shape = SubResource( 9 )
+shape = SubResource( 2 )
 
 [node name="AttackRadius" type="Area2D" parent="Brain/Sensors"]
 
@@ -128,7 +128,7 @@ script = ExtResource( 9 )
 "enemy_hitbox",
 ]]
 modulate = Color( 1, 0, 0, 1 )
-material = SubResource( 11 )
+material = SubResource( 4 )
 collision_layer = 16
 collision_mask = 4
 
@@ -148,7 +148,7 @@ lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 local_coords = false
-process_material = SubResource( 14 )
+process_material = SubResource( 7 )
 
 [node name="DamageLabels" parent="HealthManager" instance=ExtResource( 8 )]
 position = Vector2( 0, -8 )
@@ -157,6 +157,7 @@ position = Vector2( 0, -8 )
 
 [node name="SurpriseAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Surprise = SubResource( 8 )
+
 [connection signal="alarmed_by" from="Brain/Sensors" to="." method="_on_Sensors_alarmed_by"]
 [connection signal="body_entered" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_entered"]
 [connection signal="body_exited" from="Brain/Sensors/Vision" to="Brain/Sensors" method="_on_Vision_body_exited"]
