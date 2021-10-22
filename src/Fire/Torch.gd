@@ -9,7 +9,7 @@ const FULL_LIFETIME = 25.0
 const FLIKER_LIFETIME = 5.0
 const TIME_BEFORE_FLICKER = FULL_LIFETIME - FLIKER_LIFETIME
 
-const FULL_RADIUS = 85
+const FULL_RADIUS = 80
 const FLIKER_RADIUS = 60
 const MIN_RADIUS = 28
 const LIGHT_TEXTURE_SCALE = 0.003
@@ -48,6 +48,7 @@ func reset():
 	fire_effect.add_sparks()
 	active = true
 	start_time = OS.get_ticks_msec()
+	GameManager.player_reset_torch(FULL_LIFETIME)
 
 
 func put_out_fire():

@@ -5,6 +5,7 @@ signal on_player_death
 signal arrow_count_changed
 signal damage_changed
 signal kill_count_changed
+signal player_reset_torch
 
 const MAX_HEALTH := 10
 var health := MAX_HEALTH
@@ -44,11 +45,15 @@ func player_collected_arrow():
 	arrow_count += 1
 	emit_signal("arrow_count_changed")
 
+#    TODO: this is a trash class, can_shoot and can dash should be somewhere near player
 func can_shoot():
 	return arrow_count > 0 and not is_holding_torch
 
 func can_dash():
 	return not is_holding_torch 
+
+func player_reset_torch(time: int):
+	emit_signal("player_reset_torch", time)
 
 func player_picked_torch():
 	is_holding_torch = true
