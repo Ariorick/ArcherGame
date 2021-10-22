@@ -12,15 +12,18 @@ func _on_Collectable_input_event(viewport, event, shape_idx):
 		queue_free()
 
 func update_state():
-	if mouse_hovered:
-		$Visuals.scale = Vector2(1.1, 1.1)
-	else: 
-		$Visuals.scale = Vector2(1.0, 1.0)
+	if close_to_player:
+		$Visuals.material.set_shader_param("color", Color(1, 1, 1, .2))
+		if mouse_hovered:
+			$Visuals.material.set_shader_param("color", Color(1, 1, 1, .6))
+	else:
+		$Visuals.material.set_shader_param("color", Color(1, 1, 1, 0))
 		
-	$Visuals.material.set_shader_param("enabled", mouse_hovered and close_to_player)
+#	$Visuals.material.set_shader_param("enabled", mouse_hovered and close_to_player)
 
 func _ready():
-	$Visuals.material.set_shader_param("color", Color(1, 1, 1, .5))
+	$Visuals.material.set_shader_param("enabled", true)
+	update_state()
 
 func _on_Collectable_mouse_entered():
 	mouse_hovered = true

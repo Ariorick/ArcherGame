@@ -44,5 +44,8 @@ position = Vector2( 89.104, 57.7733 )
 [node name="Stone" parent="Objects" instance=ExtResource( 9 )]
 position = Vector2( 139.493, -0.0431309 )
 
+[node name="Stone2" parent="Objects" instance=ExtResource( 9 )]
+position = Vector2( 186, 55 )
+
 [node name="CircleFire" parent="Objects" instance=ExtResource( 8 )]
 position = Vector2( 127.039, 52.3164 )
