@@ -11,7 +11,7 @@ var trees: Dictionary # Vector2 to Tree
 func generate(from: Vector2, to: Vector2):
 	for x in range(from.x, to.x):
 		for y in range(from.y, to.y):
-#			try_create_tree_at(x, y)
+			try_create_tree_at(x, y)
 #			try_create_rock_at(x, y)
 			pass
 	var children = content.get_children()

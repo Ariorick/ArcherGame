@@ -6,10 +6,14 @@ var mouse_hovered: bool = false
 
 export(String, FILE, "*.json") var item_json: String
 
+func on_clicked():
+	pass
+
 func _on_Collectable_input_event(viewport, event, shape_idx):
 	if Input.is_action_just_pressed("attack") and mouse_hovered and close_to_player:
 		Inventory.add(ItemFilesUtils.id_from_path(item_json))
 		queue_free()
+		on_clicked()
 
 func update_state():
 	if close_to_player:
