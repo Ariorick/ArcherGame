@@ -14,7 +14,7 @@ func _ready():
 
 func _process(delta):
 	if torch_end_time > OS.get_ticks_msec():
-		$TorchTime.set_text(str((torch_end_time - OS.get_ticks_msec()) / 1000))
+		$TorchTime.set_text(str((torch_end_time - OS.get_ticks_msec() + 1000) / 1000))
 	else:
 		$TorchTime.set_text("")
 	
