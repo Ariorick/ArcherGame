@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/numbers_sheet.png-616f809a74f482b1e18823806201d131.stex"
+path="res://.import/numbers_sheet.png-8a0c5c6ed7ba9dfb32b77b24152da42a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/UI/Damage/numbers_sheet.png"
-dest_files=[ "res://.import/numbers_sheet.png-616f809a74f482b1e18823806201d131.stex" ]
+source_file="res://src/ui/Damage/numbers_sheet.png"
+dest_files=[ "res://.import/numbers_sheet.png-8a0c5c6ed7ba9dfb32b77b24152da42a.stex" ]
 
 [params]
 

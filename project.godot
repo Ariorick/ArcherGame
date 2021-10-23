@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "AlarmedEmote",
 "language": "GDScript",
-"path": "res://src/Effects/AlarmedEmote.gd"
+"path": "res://src/effects/AlarmedEmote.gd"
 }, {
 "base": "Node",
 "class": "ArrayUtils",
@@ -22,22 +22,22 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Arrow",
 "language": "GDScript",
-"path": "res://src/Weapons/Arrow.gd"
+"path": "res://src/weapons/Arrow.gd"
 }, {
 "base": "TileMap",
 "class": "Background",
 "language": "GDScript",
-"path": "res://src/Level/Background.gd"
+"path": "res://src/level/Background.gd"
 }, {
 "base": "Area2D",
 "class": "BaseTree",
 "language": "GDScript",
-"path": "res://src/Level/BaseTree.gd"
+"path": "res://src/level/BaseTree.gd"
 }, {
 "base": "Area2D",
 "class": "BaseTreeDetector",
 "language": "GDScript",
-"path": "res://src/Fire/BaseTreeDetector.gd"
+"path": "res://src/fire/BaseTreeDetector.gd"
 }, {
 "base": "Collectable",
 "class": "BerryBush",
@@ -47,32 +47,32 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Brain",
 "language": "GDScript",
-"path": "res://src/Enemy/Base/Brain.gd"
+"path": "res://src/enemy/Base/Brain.gd"
 }, {
 "base": "Node2D",
 "class": "ButtonHint",
 "language": "GDScript",
-"path": "res://src/UI/Hint/ButtonHint.gd"
+"path": "res://src/ui/Hint/ButtonHint.gd"
 }, {
 "base": "Node2D",
 "class": "ButtonHintActivator",
 "language": "GDScript",
-"path": "res://src/UI/Hint/ButtonHintActivator.gd"
+"path": "res://src/ui/Hint/ButtonHintActivator.gd"
 }, {
 "base": "Node2D",
 "class": "CircleFire",
 "language": "GDScript",
-"path": "res://src/Fire/CircleFire.gd"
+"path": "res://src/fire/CircleFire.gd"
 }, {
 "base": "BaseTreeDetector",
 "class": "CircleTreeDetector",
 "language": "GDScript",
-"path": "res://src/Fire/CircleTreeDetector.gd"
+"path": "res://src/fire/CircleTreeDetector.gd"
 }, {
 "base": "Node2D",
 "class": "CircularRaycastArray",
 "language": "GDScript",
-"path": "res://src/Enemy/Base/Sensors/CircularRaycastArray.gd"
+"path": "res://src/enemy/Base/Sensors/CircularRaycastArray.gd"
 }, {
 "base": "Interactable",
 "class": "Collectable",
@@ -87,7 +87,7 @@ _global_script_classes=[ {
 "base": "Label",
 "class": "DamageLabel",
 "language": "GDScript",
-"path": "res://src/UI/Damage/DamageLabel.gd"
+"path": "res://src/ui/Damage/DamageLabel.gd"
 }, {
 "base": "Collectable",
 "class": "DeadTree",
@@ -97,7 +97,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Direction",
 "language": "GDScript",
-"path": "res://src/Enemy/Base/Sensors/Direction.gd"
+"path": "res://src/enemy/Base/Sensors/Direction.gd"
 }, {
 "base": "Reference",
 "class": "Drawing",
@@ -107,62 +107,62 @@ _global_script_classes=[ {
 "base": "EnemyBase",
 "class": "Dummy",
 "language": "GDScript",
-"path": "res://src/Enemy/Dummy/Dummy.gd"
+"path": "res://src/enemy/Dummy/Dummy.gd"
 }, {
 "base": "Node2D",
 "class": "EnemyAction",
 "language": "GDScript",
-"path": "res://src/Enemy/Base/EnemyAction.gd"
+"path": "res://src/enemy/Base/EnemyAction.gd"
 }, {
 "base": "RigidBody2D",
 "class": "EnemyBase",
 "language": "GDScript",
-"path": "res://src/Enemy/Base/EnemyBase.gd"
+"path": "res://src/enemy/Base/EnemyBase.gd"
 }, {
 "base": "Node2D",
 "class": "FireEffect",
 "language": "GDScript",
-"path": "res://src/Effects/FireEffect.gd"
+"path": "res://src/effects/FireEffect.gd"
 }, {
 "base": "EnemyAction",
 "class": "FireMagicAction",
 "language": "GDScript",
-"path": "res://src/Enemy/Mage/FireMagicAction.gd"
+"path": "res://src/enemy/Mage/FireMagicAction.gd"
 }, {
 "base": "Area2D",
 "class": "FireProjectile",
 "language": "GDScript",
-"path": "res://src/Enemy/Mage/FireProjectile.gd"
+"path": "res://src/enemy/Mage/FireProjectile.gd"
 }, {
 "base": "EnemyAction",
 "class": "FlyAroundAction",
 "language": "GDScript",
-"path": "res://src/Enemy/Ghost/FlyAroundAction.gd"
+"path": "res://src/enemy/Ghost/FlyAroundAction.gd"
 }, {
 "base": "EnemyAction",
 "class": "FollowAtDistanceTargetAction",
 "language": "GDScript",
-"path": "res://src/Enemy/Mage/FollowAtDistanceAction.gd"
+"path": "res://src/enemy/Mage/FollowAtDistanceAction.gd"
 }, {
 "base": "EnemyAction",
 "class": "FollowTargetAction",
 "language": "GDScript",
-"path": "res://src/Enemy/Skelly/FollowTargetAction.gd"
+"path": "res://src/enemy/Skelly/FollowTargetAction.gd"
 }, {
 "base": "CanvasLayer",
 "class": "FpsLabel",
 "language": "GDScript",
-"path": "res://src/UI/FPSLabel.gd"
+"path": "res://src/ui/FPSLabel.gd"
 }, {
 "base": "EnemyBase",
 "class": "Ghost",
 "language": "GDScript",
-"path": "res://src/Enemy/Ghost/Ghost.gd"
+"path": "res://src/enemy/Ghost/Ghost.gd"
 }, {
 "base": "Node2D",
 "class": "HealthManager",
 "language": "GDScript",
-"path": "res://src/Enemy/Base/HealthManager.gd"
+"path": "res://src/enemy/Base/HealthManager.gd"
 }, {
 "base": "Area2D",
 "class": "Interactable",
@@ -192,7 +192,7 @@ _global_script_classes=[ {
 "base": "EnemyBase",
 "class": "Mage",
 "language": "GDScript",
-"path": "res://src/Enemy/Mage/Mage.gd"
+"path": "res://src/enemy/Mage/Mage.gd"
 }, {
 "base": "Reference",
 "class": "Noise",
@@ -202,82 +202,82 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "ParticlesBundle",
 "language": "GDScript",
-"path": "res://src/Effects/ParticlesBundle.gd"
+"path": "res://src/effects/ParticlesBundle.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://src/Player/Player.gd"
+"path": "res://src/player/Player.gd"
 }, {
 "base": "Reference",
 "class": "PlayerAction",
 "language": "GDScript",
-"path": "res://src/Player/Actions/PlayerAction.gd"
+"path": "res://src/player/Actions/PlayerAction.gd"
 }, {
 "base": "PlayerAction",
 "class": "PlayerAttackAction",
 "language": "GDScript",
-"path": "res://src/Player/Actions/PlayerAttackAction.gd"
+"path": "res://src/player/Actions/PlayerAttackAction.gd"
 }, {
 "base": "PlayerAction",
 "class": "PlayerDashAction",
 "language": "GDScript",
-"path": "res://src/Player/Actions/PlayerDashAction.gd"
+"path": "res://src/player/Actions/PlayerDashAction.gd"
 }, {
 "base": "Reference",
 "class": "PlayerInput",
 "language": "GDScript",
-"path": "res://src/Player/PlayerInput.gd"
+"path": "res://src/player/PlayerInput.gd"
 }, {
-"base": "Spatial",
+"base": "Node2D",
 "class": "PlayerPosition",
 "language": "GDScript",
-"path": "res://src/Level/PlayerPosition.gd"
+"path": "res://src/level/PlayerPosition.gd"
 }, {
 "base": "PlayerAction",
 "class": "PlayerPullAction",
 "language": "GDScript",
-"path": "res://src/Player/Actions/PlayerPullAction.gd"
+"path": "res://src/player/Actions/PlayerPullAction.gd"
 }, {
 "base": "EnemyBase",
 "class": "Rat",
 "language": "GDScript",
-"path": "res://src/Enemy/Rat/Rat.gd"
+"path": "res://src/enemy/Rat/Rat.gd"
 }, {
 "base": "Node2D",
 "class": "Sensors",
 "language": "GDScript",
-"path": "res://src/Enemy/Base/Sensors/Sensors.gd"
+"path": "res://src/enemy/Base/Sensors/Sensors.gd"
 }, {
 "base": "EnemyBase",
 "class": "Skelly",
 "language": "GDScript",
-"path": "res://src/Enemy/Skelly/Skelly.gd"
+"path": "res://src/enemy/Skelly/Skelly.gd"
 }, {
 "base": "Reference",
 "class": "SpawnerProgram",
 "language": "GDScript",
-"path": "res://src/Fire/SpawnerProgram.gd"
+"path": "res://src/fire/SpawnerProgram.gd"
 }, {
 "base": "EnemyAction",
 "class": "SteeringAction",
 "language": "GDScript",
-"path": "res://src/Enemy/Base/SteeringAction.gd"
+"path": "res://src/enemy/Base/SteeringAction.gd"
 }, {
 "base": "Area2D",
 "class": "SwordArea",
 "language": "GDScript",
-"path": "res://src/Player/SwordArea.gd"
+"path": "res://src/player/SwordArea.gd"
 }, {
 "base": "Sprite",
 "class": "TextureMap",
 "language": "GDScript",
-"path": "res://src/Level/MapTexture.gd"
+"path": "res://src/level/MapTexture.gd"
 }, {
 "base": "Node2D",
 "class": "Torch",
 "language": "GDScript",
-"path": "res://src/Fire/Torch.gd"
+"path": "res://src/fire/Torch.gd"
 } ]
 _global_script_class_icons={
 "AlarmedEmote": "",
@@ -344,16 +344,16 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameManager="*res://src/GameManager/GameManager.gd"
-CameraManager="*res://src/GameManager/CameraManager.gd"
-SoundManager="*res://src/GameManager/SoundManager.gd"
-TreeModulationNoise="*res://src/Level/TreeModulationNoise.gd"
-SceneChanger="*res://src/GameManager/SceneChanger.tscn"
-Random="*res://src/Utils/Random.gd"
-LightZoneManager="*res://src/GameManager/LightZoneManager.gd"
+GameManager="*res://src/gameManager/GameManager.gd"
+CameraManager="*res://src/gameManager/CameraManager.gd"
+SoundManager="*res://src/gameManager/SoundManager.gd"
+TreeModulationNoise="*res://src/level/TreeModulationNoise.gd"
+SceneChanger="*res://src/gameManager/SceneChanger.tscn"
+Random="*res://src/utils/Random.gd"
+LightZoneManager="*res://src/gameManager/LightZoneManager.gd"
 Console="*res://addons/quentincaffeino/console/src/Console.tscn"
-Inventory="*res://src/GameManager/Inventory.gd"
-ConsoleExtensions="*res://src/Utils/ConsoleExtensions.gd"
+Inventory="*res://src/gameManager/Inventory.gd"
+ConsoleExtensions="*res://src/utils/ConsoleExtensions.gd"
 
 [debug]
 

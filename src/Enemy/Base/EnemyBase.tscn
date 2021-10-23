@@ -1,14 +1,14 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://src/Enemy/Base/Brain.gd" type="Script" id=1]
-[ext_resource path="res://src/Enemy/Base/EnemyBase.gd" type="Script" id=2]
-[ext_resource path="res://src/Enemy/Base/Sensors/Sensors.gd" type="Script" id=3]
-[ext_resource path="res://src/Effects/AlarmedEmote.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/Enemy/Base/HealthManager.gd" type="Script" id=5]
-[ext_resource path="res://src/Enemy/Base/Sensors/CircularRaycastArray.gd" type="Script" id=6]
+[ext_resource path="res://src/enemy/Base/Brain.gd" type="Script" id=1]
+[ext_resource path="res://src/enemy/Base/EnemyBase.gd" type="Script" id=2]
+[ext_resource path="res://src/enemy/Base/Sensors/Sensors.gd" type="Script" id=3]
+[ext_resource path="res://src/effects/AlarmedEmote.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/enemy/Base/HealthManager.gd" type="Script" id=5]
+[ext_resource path="res://src/enemy/Base/Sensors/CircularRaycastArray.gd" type="Script" id=6]
 [ext_resource path="res://assets/Animations/EnemyTakeDamage.tres" type="Animation" id=7]
 [ext_resource path="res://src/UI/Damage/FCTMgr.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/Enemy/Base/SteeringAction.gd" type="Script" id=9]
+[ext_resource path="res://src/enemy/Base/SteeringAction.gd" type="Script" id=9]
 
 [sub_resource type="PhysicsMaterial" id=1]
 friction = 0.0

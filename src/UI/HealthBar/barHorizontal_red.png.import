@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barHorizontal_red.png-242c2a79401286c6c5ed1736ab4902e8.stex"
+path="res://.import/barHorizontal_red.png-399b52ff2631495984a4b0a989a13cf0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/UI/HealthBar/barHorizontal_red.png"
-dest_files=[ "res://.import/barHorizontal_red.png-242c2a79401286c6c5ed1736ab4902e8.stex" ]
+source_file="res://src/ui/HealthBar/barHorizontal_red.png"
+dest_files=[ "res://.import/barHorizontal_red.png-399b52ff2631495984a4b0a989a13cf0.stex" ]
 
 [params]
 

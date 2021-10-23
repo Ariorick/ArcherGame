@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Shaders/outline.shader" type="Shader" id=1]
-[ext_resource path="res://src/Effects/FireEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/effects/FireEffect.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/named/camp_fire.png" type="Texture" id=3]
 [ext_resource path="res://assets/Particles/light.png" type="Texture" id=4]
-[ext_resource path="res://src/Fire/CircleFire.gd" type="Script" id=5]
-[ext_resource path="res://src/Fire/CircleTreeDetector.gd" type="Script" id=6]
+[ext_resource path="res://src/fire/CircleFire.gd" type="Script" id=5]
+[ext_resource path="res://src/fire/CircleTreeDetector.gd" type="Script" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )

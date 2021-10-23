@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/Level/BaseTree.gd" type="Script" id=1]
+[ext_resource path="res://src/level/BaseTree.gd" type="Script" id=1]
 [ext_resource path="res://assets/flat/blue_leaves_with_shade.png" type="Texture" id=2]
 [ext_resource path="res://assets/Shaders/GrassWave.shader" type="Shader" id=4]
 

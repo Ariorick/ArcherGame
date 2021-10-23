@@ -1,10 +1,10 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://src/Enemy/Base/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/enemy/Base/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tiles/tile_0010.png" type="Texture" id=2]
 [ext_resource path="res://assets/Particles/circle_01.png" type="Texture" id=3]
-[ext_resource path="res://src/Enemy/Skelly/Skelly.gd" type="Script" id=4]
-[ext_resource path="res://src/Enemy/Skelly/JumpAttackAction.gd" type="Script" id=9]
+[ext_resource path="res://src/enemy/Skelly/Skelly.gd" type="Script" id=4]
+[ext_resource path="res://src/enemy/Skelly/JumpAttackAction.gd" type="Script" id=9]
 [ext_resource path="res://assets/Particles/circle_05.png" type="Texture" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
