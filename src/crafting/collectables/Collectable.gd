@@ -1,8 +1,7 @@
-extends Selectable
+extends Interactable
 class_name Collectable
 
 var orientation := Vector2(sign(rand_range(-1, 1)), 1)
-var close_to_player := false
 var picked := false
 
 export(String, FILE, "*.json") var item_json: String
@@ -35,21 +34,11 @@ func _ready():
 	$Visuals.material.set_shader_param("enabled", true)
 	update_state()
 
-func _on_Selectable_clicked():
+func _on_Collectable_clicked(close_to_player):
 	if not picked and condition() and close_to_player:
 		picked = true
 		on_clicked()
 		update_state()
 
-func _on_Selectable_state_changed(is_hovered):
+func _on_Collectable_state_changed(is_hovered, close_to_player):
 	update_state()
-
-func _on_PlayerDetector_body_entered(body):
-	if body is Player:
-		close_to_player = true
-		update_state()
-
-func _on_PlayerDetector_body_exited(body):
-	if body is Player:
-		close_to_player = false
-		update_state()
