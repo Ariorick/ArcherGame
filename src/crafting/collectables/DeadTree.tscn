@@ -16,9 +16,11 @@ shader_param/inside = false
 shader_param/add_margins = false
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 16.4924
 
 [node name="DeadTree" instance=ExtResource( 3 )]
 script = ExtResource( 2 )
+item_json = "res://src/crafting/items/wood.json"
 
 [node name="Visuals" parent="." index="0"]
 material = SubResource( 1 )
@@ -32,6 +34,5 @@ texture = ExtResource( 4 )
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
-visible = false
-position = Vector2( 0, -4 )
+position = Vector2( 0, -16 )
 shape = SubResource( 2 )

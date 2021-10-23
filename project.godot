@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "ArrayUtils",
 "language": "GDScript",
-"path": "res://src/Utils/ArrayUtils.gd"
+"path": "res://src/utils/ArrayUtils.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Arrow",
@@ -74,7 +74,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Enemy/Base/Sensors/CircularRaycastArray.gd"
 }, {
-"base": "Area2D",
+"base": "Selectable",
 "class": "Collectable",
 "language": "GDScript",
 "path": "res://src/crafting/collectables/Collectable.gd"
@@ -102,7 +102,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Drawing",
 "language": "GDScript",
-"path": "res://src/Utils/Drawing.gd"
+"path": "res://src/utils/Drawing.gd"
 }, {
 "base": "EnemyBase",
 "class": "Dummy",
@@ -192,7 +192,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Noise",
 "language": "GDScript",
-"path": "res://src/Utils/Noise.gd"
+"path": "res://src/utils/Noise.gd"
 }, {
 "base": "Node2D",
 "class": "ParticlesBundle",
@@ -238,6 +238,11 @@ _global_script_classes=[ {
 "class": "Rat",
 "language": "GDScript",
 "path": "res://src/Enemy/Rat/Rat.gd"
+}, {
+"base": "Area2D",
+"class": "Selectable",
+"language": "GDScript",
+"path": "res://src/delegates/Selectable.gd"
 }, {
 "base": "Node2D",
 "class": "Sensors",
@@ -321,6 +326,7 @@ _global_script_class_icons={
 "PlayerPosition": "",
 "PlayerPullAction": "",
 "Rat": "",
+"Selectable": "",
 "Sensors": "",
 "Skelly": "",
 "SpawnerProgram": "",

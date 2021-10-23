@@ -1,0 +1,8 @@
+{
+    "name": "Ritual knife",
+    "scene": "res://crafting/items/Axe.tscn",
+    "recipe": {
+            "iron": 5,
+            "wood": 5
+        }
+}
