@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/Objects.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/roads.tres" type="TileSet" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://src/crafting/collectables/Stone.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/crafting/collectables/IronOre.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/crafting/collectables/DeadTree.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/ui/minigame/Minigame.tscn" type="PackedScene" id=16]
 
 [node name="Content" type="Node2D"]
 
@@ -338,6 +339,9 @@ position = Vector2( 160, 520 )
 
 [node name="DeadTree5" parent="Objects" instance=ExtResource( 15 )]
 position = Vector2( 432, 256 )
+
+[node name="Minigame" parent="Objects" instance=ExtResource( 16 )]
+position = Vector2( 249.144, -2.93343 )
 
 [connection signal="input_event" from="Objects/Lily" to="Objects/Lily" method="_on_Collectable_input_event"]
 [connection signal="mouse_entered" from="Objects/Lily" to="Objects/Lily" method="_on_Collectable_mouse_entered"]
