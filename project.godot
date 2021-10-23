@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/Fire/BaseTreeDetector.gd"
 }, {
+"base": "Collectable",
+"class": "BerryBush",
+"language": "GDScript",
+"path": "res://src/crafting/collectables/BerryBush.gd"
+}, {
 "base": "Node",
 "class": "Brain",
 "language": "GDScript",
@@ -83,6 +88,11 @@ _global_script_classes=[ {
 "class": "DamageLabel",
 "language": "GDScript",
 "path": "res://src/UI/Damage/DamageLabel.gd"
+}, {
+"base": "Collectable",
+"class": "DeadTree",
+"language": "GDScript",
+"path": "res://src/crafting/collectables/DeadTree.gd"
 }, {
 "base": "Reference",
 "class": "Direction",
@@ -158,6 +168,11 @@ _global_script_classes=[ {
 "class": "InventoryUtils",
 "language": "GDScript",
 "path": "res://src/crafting/InventoryUtils.gd"
+}, {
+"base": "Collectable",
+"class": "IronOre",
+"language": "GDScript",
+"path": "res://src/crafting/collectables/IronOre.gd"
 }, {
 "base": "Reference",
 "class": "Item",
@@ -266,6 +281,7 @@ _global_script_class_icons={
 "Background": "",
 "BaseTree": "",
 "BaseTreeDetector": "",
+"BerryBush": "",
 "Brain": "",
 "ButtonHint": "",
 "ButtonHintActivator": "",
@@ -275,6 +291,7 @@ _global_script_class_icons={
 "Collectable": "",
 "CraftingStation": "",
 "DamageLabel": "",
+"DeadTree": "",
 "Direction": "",
 "Drawing": "",
 "Dummy": "",
@@ -290,6 +307,7 @@ _global_script_class_icons={
 "Ghost": "",
 "HealthManager": "",
 "InventoryUtils": "",
+"IronOre": "",
 "Item": "",
 "ItemFilesUtils": "",
 "Mage": "",
