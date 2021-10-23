@@ -17,9 +17,9 @@ func craft(id: String, count = 1):
 func print_recipies():
 	var result := Array()
 	var result_string := ""
-	for item in Inventory.item_types:
+	for item in Inventory.item_types.values():
 		if item.recipe != null and not item.recipe.empty():
-			result_string += "[" + item.id + " " + str(item.recipe) + "] \n"
+			result_string += item.id + ": " + str(item.recipe) + " \n"
 			result.append(item)
 	Console.write_line(result_string)
 

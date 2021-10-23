@@ -17,6 +17,7 @@ script = ExtResource( 3 )
 [node name="SceneChanger" parent="." instance=ExtResource( 1 )]
 
 [node name="World" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, 0.277985 )
 
 [node name="Ui" parent="." instance=ExtResource( 4 )]
 

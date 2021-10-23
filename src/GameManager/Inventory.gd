@@ -30,6 +30,9 @@ func craft(item_id: String, count = 1) -> bool:
 	else:
 		return false
 
+func has(item_id) -> bool:
+	return items.has(item_id)
+
 func is_valid_id(item_id: String, count = 1) -> bool:
 	return item_types.keys().has(item_id)
 

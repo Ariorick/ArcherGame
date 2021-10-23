@@ -140,9 +140,10 @@ script = ExtResource( 10 )
 [node name="Content" parent="." instance=ExtResource( 2 )]
 
 [node name="TextureMap" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.0980392 )
-position = Vector2( 264.182, 267.799 )
-scale = Vector2( 2, 2 )
+position = Vector2( 247.544, 249.203 )
+scale = Vector2( 1.8, 1.8 )
 texture = ExtResource( 14 )
 script = ExtResource( 15 )
 
