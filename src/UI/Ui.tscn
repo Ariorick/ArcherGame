@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/ui/HealthBar/HealthDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tiles/tile_0065.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/ui/Fps/FpsLabel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ui/styles/theme.tres" type="Theme" id=5]
 [ext_resource path="res://src/ui/styles/Kenney Pixel Square.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://src/ui/MousePosition.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -93,3 +94,6 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MousePosition" type="Position2D" parent="."]
+script = ExtResource( 7 )

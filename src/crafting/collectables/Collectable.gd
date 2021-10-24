@@ -1,22 +1,53 @@
 extends Interactable
 class_name Collectable
 
+const Minigame = preload("res://src/ui/minigame/Minigame.tscn")
+
 var orientation := Vector2(sign(rand_range(-1, 1)), 1)
 var picked := false
+var minigame : Minigame = null
 
 export(String, FILE, "*.json") var item_json: String
 
-func on_clicked():
-	_add_item()
+func get_resource_texture() -> Texture:
+	return load("res://assets/named/stone") as Texture
+
+func on_collected():
 	queue_free()
 
+# override me if this resource can't be collected without a tool
 func condition() -> bool:
 	return true
 
-func _add_item():
-	Inventory.add(ItemFilesUtils.id_from_path(item_json))
+func on_clicked():
+	minigame = Minigame.instance()
+	minigame.item_id = ItemFilesUtils.id_from_path(item_json)
+	minigame.resource_texture = get_resource_texture()
+	get_parent().get_parent().add_child(minigame)
+	minigame.global_position = global_position + Vector2(0, -30)
+	
+	minigame.connect("sucess", self, "on_Minigame_sucess")
+	minigame.connect("resource_destroyed", self, "on_Minigame_resource_destroyed")
+	minigame.connect("resource_untouched", self, "on_Minigame_resource_untouched")
+
+func on_Minigame_sucess(item_count):
+	Inventory.add(ItemFilesUtils.id_from_path(item_json), item_count)
+	on_collected()
+	minigame = null
+
+func on_Minigame_resource_destroyed():
+	minigame = null
+	queue_free()
+
+func on_Minigame_resource_untouched():
+#	Nothing happens i guess?
+	picked = false
+	minigame = null
+
 
 func update_state():
+	if not close_to_player and minigame != null:
+		minigame.cancel()
 	if picked:
 		$Visuals.material.set_shader_param("color", Color(1, 1, 1, 0))
 		return

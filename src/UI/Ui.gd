@@ -3,6 +3,7 @@ extends CanvasLayer
 var torch_end_time: int
 
 func _ready():
+	UiHolder.ui = self
 	$HealthDisplay.set_max_value(GameManager.MAX_HEALTH)
 	GameManager.connect("player_health_changed", self, "player_health_changed")
 	GameManager.connect("arrow_count_changed", self, "arrow_count_changed")
@@ -24,6 +25,7 @@ func update():
 	damage_changed()
 	player_health_changed()
 	arrow_count_changed()
+
 
 func inventory_changed():
 	var inventory_string := "Inventory: \n"
