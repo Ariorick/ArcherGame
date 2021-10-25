@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/Shaders/outline.shader" type="Shader" id=1]
 [ext_resource path="res://src/crafting/collectables/DeadTree.gd" type="Script" id=2]
-[ext_resource path="res://src/crafting/collectables/Collectable.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/crafting/collectables/base/Collectable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/named/dead_tree.png" type="Texture" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]

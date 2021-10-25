@@ -77,7 +77,17 @@ _global_script_classes=[ {
 "base": "Interactable",
 "class": "Collectable",
 "language": "GDScript",
-"path": "res://src/crafting/collectables/Collectable.gd"
+"path": "res://src/crafting/collectables/base/Collectable.gd"
+}, {
+"base": "Node2D",
+"class": "CollectedItem",
+"language": "GDScript",
+"path": "res://src/crafting/collectables/base/CollectedItem.gd"
+}, {
+"base": "Node2D",
+"class": "CollectedItemAnimation",
+"language": "GDScript",
+"path": "res://src/crafting/collectables/base/CollectedItemAnimation.gd"
 }, {
 "base": "Node",
 "class": "CraftingStation",
@@ -299,6 +309,8 @@ _global_script_class_icons={
 "CircleTreeDetector": "",
 "CircularRaycastArray": "",
 "Collectable": "",
+"CollectedItem": "",
+"CollectedItemAnimation": "",
 "CraftingStation": "",
 "DamageLabel": "",
 "DeadTree": "",

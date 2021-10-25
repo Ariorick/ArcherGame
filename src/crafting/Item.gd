@@ -4,6 +4,7 @@ var id: String # to a json
 var name: String
 var recipe: Dictionary # of ids to count
 var count: int
+var icon: String = "res://assets/named/stone.png"
 
 func _init(id: String, count := 0):
 	self.id = id
