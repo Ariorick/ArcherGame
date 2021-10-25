@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://src/ui/minigame/Minigame.gd" type="Script" id=1]
 [ext_resource path="res://assets/named/minigame_colors.png" type="Texture" id=2]
@@ -16,6 +16,21 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "finish_minigame"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.6, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
@@ -40,8 +55,9 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=1]
 resource_name = "move_stripe"
 loop = true
+step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("Stripe:position")
+tracks/0/path = NodePath("StripeContainer/Stripe:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -50,7 +66,24 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -6, 22 ), Vector2( -6, -22 ), Vector2( -6, 22 ) ]
+"values": [ Vector2( -6, 0 ), Vector2( -6, 47 ), Vector2( -6, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "move_stripe_reverse"
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("StripeContainer/Stripe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -6, 47 ), Vector2( -6, 0 ), Vector2( -6, 47 ) ]
 }
 
 [node name="Minigame" type="Node2D"]
@@ -59,8 +92,12 @@ script = ExtResource( 1 )
 [node name="Colors" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="Stripe" type="Sprite" parent="."]
-position = Vector2( -6, 22 )
+[node name="StripeContainer" type="Node2D" parent="."]
+position = Vector2( 0, -25 )
+
+[node name="Stripe" type="Sprite" parent="StripeContainer"]
+visible = false
+position = Vector2( -6, 46.06 )
 texture = ExtResource( 4 )
 
 [node name="Cover" type="Sprite" parent="."]
@@ -68,7 +105,13 @@ texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/close_minigame = SubResource( 3 )
+anims/finish_minigame = SubResource( 5 )
 anims/init_minigame = SubResource( 2 )
 anims/move_stripe = SubResource( 1 )
+anims/move_stripe_reverse = SubResource( 4 )
+
+[node name="StripeTween" type="Tween" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]
+[connection signal="tween_completed" from="StripeTween" to="." method="_on_StripeTween_tween_completed"]

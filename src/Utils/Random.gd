@@ -39,5 +39,5 @@ func direction(angle: float, angle_difference: float) -> Vector2:
 func around_point_on_radius(point: Vector2, radius: float) -> Vector2:
 	return point + point_on_radius(radius)
 
-func boolean(true_chance: float):
+func boolean(true_chance: float = 0.5):
 	return _rng.randf_range(0, 1) <= true_chance
