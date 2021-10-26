@@ -7,6 +7,10 @@ var content: TileMap
 var textureMap: TextureMap
 var trees: Dictionary # Vector2 (cell) to Tree
 
+func _ready():
+#	LightZoneManager.get_tree_level = funcref(self, "get_tree_level")
+	pass
+
 func generate(from: Vector2, to: Vector2):
 	for x in range(from.x, to.x):
 		for y in range(from.y, to.y):
