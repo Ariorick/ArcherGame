@@ -1,5 +1,6 @@
 {
     "name": "Wood",
     "scene": "",
+    "icon": "res://assets/named/item_wood.png",
     "recipe": { }
 }

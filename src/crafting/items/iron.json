@@ -1,5 +1,6 @@
 {
     "name": "Iron",
     "scene": "",
+    "icon": "res://assets/named/item_iron_ore.png",
     "recipe": { }
 }
