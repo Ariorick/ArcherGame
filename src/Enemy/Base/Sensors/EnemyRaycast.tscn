@@ -1,7 +1,0 @@
-[gd_scene format=2]
-
-[node name="EnemyRaycast" type="RayCast2D"]
-enabled = true
-cast_to = Vector2( 50, 0 )
-collision_mask = 21
-collide_with_areas = true
