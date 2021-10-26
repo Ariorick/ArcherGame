@@ -1,6 +1,6 @@
 extends Node2D
 
-const TorchScene = preload("res://src/Fire/Torch.tscn")
+const TorchScene = preload("res://src/fire/Torch.tscn")
 const TORCH_MOVEMENT_CIRCLE_RADIUS = 8
 
 var torch: Torch

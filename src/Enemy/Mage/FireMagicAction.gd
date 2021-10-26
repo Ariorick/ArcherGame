@@ -1,7 +1,7 @@
 extends EnemyAction
 class_name FireMagicAction
 
-const FireProjectile = preload("res://src/Enemy/Mage/FireProjectile.tscn")
+const FireProjectile = preload("res://src/enemy/Mage/FireProjectile.tscn")
 
 const CHARGE_LENGTH = 700
 const COOLDOWN_LENGT = 700

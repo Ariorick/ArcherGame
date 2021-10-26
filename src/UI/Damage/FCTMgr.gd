@@ -1,6 +1,6 @@
 extends Node2D
 
-var DamageLabel = preload("res://src/UI/Damage/DamageLabel.tscn")
+var DamageLabel = preload("res://src/ui/Damage/DamageLabel.tscn")
 
 export var travel = Vector2(0, -5)
 export var duration = 2

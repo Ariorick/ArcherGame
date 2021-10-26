@@ -1,7 +1,7 @@
 extends PlayerAction
 class_name PlayerAttackAction
 
-const Arrow = preload("res://src/Weapons/Arrow.tscn")
+const Arrow = preload("res://src/weapons/Arrow.tscn")
 
 const ARROW_FRAMES = 4
 const ARROW_MAX_VELOCITY = 400

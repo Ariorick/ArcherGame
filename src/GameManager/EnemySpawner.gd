@@ -6,9 +6,9 @@ signal enemy_died
 var r = RandomNumberGenerator.new()
 onready var root = get_parent().get_parent()
 
-const Skelly = preload("res://src/Enemy/Skelly/Skelly.tscn")
-const Ghost = preload("res://src/Enemy/Ghost/Ghost.tscn")
-const Mage = preload("res://src/Enemy/Mage/Mage.tscn")
+const Skelly = preload("res://src/enemy/Skelly/Skelly.tscn")
+const Ghost = preload("res://src/enemy/Ghost/Ghost.tscn")
+const Mage = preload("res://src/enemy/Mage/Mage.tscn")
 var ENEMY_SCENES := {
 	SpawnerProgram.SKELLY: Skelly,
 	SpawnerProgram.GHOST: Ghost,

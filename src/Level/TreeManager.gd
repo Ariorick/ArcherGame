@@ -1,6 +1,6 @@
 extends Node2D
 
-const BaseTree = preload("res://src/Level/BaseTree.tscn")
+const BaseTree = preload("res://src/level/BaseTree.tscn")
 var rng = RandomNumberGenerator.new()
 
 var content: TileMap

@@ -278,6 +278,12 @@ position = Vector2( 592, 240 )
 [node name="Stone9" parent="Objects" instance=ExtResource( 13 )]
 position = Vector2( 416, 48 )
 
+[node name="Stone10" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 400, 152 )
+
+[node name="Stone11" parent="Objects" instance=ExtResource( 13 )]
+position = Vector2( 552, -128 )
+
 [node name="IronOre" parent="Objects" instance=ExtResource( 14 )]
 position = Vector2( 808, -40 )
 
@@ -292,6 +298,12 @@ position = Vector2( 872, 56 )
 
 [node name="IronOre5" parent="Objects" instance=ExtResource( 14 )]
 position = Vector2( 520, -128 )
+
+[node name="IronOre6" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 372.527, 57.4151 )
+
+[node name="IronOre7" parent="Objects" instance=ExtResource( 14 )]
+position = Vector2( 686.086, -37.4401 )
 
 [node name="Stick" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 56, 272 )
@@ -322,6 +334,9 @@ position = Vector2( 248, 480 )
 
 [node name="Stick10" parent="Objects" instance=ExtResource( 6 )]
 position = Vector2( 360, 536 )
+
+[node name="Stick11" parent="Objects" instance=ExtResource( 6 )]
+position = Vector2( 11.6116, 370.327 )
 
 [node name="DeadTree" parent="Objects" instance=ExtResource( 15 )]
 position = Vector2( 136, 528 )
@@ -401,6 +416,12 @@ position = Vector2( 432, 256 )
 [connection signal="input_event" from="Objects/Stone9" to="Objects/Stone9" method="_on_Collectable_input_event"]
 [connection signal="mouse_entered" from="Objects/Stone9" to="Objects/Stone9" method="_on_Collectable_mouse_entered"]
 [connection signal="mouse_exited" from="Objects/Stone9" to="Objects/Stone9" method="_on_Collectable_mouse_exited"]
+[connection signal="input_event" from="Objects/Stone10" to="Objects/Stone10" method="_on_Collectable_input_event"]
+[connection signal="mouse_entered" from="Objects/Stone10" to="Objects/Stone10" method="_on_Collectable_mouse_entered"]
+[connection signal="mouse_exited" from="Objects/Stone10" to="Objects/Stone10" method="_on_Collectable_mouse_exited"]
+[connection signal="input_event" from="Objects/Stone11" to="Objects/Stone11" method="_on_Collectable_input_event"]
+[connection signal="mouse_entered" from="Objects/Stone11" to="Objects/Stone11" method="_on_Collectable_mouse_entered"]
+[connection signal="mouse_exited" from="Objects/Stone11" to="Objects/Stone11" method="_on_Collectable_mouse_exited"]
 [connection signal="input_event" from="Objects/IronOre" to="Objects/IronOre" method="_on_Collectable_input_event"]
 [connection signal="mouse_entered" from="Objects/IronOre" to="Objects/IronOre" method="_on_Collectable_mouse_entered"]
 [connection signal="mouse_exited" from="Objects/IronOre" to="Objects/IronOre" method="_on_Collectable_mouse_exited"]
@@ -416,6 +437,12 @@ position = Vector2( 432, 256 )
 [connection signal="input_event" from="Objects/IronOre5" to="Objects/IronOre5" method="_on_Collectable_input_event"]
 [connection signal="mouse_entered" from="Objects/IronOre5" to="Objects/IronOre5" method="_on_Collectable_mouse_entered"]
 [connection signal="mouse_exited" from="Objects/IronOre5" to="Objects/IronOre5" method="_on_Collectable_mouse_exited"]
+[connection signal="input_event" from="Objects/IronOre6" to="Objects/IronOre6" method="_on_Collectable_input_event"]
+[connection signal="mouse_entered" from="Objects/IronOre6" to="Objects/IronOre6" method="_on_Collectable_mouse_entered"]
+[connection signal="mouse_exited" from="Objects/IronOre6" to="Objects/IronOre6" method="_on_Collectable_mouse_exited"]
+[connection signal="input_event" from="Objects/IronOre7" to="Objects/IronOre7" method="_on_Collectable_input_event"]
+[connection signal="mouse_entered" from="Objects/IronOre7" to="Objects/IronOre7" method="_on_Collectable_mouse_entered"]
+[connection signal="mouse_exited" from="Objects/IronOre7" to="Objects/IronOre7" method="_on_Collectable_mouse_exited"]
 [connection signal="input_event" from="Objects/Stick" to="Objects/Stick" method="_on_Collectable_input_event"]
 [connection signal="mouse_entered" from="Objects/Stick" to="Objects/Stick" method="_on_Collectable_mouse_entered"]
 [connection signal="mouse_exited" from="Objects/Stick" to="Objects/Stick" method="_on_Collectable_mouse_exited"]
@@ -446,6 +473,9 @@ position = Vector2( 432, 256 )
 [connection signal="input_event" from="Objects/Stick10" to="Objects/Stick10" method="_on_Collectable_input_event"]
 [connection signal="mouse_entered" from="Objects/Stick10" to="Objects/Stick10" method="_on_Collectable_mouse_entered"]
 [connection signal="mouse_exited" from="Objects/Stick10" to="Objects/Stick10" method="_on_Collectable_mouse_exited"]
+[connection signal="input_event" from="Objects/Stick11" to="Objects/Stick11" method="_on_Collectable_input_event"]
+[connection signal="mouse_entered" from="Objects/Stick11" to="Objects/Stick11" method="_on_Collectable_mouse_entered"]
+[connection signal="mouse_exited" from="Objects/Stick11" to="Objects/Stick11" method="_on_Collectable_mouse_exited"]
 [connection signal="input_event" from="Objects/DeadTree" to="Objects/DeadTree" method="_on_Collectable_input_event"]
 [connection signal="mouse_entered" from="Objects/DeadTree" to="Objects/DeadTree" method="_on_Collectable_mouse_entered"]
 [connection signal="mouse_exited" from="Objects/DeadTree" to="Objects/DeadTree" method="_on_Collectable_mouse_exited"]

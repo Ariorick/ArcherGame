@@ -1,8 +1,8 @@
 extends Control
 
-var bar_red = preload("res://src/UI/HealthBar/barHorizontal_red.png")
-var bar_green = preload("res://src/UI/HealthBar/barHorizontal_green.png")
-var bar_yellow = preload("res://src/UI/HealthBar/barHorizontal_yellow.png")
+var bar_red = preload("res://src/ui/HealthBar/barHorizontal_red.png")
+var bar_green = preload("res://src/ui/HealthBar/barHorizontal_green.png")
+var bar_yellow = preload("res://src/ui/HealthBar/barHorizontal_yellow.png")
 
 onready var healthbar = $HealthBar
 
