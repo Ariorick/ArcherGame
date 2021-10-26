@@ -1,4 +1,5 @@
 extends Node
+# INVENNTORY
 
 signal inventory_changed
 
@@ -29,6 +30,10 @@ func craft(item_id: String, count = 1) -> bool:
 		return true
 	else:
 		return false
+
+func set_items(dict: Dictionary):
+	items = dict
+	_reparseItems()
 
 func has(item_id) -> bool:
 	return items.has(item_id)

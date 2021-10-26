@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const SURVIVAL_IN_DARKNESS_TIME = 2
+const SURVIVAL_IN_DARKNESS_TIME = 1.5
 const EFFECT_DELAY = 0.4
 
 var current_darkness := 0.0
@@ -29,6 +29,9 @@ func _process(delta):
 func update_darkness(darkness: float):
 	current_darkness = darkness
 	$ColorRect.color = get_color(darkness)
+	if current_darkness == 1.0:
+		GameManager.player_died()
+		current_darkness = 0.0
 
 func get_color(darkness: float) -> Color:
 	return Color(0,0,0, darkness)

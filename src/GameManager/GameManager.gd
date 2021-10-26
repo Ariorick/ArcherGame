@@ -1,41 +1,38 @@
 extends Node
 
+const MAX_HEALTH := 10
+const MAX_ARROW_COUNT := 5
+const PLAYER_START_POSITION = Vector2(88, 58)
+
 signal player_health_changed
 signal on_player_death
 signal arrow_count_changed
-signal damage_changed
-signal kill_count_changed
 signal player_reset_torch
 
-const MAX_HEALTH := 10
+
 var health := MAX_HEALTH
-
-const MAX_ARROW_COUNT := 5
+var is_dead = false
 var arrow_count := MAX_ARROW_COUNT
-
 var is_holding_torch := false
-
-var kill_count := 0
-var damage_dealt := 0
 
 var player
 var player_position: Vector2
 
 var enemy_count := 0
 
+func player_died():
+	is_dead = true
+	emit_signal("on_player_death")
+
+func reset_player_position():
+	if player != null:
+		player.position = PLAYER_START_POSITION
+
 func enemy_spawned():
 	enemy_count += 1
 
 func enemy_died():
 	enemy_count -= 1
-
-func add_damage(damage: float, is_crit: bool):
-	damage_dealt += damage
-	emit_signal("damage_changed")
-
-func add_kill():
-	kill_count += 1
-	emit_signal("kill_count_changed")
 
 func player_used_arrow():
 	arrow_count -= 1
@@ -68,3 +65,7 @@ func player_take_damage():
 
 func get_health_percent():
 	return 1.0 * health / MAX_HEALTH
+
+func _input(event):
+	if is_dead:
+		get_tree().set_input_as_handled()

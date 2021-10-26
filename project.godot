@@ -104,6 +104,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/crafting/collectables/DeadTree.gd"
 }, {
+"base": "CenterContainer",
+"class": "DeathScreen",
+"language": "GDScript",
+"path": "res://src/ui/DeathScreen.gd"
+}, {
 "base": "Reference",
 "class": "Direction",
 "language": "GDScript",
@@ -314,6 +319,7 @@ _global_script_class_icons={
 "CraftingStation": "",
 "DamageLabel": "",
 "DeadTree": "",
+"DeathScreen": "",
 "Direction": "",
 "Drawing": "",
 "Dummy": "",
@@ -373,6 +379,7 @@ Console="*res://addons/quentincaffeino/console/src/Console.tscn"
 Inventory="*res://src/gameManager/Inventory.gd"
 ConsoleExtensions="*res://src/utils/ConsoleExtensions.gd"
 UiHolder="*res://src/ui/UiHolder.gd"
+Saver="*res://src/gameManager/Saver.gd"
 
 [debug]
 

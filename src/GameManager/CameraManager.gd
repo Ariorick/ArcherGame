@@ -19,7 +19,7 @@ func _ready():
 	add_child(tween)
 
 func _process(delta):
-#	darkness_offset = Random.point_within_radius(darkness_amplitude)
+	darkness_offset = Random.point_within_radius(darkness_amplitude)
 	if current_camera != null:
 		current_camera.offset = _get_offset_sum()
 

@@ -20,6 +20,7 @@ func _ready():
 		int(screen_size.x / chunk_size_px.x) / 2 + 2,
 		int(screen_size.y / chunk_size_px.y) / 2 + 2
 		)
+	Saver.load_game()
 
 func _process(delta):
 	var pos = $World.get_player().position

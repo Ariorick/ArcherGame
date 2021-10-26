@@ -35,9 +35,10 @@ func refill_torch():
 
 func _on_PlayerEnteredDetector_body_entered(body):
 	if body is Player:
-		pass
+		Saver.save_game()
 
 
 func _on_PlayerExitedDetector_body_exited(body):
 	if body is Player:
 		refill_torch()
+		Saver.save_game()
