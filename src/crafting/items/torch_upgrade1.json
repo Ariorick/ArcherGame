@@ -1,0 +1,7 @@
+{
+    "name": "Torch upgrade",
+    "recipe": {
+            "iron": 2,
+            "wood": 2
+        }
+}

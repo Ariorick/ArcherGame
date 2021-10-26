@@ -36,10 +36,3 @@ region_enabled = true
 region_rect = Rect2( 20, 20, 65, 65 )
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-visible = false
-rect = Rect2( -15, -25, 30, 40 )
-pause_animated_sprites = false
-process_parent = true
-physics_process_parent = true

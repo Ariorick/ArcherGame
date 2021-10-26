@@ -10,6 +10,8 @@ func craft(id: String, count = 1):
 	if Inventory.is_valid_id(trim_input(id)):
 		if not Inventory.craft(trim_input(id), count):
 			Console.write_line('Not enough resources!')
+		else:
+			Console.write_line(id + ' crafted!')
 	else:
 		Console.write_line('No such item: ' + id + '!')
 

@@ -6,6 +6,7 @@ onready var pixel_offset = texture.get_size() / 2
 
 func _ready():
 	data.lock()
+	
 
 func is_woods1(v: Vector2) -> bool:
 	return _has_green(v)
@@ -14,7 +15,12 @@ func is_woods2(v: Vector2) -> bool:
 	return _has_red(v)
 
 func _get_pixel(v: Vector2) -> Color:
-	return data.get_pixelv(to_local(v) + pixel_offset)
+	var pixel = to_local(v) + pixel_offset
+	var size = data.get_size()
+	if pixel.x < size.x and pixel.y < size.y:
+		return data.get_pixelv(pixel)
+	else:
+		return Color.black
 
 func _has_green(v: Vector2) -> bool:
 	return _get_pixel(v).g > 0

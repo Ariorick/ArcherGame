@@ -5,7 +5,7 @@ var rng = RandomNumberGenerator.new()
 
 var content: TileMap
 var textureMap: TextureMap
-var trees: Dictionary # Vector2 to Tree
+var trees: Dictionary # Vector2 (cell) to Tree
 
 func generate(from: Vector2, to: Vector2):
 	for x in range(from.x, to.x):
