@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const SURVIVAL_IN_DARKNESS_TIME = 1.5
+const SURVIVAL_IN_DARKNESS_TIME = 2.0
 const EFFECT_DELAY = 0.4
 
 var current_darkness := 0.0

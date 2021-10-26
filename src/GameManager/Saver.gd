@@ -12,7 +12,7 @@ func load_game():
 	
 	Inventory.set_items(parse_json(save_game.get_line()))
 	
-	GameManager.reset_player_position()
+	GameManager.reset_player()
 	save_game.close()
 
 func save_game():
@@ -22,3 +22,7 @@ func save_game():
 	save_game.store_line(to_json(Inventory.items))
 	
 	save_game.close()
+
+func delete_save():
+	var dir = Directory.new()
+	dir.remove("user://savegame.save")

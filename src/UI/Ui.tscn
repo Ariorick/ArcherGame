@@ -48,9 +48,7 @@ text = "50 fps"
 
 [node name="Inventory" type="Label" parent="."]
 margin_left = 12.9305
-margin_top = 73.3125
-margin_right = 85.9305
-margin_bottom = 87.3125
+margin_top = 82.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

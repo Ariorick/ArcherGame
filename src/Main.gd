@@ -64,4 +64,12 @@ func init_console():
 		.add_argument('resource_name', TYPE_STRING)\
 		.add_argument('amount', TYPE_INT)\
 		.register()
+	
+	Console.add_command('reset', self, 'reset')\
+		.set_description('Removes save and resets player position')\
+		.register()
 
+func reset():
+	Saver.delete_save()
+	Inventory.set_items(Dictionary())
+	GameManager.reset_player()

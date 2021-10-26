@@ -24,7 +24,8 @@ func player_died():
 	is_dead = true
 	emit_signal("on_player_death")
 
-func reset_player_position():
+func reset_player():
+	is_dead = false
 	if player != null:
 		player.position = PLAYER_START_POSITION
 
