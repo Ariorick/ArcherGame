@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/ui/HealthBar/HealthDisplay.gd" type="Script" id=1]
+[ext_resource path="res://src/ui/HealthBar/barHorizontal_green.png" type="Texture" id=2]
+
+[node name="HealthDisplay" type="Control"]
+modulate = Color( 1, 1, 1, 0.313726 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+margin_right = 200.0
+margin_bottom = 40.0
+value = 100.0
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

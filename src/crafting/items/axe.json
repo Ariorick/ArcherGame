@@ -1,0 +1,8 @@
+{
+    "name": "Axe",
+    "scene": "res://crafting/items/Axe.tscn",
+    "recipe": {
+            "stone": 5,
+            "stick": 5
+        }
+}

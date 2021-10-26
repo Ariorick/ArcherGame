@@ -1,0 +1,6 @@
+{
+    "name": "Stone",
+    "scene": "",
+    "icon": "res://assets/named/item_stone.png",
+    "recipe": { }
+}

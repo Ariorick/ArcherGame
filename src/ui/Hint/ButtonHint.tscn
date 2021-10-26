@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/ui/Hint/ButtonHint.gd" type="Script" id=1]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+light_mode = 1
+
+[sub_resource type="Animation" id=2]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("LabelContainer/Panel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LabelContainer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4 ), Vector2( 0, 0 ) ]
+}
+
+[node name="ButtonHint" type="Node2D"]
+material = SubResource( 1 )
+script = ExtResource( 1 )
+button_text = "E"
+goal_text = "activate"
+
+[node name="LabelContainer" type="Node2D" parent="."]
+position = Vector2( 0, 4 )
+
+[node name="Panel" type="Panel" parent="LabelContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 4.0
+margin_right = 154.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.2, 0.2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LabelContainer/Panel"]
+margin_top = 0.174193
+margin_right = 132.0
+margin_bottom = 14.1742
+text = "press E to light torch"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ShowButtonHint = SubResource( 2 )

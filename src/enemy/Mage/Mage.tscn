@@ -1,0 +1,237 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://src/enemy/Base/EnemyBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/Tiles/tile_0009.png" type="Texture" id=2]
+[ext_resource path="res://src/enemy/Mage/Mage.gd" type="Script" id=3]
+[ext_resource path="res://assets/Animations/Walk.tres" type="Animation" id=4]
+[ext_resource path="res://assets/Particles/star_07.png" type="Texture" id=5]
+[ext_resource path="res://src/enemy/Mage/FollowAtDistanceAction.gd" type="Script" id=6]
+[ext_resource path="res://src/effects/ParticlesBundle.gd" type="Script" id=7]
+[ext_resource path="res://src/enemy/Mage/FireMagicAction.gd" type="Script" id=8]
+[ext_resource path="res://assets/Tiles/tile_0078.png" type="Texture" id=10]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 50.0
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 0.3, 0 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 0.3, 0 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+color_ramp = SubResource( 3 )
+
+[sub_resource type="Animation" id=6]
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("../../../Character/CharacterBody/ProjectileSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.65, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0.3, 0.3 ), Vector2( 0.6, 0.6 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../../../Character/CharacterBody/FireParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.65 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Gradient" id=7]
+offsets = PoolRealArray( 0.634058, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.114198, 0.522804 ), 0.0, 0.0, 0, 0, Vector2( 0.996914, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+resource_local_to_scene = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+flag_disable_z = true
+gravity = Vector3( 0, -10, 0 )
+angular_velocity = 89.59
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.01
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 8 )
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform bool active = false;
+uniform vec4 color = vec4(1, 1, 1, 1);
+
+void fragment() {
+	vec4 previous_color = texture(TEXTURE, UV);
+	vec4 new_color = vec4(color.r, color.g, color.b, previous_color.a);
+	if (active) {
+		COLOR = new_color;
+	} else {
+		COLOR = previous_color
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = SubResource( 12 )
+shader_param/active = false
+shader_param/color = Plane( 1, 1, 1, 1 )
+
+[sub_resource type="ConvexPolygonShape2D" id=14]
+points = PoolVector2Array( -1, -4, 1, -4, 3, -4, 4, -3, 4, -1, 2, 2, 2, 4, 1, 4, -2, 4, -2, 2, -4, -1, -4, -3, -3, -4 )
+
+[sub_resource type="Gradient" id=15]
+colors = PoolColorArray( 1, 0, 0, 1, 1, 0.870588, 0.619608, 1 )
+
+[sub_resource type="GradientTexture" id=16]
+gradient = SubResource( 15 )
+
+[sub_resource type="Curve" id=17]
+_data = [ Vector2( 0, 0.243243 ), 0.0, 0.0, 0, 0, Vector2( 0.401235, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.487654, 0.277928 ), 0.0, 0.0, 0, 0, Vector2( 0.561728, 0.782432 ), 0.0, 0.0, 0, 0, Vector2( 0.641975, 0.435585 ), 0.0, 0.0, 0, 0, Vector2( 0.712963, 0.786937 ), 0.0, 0.0, 0, 0, Vector2( 0.839506, 0.647016 ), 0.0, 0.0, 0, 0, Vector2( 0.959877, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=18]
+curve = SubResource( 17 )
+
+[sub_resource type="ParticlesMaterial" id=19]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+gravity = Vector3( 0, -20, 0 )
+initial_velocity = 15.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_curve = SubResource( 18 )
+color_ramp = SubResource( 16 )
+
+[sub_resource type="RectangleShape2D" id=20]
+extents = Vector2( 3, 2 )
+
+[node name="Mage" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/Sensors/AttackRadius" index="0"]
+visible = false
+scale = Vector2( 3, 3 )
+shape = SubResource( 1 )
+
+[node name="FollowAtDistanceAction" type="Node2D" parent="Brain/Actions" index="0"]
+visible = false
+script = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Brain/Actions/FollowAtDistanceAction" index="0"]
+root_node = NodePath("../../../../Character")
+anims/Walk = ExtResource( 4 )
+
+[node name="StepParticles" type="Node2D" parent="Brain/Actions/FollowAtDistanceAction" index="1"]
+position = Vector2( 0, 5 )
+z_index = 5
+z_as_relative = false
+script = ExtResource( 7 )
+
+[node name="Left" type="Particles2D" parent="Brain/Actions/FollowAtDistanceAction/StepParticles" index="0"]
+position = Vector2( -1.5, 3 )
+emitting = false
+amount = 4
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 4 )
+
+[node name="Right" type="Particles2D" parent="Brain/Actions/FollowAtDistanceAction/StepParticles" index="1"]
+position = Vector2( 1.5, 3 )
+emitting = false
+amount = 4
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="FireMagicAction" type="Node2D" parent="Brain/Actions" index="1"]
+script = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Brain/Actions/FireMagicAction" index="0"]
+anims/ChargeFire = SubResource( 6 )
+
+[node name="SteeringAction" parent="Brain/Actions" index="2"]
+preferred_distance = 50.0
+distance_variation = 12.0
+walk_force = 100.0
+
+[node name="StepParticles" type="Particles2D" parent="Character/UnderCharacter" index="0"]
+show_behind_parent = true
+position = Vector2( 0, 4 )
+amount = 40
+randomness = 0.34
+local_coords = false
+process_material = SubResource( 11 )
+texture = ExtResource( 5 )
+
+[node name="CharacterBody" parent="Character" index="1"]
+modulate = Color( 1, 1, 1, 1 )
+material = SubResource( 13 )
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="Character/CharacterBody" index="0"]
+use_parent_material = true
+position = Vector2( 0, 4 )
+texture = ExtResource( 2 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="Character/CharacterBody" index="1"]
+position = Vector2( 0, 4 )
+shape = SubResource( 14 )
+
+[node name="FireParticles" type="Particles2D" parent="Character/CharacterBody" index="2"]
+position = Vector2( 0, -1 )
+emitting = false
+amount = 30
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource( 19 )
+
+[node name="ProjectileSprite" type="Sprite" parent="Character/CharacterBody" index="3"]
+position = Vector2( 0, -1 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 10 )
+
+[node name="MoveShape" type="CollisionShape2D" parent="." index="3"]
+visible = false
+modulate = Color( 1, 1, 1, 0.541176 )
+position = Vector2( 0, 8 )
+shape = SubResource( 20 )
