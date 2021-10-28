@@ -42,9 +42,7 @@ func can_place_tree2(x, y) -> bool:
 	return can_place_tree_frequency(x, y)
 
 func can_place_tree_frequency(x, y) -> bool:
-	var xmod = int(abs(x + int(abs(y)) % 4)) % 2 # or 4
-	var ymod2 = int(abs(y)) % 2 # or 4
-	return xmod + ymod2 == 0
+	return true
 
 func get_poisiton_for_cell_with_random(x, y) -> Vector2:
 	var rang = (content.cell_size.x / 2) - 1
