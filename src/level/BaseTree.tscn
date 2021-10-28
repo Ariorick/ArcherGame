@@ -19,7 +19,6 @@ shader_param/heightOffset = 0.0
 radius = 1.0
 
 [node name="BaseTree" type="Area2D"]
-modulate = Color( 1, 1, 1, 0.352941 )
 material = SubResource( 1 )
 collision_layer = 512
 collision_mask = 0
@@ -29,15 +28,13 @@ script = ExtResource( 1 )
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0.812336, -8.95382 )
-scale = Vector2( 0.602855, 0.685894 )
+position = Vector2( 0.66143, -13.449 )
+scale = Vector2( 0.6, 1 )
 texture = ExtResource( 2 )
-offset = Vector2( 0, -15 )
-region_enabled = true
-region_rect = Rect2( 20, 20, 65, 65 )
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+visible = false
 position = Vector2( 0.83243, -17.481 )
 scale = Vector2( 2.37351, 2.7481 )
