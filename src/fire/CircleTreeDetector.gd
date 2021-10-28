@@ -8,7 +8,8 @@ func update_trees(radius: float):
 		return
 	current_radius = radius
 	for tree in get_trees():
-		update_tree(tree)
+		if is_instance_valid(tree):
+			update_tree(tree)
 
 func update_tree(tree):
 	set_growth_to_tree(tree, get_scale_for_tree(tree.global_position, current_radius))

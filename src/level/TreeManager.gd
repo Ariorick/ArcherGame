@@ -16,9 +16,12 @@ func generate(from: Vector2, to: Vector2):
 		for y in range(from.y, to.y):
 			try_create_tree_at(x, y)
 #			try_create_rock_at(x, y)
-			pass
-	var children = content.get_children()
-	pass
+
+func destroy(from: Vector2, to: Vector2):
+	for x in range(from.x, to.x):
+		for y in range(from.y, to.y):
+			if trees.has(Vector2(x,y)):
+				trees[Vector2(x,y)].queue_free()
 
 func try_create_tree_at(x, y):
 	if not can_place_tree1(x, y) and not can_place_tree2(x, y):

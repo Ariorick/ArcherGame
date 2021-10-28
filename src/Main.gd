@@ -2,7 +2,7 @@ extends Node2D
 
 var prev_camera_pos = Vector2()
 
-var chunk_size := Vector2(5, 5) # cells
+var chunk_size := Vector2(3, 3) # cells
 var cell_size_px := Vector2(16, 16)
 var chunk_size_px := chunk_size * cell_size_px
 var map_cells := Dictionary()
@@ -34,10 +34,21 @@ func generate_around(pos: Vector2):
 		int(pos.y) / int(chunk_size_px.y)
 		)
 	
-	for x in range(chunk.x - lookaround.x, chunk.x + lookaround.x + 2):
-		for y in range(chunk.y - lookaround.y, chunk.y + lookaround.y + 2):
-			generate_chunk(Vector2(x, y))
+#	for x in range(chunk.x - lookaround.x, chunk.x + lookaround.x + 2):
+#		for y in range(chunk.y - lookaround.y, chunk.y + lookaround.y + 2):
+#			generate_chunk(Vector2(x, y))
 	
+	var x_start = chunk.x - lookaround.x
+	var x_end = chunk.x + lookaround.x
+	var y_start = chunk.y - lookaround.y - 1
+	var y_end = chunk.y + lookaround.y + 1
+	
+	for x in range(x_start - 2, x_end + 2):
+		for y in range(y_start - 2, y_end + 2):
+			if x >= x_start and x <= x_end and y >= y_start and y <= y_end:
+				generate_chunk(Vector2(x, y))
+			else:
+				destroy_chunk(Vector2(x, y))
 
 func generate_chunk(chunk: Vector2): 
 	if map_cells.has(chunk) && map_cells[chunk] == true:
@@ -45,6 +56,11 @@ func generate_chunk(chunk: Vector2):
 	$World.generate(chunk)
 	map_cells[chunk] = true
 
+func destroy_chunk(chunk: Vector2): 
+	if not map_cells.has(chunk) or map_cells[chunk] == false:
+		return
+	$World.destroy(chunk)
+	map_cells[chunk] = false
 
 func init_console():
 	Console.add_command('add', ConsoleExtensions, 'add_by_id')\
