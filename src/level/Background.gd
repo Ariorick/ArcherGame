@@ -57,9 +57,9 @@ func run_with_noise2(from: Vector2, to: Vector2, generate_fun: FuncRef):
 			update_bitmask_region(from, to)
 
 func can_place(x, y) -> bool:
-	return textureMap.has_background(get_poisiton_for_cell(x, y))
+	return textureMap.has_background(get_position_for_cell(x, y))
 
-func get_poisiton_for_cell(x, y) -> Vector2:
+func get_position_for_cell(x, y) -> Vector2:
 	return content.cell_size * Vector2(x, y) + content.cell_size * Vector2(0.5, 1)
 
 func prepare_noise():
