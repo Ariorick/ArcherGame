@@ -4,6 +4,10 @@ class_name Main
 func _ready():
 	init_console()
 	Saver.load_game()
+	
+	for i in [-1.5, -1.0, -0.5, 0, 0.5, 1, 1.5]:
+		# -1, -1, 0, 0, 1, 1, 2
+		print(Math.round_up(i))
 
 func init_console():
 	Console.add_command('add', ConsoleExtensions, 'add_by_id')\

@@ -2,7 +2,7 @@ extends Node
 
 const MAX_HEALTH := 10
 const MAX_ARROW_COUNT := 5
-const PLAYER_START_POSITION = Vector2(88, 58)
+const PLAYER_START_POSITION = Vector2(120, 56)
 
 signal player_health_changed
 signal on_player_death

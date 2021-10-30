@@ -2,20 +2,20 @@ extends Node2D
 class_name TreeManager
 
 const BaseTree = preload("res://src/level/BaseTree.tscn")
-var rng = RandomNumberGenerator.new()
 
-var content: TileMap
-var textureMap: TextureMap
-var trees: Dictionary # Vector2 (cell) to Tree
-
-var chunk_size := Vector2(3, 3) # cells
-var cell_size_px := Vector2(20, 20) # distance between trees
+var chunk_size := Vector2(4, 4) # cells
+var cell_size_px := Vector2(18, 18) # distance between trees
 var chunk_size_px := chunk_size * cell_size_px
 var map_cells := Dictionary()
 var lookaround := Vector2()
 
-var pending_generate: Array = Array()
-var pending_destroy: Array = Array()
+var trees: Dictionary # Vector2 (cell) to Tree
+var pending_generate: Array = Array() # of Rect2s 
+var pending_destroy: Array = Array() # of Rect2s 
+var chunks_for_debug_draw: Array = Array() # of Rect2s 
+
+onready var textureMap: TextureMap = $TextureMap
+onready var content: Node2D = $"../Content/Objects"
 
 
 func _ready():
@@ -25,14 +25,13 @@ func _ready():
 	var screen_size = get_viewport().size * camera_zoom
 
 	lookaround = Vector2(
-		int(screen_size.x / chunk_size_px.x) / 2 + 1,
-		int(screen_size.y / chunk_size_px.y) / 2 + 1
+		Math.round_up(screen_size.x / chunk_size_px.x) / 2 + 1,
+		Math.round_up(screen_size.y / chunk_size_px.y) / 2 + 1
 		)
 
 
 func _process(delta):
 	var pos = GameManager.player_position
-#	$CameraPosition.position = pos
 	generate_around(pos)
 	execute_pending_operations()
 
@@ -45,17 +44,17 @@ func execute_pending_operations():
 			generate(rect.position, rect.end)
 			pending_generate.erase(rect)
 			if OS.get_ticks_msec() - start_time >= max_time:
-				print("Skipped to next frame")
 				break
 
 
-func apply(generate_array: Array, destroy_array: Array):
-	pending_generate.append_array(generate_array)
-	
+func apply(generate_array: Array, destroy_array: Array):	
 	for rect in destroy_array:
 		if pending_generate.has(rect):
 			pending_generate.erase(rect)
 		destroy(rect.position, rect.end)
+	pending_generate.append_array(generate_array)
+#	update() # for debugging
+
 
 func generate(from: Vector2, to: Vector2):
 	for x in range(from.x, to.x):
@@ -91,23 +90,24 @@ func get_tree_level_by_position(v: Vector2) -> int:
 
 func generate_around(pos: Vector2):
 	var chunk : = Vector2(
-		int(pos.x) / int(chunk_size_px.x), 
-		int(pos.y) / int(chunk_size_px.y)
-		)
+		Math.round_up(pos.x / chunk_size_px.x), 
+		Math.round_up(pos.y / chunk_size_px.y)
+		) - Vector2.ONE
 	
 	var x_start = chunk.x - lookaround.x
 	var x_end = chunk.x + lookaround.x
-	var y_start = chunk.y - lookaround.y - 1
-	var y_end = chunk.y + lookaround.y + 1
+	var y_start = chunk.y - lookaround.y
+	var y_end = chunk.y + lookaround.y
 	
 	var generate_array: Array
 	var destroy_array: Array
+	chunks_for_debug_draw.clear()
 	
 	for x in range(x_start - 2, x_end + 2):
 		for y in range(y_start - 2, y_end + 2):
 			var v = Vector2(x, y)
 			if x >= x_start and x <= x_end and y >= y_start and y <= y_end:
-#				generate_chunk(v)
+				chunks_for_debug_draw.append(rect_for_chunk(v))
 				if not is_generated(v):
 					generate_array.append(rect_for_chunk(v))
 					map_cells[v] = true
@@ -115,7 +115,6 @@ func generate_around(pos: Vector2):
 				if is_generated(v):
 					destroy_array.append(rect_for_chunk(v))
 					map_cells[v] = false
-#				destroy_chunk(v)
 	if not generate_array.empty() or not destroy_array.empty():
 		apply(generate_array, destroy_array)
 
@@ -136,9 +135,13 @@ func can_place_tree2(x, y) -> bool:
 	return true
 
 func get_position_for_cell_with_random(x, y) -> Vector2:
-	var rang = (cell_size_px.x / 2) - 1
-	var rand_v = Vector2(Random.f_range(-rang, rang), Random.f_range(-rang, rang))
-	return cell_size_px * Vector2(x, y) + cell_size_px * Vector2(0.5, 1) + rand_v
+	var random_radius = cell_size_px.x / 2 - 1
+	return get_position_for_cell(x, y) + Random.point_within_radius(random_radius)
 
 func get_position_for_cell(x, y) -> Vector2:
 	return cell_size_px * Vector2(x, y) + cell_size_px * Vector2(0.5, 1)
+
+func _draw():
+	for rect in chunks_for_debug_draw:
+		var draw_rect = Rect2(rect.position * cell_size_px, rect.size * cell_size_px)
+		draw_rect(draw_rect, Color.white, false, 2)
