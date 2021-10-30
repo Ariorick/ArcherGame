@@ -19,7 +19,7 @@ shader_param/heightOffset = 0.0
 radius = 1.0
 
 [node name="BaseTree" type="Area2D"]
-modulate = Color( 1, 1, 1, 0.352941 )
+modulate = Color( 1, 1, 1, 0.470588 )
 material = SubResource( 1 )
 collision_layer = 512
 collision_mask = 0
