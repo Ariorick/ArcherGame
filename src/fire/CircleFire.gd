@@ -1,7 +1,7 @@
 extends Node2D
 class_name CircleFire
 
-const RADIUS = 100.0
+const RADIUS = 150.0
 const TEXTURE_SCALE = 0.0035
 const INACTIVE_RADIUS = 0.3
 const MIN_ACTIVE_RADIUS = 0.5

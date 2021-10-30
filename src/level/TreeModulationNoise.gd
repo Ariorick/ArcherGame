@@ -7,7 +7,9 @@ func _ready():
 
 func get_modulation(tree_pos: Vector2) -> float:
 	var time = OS.get_ticks_msec()
-	return noise.get_noise_2d(tree_pos.x + time / 100, tree_pos.y + time/ 100)
+	var speed = 100
+	var amplitude = 1
+	return amplitude * noise.get_noise_2d(tree_pos.x + time / speed, tree_pos.y + time / speed)
 
 func prepare_noise():
 	randomize()

@@ -19,7 +19,7 @@ shader_param/add_margins = true
 [sub_resource type="CircleShape2D" id=2]
 radius = 40.0
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=3]
 radius = 100.0
 
 [node name="CircleFire" type="Node2D"]
@@ -58,7 +58,7 @@ script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeDetector"]
 visible = false
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [connection signal="body_entered" from="PlayerEnteredDetector" to="." method="_on_PlayerEnteredDetector_body_entered"]
 [connection signal="body_exited" from="PlayerExitedDetector" to="." method="_on_PlayerExitedDetector_body_exited"]

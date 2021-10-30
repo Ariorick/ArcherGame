@@ -1,4 +1,5 @@
 extends Node2D
+class_name Main
 
 var prev_camera_pos = Vector2()
 
@@ -13,7 +14,7 @@ func _ready():
 	$World.chunk_size = chunk_size
 
 #	var camera_zoom = $CameraPosition/Camera2D.zoom
-	var camera_zoom = 0.3
+	var camera_zoom = 0.4
 	var screen_size = get_viewport().size * camera_zoom
 
 	lookaround = Vector2(

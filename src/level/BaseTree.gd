@@ -18,7 +18,8 @@ func _ready():
 
 func _process(delta):
 	modulation_growth = (TreeModulationNoise.get_modulation(global_position) + 1) / 6
-	_set_growth(current_growth)
+	var growth = clamp(current_growth - modulation_growth, 0, 1)
+	_apply_growth(growth)
 	pass
 
 # 0 to 1 float
@@ -28,7 +29,10 @@ func set_growth(growth: float, author, level: int = 1):
 	
 	growth_dict[author] = growth
 	growth = get_lowest_growth()
-	
+	_setup_tweens(growth)
+
+
+func _setup_tweens(growth: float):
 	if growth < current_growth:
 		tween.stop(self, "_set_growth")
 		tween.interpolate_method(self, "_set_growth", current_growth, growth, (current_growth - growth) / 2)
@@ -40,7 +44,8 @@ func set_growth(growth: float, author, level: int = 1):
 
 func _set_growth(growth: float):
 	current_growth = growth
-	growth = clamp(growth - modulation_growth, 0, 1)
+
+func _apply_growth(growth: float):
 	$Sprite.scale = Vector2(growth, growth) * orientation
 
 

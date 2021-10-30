@@ -9,9 +9,9 @@ const FULL_LIFETIME = 30.0
 const FLIKER_LIFETIME = 5.0
 const TIME_BEFORE_FLICKER = FULL_LIFETIME - FLIKER_LIFETIME
 
-const FULL_RADIUS = 80
-const FLIKER_RADIUS = 60
-const MIN_RADIUS = 28
+const FULL_RADIUS = 90
+const FLIKER_RADIUS = 70
+const MIN_RADIUS = 40
 const LIGHT_TEXTURE_SCALE = 0.003
 
 var noise: OpenSimplexNoise 
@@ -40,7 +40,7 @@ func _ready():
 	pickup_hint.action = "use"
 	pickup_hint.connect("action_just_pressed", self, "pick_up")
 	prepare_noise()
-	tree_detector.set_shape_radius(FULL_RADIUS * 3)
+	tree_detector.set_shape_radius(FULL_RADIUS)
 	reset()
 
 
@@ -54,7 +54,6 @@ func reset():
 func put_out_fire():
 	active = false
 	emit_signal("finished")
-
 
 # TODO: monstrous func, better split into multiples
 func _process(delta):
@@ -133,3 +132,4 @@ func prepare_noise():
 	noise.persistence = 0.7
 	noise.octaves = 1.0
 	noise.period = 30
+

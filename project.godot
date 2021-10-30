@@ -210,9 +210,19 @@ _global_script_classes=[ {
 "path": "res://src/enemy/Mage/Mage.gd"
 }, {
 "base": "Node2D",
+"class": "Main",
+"language": "GDScript",
+"path": "res://src/Main.gd"
+}, {
+"base": "Node2D",
 "class": "Minigame",
 "language": "GDScript",
 "path": "res://src/ui/minigame/Minigame.gd"
+}, {
+"base": "Node2D",
+"class": "MyWorld",
+"language": "GDScript",
+"path": "res://src/level/World.gd"
 }, {
 "base": "Reference",
 "class": "Noise",
@@ -298,6 +308,11 @@ _global_script_classes=[ {
 "class": "Torch",
 "language": "GDScript",
 "path": "res://src/fire/Torch.gd"
+}, {
+"base": "Node2D",
+"class": "TreeManager",
+"language": "GDScript",
+"path": "res://src/level/TreeManager.gd"
 } ]
 _global_script_class_icons={
 "AlarmedEmote": "",
@@ -340,7 +355,9 @@ _global_script_class_icons={
 "Item": "",
 "ItemFilesUtils": "",
 "Mage": "",
+"Main": "",
 "Minigame": "",
+"MyWorld": "",
 "Noise": "",
 "ParticlesBundle": "",
 "Player": "",
@@ -357,7 +374,8 @@ _global_script_class_icons={
 "SteeringAction": "",
 "SwordArea": "",
 "TextureMap": "",
-"Torch": ""
+"Torch": "",
+"TreeManager": ""
 }
 
 [application]
@@ -387,6 +405,8 @@ settings/profiler/max_functions=65535
 
 [display]
 
+window/size/width=1200
+window/size/height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

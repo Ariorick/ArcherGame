@@ -1,4 +1,5 @@
 extends Node2D
+class_name TreeManager
 
 const BaseTree = preload("res://src/level/BaseTree.tscn")
 var rng = RandomNumberGenerator.new()
@@ -25,7 +26,7 @@ func destroy(from: Vector2, to: Vector2):
 
 func try_create_tree_at(x, y):
 	var tree_level = get_tree_level_by_position(get_position_for_cell(x, y))
-	if tree_level < 1:
+	if tree_level < 1 or not can_place_tree_frequency(x, y):
 		return
 	
 	var tree = BaseTree.instance()
@@ -53,7 +54,10 @@ func can_place_tree2(x, y) -> bool:
 	return can_place_tree_frequency(x, y)
 
 func can_place_tree_frequency(x, y) -> bool:
-	return true
+#	var xmod = int(abs(x + int(abs(y)) % 2)) % 2 # or 4
+#	var ymod2 = int(abs(y)) % 2 # or 4
+#	return xmod + ymod2 == 0
+	return true # and set basetree alpha to 90/255
 
 func get_position_for_cell_with_random(x, y) -> Vector2:
 	var rang = (content.cell_size.x / 2) - 1
