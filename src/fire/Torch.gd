@@ -1,4 +1,4 @@
-extends Node2D
+extends Interactable
 class_name Torch
 
 signal finished
@@ -29,16 +29,12 @@ onready var light : Light2D = $Visuals/Light2D
 onready var sprite : Sprite = $Visuals/Sprite
 onready var animation_player : AnimationPlayer = $AnimationPlayer
 onready var tree_detector : CircleTreeDetector = $TreeDetector
-onready var pickup_hint : ButtonHintActivator = $PickupHintActivator
 
 func is_lit(v: Vector2) -> bool:
 	return (v - global_position).length() < current_radius
 
 func _ready():
 	LightZoneManager.add_light_source(self)
-	pickup_hint.conditions_met_ref = funcref(self, "can_be_piicked")
-	pickup_hint.action = "use"
-	pickup_hint.connect("action_just_pressed", self, "pick_up")
 	prepare_noise()
 	tree_detector.set_shape_radius(FULL_RADIUS)
 	reset()
@@ -49,11 +45,13 @@ func reset():
 	active = true
 	start_time = OS.get_ticks_msec()
 	GameManager.player_reset_torch(FULL_LIFETIME)
+	update_state()
 
 
 func put_out_fire():
 	active = false
 	emit_signal("finished")
+	update_state()
 
 # TODO: monstrous func, better split into multiples
 func _process(delta):
@@ -97,19 +95,14 @@ func on_thrown_away(direction: Vector2 = Vector2.ZERO):
 
 func landed_on_the_ground():
 	on_the_ground = true
+	update_state()
 
 
 func pick_up():
 	on_the_ground = false
 	GameManager.player_picked_torch()
 	emit_signal("collected", self)
-	
-#	looks OK without this transition to me
-#	tween.interpolate_property(self, "global_position", 
-#		global_position, GameManager.player_position, 
-#		0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
-#	tween.connect("tween_completed", self, "tween_completed")
-#	tween.start()
+	update_state()
 
 
 func can_be_piicked() -> bool:
@@ -119,6 +112,22 @@ func can_be_piicked() -> bool:
 func get_flickering() -> float:
 	var time = OS.get_ticks_msec()
 	return (noise.get_noise_2d(time, 0) + 1) / 5
+
+func _on_Torch_clicked(close_to_player):
+	if close_to_player and can_be_piicked():
+		pick_up()
+
+func update_state():
+	if not can_be_piicked():
+		sprite.material.set_shader_param("color", Color(1, 1, 1, 0))
+		return
+	
+	if close_to_player:
+		sprite.material.set_shader_param("color", Color(1, 1, 1, .25))
+		if mouse_hovered:
+			sprite.material.set_shader_param("color", Color(1, 1, 1, .6))
+	else:
+		sprite.material.set_shader_param("color", Color(1, 1, 1, 0))
 
 func _draw():
 #	Drawing.draw_circle(self, current_radius, Color.white)
@@ -133,3 +142,6 @@ func prepare_noise():
 	noise.octaves = 1.0
 	noise.period = 30
 
+
+func _on_Torch_state_changed(is_hovered, close_to_player):
+	update_state()

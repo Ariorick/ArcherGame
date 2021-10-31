@@ -1,7 +1,7 @@
 extends Interactable
 class_name CircleFire
 
-const RADIUS = 150.0
+const RADIUS = 110.0
 const TEXTURE_SCALE = 0.0035
 
 var active = false
@@ -11,7 +11,9 @@ func is_lit(v: Vector2) -> bool:
 	return (v - global_position).length() < RADIUS
 
 func _ready():
+	$Light2D.texture_scale = TEXTURE_SCALE * RADIUS
 	$TreeDetector.update_trees(RADIUS)
+	$TreeDetector.set_shape_radius(RADIUS)
 	LightZoneManager.add_light_source(self)
 	$FireSprite.material.set_shader_param("enabled", true)
 	update_state()
