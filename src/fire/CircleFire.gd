@@ -1,13 +1,8 @@
-extends Node2D
+extends Interactable
 class_name CircleFire
 
 const RADIUS = 150.0
 const TEXTURE_SCALE = 0.0035
-const INACTIVE_RADIUS = 0.3
-const MIN_ACTIVE_RADIUS = 0.5
-const ACTIVATION_RADIUS = MIN_ACTIVE_RADIUS + 0.1
-const NARROW_TIME = 60
-const TWITCH_RADIUS = 0.15
 
 var active = false
 var player_near: bool = false
@@ -18,11 +13,21 @@ func is_lit(v: Vector2) -> bool:
 func _ready():
 	$TreeDetector.update_trees(RADIUS)
 	LightZoneManager.add_light_source(self)
+	$FireSprite.material.set_shader_param("enabled", true)
+	update_state()
 
 func _process(delta):
 	update()
 #	This line might not be necessary
 	$TreeDetector.update_trees(RADIUS)
+
+func update_state():
+	if close_to_player:
+		$FireSprite.material.set_shader_param("color", Color(1, 1, 1, .25))
+		if mouse_hovered:
+			$FireSprite.material.set_shader_param("color", Color(1, 1, 1, .6))
+	else:
+		$FireSprite.material.set_shader_param("color", Color(1, 1, 1, 0))
 
 
 func can_refill_torch() -> bool:
@@ -42,3 +47,12 @@ func _on_PlayerExitedDetector_body_exited(body):
 	if body is Player:
 		refill_torch()
 		Saver.save_game()
+
+
+func _on_CircleFire_clicked(close_to_player):
+	if close_to_player:
+		pass # open craft
+
+
+func _on_CircleFire_state_changed(is_hovered, close_to_player):
+	update_state()
