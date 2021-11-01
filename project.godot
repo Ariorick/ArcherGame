@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/crafting/collectables/base/CollectedItemAnimation.gd"
 }, {
+"base": "Control",
+"class": "CraftingMenu",
+"language": "GDScript",
+"path": "res://src/ui/crafting/CraftingMenu.gd"
+}, {
 "base": "Node",
 "class": "CraftingStation",
 "language": "GDScript",
@@ -224,6 +229,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ui/minigame/Minigame.gd"
 }, {
+"base": "Node",
+"class": "NodeUtils",
+"language": "GDScript",
+"path": "res://src/utils/NodeUtils.gd"
+}, {
 "base": "Reference",
 "class": "Noise",
 "language": "GDScript",
@@ -273,6 +283,16 @@ _global_script_classes=[ {
 "class": "Rat",
 "language": "GDScript",
 "path": "res://src/enemy/Rat/Rat.gd"
+}, {
+"base": "ItemList",
+"class": "RecipiesList",
+"language": "GDScript",
+"path": "res://src/ui/crafting/RecipiesList.gd"
+}, {
+"base": "VBoxContainer",
+"class": "SelectedItemContainer",
+"language": "GDScript",
+"path": "res://src/ui/crafting/SelectedItemContainer.gd"
 }, {
 "base": "Node2D",
 "class": "Sensors",
@@ -326,6 +346,7 @@ _global_script_class_icons={
 "Collectable": "",
 "CollectedItem": "",
 "CollectedItemAnimation": "",
+"CraftingMenu": "",
 "CraftingStation": "",
 "DamageLabel": "",
 "DarknessEffect": "",
@@ -353,6 +374,7 @@ _global_script_class_icons={
 "Main": "",
 "Math": "",
 "Minigame": "",
+"NodeUtils": "",
 "Noise": "",
 "ParticlesBundle": "",
 "Player": "",
@@ -363,6 +385,8 @@ _global_script_class_icons={
 "PlayerPosition": "",
 "PlayerPullAction": "",
 "Rat": "",
+"RecipiesList": "",
+"SelectedItemContainer": "",
 "Sensors": "",
 "Skelly": "",
 "SteeringAction": "",
