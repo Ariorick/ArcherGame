@@ -1,4 +1,6 @@
 extends CanvasLayer
+class_name DarknessEffect
+# TODO: Kinda weird to have all this logic in Ui element
 
 const SURVIVAL_IN_DARKNESS_TIME = 2.0
 const EFFECT_DELAY = 0.4

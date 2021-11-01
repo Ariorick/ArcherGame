@@ -20,7 +20,7 @@ func set_shape_radius(radius: float):
 	$CollisionShape2D.shape.radius = radius
 
 func get_scale_for_tree(pos: Vector2, radius) -> float:
-	var distance = pos.distance_to(global_position)
+	var distance = (pos + Vector2(0, -20)).distance_to(global_position)
 	radius = max(0.01, radius)
 	
 	# SIMPLE

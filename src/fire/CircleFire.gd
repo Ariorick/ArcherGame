@@ -17,6 +17,7 @@ func _ready():
 	LightZoneManager.add_light_source(self)
 	$FireSprite.material.set_shader_param("enabled", true)
 	update_state()
+	update()
 
 func _process(delta):
 	update()
@@ -58,3 +59,6 @@ func _on_CircleFire_clicked(close_to_player):
 
 func _on_CircleFire_state_changed(is_hovered, close_to_player):
 	update_state()
+
+func _draw():
+	Drawing.draw_circle(self, RADIUS, Color.white)

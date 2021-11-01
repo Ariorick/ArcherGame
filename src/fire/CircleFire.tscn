@@ -47,13 +47,11 @@ color = Color( 1, 0.882353, 0.796078, 1 )
 mode = 2
 
 [node name="PlayerEnteredDetector" type="Area2D" parent="." index="5"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerEnteredDetector" index="0"]
 shape = SubResource( 3 )
 
 [node name="PlayerExitedDetector" type="Area2D" parent="." index="6"]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerExitedDetector" index="0"]
 shape = SubResource( 3 )
@@ -64,7 +62,6 @@ collision_mask = 512
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeDetector" index="0"]
-visible = false
 shape = SubResource( 4 )
 
 [connection signal="clicked" from="." to="." method="_on_CircleFire_clicked"]

@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ui/Damage/DamageLabel.gd"
 }, {
+"base": "CanvasLayer",
+"class": "DarknessEffect",
+"language": "GDScript",
+"path": "res://src/ui/darkness/DarknessEffect.gd"
+}, {
 "base": "Collectable",
 "class": "DeadTree",
 "language": "GDScript",
@@ -107,7 +112,7 @@ _global_script_classes=[ {
 "base": "CenterContainer",
 "class": "DeathScreen",
 "language": "GDScript",
-"path": "res://src/ui/DeathScreen.gd"
+"path": "res://src/ui/deathscreen/DeathScreen.gd"
 }, {
 "base": "Reference",
 "class": "Direction",
@@ -163,11 +168,6 @@ _global_script_classes=[ {
 "class": "FollowTargetAction",
 "language": "GDScript",
 "path": "res://src/enemy/Skelly/FollowTargetAction.gd"
-}, {
-"base": "CanvasLayer",
-"class": "FpsLabel",
-"language": "GDScript",
-"path": "res://src/ui/FPSLabel.gd"
 }, {
 "base": "EnemyBase",
 "class": "Ghost",
@@ -284,11 +284,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/enemy/Skelly/Skelly.gd"
 }, {
-"base": "Reference",
-"class": "SpawnerProgram",
-"language": "GDScript",
-"path": "res://src/fire/SpawnerProgram.gd"
-}, {
 "base": "EnemyAction",
 "class": "SteeringAction",
 "language": "GDScript",
@@ -333,6 +328,7 @@ _global_script_class_icons={
 "CollectedItemAnimation": "",
 "CraftingStation": "",
 "DamageLabel": "",
+"DarknessEffect": "",
 "DeadTree": "",
 "DeathScreen": "",
 "Direction": "",
@@ -346,7 +342,6 @@ _global_script_class_icons={
 "FlyAroundAction": "",
 "FollowAtDistanceTargetAction": "",
 "FollowTargetAction": "",
-"FpsLabel": "",
 "Ghost": "",
 "HealthManager": "",
 "Interactable": "",
@@ -370,7 +365,6 @@ _global_script_class_icons={
 "Rat": "",
 "Sensors": "",
 "Skelly": "",
-"SpawnerProgram": "",
 "SteeringAction": "",
 "SwordArea": "",
 "TextureMap": "",

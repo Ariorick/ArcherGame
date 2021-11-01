@@ -7,13 +7,13 @@
 [ext_resource path="res://src/ui/styles/theme.tres" type="Theme" id=5]
 [ext_resource path="res://src/ui/MousePosition.gd" type="Script" id=7]
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=1]
 antialiased = false
 font_path = "res://src/ui/styles/kenney_pixel_square.ttf"
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 30
-font_data = SubResource( 2 )
+font_data = SubResource( 1 )
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -61,7 +61,7 @@ margin_left = 448.706
 margin_top = 28.957
 margin_right = 516.706
 margin_bottom = 56.957
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "30 sec"
 align = 1
 __meta__ = {
