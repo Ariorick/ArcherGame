@@ -54,7 +54,7 @@ func _on_PlayerExitedDetector_body_exited(body):
 
 func _on_CircleFire_clicked(close_to_player):
 	if close_to_player:
-		pass # open craft
+		UiSignals.open_crafting()
 
 
 func _on_CircleFire_state_changed(is_hovered, close_to_player):

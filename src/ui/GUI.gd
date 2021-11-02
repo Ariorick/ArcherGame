@@ -1,12 +1,9 @@
-extends CanvasLayer
+extends MarginContainer
 
-
-
-onready var health_bar = $GUI/VBoxContainer/HBoxContainer/HealthDisplay
-onready var arrow_label = $GUI/VBoxContainer/HBoxContainer2/ArrowCount
+onready var health_bar = $VBoxContainer/HBoxContainer/HealthDisplay
+onready var arrow_label = $VBoxContainer/HBoxContainer2/ArrowCount
 
 func _ready():
-	UiHolder.ui = self
 	health_bar.set_max_value(GameManager.MAX_HEALTH)
 
 

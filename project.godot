@@ -420,8 +420,8 @@ LightZoneManager="*res://src/gameManager/LightZoneManager.gd"
 Console="*res://addons/quentincaffeino/console/src/Console.tscn"
 Inventory="*res://src/gameManager/Inventory.gd"
 ConsoleExtensions="*res://src/utils/ConsoleExtensions.gd"
-UiHolder="*res://src/ui/UiHolder.gd"
 Saver="*res://src/gameManager/Saver.gd"
+UiSignals="*res://src/ui/UiSignals.gd"
 
 [debug]
 
