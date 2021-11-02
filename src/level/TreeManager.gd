@@ -142,6 +142,7 @@ func get_position_for_cell(x, y) -> Vector2:
 	return cell_size_px * Vector2(x, y) + cell_size_px * Vector2(0.5, 1)
 
 func _draw():
-	for rect in chunks_for_debug_draw:
-		var draw_rect = Rect2(rect.position * cell_size_px, rect.size * cell_size_px)
-		draw_rect(draw_rect, Color.white, false, 2)
+#	for rect in chunks_for_debug_draw:
+#		var draw_rect = Rect2(rect.position * cell_size_px, rect.size * cell_size_px)
+#		draw_rect(draw_rect, Color.white, false, 2)
+	pass

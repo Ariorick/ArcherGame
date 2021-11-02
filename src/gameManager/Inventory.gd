@@ -19,8 +19,8 @@ func add(item_id: String, count = 1):
 		items[item_id] = count
 	_reparseItems()
 
-func can_craft(item_id, count) -> bool:
-	return true
+func can_craft(item_id, count = 1) -> bool:
+	return CraftingStation.can_craft(Item.new(item_id), items, count)
 
 func craft(item_id: String, count = 1) -> bool:
 	if CraftingStation.can_craft(Item.new(item_id), items, count):

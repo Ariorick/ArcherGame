@@ -20,13 +20,13 @@ script = ExtResource( 3 )
 [node name="World" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, 0.277985 )
 
-[node name="Ui" parent="." instance=ExtResource( 4 )]
-
-[node name="DarknessEffect" parent="." instance=ExtResource( 5 )]
-
 [node name="CanvasModulate2" type="CanvasModulate" parent="."]
 visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
+
+[node name="Ui" parent="." instance=ExtResource( 4 )]
+
+[node name="DarknessEffect" parent="." instance=ExtResource( 5 )]

@@ -4,7 +4,8 @@ var id: String # to a json
 var name: String
 var recipe: Dictionary # of ids to count
 var count: int
-var icon: String = "res://assets/named/item_stone.png"
+var icon: String = "res://assets/named/item_placeholder.png"
+var description: String = ""
 
 
 
@@ -21,4 +22,6 @@ func _init(id: String, count := 0):
 	recipe = dict["recipe"]
 	if dict.has("icon"):
 		icon = dict["icon"]
+	if dict.has("description"):
+		description = dict["description"]
 	self.count = count
