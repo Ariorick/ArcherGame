@@ -1,21 +1,22 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/crafting/collectables/base/CollectedItemAnimation.gd" type="Script" id=1]
+[ext_resource path="res://src/ui/crafting/collected/CollectedItemAnimation.gd" type="Script" id=1]
 [ext_resource path="res://assets/named/stone2.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "show_item"
+length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:position")
+tracks/0/path = NodePath("Sprite:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1 ),
+"times": PoolRealArray( 0, 0.3, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 5, 10 ), Vector2( 0, 0 ), Vector2( -10, 0 ) ]
+"values": [ Vector2( 5, 20 ), Vector2( 0, 0 ), Vector2( -30, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:scale")
@@ -36,20 +37,29 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
+"times": PoolRealArray( 0, 0.2, 1.1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[node name="CollectedItemAnimation" type="Node2D"]
+[node name="CollectedItemAnimation" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 10, 10 )
-scale = Vector2( 0.5, 0.5 )
+margin_left = 5.0
+margin_top = 20.0
+margin_right = 53.0
+margin_bottom = 68.0
 texture = ExtResource( 2 )
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/show_item = SubResource( 1 )

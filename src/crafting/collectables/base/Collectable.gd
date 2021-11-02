@@ -2,7 +2,6 @@ extends Interactable
 class_name Collectable
 
 const Minigame = preload("res://src/ui/minigame/Minigame.tscn")
-const CollectedItem = preload("res://src/crafting/collectables/base/CollectedItem.tscn")
 
 var orientation := Vector2(sign(rand_range(-1, 1)), 1)
 var picked := false
@@ -34,13 +33,7 @@ func on_clicked():
 
 func on_Minigame_sucess(item_count):
 	minigame = null
-
 	Inventory.add(item_id, item_count)
-	var collected_item = CollectedItem.instance()
-	collected_item.item_id = item_id
-	collected_item.amount = item_count
-	get_parent().get_parent().add_child(collected_item)
-	collected_item.global_position = global_position + Vector2(0, 0)
 	on_collected()
 	
 func on_Minigame_resource_destroyed():

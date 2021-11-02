@@ -1,31 +1,35 @@
 extends Node
 # INVENNTORY
 
-signal inventory_changed
+signal inventory_changed()
+signal item_added(item_id, count)
 
 var items: Dictionary # string ids to amount in inventory
 var parsed_items: Array # of Item
 var item_types: Dictionary # id to Item
 
-# or subtract if count is < 0
-func add(item_id: String, count = 1):
-	if count == 0:
+# or subtract if amount is < 0
+func add(item_id: String, amount = 1):
+	if amount == 0:
 		return 
 	if items.has(item_id):
-		items[item_id] = items[item_id] + count
+		items[item_id] = items[item_id] + amount
 		if items[item_id] < 1:
 			items.erase(item_id)
 	else:
-		items[item_id] = count
+		items[item_id] = amount
 	_reparseItems()
+	
+	if amount > 0:
+		emit_signal("item_added", item_id, amount)
 
-func can_craft(item_id, count = 1) -> bool:
-	return CraftingStation.can_craft(Item.new(item_id), items, count)
+func can_craft(item_id, amount = 1) -> bool:
+	return CraftingStation.can_craft(Item.new(item_id), items, amount)
 
-func craft(item_id: String, count = 1) -> bool:
-	if CraftingStation.can_craft(Item.new(item_id), items, count):
-		items = CraftingStation.use(Item.new(item_id), items, count)
-		add(item_id, count)
+func craft(item_id: String, amount = 1) -> bool:
+	if CraftingStation.can_craft(Item.new(item_id), items, amount):
+		items = CraftingStation.use(Item.new(item_id), items, amount)
+		add(item_id, amount)
 		_reparseItems()
 		return true
 	else:
