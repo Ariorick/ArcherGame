@@ -2,14 +2,13 @@ class_name Item
 
 var id: String # to a json
 var name: String
-var recipe: Dictionary # of ids to count
-var count: int
+var recipe: Dictionary # of ids to amount
 var icon: String = "res://assets/named/item_placeholder.png"
 var description: String = ""
 
 
 
-func _init(id: String, count := 0):
+func _init(id: String):
 	self.id = id
 	
 	var file = File.new()
@@ -25,7 +24,6 @@ func _init(id: String, count := 0):
 		icon = dict["icon"]
 	if dict.has("description"):
 		description = dict["description"]
-	self.count = count
 
 # EXAMPLE json
 #{

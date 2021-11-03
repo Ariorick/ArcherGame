@@ -1,11 +1,13 @@
 extends Label
+class_name InventoryLabel
 
 func _ready():
-	Inventory.connect("inventory_changed", self, "inventory_changed")
-	inventory_changed()
+	Inventory.connect("inventory_changed", self, "update_label")
+	update_label()
 
-func inventory_changed():
+func update_label():
 	var inventory_string := "Inventory: \n"
-	for item in Inventory.parsed_items:
-			inventory_string += item.name + " " + str(item.count) + "\n"
+	var parsed_items := Inventory.get_parsed_items()
+	for item in parsed_items.keys():
+			inventory_string += item.name + " " + str(parsed_items[item]) + "\n"
 	text = inventory_string
