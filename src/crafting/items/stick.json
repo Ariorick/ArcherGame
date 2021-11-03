@@ -1,8 +1,4 @@
 {
     "name": "Stick",
-    "scene": "",
     "icon": "res://assets/named/stick.png",
-    "recipe": {
-    	"wood": 1
-     }
 }

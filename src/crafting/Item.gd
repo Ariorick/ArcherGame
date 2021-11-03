@@ -19,7 +19,8 @@ func _init(id: String, count := 0):
 	
 	var dict = parse_json(json)
 	name = dict["name"]
-	recipe = dict["recipe"]
+	if dict.has("recipe"):
+		recipe = dict["recipe"]
 	if dict.has("icon"):
 		icon = dict["icon"]
 	if dict.has("description"):

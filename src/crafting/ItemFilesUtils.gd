@@ -17,7 +17,9 @@ static func get_all_items_ids() -> Array:
 	dir.list_dir_begin()
 	
 	while true:
-		var file = dir.get_next()
+		var file : String = dir.get_next()
+		if file.begins_with("."):
+			continue
 		if file == "":
 			break
 		elif file.ends_with(FILE_FORMAT):

@@ -1,6 +1,7 @@
 {
     "name": "Axe",
-    "scene": "res://crafting/items/Axe.tscn",
+    "description": "Allows you to chop down trees for wood",
+    "icon": "res://assets/named/item_axe.png",
     "recipe": {
             "stone": 5,
             "stick": 5
