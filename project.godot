@@ -294,7 +294,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ui/crafting/RecipiesList.gd"
 }, {
-"base": "VBoxContainer",
+"base": "MarginContainer",
 "class": "SelectedItemDetails",
 "language": "GDScript",
 "path": "res://src/ui/crafting/SelectedItemDetails.gd"

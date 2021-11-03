@@ -111,6 +111,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="on_opened" from="." to="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/ItemList" method="_on_CraftingMenu_on_opened"]
 [connection signal="mouse_entered" from="MarginContainer/PanelContainer" to="." method="_on_PanelContainer_mouse_entered"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/ItemList" to="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/ItemList" method="_on_ItemList_item_selected"]
 [connection signal="on_item_selected" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/ItemList" to="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer/SelectedItemDetails" method="_on_item_selected"]

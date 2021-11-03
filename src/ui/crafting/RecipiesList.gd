@@ -7,6 +7,8 @@ var recipies := Array()
 
 func _ready():
 	Inventory.connect("inventory_changed", self, "update_list")
+	update_list()
+
 
 func update_list():
 	clear()
@@ -19,3 +21,9 @@ func update_list():
 
 func _on_ItemList_item_selected(index):
 	emit_signal("on_item_selected", recipies[index])
+
+
+func _on_CraftingMenu_on_opened():
+	if not is_anything_selected():
+		select(0)
+		emit_signal("on_item_selected", recipies[0])
