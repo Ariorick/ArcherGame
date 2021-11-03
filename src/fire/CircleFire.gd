@@ -47,7 +47,7 @@ func _on_PlayerEnteredDetector_body_entered(body):
 
 
 func _on_PlayerExitedDetector_body_exited(body):
-	if body is Player:
+	if body is Player and Inventory.has("torch"):
 		refill_torch()
 		Saver.save_game()
 
