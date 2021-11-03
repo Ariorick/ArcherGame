@@ -44,7 +44,7 @@ func reset():
 	fire_effect.add_sparks()
 	active = true
 	start_time = OS.get_ticks_msec()
-	GameManager.player_reset_torch(FULL_LIFETIME)
+	UiSignals.player_reset_torch(FULL_LIFETIME)
 	update_state()
 
 

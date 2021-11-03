@@ -4,7 +4,7 @@ var torch_end_time: int
 
 
 func _ready():
-	GameManager.connect("player_reset_torch", self, "player_reset_torch")
+	UiSignals.connect("player_reset_torch", self, "player_reset_torch")
 
 
 func _process(delta):

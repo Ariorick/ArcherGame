@@ -4,10 +4,7 @@ const MAX_HEALTH := 10
 const MAX_ARROW_COUNT := 5
 const PLAYER_START_POSITION = Vector2(120, 56)
 
-signal player_health_changed
 signal on_player_death
-signal arrow_count_changed
-signal player_reset_torch
 
 
 var health := MAX_HEALTH
@@ -18,8 +15,6 @@ var is_holding_torch := false
 var player
 var player_position: Vector2
 
-var enemy_count := 0
-
 func player_died():
 	is_dead = true
 	emit_signal("on_player_death")
@@ -29,19 +24,11 @@ func reset_player():
 	if player != null:
 		player.position = PLAYER_START_POSITION
 
-func enemy_spawned():
-	enemy_count += 1
-
-func enemy_died():
-	enemy_count -= 1
-
 func player_used_arrow():
 	arrow_count -= 1
-	emit_signal("arrow_count_changed")
 
 func player_collected_arrow():
 	arrow_count += 1
-	emit_signal("arrow_count_changed")
 
 #    TODO: this is a trash class, can_shoot and can dash should be somewhere near player
 func can_shoot():
@@ -49,9 +36,6 @@ func can_shoot():
 
 func can_dash():
 	return not is_holding_torch 
-
-func player_reset_torch(time: int):
-	emit_signal("player_reset_torch", time)
 
 func player_picked_torch():
 	is_holding_torch = true

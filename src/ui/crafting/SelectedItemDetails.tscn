@@ -63,4 +63,4 @@ margin_bottom = 210.0
 size_flags_horizontal = 4
 text = "craft"
 
-[connection signal="button_up" from="HBox/CraftButton" to="HBox" method="_on_CraftButton_button_up"]
+[connection signal="pressed" from="HBox/CraftButton" to="." method="_on_CraftButton_pressed"]

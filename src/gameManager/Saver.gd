@@ -20,6 +20,8 @@ func apply_loaded_save(save: Dictionary, save_text: String):
 
 func create_save() -> Dictionary:
 	var save := Dictionary()
+	save["save_time"] = TimeUtils.get_date_time_string()
+	save["timestamp"] = OS.get_unix_time()
 	save["version"] = VERSION
 	save["inventory"] = Inventory.items
 	return save
@@ -32,7 +34,16 @@ func load_game():
 	save_file.open(SAVE_FILE, File.READ)
 	
 	var save_text = save_file.get_as_text()
-	var save: Dictionary = parse_json(save_text)
+	if save_text == null:
+		print ("Corrupted save")
+		return
+	
+	var save_json = parse_json(save_text)
+	if typeof(save_json) != TYPE_DICTIONARY:
+		print ("Corrupted save")
+		return
+	
+	var save: Dictionary = save_json
 	apply_loaded_save(save, save_text)
 	
 	save_file.close()

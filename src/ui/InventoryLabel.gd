@@ -2,6 +2,7 @@ extends Label
 
 func _ready():
 	Inventory.connect("inventory_changed", self, "inventory_changed")
+	inventory_changed()
 
 func inventory_changed():
 	var inventory_string := "Inventory: \n"

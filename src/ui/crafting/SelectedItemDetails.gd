@@ -27,6 +27,5 @@ func _on_item_selected(item: Item):
 	$HBox/CraftButton.disabled = not Inventory.can_craft(item.id)
 
 
-
-func _on_CraftButton_button_up():
+func _on_CraftButton_pressed():
 	Inventory.craft(current_item.id)
