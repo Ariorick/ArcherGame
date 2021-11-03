@@ -14,7 +14,7 @@ func update_list():
 	clear()
 	recipies.clear()
 	for item in Inventory.item_types.values():
-		if item.recipe != null and not item.recipe.empty():
+		if not item.recipe.empty():
 			recipies.append(item)
 			add_item(item.name, load(item.icon))
 

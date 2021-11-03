@@ -5,27 +5,77 @@ const Ingredient = preload("res://src/ui/crafting/Ingredient.tscn")
 
 var current_item
 
+onready var icon_control := $HBox/CenterContainer/ItemIcon
+onready var igredients_control := $HBox/IngredientsList
+
 func _ready():
-	visible = false
+	Inventory.connect("inventory_changed", self, "update_ui")
+	update_ui()
 
 func _on_item_selected(item: Item):
-	visible = true
 	current_item = item
-	$HBox/ItemNameLabel.text = item.name
-	$HBox/ItemIcon.texture = load(item.icon)
-	$HBox/Description.text = item.description
+	update_ui()
+
+func update_ui():
+	if current_item == null:
+		visible = false
+		return
+	visible = true
 	
-	var recipe = item.recipe
-	NodeUtils.delete_children($HBox/IngredientsList)
+	$HBox/ItemNameLabel.text = current_item.name
+	icon_control.texture = load(current_item.icon)
+	$HBox/Description.text = current_item.description
+	
+	var recipe = current_item.recipe
+	NodeUtils.delete_children(igredients_control)
 	for ingredient_id in recipe:
 		var ingredient = Item.new(ingredient_id)
 		var control = Ingredient.instance()
 		control.icon = ingredient.icon
 		control.count = recipe[ingredient_id]
-		$HBox/IngredientsList.add_child(control)
+		control.is_enough = Inventory.amount_of(ingredient_id) >= recipe[ingredient_id]
+		igredients_control.add_child(control)
 	
-	$HBox/CraftButton.disabled = not Inventory.can_craft(item.id)
+	$HBox/CraftButton.disabled = not Inventory.can_craft(current_item.id)
+#	show_craft_animation()
 
 
 func _on_CraftButton_pressed():
 	Inventory.craft(current_item.id)
+	show_craft_animation()
+	$HBox/CraftButton.disabled = true
+
+func show_craft_animation():
+	var step_1_time = 0.15
+	var step_2_time = 0.5
+	var new_scale = 2
+	
+	var icon_size: Vector2 = icon_control.rect_size
+	var icon_position: Vector2 = icon_control.rect_position
+	
+	$Tween.interpolate_property(icon_control, ":rect_scale", Vector2.ONE, Vector2(new_scale, new_scale), \
+		step_1_time, Tween.TRANS_QUAD, Tween.EASE_IN)
+	$Tween.interpolate_property(icon_control, ":rect_position", \
+		icon_position, icon_position  - icon_size * (new_scale / 2 - 0.5)  , \
+		step_1_time, Tween.TRANS_QUAD, Tween.EASE_IN)
+	
+	$Tween.interpolate_property(icon_control, ":rect_scale", Vector2(new_scale, new_scale), Vector2.ONE, \
+		step_2_time, Tween.TRANS_BOUNCE, Tween.EASE_OUT, step_1_time)
+	$Tween.interpolate_property(icon_control, ":rect_position", \
+		icon_position - icon_size * (new_scale / 2 - 0.5), icon_position, \
+		step_2_time, Tween.TRANS_BOUNCE, Tween.EASE_OUT, step_1_time)
+	$Tween.start()
+	
+	$ParticleTimer.wait_time = step_1_time + step_2_time - 0.3
+	$ParticleTimer.start()
+	$HBox/CenterContainer/Particles2D.position = $HBox/CenterContainer.rect_size / 2
+
+
+func _on_ParticleTimer_timeout():
+	$HBox/CenterContainer/Particles2D.lifetime = 0
+	$HBox/CenterContainer/Particles2D.lifetime = 0.7
+	$HBox/CenterContainer/Particles2D.emitting = true
+
+
+func _on_Tween_tween_all_completed():
+	update_ui()

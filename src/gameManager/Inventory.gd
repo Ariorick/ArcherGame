@@ -24,9 +24,14 @@ func add(item_id: String, amount = 1):
 		emit_signal("item_added", item_id, amount)
 
 
-func can_craft(item_id, amount = 1) -> bool:
+func can_craft(item_id: String, amount = 1) -> bool:
 	return CraftingStation.can_craft(Item.new(item_id), items, amount)
 
+func amount_of(item_id: String) -> int:
+	if items.has(item_id):
+		return items[item_id]
+	else:
+		return 0
 
 func craft(item_id: String, amount = 1) -> bool:
 	if CraftingStation.can_craft(Item.new(item_id), items, amount):
