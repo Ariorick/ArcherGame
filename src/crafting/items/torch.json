@@ -1,0 +1,9 @@
+{
+    "name": "Magic torch",
+    "description": "Allows you to cast away the fog for a short time",
+    "icon": "res://assets/named/item_torch.png",
+    "recipe": {
+            "magic_crystal": 1,
+            "stick": 1
+        }
+}

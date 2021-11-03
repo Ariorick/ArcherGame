@@ -65,3 +65,4 @@ func save_game():
 func delete_save():
 	var dir = Directory.new()
 	dir.remove("user://savegame.save")
+	print("Save deleted")

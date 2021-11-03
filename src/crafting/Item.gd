@@ -26,3 +26,14 @@ func _init(id: String, count := 0):
 	if dict.has("description"):
 		description = dict["description"]
 	self.count = count
+
+# EXAMPLE json
+#{
+#    "name": "Pickaxe",
+#    "description": "Allows you to mine rocks for stone and metal",
+#    "icon": "res://assets/named/item_pickaxe.png",
+#    "recipe": {
+#            "stone": 5,
+#            "stick": 5
+#        }
+#}

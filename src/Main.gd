@@ -1,6 +1,8 @@
 extends Node2D
 class_name Main
 
+var poop: Dictionary
+
 func _ready():
 	init_console()
 
@@ -31,5 +33,5 @@ func init_console():
 
 func reset():
 	Saver.delete_save()
-	Inventory.set_items(Dictionary())
+	Inventory.set_inventory_to_default()
 	GameManager.reset_player()

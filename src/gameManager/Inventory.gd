@@ -39,6 +39,11 @@ func set_items(dict: Dictionary):
 	items = dict
 	_reparseItems()
 
+func set_inventory_to_default():
+	set_items({
+		"magic_crystal":1
+	})
+
 func has(item_id) -> bool:
 	return items.has(item_id)
 
@@ -49,6 +54,7 @@ func _ready():
 	var ids = ItemFilesUtils.get_all_items_ids()
 	for id in ids:
 		item_types[id] = Item.new(id, 0)
+	set_inventory_to_default()
 
 func _reparseItems():
 	parsed_items.clear()
