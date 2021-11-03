@@ -3,7 +3,6 @@ class_name Main
 
 func _ready():
 	init_console()
-	Saver.load_game()
 
 func init_console():
 	Console.add_command('add', ConsoleExtensions, 'add_by_id')\

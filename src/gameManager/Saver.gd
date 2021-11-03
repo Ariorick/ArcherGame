@@ -1,32 +1,55 @@
 extends Node
 # SAVER
 
+const VERSION = 1
 const SAVE_FILE = "user://savegame.save"
 
 func _ready():
 	load_game()
 
-func load_game():
-	var save_game = File.new()
-	if not save_game.file_exists(SAVE_FILE):
-		return # Error! We don't have a save to load.
-	save_game.open(SAVE_FILE, File.READ)
+func apply_loaded_save(save: Dictionary, save_text: String):
+	if not save.has("version") or VERSION != save["version"]:
+		print ("Save file has different version")
+		return
 	
-	Inventory.set_items(parse_json(save_game.get_line()))
-	
+	Inventory.set_items(save["inventory"])
 	GameManager.reset_player()
-	save_game.close()
+	
+	print("Game loaded, save:")
+	print(save_text)
+
+func create_save() -> Dictionary:
+	var save := Dictionary()
+	save["version"] = VERSION
+	save["inventory"] = Inventory.items
+	return save
+
+func load_game():
+	var save_file = File.new()
+	if not save_file.file_exists(SAVE_FILE):
+		print ("No save file")
+		return
+	save_file.open(SAVE_FILE, File.READ)
+	
+	var save_text = save_file.get_as_text()
+	var save: Dictionary = parse_json(save_text)
+	apply_loaded_save(save, save_text)
+	
+	save_file.close()
 
 func save_game():
 	var dir = Directory.new()
-	if not dir.file_exists(SAVE_FILE):
+	if dir.file_exists(SAVE_FILE):
 		dir.remove(SAVE_FILE)
-	var save_game = File.new()
-	save_game.open(SAVE_FILE, File.WRITE)
+	var save_file = File.new()
+	save_file.open(SAVE_FILE, File.WRITE)
 	
-	save_game.store_line(to_json(Inventory.items))
+	var save = create_save()
 	
-	save_game.close()
+	var pretty_json = JsonFormatter.beautify_json(to_json(save))
+	save_file.store_line(pretty_json)
+	save_file.close()
+	print("Game saved")
 
 func delete_save():
 	var dir = Directory.new()
