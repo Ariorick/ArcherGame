@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/ui/HealthBar/HealthDisplay.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tiles/arrow.png" type="Texture" id=2]
@@ -6,10 +6,11 @@
 [ext_resource path="res://src/ui/Fps/FpsLabel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/ui/styles/theme.tres" type="Theme" id=5]
 [ext_resource path="res://src/ui/crafting/CraftingMenu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/ui/MousePosition.gd" type="Script" id=7]
+[ext_resource path="res://src/ui/MouseCursor.gd" type="Script" id=7]
 [ext_resource path="res://src/ui/InventoryLabel.gd" type="Script" id=8]
 [ext_resource path="res://src/ui/TorchTimeLabel.gd" type="Script" id=9]
 [ext_resource path="res://src/ui/crafting/collected/CollectedItem.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/named/cursor.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFontData" id=1]
 antialiased = false
@@ -20,9 +21,6 @@ size = 30
 font_data = SubResource( 1 )
 
 [node name="Ui" type="CanvasLayer"]
-
-[node name="MousePosition" type="Position2D" parent="."]
-script = ExtResource( 7 )
 
 [node name="GUI" type="MarginContainer" parent="."]
 anchor_right = 1.0
@@ -157,3 +155,28 @@ margin_left = 600.0
 margin_top = 180.0
 margin_right = 600.0
 margin_bottom = 180.0
+
+[node name="MouseCursor" type="Position2D" parent="."]
+visible = false
+position = Vector2( 588.468, 352.456 )
+script = ExtResource( 7 )
+
+[node name="HBoxContainer" type="MarginContainer" parent="MouseCursor"]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Usual" type="TextureRect" parent="MouseCursor/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 16.0
+mouse_filter = 2
+texture = ExtResource( 11 )
+stretch_mode = 5
+
+[node name="Grab" type="TextureRect" parent="MouseCursor/HBoxContainer"]
+margin_right = 16.0
+margin_bottom = 16.0

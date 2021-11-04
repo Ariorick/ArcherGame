@@ -234,6 +234,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ui/minigame/Minigame.gd"
 }, {
+"base": "Position2D",
+"class": "MouseCursor",
+"language": "GDScript",
+"path": "res://src/ui/MouseCursor.gd"
+}, {
 "base": "Node",
 "class": "NodeUtils",
 "language": "GDScript",
@@ -385,6 +390,7 @@ _global_script_class_icons={
 "Main": "",
 "Math": "",
 "Minigame": "",
+"MouseCursor": "",
 "NodeUtils": "",
 "Noise": "",
 "ParticlesBundle": "",
