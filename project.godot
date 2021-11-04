@@ -109,11 +109,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/ui/darkness/DarknessEffect.gd"
 }, {
-"base": "Collectable",
-"class": "DeadTree",
-"language": "GDScript",
-"path": "res://src/crafting/collectables/DeadTree.gd"
-}, {
 "base": "CenterContainer",
 "class": "DeathScreen",
 "language": "GDScript",
@@ -203,11 +198,6 @@ _global_script_classes=[ {
 "class": "InventoryUtils",
 "language": "GDScript",
 "path": "res://src/crafting/InventoryUtils.gd"
-}, {
-"base": "Collectable",
-"class": "IronOre",
-"language": "GDScript",
-"path": "res://src/crafting/collectables/IronOre.gd"
 }, {
 "base": "Reference",
 "class": "Item",
@@ -370,7 +360,6 @@ _global_script_class_icons={
 "CraftingStation": "",
 "DamageLabel": "",
 "DarknessEffect": "",
-"DeadTree": "",
 "DeathScreen": "",
 "Direction": "",
 "Drawing": "",
@@ -389,7 +378,6 @@ _global_script_class_icons={
 "Interactable": "",
 "InventoryLabel": "",
 "InventoryUtils": "",
-"IronOre": "",
 "Item": "",
 "ItemFilesUtils": "",
 "JsonFormatter": "",

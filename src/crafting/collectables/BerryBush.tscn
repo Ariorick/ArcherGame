@@ -20,7 +20,7 @@ shader_param/add_margins = false
 
 [node name="BerryBush" instance=ExtResource( 3 )]
 script = ExtResource( 5 )
-item_json = "res://src/crafting/items/berries.json"
+item_id = "berries"
 
 [node name="Visuals" parent="." index="0"]
 material = SubResource( 1 )

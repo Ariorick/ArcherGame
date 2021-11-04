@@ -17,7 +17,7 @@ shader_param/add_margins = false
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="Lily" instance=ExtResource( 1 )]
-item_json = "res://src/crafting/items/lily.json"
+item_id = "lily"
 
 [node name="Visuals" parent="." index="0"]
 material = SubResource( 1 )

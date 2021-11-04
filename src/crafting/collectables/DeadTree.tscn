@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Shaders/outline.shader" type="Shader" id=1]
-[ext_resource path="res://src/crafting/collectables/DeadTree.gd" type="Script" id=2]
 [ext_resource path="res://src/crafting/collectables/base/Collectable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/named/dead_tree.png" type="Texture" id=4]
 
@@ -19,8 +18,9 @@ shader_param/add_margins = false
 radius = 16.4924
 
 [node name="DeadTree" instance=ExtResource( 3 )]
-script = ExtResource( 2 )
-item_json = "res://src/crafting/items/wood.json"
+item_id = "wood"
+instrument = "axe"
+instrument_level = 1
 
 [node name="Visuals" parent="." index="0"]
 material = SubResource( 1 )

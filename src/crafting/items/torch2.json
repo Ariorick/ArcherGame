@@ -4,6 +4,7 @@
     "icon": "res://assets/named/item_torch2.png",
     "category": "torch",
     "recipe": {
+    		"torch1": 1,
             "magic_crystal": 3,
             "iron": 10
         }

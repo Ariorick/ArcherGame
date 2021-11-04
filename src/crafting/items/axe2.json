@@ -4,6 +4,7 @@
     "icon": "res://assets/named/item_axe2.png",
     "category": "axe",
     "recipe": {
+    		"axe1": 1,
             "iron": 5,
             "wood": 5
         }

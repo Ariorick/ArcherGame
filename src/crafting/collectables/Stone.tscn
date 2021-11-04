@@ -17,7 +17,9 @@ shader_param/add_margins = false
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="Stone" instance=ExtResource( 3 )]
-item_json = "res://src/crafting/items/stone.json"
+item_id = "stone"
+instrument = "pickaxe"
+instrument_level = 1
 
 [node name="Visuals" parent="." index="0"]
 material = SubResource( 1 )

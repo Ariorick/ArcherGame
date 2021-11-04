@@ -17,7 +17,7 @@ shader_param/add_margins = false
 [sub_resource type="CircleShape2D" id=2]
 
 [node name="Stick" instance=ExtResource( 2 )]
-item_json = "res://src/crafting/items/stick.json"
+item_id = "stick"
 
 [node name="Visuals" parent="." index="0"]
 material = SubResource( 1 )

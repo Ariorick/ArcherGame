@@ -78,6 +78,12 @@ func get_available_recipies() -> Array: # of Item that you're allowed to craft
 func is_instrument(item_id: String) -> bool:
 	return StringUtils.begins_with_one_of(item_id, INSTRUMENTS)
 
+func instrument_level(instrument_id: String) -> int:
+	var instruments_in_inventory = get_instruments_in_inventory()
+	if instruments_in_inventory.has(instrument_id):
+		return instruments_in_inventory[instrument_id]
+	return 0
+
 func get_instruments_in_inventory() -> Dictionary: #instrument id to it's level
 	var instruments = ArrayUtils.filter(items.keys(), funcref(self, "is_instrument"))
 	var instruments_dict := Dictionary()
