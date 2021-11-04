@@ -34,8 +34,8 @@ func update_ui():
 		var ingredient = Item.new(ingredient_id)
 		var control = Ingredient.instance()
 		control.icon = ingredient.icon
-		control.count = recipe[ingredient_id]
-		control.is_enough = Inventory.amount_of(ingredient_id) >= recipe[ingredient_id]
+		control.amount_in_inventory = Inventory.amount_of(ingredient_id)
+		control.amount_needed = recipe[ingredient_id]
 		igredients_control.add_child(control)
 	
 	$HBox/CraftButton.disabled = not Inventory.can_craft(current_item.id)

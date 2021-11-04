@@ -6,6 +6,7 @@
     "recipe": {
     		"torch1": 1,
             "magic_crystal": 3,
-            "iron": 10
+            "iron": 10,
+            "wood": 10
         }
 }

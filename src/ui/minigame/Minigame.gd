@@ -12,6 +12,7 @@ var item_id: String
 var resource_texture: Texture
 
 var game_in_progress
+var closing
 
 onready var stripe = $StripeContainer/Stripe
 
@@ -54,6 +55,7 @@ func on_clicked():
 	else:
 		emit_signal("sucess", result)
 	$AnimationPlayer.play("finish_minigame")
+	closing = true
 
 func cancel():
 	$AnimationPlayer.play("close_minigame")
@@ -62,7 +64,8 @@ func cancel():
 
 func _unhandled_input(event: InputEvent):
 	if event.is_action("attack"):
-		if Input.is_action_just_pressed("attack") and game_in_progress:
+		if Input.is_action_just_pressed("attack") and game_in_progress and not closing:
 			on_clicked()
-		get_tree().set_input_as_handled()
+		if not closing:
+			get_tree().set_input_as_handled()
 

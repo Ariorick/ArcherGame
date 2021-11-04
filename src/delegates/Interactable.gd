@@ -15,9 +15,11 @@ var tooltip: String
 func emit_state_changed():
 	emit_signal("state_changed", mouse_hovered, close_to_player)
 
-func _on_Selectable_input_event(viewport, event, shape_idx):
-	if Input.is_action_just_pressed("attack") and mouse_hovered :
-		emit_signal("clicked", close_to_player)
+func _unhandled_input(event: InputEvent):
+	if event.is_action("attack"):
+		if Input.is_action_just_pressed("attack") and mouse_hovered:
+			emit_signal("clicked", close_to_player)
+			get_tree().set_input_as_handled()
 
 func _on_Selectable_mouse_entered():
 	mouse_hovered = true

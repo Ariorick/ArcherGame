@@ -1,14 +1,18 @@
 extends VBoxContainer
 
 var icon: String
-var count: int
-var is_enough: bool
+var amount_in_inventory: int
+var amount_needed: int
 
 func _ready():
+	var is_enough = amount_in_inventory >= amount_needed
 	$TextureRect.texture = load(icon)
-	$Label.text = str(count)
 	if is_enough:
-		$Label.modulate = Color(0, 1, 0, 1)
+		$TextureRect.modulate = Color(1, 1, 1, 1)
+		$Label.modulate = Color(0, 1, 0, 0.7)
+		$Label.text = str(amount_needed)
 	else:
-		$Label.modulate = Color(1, 0, 0, 1)
+		$TextureRect.modulate = Color(1, 1, 1, 0.7)
+		$Label.modulate = Color(1, 0, 0, 0.8)
+		$Label.text = str(amount_in_inventory) + '/' + str(amount_needed)
 

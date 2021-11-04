@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/named/minigame_cover.png" type="Texture" id=3]
 [ext_resource path="res://assets/named/minigame_stripe.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "close_minigame"
 length = 0.4
 tracks/0/type = "value"
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "finish_minigame"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -36,8 +36,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "init_minigame"
+[sub_resource type="Animation" id=3]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -52,8 +51,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "move_stripe"
+[sub_resource type="Animation" id=4]
 loop = true
 step = 0.01
 tracks/0/type = "value"
@@ -69,8 +67,7 @@ tracks/0/keys = {
 "values": [ Vector2( -6, 0 ), Vector2( -6, 47 ), Vector2( -6, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "move_stripe_reverse"
+[sub_resource type="Animation" id=5]
 loop = true
 step = 0.01
 tracks/0/type = "value"
@@ -104,11 +101,11 @@ texture = ExtResource( 4 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/close_minigame = SubResource( 3 )
-anims/finish_minigame = SubResource( 5 )
-anims/init_minigame = SubResource( 2 )
-anims/move_stripe = SubResource( 1 )
-anims/move_stripe_reverse = SubResource( 4 )
+anims/close_minigame = SubResource( 1 )
+anims/finish_minigame = SubResource( 2 )
+anims/init_minigame = SubResource( 3 )
+anims/move_stripe = SubResource( 4 )
+anims/move_stripe_reverse = SubResource( 5 )
 
 [node name="StripeTween" type="Tween" parent="."]
 
