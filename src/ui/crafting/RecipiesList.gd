@@ -17,6 +17,13 @@ func update_list():
 		if not item.recipe.empty():
 			recipies.append(item)
 			add_item(item.name, load(item.icon))
+	
+	for i in recipies.size():
+		var item: Item = recipies[i]
+		var modulate_color = Color.white
+		if not Inventory.can_craft(item.id):
+			modulate_color = Color(1, 1, 1, 0.4)
+		set_item_icon_modulate(i, modulate_color)
 
 
 func _on_ItemList_item_selected(index):

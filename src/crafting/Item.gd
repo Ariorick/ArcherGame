@@ -29,6 +29,8 @@ func _init(id: String):
 #{
 #    "name": "Pickaxe",
 #    "description": "Allows you to mine rocks for stone and metal",
+#    "category":  "tool", (can also be usable)
+#    "max_amount":  "1",
 #    "icon": "res://assets/named/item_pickaxe.png",
 #    "recipe": {
 #            "stone": 5,
