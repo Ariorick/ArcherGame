@@ -1,0 +1,10 @@
+{
+    "name": "Iron Axe",
+    "description": "Allows you to chop down harder trees",
+    "icon": "res://assets/named/item_axe2.png",
+    "category": "axe",
+    "recipe": {
+            "iron": 5,
+            "wood": 5
+        }
+}

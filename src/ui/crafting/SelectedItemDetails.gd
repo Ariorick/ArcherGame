@@ -3,7 +3,7 @@ class_name SelectedItemDetails
 
 const Ingredient = preload("res://src/ui/crafting/Ingredient.tscn")
 
-var current_item
+var current_item: Item
 
 onready var icon_control := $HBox/CenterContainer/ItemIcon
 onready var igredients_control := $HBox/IngredientsList
@@ -20,6 +20,8 @@ func update_ui():
 	if current_item == null:
 		visible = false
 		return
+	
+	
 	visible = true
 	
 	$HBox/ItemNameLabel.text = current_item.name
@@ -72,10 +74,10 @@ func show_craft_animation():
 
 
 func _on_ParticleTimer_timeout():
-	$HBox/CenterContainer/Particles2D.lifetime = 0
-	$HBox/CenterContainer/Particles2D.lifetime = 0.7
 	$HBox/CenterContainer/Particles2D.emitting = true
 
 
 func _on_Tween_tween_all_completed():
 	update_ui()
+	if not ArrayUtils.map_var(Inventory.get_available_recipies(), "id").has(current_item.id):
+		visible = false

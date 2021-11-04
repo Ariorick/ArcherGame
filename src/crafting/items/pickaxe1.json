@@ -2,6 +2,7 @@
     "name": "Pickaxe",
     "description": "Allows you to mine rocks for stone and metal",
     "icon": "res://assets/named/item_pickaxe.png",
+    "category": "pickaxe",
     "recipe": {
             "stone": 5,
             "stick": 5

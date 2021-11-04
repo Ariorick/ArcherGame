@@ -1,0 +1,10 @@
+{
+    "name": "Iron pickaxe",
+    "description": "Allows you to mine harder minerals",
+    "icon": "res://assets/named/item_pickaxe2.png",
+    "category": "pickaxe",
+    "recipe": {
+            "iron": 5,
+            "wood": 5
+        }
+}

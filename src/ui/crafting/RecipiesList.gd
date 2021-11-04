@@ -12,14 +12,11 @@ func _ready():
 
 func update_list():
 	clear()
-	recipies.clear()
-	for item in Inventory.item_types.values():
-		if not item.recipe.empty():
-			recipies.append(item)
-			add_item(item.name, load(item.icon))
+	recipies = Inventory.get_available_recipies()
 	
 	for i in recipies.size():
 		var item: Item = recipies[i]
+		add_item(item.name, load(item.icon))
 		var modulate_color = Color.white
 		if not Inventory.can_craft(item.id):
 			modulate_color = Color(1, 1, 1, 0.4)
@@ -33,4 +30,4 @@ func _on_ItemList_item_selected(index):
 func _on_CraftingMenu_on_opened():
 	if not is_anything_selected():
 		select(0)
-		emit_signal("on_item_selected", recipies[0])
+		emit_signal("item_selected", 0)

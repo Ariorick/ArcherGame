@@ -20,7 +20,7 @@ func apply_loaded_save(save: Dictionary, save_text: String):
 
 func create_save() -> Dictionary:
 	var save := Dictionary()
-	save["save_time"] = TimeUtils.get_date_time_string()
+	save["save_time"] = StringUtils.get_date_time_string()
 	save["timestamp"] = OS.get_unix_time()
 	save["version"] = VERSION
 	save["inventory"] = Inventory.items

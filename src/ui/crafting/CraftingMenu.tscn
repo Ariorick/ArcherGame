@@ -114,7 +114,7 @@ __meta__ = {
 }
 
 [connection signal="on_opened" from="." to="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/ItemList" method="_on_CraftingMenu_on_opened"]
-[connection signal="mouse_entered" from="MarginContainer/PanelContainer" to="." method="_on_PanelContainer_mouse_entered"]
 [connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/ItemList" to="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/ItemList" method="_on_ItemList_item_selected"]
 [connection signal="on_item_selected" from="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/ScrollContainer/ItemList" to="MarginContainer/PanelContainer/MarginContainer/HBoxContainer/PanelContainer/SelectedItemDetails" method="_on_item_selected"]
 [connection signal="button_up" from="HBoxContainer/CloseButton" to="." method="_on_CloseButton_button_up"]
+[connection signal="pressed" from="HBoxContainer/CloseButton" to="." method="_on_CloseButton_pressed"]

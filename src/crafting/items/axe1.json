@@ -2,6 +2,7 @@
     "name": "Axe",
     "description": "Allows you to chop down trees for wood",
     "icon": "res://assets/named/item_axe.png",
+    "category": "axe",
     "recipe": {
             "stone": 5,
             "stick": 5

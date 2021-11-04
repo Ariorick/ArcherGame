@@ -1,0 +1,10 @@
+{
+    "name": "Strong magic torch",
+    "description": "Allows you to cast away thicker fog",
+    "icon": "res://assets/named/item_torch2.png",
+    "category": "torch",
+    "recipe": {
+            "magic_crystal": 3,
+            "iron": 10
+        }
+}
