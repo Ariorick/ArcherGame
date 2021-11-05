@@ -73,7 +73,6 @@ func is_finished() -> bool:
 func is_interruptable() -> bool:
 	return true
 
-# override this
 func cancel():
 	body.add_force(Vector2.ZERO, -1 * last_force)
 	last_force = Vector2.ZERO

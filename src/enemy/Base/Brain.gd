@@ -2,7 +2,7 @@ extends Node
 class_name Brain
 
 var conditions_changed: bool = true
-var is_active: bool = false
+var is_active: bool = true
 var current_action: EnemyAction
 var possible_actions: Array = Array() # of EnemyAction
 
