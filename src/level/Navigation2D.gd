@@ -31,7 +31,7 @@ func _ready():
 #		add_navpoly(cell)
 		add_cell(cell, mask)
 	
-	update()
+#	update()
 
 
 func add_cell(cell: Vector2, mask: int):
@@ -75,11 +75,11 @@ func _draw():
 	for polygon in polygons:
 		for point in polygon:
 			draw_circle(point, 1, Color.black)
-#		var draw_rect = Rect2(cell * cell_size, Vector2.ONE * cell_size)
-#		draw_rect(draw_rect, Color(1, 1, 0, 0.5), true, 1)
+		
 		var colors := PoolColorArray()
 		colors.append(Color(1, 1, 0, 0.3))
 		draw_polygon(polygon, colors)
+	pass
 
 func add_navpoly(cell: Vector2):
 	var polygon = NavigationPolygon.new()

@@ -10,7 +10,7 @@ func want_to_start() -> bool:
 func perform():
 	if mover.state == Mover.STATE.IDLE:
 		var target_position = _select_search_target()
-		mover.move_to(target_position, 16.0)
+		mover.move_to(target_position, 2.0)
 
 func _select_search_target() -> Vector2:
 	var target

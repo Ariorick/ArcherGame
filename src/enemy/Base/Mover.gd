@@ -99,8 +99,8 @@ func _perform():
 	desires = ArrayUtils.sort_by_func(desires, "get_total_desire")
 	var top_desire = desires.back()
 
-	var force = top_desire.get_direction() * walk_force
-#	var force = walk_force * direction_along_path
+#	var force = top_desire.get_direction() * walk_force
+	var force = walk_force * direction_along_path
 	
 	body.add_force(Vector2.ZERO, -1 * last_force)
 	body.add_force(Vector2.ZERO, force)
