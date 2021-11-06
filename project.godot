@@ -404,6 +404,7 @@ Inventory="*res://src/gameManager/Inventory.gd"
 ConsoleExtensions="*res://src/utils/ConsoleExtensions.gd"
 UiSignals="*res://src/ui/UiSignals.gd"
 Saver="*res://src/gameManager/Saver.gd"
+LayerNamesUtil="*res://src/utils/LayerNamesUtil.gd"
 
 [debug]
 

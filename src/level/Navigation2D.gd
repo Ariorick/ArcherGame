@@ -9,12 +9,13 @@ onready var space: Physics2DDirectSpaceState = get_world_2d().direct_space_state
 var cells := Array()
 
 func _ready():
-
+	var mask = LayerNamesUtil.get_collision_mask(["walls", "unwalkable"])
+	
 	var water_cells := tilemap.get_used_cells_by_id(WATER_ID)
 	for cell in tilemap.get_used_cells():
 		if water_cells.has(cell):
 			continue
-		if is_obstructed(cell):
+		if is_obstructed(cell, mask):
 			continue
 		cells.append(cell)
 	
@@ -24,7 +25,7 @@ func _ready():
 	# 3 - 1400 grass
 	update()
 
-func is_obstructed(cell: Vector2) -> bool:
+func is_obstructed(cell: Vector2, mask) -> bool:
 	var k = 0.1
 	var check_points = [
 		cell + Vector2(k, k),
@@ -33,7 +34,7 @@ func is_obstructed(cell: Vector2) -> bool:
 		cell + Vector2(1, 0) + Vector2(-k, k)
 	]
 	for point in check_points:
-		if space.intersect_point(point * cell_size, 1):
+		if space.intersect_point(point * cell_size, 1, [], mask):
 			return true
 	return false
 
