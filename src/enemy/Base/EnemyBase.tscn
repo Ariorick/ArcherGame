@@ -119,6 +119,7 @@ shape = SubResource( 2 )
 [node name="AttackRadius" type="Area2D" parent="Brain/Sensors"]
 
 [node name="CircularRaycasts" type="Node2D" parent="Brain/Sensors"]
+visible = false
 script = ExtResource( 6 )
 
 [node name="Actions" type="Node2D" parent="Brain"]

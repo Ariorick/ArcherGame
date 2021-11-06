@@ -30,5 +30,14 @@ position = Vector2( 357.832, 136.302 )
 [node name="Rock" parent="Background" instance=ExtResource( 6 )]
 position = Vector2( 212.96, 23.9955 )
 
+[node name="Rock2" parent="Background" instance=ExtResource( 6 )]
+position = Vector2( 241.83, 155.971 )
+
+[node name="Rock3" parent="Background" instance=ExtResource( 6 )]
+position = Vector2( 168.719, 110.229 )
+
+[node name="Rock4" parent="Background" instance=ExtResource( 6 )]
+position = Vector2( 310.817, 187.09 )
+
 [node name="Navigation2D" type="Navigation2D" parent="."]
 script = ExtResource( 5 )

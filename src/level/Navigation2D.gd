@@ -1,29 +1,61 @@
 extends Navigation2D
 
 const WATER_ID = 2
+const POLYGON_POINTS := PoolVector2Array([
+			Vector2(0, 0),
+			Vector2(0, 0.5),
+			Vector2(0, 1),
+			Vector2(0.5, 1),
+			Vector2(1, 1),
+			Vector2(1, 0.5),
+			Vector2(1, 0),
+			Vector2(0.5, 0)
+			])
 
 onready var tilemap: TileMap = get_parent().get_node(NodePath("Background"))
 onready var cell_size = tilemap.cell_size
 onready var space: Physics2DDirectSpaceState = get_world_2d().direct_space_state
 
-var cells := Array()
+var polygons := Array()
 
 func _ready():
-	var mask = LayerNamesUtil.get_collision_mask(["walls", "unwalkable"])
+	var mask: int = LayerNamesUtil.get_collision_mask(["walls", "unwalkable"])
 	
 	var water_cells := tilemap.get_used_cells_by_id(WATER_ID)
 	for cell in tilemap.get_used_cells():
-		if water_cells.has(cell):
-			continue
-		if is_obstructed(cell, mask):
-			continue
-		cells.append(cell)
+#		if water_cells.has(cell):
+#			continue
+#		add_cell(cell, mask)
+#		if is_obstructed(cell, mask):
+#			continue
+#		add_navpoly(cell)
+		add_cell(cell, mask)
 	
-	# 0 - 260 stone
-	# 1 - 1600 dirt
-	# 2 - 1200 this is water
-	# 3 - 1400 grass
 	update()
+
+
+func add_cell(cell: Vector2, mask: int):
+	var outline: PoolVector2Array
+	var transformed_outline: PoolVector2Array
+	for polygon_point in POLYGON_POINTS:
+		var point = (cell + polygon_point) * cell_size 
+		if not is_point_obstructed(point, mask):
+			outline.append(polygon_point * cell_size)
+			transformed_outline.append(point)
+	if outline.size() < 3:
+		return
+	
+	polygons.append(transformed_outline)
+	
+	var polygon = NavigationPolygon.new()
+	polygon.add_outline(outline)
+	polygon.make_polygons_from_outlines()
+	navpoly_add(polygon, Transform2D(0, cell * cell_size))
+
+
+
+func is_point_obstructed(point, mask) -> bool:
+	return not space.intersect_point(point, 1, [], mask).empty()
 
 func is_obstructed(cell: Vector2, mask) -> bool:
 	var k = 0.1
@@ -34,14 +66,19 @@ func is_obstructed(cell: Vector2, mask) -> bool:
 		cell + Vector2(1, 0) + Vector2(-k, k)
 	]
 	for point in check_points:
-		if space.intersect_point(point * cell_size, 1, [], mask):
+		if is_point_obstructed(point, mask):
 			return true
 	return false
 
 func _draw():
-	for cell in cells:
-		var draw_rect = Rect2(cell * cell_size, Vector2.ONE * cell_size)
-		draw_rect(draw_rect, Color(1, 1, 0, 0.5), true, 1)
+	for polygon in polygons:
+		for point in polygon:
+			draw_circle(point, 1, Color.black)
+#		var draw_rect = Rect2(cell * cell_size, Vector2.ONE * cell_size)
+#		draw_rect(draw_rect, Color(1, 1, 0, 0.5), true, 1)
+		var colors := PoolColorArray()
+		colors.append(Color(1, 1, 0, 0.3))
+		draw_polygon(polygon, colors)
 
 func add_navpoly(cell: Vector2):
 	var polygon = NavigationPolygon.new()
