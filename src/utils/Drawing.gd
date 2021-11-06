@@ -19,20 +19,19 @@ static func draw_circle(node: Node2D, radius: float, color: Color):
 
 static func draw_vectors_in_circle(
 		node: Node2D, 
-		scale: float,
+		circle_size: float,
+		vector_scale: float,
 		vectors: Array, 
-		color: Color
+		vector_color: Color,
+		circle_color: Color
 	):
-	var max_length := 1
-	for v in vectors:
-		max_length = max(v.length(), max_length)
 	for v in vectors:
 		node.draw_line(
 			Vector2.ZERO, 
-			v* scale, 
-			color
+			v * vector_scale, 
+			vector_color
 			)
-		draw_circle(node, max_length * scale, color)
+		draw_circle(node, circle_size, circle_color)
 
 static func draw_directions(
 		node: Node2D, 
@@ -40,7 +39,12 @@ static func draw_directions(
 		color: Color
 	):
 	var vectors := Array()
+	var red_vectors := Array()
 	for dir in directions:
-		vectors.append(dir.get_vector())
-	draw_vectors_in_circle(node, 0.3, vectors, color)
+		if dir.collider != null:
+			red_vectors.append(dir.get_direction() * dir.distance)
+		else:
+			vectors.append(dir.get_direction() * dir.distance)
+	draw_vectors_in_circle(node, 50, 1, vectors, Color.white, Color.white)
+	draw_vectors_in_circle(node, 50, 1, red_vectors, Color.red, Color.white)
 

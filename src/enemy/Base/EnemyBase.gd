@@ -6,6 +6,8 @@ signal on_enemy_alarmed
 
 var is_dead := false
 
+var state: EnemyState
+
 # init this in _on_ready()
 var tag: String
 var damage_treshold: int

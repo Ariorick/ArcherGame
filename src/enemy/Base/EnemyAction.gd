@@ -3,6 +3,8 @@ class_name EnemyAction
 
 onready var body: RigidBody2D = get_parent().get_parent().get_parent()
 onready var sensors: Sensors = get_parent().get_parent().get_node(NodePath("Sensors"))
+onready var mover: Mover = get_parent().get_parent().get_node(NodePath("Mover"))
+onready var state: EnemyState = get_parent().get_parent().get_node(NodePath("EnemyState"))
 
 # override this
 func want_to_start() -> bool:
