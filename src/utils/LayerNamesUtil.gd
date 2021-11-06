@@ -2,17 +2,25 @@ extends Node
 # LayerNamesUtil
 
 var layers := Array()
+var started: bool = false
 
 func _ready():
+	if started:
+		return
+	
+	layers.resize(21)
 	for i in range(1, 21):
-		layers.insert(i, ProjectSettings.get_setting("layer_names/2d_physics/layer_" + str(i)))
+		layers[i] = ProjectSettings.get_setting("layer_names/2d_physics/layer_" + str(i))
 	
 	for layer in layers:
-		print(layer)
+		if layer != null:
+			print(layer)
 
 func get_collision_mask(names: Array) -> int:
 	var mask = 0
 	for name in names:
-		mask += 2 * layers.find(name)
+		if layers.find(name) == -1:
+			push_error("Wrong layer name: " + name)
+		mask += pow(2, layers.find(name) - 1)
 	return mask
 

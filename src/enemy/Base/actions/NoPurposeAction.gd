@@ -16,7 +16,7 @@ func _select_search_target() -> Vector2:
 	var target
 	var reachable = false
 	var count = 0
-	var path
+	var max_path_length = 200
 	while not reachable:
 		count += 1
 		assert(count < 100, "ERROR: INFINITE_LOOP!")
@@ -25,10 +25,10 @@ func _select_search_target() -> Vector2:
 		
 		var distance = RADIUS * pow(Random.f_range(0, 1), 0.25)
 		target = navigation.get_closest_point(body.global_position + direction * distance)
-		path = navigation.get_simple_path(
+		var path := navigation.get_simple_path(
 			navigation.get_closest_point(body.global_position), 
 			target)
-		reachable = not path.empty()
+		reachable = not path.empty() and PoolVector2Utils.length(path) < max_path_length
 		if not reachable:
 			state.angle = Random.angle()
 	return target

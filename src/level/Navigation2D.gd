@@ -39,7 +39,7 @@ func add_cell(cell: Vector2, mask: int):
 	var transformed_outline: PoolVector2Array
 	for polygon_point in POLYGON_POINTS:
 		var point = (cell + polygon_point) * cell_size 
-		if not is_point_obstructed(point, mask):
+		if not is_point_obstructed_with_lookaround(point, mask):
 			outline.append(polygon_point * cell_size)
 			transformed_outline.append(point)
 	if outline.size() < 3:
@@ -57,16 +57,17 @@ func add_cell(cell: Vector2, mask: int):
 func is_point_obstructed(point, mask) -> bool:
 	return not space.intersect_point(point, 1, [], mask).empty()
 
-func is_obstructed(cell: Vector2, mask) -> bool:
-	var k = 0.1
+func is_point_obstructed_with_lookaround(point: Vector2, mask) -> bool:
+	var k = 2
 	var check_points = [
-		cell + Vector2(k, k),
-		cell + Vector2(0, 1) + Vector2(k, -k),
-		cell + Vector2(1, 1) + Vector2(-k, -k),
-		cell + Vector2(1, 0) + Vector2(-k, k)
+		Vector2(0,0),
+		Vector2(k, k),
+		Vector2(k, -k),
+		Vector2(-k, -k),
+		Vector2(-k, k)
 	]
-	for point in check_points:
-		if is_point_obstructed(point, mask):
+	for v in check_points:
+		if is_point_obstructed(point + v, mask):
 			return true
 	return false
 
