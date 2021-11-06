@@ -1,7 +1,7 @@
 extends EnemyAction
 class_name NoPurposeAction
 
-const RADIUS = 100
+const RADIUS = 60
 
 # override this
 func want_to_start() -> bool:
@@ -28,7 +28,8 @@ func _select_search_target() -> Vector2:
 		var path := navigation.get_simple_path(
 			navigation.get_closest_point(body.global_position), 
 			target)
-		reachable = not path.empty() and PoolVector2Utils.length(path) < max_path_length
+		reachable = not path.empty()
+#		reachable = not path.empty() and PoolVector2Utils.length(path) < max_path_length
 		if not reachable:
 			state.angle = Random.angle()
 	return target

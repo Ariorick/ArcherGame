@@ -21,14 +21,8 @@ var polygons := Array()
 func _ready():
 	var mask: int = LayerNamesUtil.get_collision_mask(["walls", "unwalkable"])
 	
-	var water_cells := tilemap.get_used_cells_by_id(WATER_ID)
+#	var water_cells := tilemap.get_used_cells_by_id(WATER_ID)
 	for cell in tilemap.get_used_cells():
-#		if water_cells.has(cell):
-#			continue
-#		add_cell(cell, mask)
-#		if is_obstructed(cell, mask):
-#			continue
-#		add_navpoly(cell)
 		add_cell(cell, mask)
 	
 #	update()
@@ -44,6 +38,8 @@ func add_cell(cell: Vector2, mask: int):
 			transformed_outline.append(point)
 	if outline.size() < 3:
 		return
+	if outline.size() == 3:
+		print(outline)
 	
 	polygons.append(transformed_outline)
 	
@@ -52,7 +48,13 @@ func add_cell(cell: Vector2, mask: int):
 	polygon.make_polygons_from_outlines()
 	navpoly_add(polygon, Transform2D(0, cell * cell_size))
 
-
+func check_outline(outline: PoolVector2Array):
+	var xs = Dictionary()
+	var ys = Dictionary()
+	for v in outline:
+		xs[v.x] = 1
+		ys[v.y] = 1
+	
 
 func is_point_obstructed(point, mask) -> bool:
 	return not space.intersect_point(point, 1, [], mask).empty()
@@ -75,23 +77,9 @@ func _draw():
 	for polygon in polygons:
 		for point in polygon:
 			draw_circle(point, 1, Color.black)
-		
+
 		var colors := PoolColorArray()
 		colors.append(Color(1, 1, 0, 0.3))
 		draw_polygon(polygon, colors)
 	pass
-
-func add_navpoly(cell: Vector2):
-	var polygon = NavigationPolygon.new()
-	var outline = PoolVector2Array(
-		[Vector2(0, 0), 
-		Vector2(0, cell_size.y), 
-		cell_size, 
-		Vector2(cell_size.x, 0)]
-		)
-	polygon.add_outline(outline)
-	polygon.make_polygons_from_outlines()
-
-	navpoly_add(polygon, Transform2D(0, cell * cell_size))
-	
 	

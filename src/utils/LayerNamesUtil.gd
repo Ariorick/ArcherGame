@@ -13,7 +13,7 @@ func _ready():
 		layers[i] = ProjectSettings.get_setting("layer_names/2d_physics/layer_" + str(i))
 	
 	for layer in layers:
-		if layer != null:
+		if layer != null or layer != "":
 			print(layer)
 
 func get_collision_mask(names: Array) -> int:
