@@ -145,6 +145,7 @@ func _add_dot_to_desires_evading(vector: Vector2, koef: float, modify_angle: flo
 		desire= weight * koef
 
 func _draw():
+	# VECTORS
 #	var vectors := Array()
 #	var red_vectors := Array()
 #	for desire in desires:
@@ -155,11 +156,12 @@ func _draw():
 #	Drawing.draw_vectors_in_circle(self, 50, 50, vectors, Color.white, Color.white)
 #	Drawing.draw_vectors_in_circle(self, 50, 50, red_vectors, Color.red, Color.white)
 #
-	var transition_path = PoolVector2Utils.add_vector_to_path(initial_path, -global_position)
-	transition_path.insert(0, initial_position - body.global_position)
-	if state == STATE.MOVING:
-		draw_polyline(transition_path, Color.cyan, 1)
-	for i in transition_path.size() - 1:
-		draw_circle(transition_path[i], 2, Color.cyan)
-	draw_circle(target_position - global_position, 3, Color.cyan)
+	# NAVIGATION
+#	var transition_path = PoolVector2Utils.add_vector_to_path(initial_path, -global_position)
+#	transition_path.insert(0, initial_position - body.global_position)
+#	if state == STATE.MOVING:
+#		draw_polyline(transition_path, Color.cyan, 1)
+#	for i in transition_path.size() - 1:
+#		draw_circle(transition_path[i], 2, Color.cyan)
+#	draw_circle(target_position - global_position, 3, Color.cyan)
 	pass

@@ -5,7 +5,7 @@ signal finished
 signal collected
 
 const INITIAL_ANIM_TIME = 3
-const FULL_LIFETIME = 60.0
+const FULL_LIFETIME = 45.0
 const FLIKER_LIFETIME = 5.0
 const TIME_BEFORE_FLICKER = FULL_LIFETIME - FLIKER_LIFETIME
 

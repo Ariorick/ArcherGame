@@ -1,6 +1,5 @@
 extends Navigation2D
 
-const WATER_ID = 2
 const POLYGON_POINTS := PoolVector2Array([
 			Vector2(0, 0),
 			Vector2(0, 0.5),
@@ -11,6 +10,8 @@ const POLYGON_POINTS := PoolVector2Array([
 			Vector2(1, 0),
 			Vector2(0.5, 0)
 			])
+
+export var debug_drawing: bool = true
 
 onready var tilemap: TileMap = get_parent().get_node(NodePath("Background"))
 onready var cell_size = tilemap.cell_size
@@ -38,8 +39,6 @@ func add_cell(cell: Vector2, mask: int):
 			transformed_outline.append(point)
 	if outline.size() < 3:
 		return
-	if outline.size() == 3:
-		print(outline)
 	
 	polygons.append(transformed_outline)
 	
@@ -48,16 +47,10 @@ func add_cell(cell: Vector2, mask: int):
 	polygon.make_polygons_from_outlines()
 	navpoly_add(polygon, Transform2D(0, cell * cell_size))
 
-func check_outline(outline: PoolVector2Array):
-	var xs = Dictionary()
-	var ys = Dictionary()
-	for v in outline:
-		xs[v.x] = 1
-		ys[v.y] = 1
-	
 
 func is_point_obstructed(point, mask) -> bool:
 	return not space.intersect_point(point, 1, [], mask).empty()
+
 
 func is_point_obstructed_with_lookaround(point: Vector2, mask) -> bool:
 	var k = 2
@@ -73,7 +66,10 @@ func is_point_obstructed_with_lookaround(point: Vector2, mask) -> bool:
 			return true
 	return false
 
+
 func _draw():
+	if not debug_drawing:
+		return
 	for polygon in polygons:
 		for point in polygon:
 			draw_circle(point, 1, Color.black)
@@ -81,5 +77,4 @@ func _draw():
 		var colors := PoolColorArray()
 		colors.append(Color(1, 1, 0, 0.3))
 		draw_polygon(polygon, colors)
-	pass
 	

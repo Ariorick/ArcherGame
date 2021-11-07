@@ -1,7 +1,7 @@
 extends Node2D
 class_name CircularRaycastArray
 
-const EnemyRaycastScene = preload("res://src/Enemy/Base/Sensors/EnemyRaycast.tscn")
+const EnemyRaycastScene = preload("res://src/enemy/Base/Sensors/EnemyRaycast.tscn")
 const RAY_NUMBER := 16
 const RAY_DISTANCE := 50.0
 
