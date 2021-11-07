@@ -86,6 +86,21 @@ position = Vector2( 733.819, 28.2011 )
 [node name="Rat7" parent="Objects" instance=ExtResource( 18 )]
 position = Vector2( 546.42, -105.656 )
 
+[node name="Rat8" parent="Objects" instance=ExtResource( 18 )]
+position = Vector2( 91.9232, -130.447 )
+
+[node name="Rat9" parent="Objects" instance=ExtResource( 18 )]
+position = Vector2( 492.116, 231.97 )
+
+[node name="Rat10" parent="Objects" instance=ExtResource( 18 )]
+position = Vector2( 171.017, 558.972 )
+
+[node name="Rat11" parent="Objects" instance=ExtResource( 18 )]
+position = Vector2( 200.53, 234.331 )
+
+[node name="Rat12" parent="Objects" instance=ExtResource( 18 )]
+position = Vector2( 446.076, 6.49252 )
+
 [node name="Lily" parent="Objects" instance=ExtResource( 4 )]
 position = Vector2( 528, 448 )
 

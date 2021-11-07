@@ -79,5 +79,5 @@ func _on_ParticleTimer_timeout():
 
 func _on_Tween_tween_all_completed():
 	update_ui()
-	if not ArrayUtils.map_var(Inventory.get_available_recipies(), "id").has(current_item.id):
+	if not ArrayUtils.map_by_var(Inventory.get_available_recipies(), "id").has(current_item.id):
 		visible = false

@@ -15,10 +15,16 @@ var current_action: PlayerAction # of PlayerAction
 
 var is_invinsible = false
 
+func get_intimidation() -> int:
+	return 2
+
+func get_size() -> int:
+	return 2
+
 func _on_DamageDetector_body_entered(body: PhysicsBody2D):
 	if is_invinsible:
 		return
-	if body.is_in_group("denemies"):
+	if body.is_in_group("enemies"):
 		take_damage()
 
 func take_directional_damage(direction: Vector2):

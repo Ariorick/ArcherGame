@@ -28,6 +28,7 @@ enum STATE {
 
 var target_node: Node2D
 var target_position: Vector2
+var speed_k: float
 var desired_distance := 5.0
 
 onready var body: RigidBody2D = get_parent().get_parent()
@@ -35,15 +36,16 @@ onready var enemy_state: EnemyState = get_parent().get_node(NodePath("EnemyState
 onready var sensors: Sensors = get_parent().get_node(NodePath("Sensors"))
 onready var navigation: Navigation2D = body.get_parent().get_parent().get_node(NodePath("Navigation2D"))
 
-func move_to(target_position: Vector2, desired_distance: float):
+func move_to(target_position: Vector2, speed_k: float, desired_distance: float):
 	self.target_position = target_position
-	start(desired_distance)
+	start(speed_k, desired_distance)
 
-func chase(target_node: Node2D, desired_distance: float):
+func chase(target_node: Node2D, speed_k: float, desired_distance: float):
 	self.target_node = target_node
-	start(desired_distance)
+	start(speed_k, desired_distance)
 
-func start(desired_distance: float):
+func start(speed_k: float, desired_distance: float):
+	self.speed_k = speed_k
 	self.desired_distance = desired_distance
 	state = STATE.MOVING
 	path = navigation.get_simple_path(body.global_position, _get_target())
@@ -111,7 +113,7 @@ func _perform():
 #	var top_desire = desires.back()
 #
 #	var force = top_desire.get_direction() * walk_force
-	var force = walk_force * direction_along_path
+	var force = walk_force * direction_along_path * speed_k
 	
 	body.add_force(Vector2.ZERO, -1 * last_force)
 	body.add_force(Vector2.ZERO, force)

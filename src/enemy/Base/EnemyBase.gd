@@ -6,16 +6,22 @@ signal on_enemy_alarmed
 
 var is_dead := false
 
-var state: EnemyState
-
 # init this in _on_ready()
 var tag: String
 var damage_treshold: int
+
+onready var state: EnemyState = $Brain/EnemyState
 
 func _ready():
 	$Brain/Sensors.set_raycast_exceptions(
 		[self, $Character/CharacterBody]
 	)
+
+func get_intimidation() -> int:
+	return state.intimidation
+
+func get_size() -> int:
+	return state.size
 
 # returns true if is stuck
 func arrow_entered(arrow: Arrow):
