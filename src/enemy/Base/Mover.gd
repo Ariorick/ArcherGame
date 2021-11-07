@@ -1,6 +1,11 @@
 extends Node2D
 class_name Mover
 
+const STUCK_DISTANCE := 16
+
+export var preferred_distance: float = 30.0
+export var distance_variation: float = 0.0
+export var walk_force: float = 400.0
 
 var last_force := Vector2.ZERO
 var desires := Array() # of Desires
@@ -8,6 +13,10 @@ var desires := Array() # of Desires
 var noise := Noise.default()
 #var last_direction: Vector2 = Vector2.ZERO
 
+var recent_position = null # to check if stuck
+var recent_position_remember_time = 0.0
+
+var initial_position: Vector2
 var initial_path: PoolVector2Array
 var path: PoolVector2Array
 var state = STATE.IDLE
@@ -17,11 +26,6 @@ enum STATE {
 	FINISHED
 }
 
-export var preferred_distance: float = 30.0
-export var distance_variation: float = 0.0
-export var walk_force: float = 400.0
-
-var initial_position: Vector2
 var target_node: Node2D
 var target_position: Vector2
 var desired_distance := 5.0
@@ -86,6 +90,13 @@ func _perform():
 		state = STATE.FINISHED
 		return
 	
+	_remember_position()
+	if _is_stuck():
+		enemy_state.angle = Random.angle()
+		state = STATE.FINISHED
+		recent_position = null
+		return
+	
 	var direction_along_path = _direction_along_path(body.global_position, desired_distance)
 	
 	_add_dot_to_desires(direction_along_path)
@@ -144,6 +155,17 @@ func _add_dot_to_desires_evading(vector: Vector2, koef: float, modify_angle: flo
 		var weight = 1.0 - abs(dot - 0.65)
 		desire= weight * koef
 
+func _remember_position():
+	if recent_position == null or (body.global_position - recent_position).length() > STUCK_DISTANCE:
+		recent_position = body.global_position
+		recent_position_remember_time = OS.get_ticks_msec()
+
+func _is_stuck() -> bool:
+	if recent_position == null:
+		return false
+	var elapced = OS.get_ticks_msec() - recent_position_remember_time
+	return elapced > 3000 and (body.global_position - recent_position).length() < STUCK_DISTANCE
+
 func _draw():
 	# VECTORS
 #	var vectors := Array()
@@ -157,11 +179,11 @@ func _draw():
 #	Drawing.draw_vectors_in_circle(self, 50, 50, red_vectors, Color.red, Color.white)
 #
 	# NAVIGATION
-#	var transition_path = PoolVector2Utils.add_vector_to_path(initial_path, -global_position)
-#	transition_path.insert(0, initial_position - body.global_position)
-#	if state == STATE.MOVING:
-#		draw_polyline(transition_path, Color.cyan, 1)
-#	for i in transition_path.size() - 1:
-#		draw_circle(transition_path[i], 2, Color.cyan)
-#	draw_circle(target_position - global_position, 3, Color.cyan)
+	var transition_path = PoolVector2Utils.add_vector_to_path(initial_path, -global_position)
+	transition_path.insert(0, initial_position - body.global_position)
+	if state == STATE.MOVING:
+		draw_polyline(transition_path, Color.cyan, 1)
+	for i in transition_path.size() - 1:
+		draw_circle(transition_path[i], 2, Color.cyan)
+	draw_circle(target_position - global_position, 3, Color.cyan)
 	pass

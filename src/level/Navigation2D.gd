@@ -21,12 +21,8 @@ var polygons := Array()
 
 func _ready():
 	var mask: int = LayerNamesUtil.get_collision_mask(["walls", "unwalkable"])
-	
-#	var water_cells := tilemap.get_used_cells_by_id(WATER_ID)
 	for cell in tilemap.get_used_cells():
 		add_cell(cell, mask)
-	
-#	update()
 
 
 func add_cell(cell: Vector2, mask: int):

@@ -13,19 +13,19 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 5, 20 ), Vector2( 0, 0 ), Vector2( -30, 0 ) ]
+"values": [ Vector2( -30, 20 ), Vector2( -30, -20 ), Vector2( -30, 0 ), Vector2( -60, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:scale")
+tracks/1/path = NodePath("Sprite:rect_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
@@ -51,9 +51,9 @@ __meta__ = {
 
 [node name="Sprite" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 5.0
+margin_left = -30.0
 margin_top = 20.0
-margin_right = 61.0
+margin_right = 26.0
 margin_bottom = 76.0
 texture = ExtResource( 2 )
 stretch_mode = 6

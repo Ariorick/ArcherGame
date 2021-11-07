@@ -39,6 +39,39 @@ position = Vector2( 168.719, 110.229 )
 [node name="Rat" parent="Background" instance=ExtResource( 2 )]
 position = Vector2( 238.989, 87.2427 )
 
+[node name="Rat2" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat3" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat4" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat5" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat6" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat7" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat8" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat9" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat10" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat11" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
+[node name="Rat12" parent="Background" instance=ExtResource( 2 )]
+position = Vector2( 238.989, 87.2427 )
+
 [node name="Navigation2D" type="Navigation2D" parent="."]
 script = ExtResource( 5 )
 
