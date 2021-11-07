@@ -77,13 +77,13 @@ func _get_to_target() -> Vector2:
 func _perform():
 	desires = Array()
 	
-	var smooth_random = noise.get_noise_1d(OS.get_ticks_msec() / 30)
-	var follow_distance = preferred_distance + distance_variation * smooth_random
-	
-	var directions: Array = sensors.get_directions()
-	for dir in directions:
-		desires.append(Desire.new(dir.angle, dir.collider != null, dir.distance))
-	
+#	var smooth_random = noise.get_noise_1d(OS.get_ticks_msec() / 30)
+#	var follow_distance = preferred_distance + distance_variation * smooth_random
+#
+#	var directions: Array = sensors.get_directions()
+#	for dir in directions:
+#		desires.append(Desire.new(dir.angle, dir.collider != null, dir.distance))
+#
 	var to_target = _get_to_target()
 	
 	if desired_distance > to_target.length():
@@ -99,17 +99,17 @@ func _perform():
 	
 	var direction_along_path = _direction_along_path(body.global_position, desired_distance)
 	
-	_add_dot_to_desires(direction_along_path)
-	
-	for enemy in sensors.actors:
-		var to_enemy = enemy.global_position - body.global_position
-		var koef = -1 * clamp(1 / to_enemy.length(), 0, 0.2)
+#	_add_dot_to_desires(direction_along_path)
+#
+#	for enemy in sensors.actors:
+#		var to_enemy = enemy.global_position - body.global_position
+#		var koef = -1 * clamp(1 / to_enemy.length(), 0, 0.2)
 #		_add_dot_to_desires_evading(to_enemy, koef, modification_angle)
-	
-	
-	desires = ArrayUtils.sort_by_func(desires, "get_total_desire")
-	var top_desire = desires.back()
-
+#
+#
+#	desires = ArrayUtils.sort_by_func(desires, "get_total_desire")
+#	var top_desire = desires.back()
+#
 #	var force = top_desire.get_direction() * walk_force
 	var force = walk_force * direction_along_path
 	
@@ -153,7 +153,7 @@ func _add_dot_to_desires_evading(vector: Vector2, koef: float, modify_angle: flo
 		var v = vector.normalized().rotated(modify_angle)
 		var dot = v.dot(desire.get_direction())
 		var weight = 1.0 - abs(dot - 0.65)
-		desire= weight * koef
+		desire = weight * koef
 
 func _remember_position():
 	if recent_position == null or (body.global_position - recent_position).length() > STUCK_DISTANCE:
@@ -179,11 +179,11 @@ func _draw():
 #	Drawing.draw_vectors_in_circle(self, 50, 50, red_vectors, Color.red, Color.white)
 #
 	# NAVIGATION
-	var transition_path = PoolVector2Utils.add_vector_to_path(initial_path, -global_position)
-	transition_path.insert(0, initial_position - body.global_position)
-	if state == STATE.MOVING:
-		draw_polyline(transition_path, Color.cyan, 1)
-	for i in transition_path.size() - 1:
-		draw_circle(transition_path[i], 2, Color.cyan)
-	draw_circle(target_position - global_position, 3, Color.cyan)
+#	var transition_path = PoolVector2Utils.add_vector_to_path(initial_path, -global_position)
+#	transition_path.insert(0, initial_position - body.global_position)
+#	if state == STATE.MOVING:
+#		draw_polyline(transition_path, Color.cyan, 1)
+#	for i in transition_path.size() - 1:
+#		draw_circle(transition_path[i], 2, Color.cyan)
+#	draw_circle(target_position - global_position, 3, Color.cyan)
 	pass

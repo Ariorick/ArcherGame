@@ -294,11 +294,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/enemy/Base/Sensors/Sensors.gd"
 }, {
-"base": "EnemyAction",
-"class": "SteeringAction",
-"language": "GDScript",
-"path": "res://src/enemy/Base/SteeringAction.gd"
-}, {
 "base": "Node",
 "class": "StringUtils",
 "language": "GDScript",
@@ -382,7 +377,6 @@ _global_script_class_icons={
 "RecipiesList": "",
 "SelectedItemDetails": "",
 "Sensors": "",
-"SteeringAction": "",
 "StringUtils": "",
 "SwordArea": "",
 "TextureMap": "",
