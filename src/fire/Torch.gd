@@ -14,6 +14,8 @@ const FLIKER_RADIUS = 70
 const MIN_RADIUS = 40
 const LIGHT_TEXTURE_SCALE = 0.003
 
+const LIGHT_MAX_ENERGY = 0.3
+
 var noise: OpenSimplexNoise 
 var can_pickup_ref: FuncRef
 
@@ -68,11 +70,11 @@ func _process(delta):
 	if elapced < TIME_BEFORE_FLICKER:
 		var elapced_percent = elapced / TIME_BEFORE_FLICKER
 		current_radius = FLIKER_RADIUS + (FULL_RADIUS - FLIKER_RADIUS) * (1 - elapced_percent)
-		light.energy = 1.0
+		light.energy = LIGHT_MAX_ENERGY
 	elif elapced < FULL_LIFETIME:
 		var elapced_percent = (elapced - TIME_BEFORE_FLICKER) / FLIKER_LIFETIME
 		current_radius = MIN_RADIUS + (FLIKER_RADIUS - MIN_RADIUS) * (1 - elapced_percent)
-		light.energy = 1.0 - get_flickering() - elapced_percent / 4
+		light.energy = max(LIGHT_MAX_ENERGY - get_flickering() - elapced_percent / 4, 0)
 	else:
 		active = false
 		emit_signal("finished")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/Tiles/arrow.png" type="Texture" id=1]
+[ext_resource path="res://assets/named/item_arrow.png" type="Texture" id=1]
 [ext_resource path="res://src/weapons/Arrow.gd" type="Script" id=2]
 [ext_resource path="res://assets/Particles/magic_05.png" type="Texture" id=3]
 [ext_resource path="res://assets/Particles/star_09.png" type="Texture" id=4]
@@ -47,7 +47,7 @@ angular_damp = 10.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -1.5, 1.5 )
+position = Vector2( -2.00113, 1.98891 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
@@ -70,11 +70,13 @@ texture = ExtResource( 4 )
 texture_scale = 0.02
 
 [node name="EnemyDetector" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 16
 script = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
 shape = SubResource( 6 )
+
 [connection signal="body_entered" from="EnemyDetector" to="EnemyDetector" method="_on_EnemyDetector_body_entered"]
 [connection signal="body_exited" from="EnemyDetector" to="EnemyDetector" method="_on_EnemyDetector_body_exited"]
