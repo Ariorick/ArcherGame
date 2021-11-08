@@ -1,0 +1,9 @@
+{
+    "name": "Arrow",
+    "description": "Yeah this is an arrow but you can throw without a bow!",
+    "icon": "res://assets/named/item_arrow.png",
+    "recipe": {
+            "iron": 2,
+            "wood": 2
+        }
+}

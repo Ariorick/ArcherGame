@@ -42,14 +42,14 @@ func perform():
 		finished = true
 
 func shoot_arrow(direction: Vector2, linear_velocity: float, player_velocity: Vector2):
-#	var arrow = Arrow.instance()
-#	var impulse = direction * linear_velocity + player_velocity
-#	arrow.initial_angle = impulse.angle()
-#	arrow.initial_position = body.global_position + body.PLAYER_CENTER
-#	arrow.apply_impulse(Vector2(0, 0), impulse)
-#	body.apply_impulse(Vector2(0, 0), -1 * impulse * arrow.mass)
-#	body.get_parent().add_child(arrow)
-#	on_arrow_fired.call_func(arrow)
+	var arrow = Arrow.instance()
+	var impulse = direction * linear_velocity + player_velocity
+	arrow.initial_angle = impulse.angle()
+	arrow.initial_position = body.global_position + body.PLAYER_CENTER
+	arrow.apply_impulse(Vector2(0, 0), impulse)
+	body.apply_impulse(Vector2(0, 0), -1 * impulse * arrow.mass)
+	body.get_parent().add_child(arrow)
+	on_arrow_fired.call_func(arrow)
 	pass
 
 func cancel():

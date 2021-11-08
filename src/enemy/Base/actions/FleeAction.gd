@@ -2,7 +2,7 @@ extends EnemyAction
 class_name FleeAction
 
 const REST_TIME = 2000
-const RADIUS = 100
+const RADIUS = 150
 
 var start_time = -10000
 
