@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/enemy/Base/EnemyBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/Tiles/tile_0020.png" type="Texture" id=2]
-[ext_resource path="res://assets/named/pink_eye1px.png" type="Texture" id=3]
 [ext_resource path="res://src/enemy/Rat/Rat.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -54,18 +53,14 @@ collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="Character/CharacterBody" index="0"]
 use_parent_material = true
-position = Vector2( 0, -4 )
+position = Vector2( 0, -31.3979 )
+scale = Vector2( 1, 7.84948 )
 texture = ExtResource( 2 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="Character/CharacterBody" index="1"]
 position = Vector2( 0, -4 )
 rotation = 1.5708
 shape = SubResource( 4 )
-
-[node name="Eye" type="Light2D" parent="Character/CharacterBody" index="2"]
-position = Vector2( -1.0207, -3.05361 )
-texture = ExtResource( 3 )
-color = Color( 0.968627, 0, 1, 1 )
 
 [node name="MoveShape" type="CollisionShape2D" parent="." index="3"]
 modulate = Color( 1, 1, 1, 0.541176 )

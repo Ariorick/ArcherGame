@@ -11,11 +11,12 @@ func _ready():
 	
 
 func is_woods1(v: Vector2) -> bool:
-	return enabled and (_has_green(v) or _has_red(v))
+	return enabled and _has_green(v)
+#	return enabled and (_has_green(v) or _has_red(v))
 
 func is_woods2(v: Vector2) -> bool:
-#	return enabled and _has_red(v)
-	return false
+	return enabled and _has_red(v)
+#	return false
 
 func _get_pixel(v: Vector2) -> Color:
 	var pixel = to_local(v) + pixel_offset
